@@ -40,6 +40,10 @@ class _$AuthFailureTearOff {
   ServerError serverError() {
     return const ServerError();
   }
+
+  InvalidFailure invalidFailure() {
+    return const InvalidFailure();
+  }
 }
 
 /// @nodoc
@@ -55,6 +59,7 @@ mixin _$AuthFailure {
     required TResult Function() invalidUser,
     required TResult Function() unauthenticated,
     required TResult Function() serverError,
+    required TResult Function() invalidFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +70,7 @@ mixin _$AuthFailure {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +81,7 @@ mixin _$AuthFailure {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -86,6 +93,7 @@ mixin _$AuthFailure {
     required TResult Function(InvalidUser value) invalidUser,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidFailure value) invalidFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +104,7 @@ mixin _$AuthFailure {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -106,6 +115,7 @@ mixin _$AuthFailure {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -173,6 +183,7 @@ class _$UserDisabled implements UserDisabled {
     required TResult Function() invalidUser,
     required TResult Function() unauthenticated,
     required TResult Function() serverError,
+    required TResult Function() invalidFailure,
   }) {
     return userDisabled();
   }
@@ -186,6 +197,7 @@ class _$UserDisabled implements UserDisabled {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
   }) {
     return userDisabled?.call();
   }
@@ -199,6 +211,7 @@ class _$UserDisabled implements UserDisabled {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -216,6 +229,7 @@ class _$UserDisabled implements UserDisabled {
     required TResult Function(InvalidUser value) invalidUser,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidFailure value) invalidFailure,
   }) {
     return userDisabled(this);
   }
@@ -229,6 +243,7 @@ class _$UserDisabled implements UserDisabled {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
   }) {
     return userDisabled?.call(this);
   }
@@ -242,6 +257,7 @@ class _$UserDisabled implements UserDisabled {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -302,6 +318,7 @@ class _$IncorrectPassword implements IncorrectPassword {
     required TResult Function() invalidUser,
     required TResult Function() unauthenticated,
     required TResult Function() serverError,
+    required TResult Function() invalidFailure,
   }) {
     return incorrectPassword();
   }
@@ -315,6 +332,7 @@ class _$IncorrectPassword implements IncorrectPassword {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
   }) {
     return incorrectPassword?.call();
   }
@@ -328,6 +346,7 @@ class _$IncorrectPassword implements IncorrectPassword {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
     required TResult orElse(),
   }) {
     if (incorrectPassword != null) {
@@ -345,6 +364,7 @@ class _$IncorrectPassword implements IncorrectPassword {
     required TResult Function(InvalidUser value) invalidUser,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidFailure value) invalidFailure,
   }) {
     return incorrectPassword(this);
   }
@@ -358,6 +378,7 @@ class _$IncorrectPassword implements IncorrectPassword {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
   }) {
     return incorrectPassword?.call(this);
   }
@@ -371,6 +392,7 @@ class _$IncorrectPassword implements IncorrectPassword {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
     required TResult orElse(),
   }) {
     if (incorrectPassword != null) {
@@ -430,6 +452,7 @@ class _$AccountBlocked implements AccountBlocked {
     required TResult Function() invalidUser,
     required TResult Function() unauthenticated,
     required TResult Function() serverError,
+    required TResult Function() invalidFailure,
   }) {
     return accountBlocked();
   }
@@ -443,6 +466,7 @@ class _$AccountBlocked implements AccountBlocked {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
   }) {
     return accountBlocked?.call();
   }
@@ -456,6 +480,7 @@ class _$AccountBlocked implements AccountBlocked {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
     required TResult orElse(),
   }) {
     if (accountBlocked != null) {
@@ -473,6 +498,7 @@ class _$AccountBlocked implements AccountBlocked {
     required TResult Function(InvalidUser value) invalidUser,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidFailure value) invalidFailure,
   }) {
     return accountBlocked(this);
   }
@@ -486,6 +512,7 @@ class _$AccountBlocked implements AccountBlocked {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
   }) {
     return accountBlocked?.call(this);
   }
@@ -499,6 +526,7 @@ class _$AccountBlocked implements AccountBlocked {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
     required TResult orElse(),
   }) {
     if (accountBlocked != null) {
@@ -558,6 +586,7 @@ class _$InvalidUser implements InvalidUser {
     required TResult Function() invalidUser,
     required TResult Function() unauthenticated,
     required TResult Function() serverError,
+    required TResult Function() invalidFailure,
   }) {
     return invalidUser();
   }
@@ -571,6 +600,7 @@ class _$InvalidUser implements InvalidUser {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
   }) {
     return invalidUser?.call();
   }
@@ -584,6 +614,7 @@ class _$InvalidUser implements InvalidUser {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
     required TResult orElse(),
   }) {
     if (invalidUser != null) {
@@ -601,6 +632,7 @@ class _$InvalidUser implements InvalidUser {
     required TResult Function(InvalidUser value) invalidUser,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidFailure value) invalidFailure,
   }) {
     return invalidUser(this);
   }
@@ -614,6 +646,7 @@ class _$InvalidUser implements InvalidUser {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
   }) {
     return invalidUser?.call(this);
   }
@@ -627,6 +660,7 @@ class _$InvalidUser implements InvalidUser {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
     required TResult orElse(),
   }) {
     if (invalidUser != null) {
@@ -687,6 +721,7 @@ class _$Unauthenticated implements Unauthenticated {
     required TResult Function() invalidUser,
     required TResult Function() unauthenticated,
     required TResult Function() serverError,
+    required TResult Function() invalidFailure,
   }) {
     return unauthenticated();
   }
@@ -700,6 +735,7 @@ class _$Unauthenticated implements Unauthenticated {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
   }) {
     return unauthenticated?.call();
   }
@@ -713,6 +749,7 @@ class _$Unauthenticated implements Unauthenticated {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -730,6 +767,7 @@ class _$Unauthenticated implements Unauthenticated {
     required TResult Function(InvalidUser value) invalidUser,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidFailure value) invalidFailure,
   }) {
     return unauthenticated(this);
   }
@@ -743,6 +781,7 @@ class _$Unauthenticated implements Unauthenticated {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
   }) {
     return unauthenticated?.call(this);
   }
@@ -756,6 +795,7 @@ class _$Unauthenticated implements Unauthenticated {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -815,6 +855,7 @@ class _$ServerError implements ServerError {
     required TResult Function() invalidUser,
     required TResult Function() unauthenticated,
     required TResult Function() serverError,
+    required TResult Function() invalidFailure,
   }) {
     return serverError();
   }
@@ -828,6 +869,7 @@ class _$ServerError implements ServerError {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
   }) {
     return serverError?.call();
   }
@@ -841,6 +883,7 @@ class _$ServerError implements ServerError {
     TResult Function()? invalidUser,
     TResult Function()? unauthenticated,
     TResult Function()? serverError,
+    TResult Function()? invalidFailure,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -858,6 +901,7 @@ class _$ServerError implements ServerError {
     required TResult Function(InvalidUser value) invalidUser,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidFailure value) invalidFailure,
   }) {
     return serverError(this);
   }
@@ -871,6 +915,7 @@ class _$ServerError implements ServerError {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
   }) {
     return serverError?.call(this);
   }
@@ -884,6 +929,7 @@ class _$ServerError implements ServerError {
     TResult Function(InvalidUser value)? invalidUser,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -895,4 +941,138 @@ class _$ServerError implements ServerError {
 
 abstract class ServerError implements AuthFailure {
   const factory ServerError() = _$ServerError;
+}
+
+/// @nodoc
+abstract class $InvalidFailureCopyWith<$Res> {
+  factory $InvalidFailureCopyWith(
+          InvalidFailure value, $Res Function(InvalidFailure) then) =
+      _$InvalidFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$InvalidFailureCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+    implements $InvalidFailureCopyWith<$Res> {
+  _$InvalidFailureCopyWithImpl(
+      InvalidFailure _value, $Res Function(InvalidFailure) _then)
+      : super(_value, (v) => _then(v as InvalidFailure));
+
+  @override
+  InvalidFailure get _value => super._value as InvalidFailure;
+}
+
+/// @nodoc
+
+class _$InvalidFailure implements InvalidFailure {
+  const _$InvalidFailure();
+
+  @override
+  String toString() {
+    return 'AuthFailure.invalidFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is InvalidFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() userDisabled,
+    required TResult Function() incorrectPassword,
+    required TResult Function() accountBlocked,
+    required TResult Function() invalidUser,
+    required TResult Function() unauthenticated,
+    required TResult Function() serverError,
+    required TResult Function() invalidFailure,
+  }) {
+    return invalidFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? userDisabled,
+    TResult Function()? incorrectPassword,
+    TResult Function()? accountBlocked,
+    TResult Function()? invalidUser,
+    TResult Function()? unauthenticated,
+    TResult Function()? serverError,
+    TResult Function()? invalidFailure,
+  }) {
+    return invalidFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? userDisabled,
+    TResult Function()? incorrectPassword,
+    TResult Function()? accountBlocked,
+    TResult Function()? invalidUser,
+    TResult Function()? unauthenticated,
+    TResult Function()? serverError,
+    TResult Function()? invalidFailure,
+    required TResult orElse(),
+  }) {
+    if (invalidFailure != null) {
+      return invalidFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserDisabled value) userDisabled,
+    required TResult Function(IncorrectPassword value) incorrectPassword,
+    required TResult Function(AccountBlocked value) accountBlocked,
+    required TResult Function(InvalidUser value) invalidUser,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(InvalidFailure value) invalidFailure,
+  }) {
+    return invalidFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(IncorrectPassword value)? incorrectPassword,
+    TResult Function(AccountBlocked value)? accountBlocked,
+    TResult Function(InvalidUser value)? invalidUser,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
+  }) {
+    return invalidFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserDisabled value)? userDisabled,
+    TResult Function(IncorrectPassword value)? incorrectPassword,
+    TResult Function(AccountBlocked value)? accountBlocked,
+    TResult Function(InvalidUser value)? invalidUser,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(InvalidFailure value)? invalidFailure,
+    required TResult orElse(),
+  }) {
+    if (invalidFailure != null) {
+      return invalidFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidFailure implements AuthFailure {
+  const factory InvalidFailure() = _$InvalidFailure;
 }
