@@ -10,4 +10,5 @@ class AuthFailure with _$AuthFailure{
     const factory AuthFailure.invalidUser() = InvalidUser;
     const factory AuthFailure.unauthenticated() = Unauthenticated;
     const factory AuthFailure.serverError() = ServerError;
+    const factory AuthFailure.invalidFailure() = InvalidFailure;
 }

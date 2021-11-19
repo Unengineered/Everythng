@@ -4,12 +4,12 @@ import 'package:everythng/domain/auth/entities/everythng_user.dart';
 
 abstract class IAuthRepository {
   Future<Either<AuthFailure, EverythngUser>> registerWithEmailAndPassword(
-      String email, String password);
+      {required String email,required String password});
   Future<Either<AuthFailure, EverythngUser>> signInWithEmailAndPassword(
-      String email, String password);
+      {required String email, required String password});
   Future<void> signOut();
   Future<bool> doesEmailExist();
-  Future<Either<AuthFailure, String>> getToken();
+  Future<Either<AuthFailure, String>> getToken({bool forceRefresh = false});
   Stream<EverythngUser?> getAuthStatusStream();
   Either<AuthFailure, EverythngUser> getCurrentUser();
 }
