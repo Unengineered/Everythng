@@ -5,7 +5,9 @@ import 'package:dartz/dartz.dart';
 import 'package:everythng/domain/auth/i_auth_repository.dart';
 import 'package:fort_knox/fort_knox.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: IAuthRepository)
 class AuthRepository implements IAuthRepository {
   final FortKnox _fortKnox;
   final http.Client client;
@@ -41,7 +43,7 @@ class AuthRepository implements IAuthRepository {
     try {
       return right(
           EverythngUser.fromBaseUserAndDetails(_fortKnox.getCurrentUser()));
-    } on AuthenticationException catch (e) {
+    } on AuthenticationException catch (_) {
       return left(const AuthFailure.unauthenticated());
     }
   }
@@ -51,7 +53,7 @@ class AuthRepository implements IAuthRepository {
       {bool forceRefresh = false}) async {
     try {
       return right(await _fortKnox.getToken(forceRefresh: forceRefresh));
-    } on AuthenticationException catch (e) {
+    } on AuthenticationException catch (_) {
       return left(const AuthFailure.unauthenticated());
     }
   }
