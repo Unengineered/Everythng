@@ -1,4 +1,3 @@
-
 import 'package:everythng/presentation/auth/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,13 +11,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return   MaterialApp(
+    return const MaterialApp(
       title: 'Everythng App',
       debugShowCheckedModeBanner: false,
-
       home: LoginPage(),
     );
   }
 }
-
-

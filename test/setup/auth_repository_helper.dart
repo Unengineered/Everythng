@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
 import 'package:everythng/domain/auth/entities/everythng_user.dart';
 import 'package:everythng/domain/auth/i_auth_repository.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 const email = "user@everythng.com";
@@ -40,6 +41,16 @@ IAuthRepository getAuthRepoForSigning({AuthFailure? failure}) {
     when(() => service.registerWithEmailAndPassword(
             email: any(named: 'email'), password: any(named: 'password')))
         .thenAnswer((invocation) async => left(failure));
+  }
+  return service;
+}
+
+IAuthRepository getAuthRepoForEmailExists(bool value, {bool failure = false}){
+  final service = MockAuthRepository();
+  if(!failure) {
+    when(() => service.doesEmailExist(email: any(named: 'email'))).thenAnswer((invocation) async => right(value));
+  } else {
+    when(() => service.doesEmailExist(email: any(named: 'email'))).thenAnswer((invocation) async => left(const AuthFailure.serverError()));
   }
   return service;
 }

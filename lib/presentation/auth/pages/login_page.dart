@@ -3,6 +3,7 @@
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
+import 'package:everythng/presentation/auth/pages/create_password_page.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,14 +58,14 @@ class _LoginPageState extends State<LoginPage>
                         'enter your email',
                         style: everythngTextTheme.headline1!,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       Text(
                         'some gibberish about something blah blah blah',
                         style: everythngTextTheme.bodyTextMedium!,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       ShakeAnimation(

@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/auth/pages/confirm_password_page.dart';
@@ -55,7 +54,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
               automaticallyImplyLeading: false,
               leading: Navigator.canPop(context)
                   ? IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_back,
                         color: Colors.black,
                         size: 32,
@@ -84,14 +83,14 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                         'create password for your account',
                         style: everythngTextTheme.headline1!,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       Text(
                         'some gibberish about something blah blah blah',
                         style: everythngTextTheme.bodyTextMedium!,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 28,
                       ),
                       EverythngBorderlessFormField(
@@ -99,7 +98,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                         textEditingController: passwordEditingController,
                         type: FormFieldType.password,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 24,
                       ),
                       ValueListenableBuilder<bool>(
@@ -117,7 +116,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                                     : everythngThemeData.errorColor,
                                 size: 20,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 4,
                               ),
                               Text(
@@ -129,7 +128,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                           );
                         },
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       ValueListenableBuilder<bool>(
                         valueListenable: containsSpecialCharacter,
                         builder: (context, containsSpecialCharacter, child) {
@@ -145,7 +144,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                                     : everythngThemeData.errorColor,
                                 size: 20,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 4,
                               ),
                               Text(

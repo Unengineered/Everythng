@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+
 
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
@@ -26,7 +26,7 @@ class ConfirmPasswordPage extends StatelessWidget {
               automaticallyImplyLeading: false,
               leading: Navigator.canPop(context)
                   ? IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_back,
                         color: Colors.black,
                         size: 32,
@@ -36,7 +36,7 @@ class ConfirmPasswordPage extends StatelessWidget {
                   : null,
             ),
             body: AnimatedContainer(
-              duration: const Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 500),
               margin: EdgeInsets.fromLTRB(
                 16,
                 64,
@@ -55,14 +55,14 @@ class ConfirmPasswordPage extends StatelessWidget {
                         'confirm password to create account',
                         style: everythngTextTheme.headline1!,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       Text(
                         'some gibberish about something blah blah blah',
                         style: everythngTextTheme.bodyTextMedium!,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       EverythngBorderlessFormField(
