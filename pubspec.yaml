@@ -40,6 +40,7 @@ dependencies:
   google_fonts:
   flutter_keyboard_visibility:
   http: ^0.13.4
+  vector_math:
 
 
 

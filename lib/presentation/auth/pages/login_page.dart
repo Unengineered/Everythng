@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:everythng/constants/extensions.dart';
-import 'package:everythng/presentation/auth/pages/create_password_page.dart';
-import 'package:everythng/presentation/auth/pages/password_page.dart';
+import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
+import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,10 +16,18 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>
+    with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
 
   final emailEditingController = TextEditingController();
+  late ShakeController _shakeController;
+
+  @override
+  initState() {
+    super.initState();
+    _shakeController = ShakeController(vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +67,13 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         height: 30,
                       ),
-                      EverythngBorderlessFormField(
-                        formKey: _formKey,
-                        textEditingController: emailEditingController,
-                        type: FormFieldType.email,
+                      ShakeAnimation(
+                        shakeController: _shakeController,
+                        child: EverythngBorderlessFormField(
+                          formKey: _formKey,
+                          textEditingController: emailEditingController,
+                          type: FormFieldType.email,
+                        ),
                       ),
                     ],
                   ),
@@ -70,14 +81,8 @@ class _LoginPageState extends State<LoginPage> {
                     child: EverythngTwoStateButton(
                       textController: emailEditingController,
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) {
-                              return CreatePasswordPage();
-                            },
-                          ),
-                        );
+                        _shakeController.shake();
+
                       },
                     ),
                   )
