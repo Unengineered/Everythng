@@ -1,20 +1,13 @@
-import 'package:everythng/presentation/auth/pages/login_page.dart';
+import 'package:everythng/presentation/core/app_widget.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'injection.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  configureDependencies();
+  runApp(AppWidget());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Everythng App',
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-    );
-  }
-}

@@ -14,7 +14,11 @@ part 'auth_state.dart';
 @Injectable()
 class AuthCubit extends Cubit<AuthState> {
   final IAuthRepository _authRepository;
-  AuthCubit(this._authRepository) : super(const AuthState.initial()) {
+
+  AuthCubit(this._authRepository) : super(const AuthState.initial());
+
+  //TODO: Add tests for checkAuthStatus
+  void checkAuthStatus() {
     _authRepository.getCurrentUser().fold(
         (failure) => failure.maybeMap(
             unauthenticated: (_) => emit(const AuthState.unauthenticated()),
@@ -31,7 +35,7 @@ class AuthCubit extends Cubit<AuthState> {
           password: password);
 
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
-      {required String email, required String password}) async =>
+          {required String email, required String password}) async =>
       _authenticationHandler(
           call: _authRepository.registerWithEmailAndPassword,
           email: email,
@@ -44,13 +48,14 @@ class AuthCubit extends Cubit<AuthState> {
       required String email,
       required String password}) async {
     return call(email: email, password: password).then(
-        (value) => value.fold((failure) => left(failure), (everythngUser) {
-              emit(AuthState.authenticated(everythngUser: everythngUser));
+        (value) => value.fold((failure) => left(failure), (_) {
+              checkAuthStatus();
               return right(unit);
             }));
   }
 
-  Future<void> signOut() => _authRepository.signOut();
-
-
+  Future<void> signOut() async {
+    await _authRepository.signOut();
+    checkAuthStatus();
+  }
 }

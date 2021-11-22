@@ -5,11 +5,7 @@ import 'package:everythng/domain/auth/i_auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-const email = "user@everythng.com";
-const password = "skjfasj.ka129!@";
-const uid = "UID";
-
-const user = EverythngUser(email: email, uid: uid);
+import 'constants.dart';
 
 class MockAuthRepository extends Mock implements IAuthRepository {}
 
@@ -23,15 +19,19 @@ IAuthRepository getAuthRepoForSigning({AuthFailure? failure}) {
     when(() => service.signInWithEmailAndPassword(
         email: any(named: 'email'),
         password: any(named: 'password'))).thenAnswer((invocation) async {
-      return right(EverythngUser(
-          email: invocation.namedArguments[const Symbol('email')], uid: uid));
+      final user = EverythngUser(
+          email: invocation.namedArguments[const Symbol('email')], uid: uid);
+      when(() => service.getCurrentUser()).thenReturn(right(user));
+      return right(user);
     });
 
     when(() => service.registerWithEmailAndPassword(
         email: any(named: 'email'),
         password: any(named: 'password'))).thenAnswer((invocation) async {
-      return right(EverythngUser(
-          email: invocation.namedArguments[const Symbol('email')], uid: uid));
+      final user = EverythngUser(
+          email: invocation.namedArguments[const Symbol('email')], uid: uid);
+      when(() => service.getCurrentUser()).thenReturn(right(user));
+      return right(user);
     });
   } else {
     when(() => service.signInWithEmailAndPassword(
@@ -45,12 +45,14 @@ IAuthRepository getAuthRepoForSigning({AuthFailure? failure}) {
   return service;
 }
 
-IAuthRepository getAuthRepoForEmailExists(bool value, {bool failure = false}){
+IAuthRepository getAuthRepoForEmailExists(bool value, {bool failure = false}) {
   final service = MockAuthRepository();
-  if(!failure) {
-    when(() => service.doesEmailExist(email: any(named: 'email'))).thenAnswer((invocation) async => right(value));
+  if (!failure) {
+    when(() => service.doesEmailExist(email: any(named: 'email')))
+        .thenAnswer((invocation) async => right(value));
   } else {
-    when(() => service.doesEmailExist(email: any(named: 'email'))).thenAnswer((invocation) async => left(const AuthFailure.serverError()));
+    when(() => service.doesEmailExist(email: any(named: 'email'))).thenAnswer(
+        (invocation) async => left(const AuthFailure.serverError()));
   }
   return service;
 }

@@ -10,7 +10,6 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -29,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
         builder: (context, visible) {
           return Scaffold(
             body: AnimatedContainer(
-              duration: Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 100),
               margin: EdgeInsets.fromLTRB(
                 16,
                 148,
