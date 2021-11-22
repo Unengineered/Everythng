@@ -36,6 +36,7 @@ class _EverythngBorderlessFormFieldState
     return Form(
       key: widget._formKey,
       child: TextFormField(
+        // autofocus: true,
         obscuringCharacter: '*',
         controller: widget.textEditingController,
         textAlign: TextAlign.start,

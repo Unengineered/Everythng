@@ -14,7 +14,8 @@ class CreatePasswordPage extends StatefulWidget {
   State<CreatePasswordPage> createState() => _CreatePasswordPageState();
 }
 
-class _CreatePasswordPageState extends State<CreatePasswordPage> {
+class _CreatePasswordPageState extends State<CreatePasswordPage>
+    with SingleTickerProviderStateMixin {
   final passwordEditingController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
@@ -23,9 +24,17 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
 
   ValueNotifier<bool> containsSpecialCharacter = ValueNotifier(false);
 
+  late AnimationController _animationController;
+
   @override
   void initState() {
     super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 500,
+      ),
+    );
     passwordEditingController.addListener(() {
       if (passwordEditingController.text.length > 6) {
         isGreaterThan6.value = true;
@@ -105,7 +114,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                         valueListenable: isGreaterThan6,
                         builder: (context, isGreaterThan6, child) {
                           return Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Icon(
                                 isGreaterThan6
@@ -133,7 +142,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                         valueListenable: containsSpecialCharacter,
                         builder: (context, containsSpecialCharacter, child) {
                           return Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Icon(
                                 containsSpecialCharacter

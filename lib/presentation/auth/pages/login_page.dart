@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/presentation/auth/pages/password_page.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
 import 'package:auto_route/auto_route.dart';
