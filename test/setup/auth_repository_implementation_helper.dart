@@ -2,15 +2,8 @@ import 'package:everythng/infrastructure/auth/auth_repository.dart';
 import 'package:fort_knox/fort_knox.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:http/http.dart' as http;
-
-const String temail = "email@unengineered.net";
-const String tpassword = "password";
-const String tuid = "UID";
-const String token = 'TOKEN';
-const String refreshedToken = 'REFRESHEDTOKEN';
-const String url = 'http://www.everythng.in';
-
-class MockFortKnox extends Mock implements FortKnox {}
+import 'constants.dart';
+import 'fort_knox_helper.dart';
 
 class MockBaseUser extends Mock implements BaseUser {}
 
@@ -32,8 +25,8 @@ AuthRepository getAuthRepositoryForAuthStatusStream(bool isAuthenticated) {
   final mockHttpClient = MockHttpClient();
 
   final mockBaseUser = MockBaseUser();
-  when(() => mockBaseUser.email).thenReturn(temail);
-  when(() => mockBaseUser.uid).thenReturn(tuid);
+  when(() => mockBaseUser.email).thenReturn(email);
+  when(() => mockBaseUser.uid).thenReturn(uid);
   when(() => mockFortKnox.getAuthStatusStream())
       .thenAnswer((invocation) async* {
     yield isAuthenticated ? mockBaseUser : null;
@@ -45,8 +38,8 @@ AuthRepository getAuthRepositoryForCurrentUser(bool isAuthenticated) {
   final mockFortKnox = MockFortKnox();
   final mockHttpClient = MockHttpClient();
   final mockBaseUser = MockBaseUser();
-  when(() => mockBaseUser.email).thenReturn(temail);
-  when(() => mockBaseUser.uid).thenReturn(tuid);
+  when(() => mockBaseUser.email).thenReturn(email);
+  when(() => mockBaseUser.uid).thenReturn(uid);
   if (isAuthenticated == false) {
     when(() => mockFortKnox.getCurrentUser())
         .thenThrow(AuthenticationException.unauthenticated());
@@ -83,20 +76,20 @@ AuthRepository getAuthRepositoryForSigning(
   final mockFortKnox = MockFortKnox();
   final mockHttpClient = MockHttpClient();
   final mockBaseUser = MockBaseUser();
-  when(() => mockBaseUser.email).thenReturn(temail);
-  when(() => mockBaseUser.uid).thenReturn(tuid);
+  when(() => mockBaseUser.email).thenReturn(email);
+  when(() => mockBaseUser.uid).thenReturn(uid);
   if (exception != null) {
     when(() => mockFortKnox.registerWithEmailAndPassword(
-        email: temail, password: tpassword)).thenThrow(exception);
+        email: email, password: password)).thenThrow(exception);
     when(() => mockFortKnox.signInWithEmailAndPassword(
-        email: temail, password: tpassword)).thenThrow(exception);
+        email: email, password: password)).thenThrow(exception);
   } else {
     when(() => mockFortKnox.registerWithEmailAndPassword(
-        email: temail,
-        password: tpassword)).thenAnswer((invocation) async => mockBaseUser);
+        email: email,
+        password: password)).thenAnswer((invocation) async => mockBaseUser);
     when(() => mockFortKnox.signInWithEmailAndPassword(
-        email: temail,
-        password: tpassword)).thenAnswer((invocation) async => mockBaseUser);
+        email: email,
+        password: password)).thenAnswer((invocation) async => mockBaseUser);
     when(() => mockFortKnox.signOut()).thenAnswer((invocation) async => () {});
     return AuthRepository(mockFortKnox, mockHttpClient);
   }

@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fort_knox/fort_knox.dart';
 import 'package:mocktail/mocktail.dart';
 import '../../setup/auth_repository_implementation_helper.dart';
+import '../../setup/constants.dart';
 
 void main() {
   setUpAll(() {
@@ -16,7 +17,7 @@ void main() {
       //Arrange
       final authRepository = getAuthRepositoryForEmailExist(true, 200);
       //Act
-      final result = await authRepository.doesEmailExist(email: temail);
+      final result = await authRepository.doesEmailExist(email: email);
       //Assert
       expect(result, right(true));
     });
@@ -25,7 +26,7 @@ void main() {
       //Arrange
       final authRepository = getAuthRepositoryForEmailExist(false, 404);
       //Act
-      final result = await authRepository.doesEmailExist(email: temail);
+      final result = await authRepository.doesEmailExist(email: email);
       //Assert
       expect(result, right(false));
     });
@@ -36,7 +37,7 @@ void main() {
       //Arrange
       final authRepository = getAuthRepositoryForEmailExist(false, 420);
       //Act
-      final result = await authRepository.doesEmailExist(email: temail);
+      final result = await authRepository.doesEmailExist(email: email);
       //Assert
       expect(result, left(const AuthFailure.serverError()));
     });
@@ -68,7 +69,7 @@ void main() {
       //Act
       final result = authRepository.getCurrentUser();
       //Assert
-      expect(result, right(const EverythngUser(email: temail, uid: tuid)));
+      expect(result, right(const EverythngUser(email: email, uid: uid)));
     });
 
     test('should return AuthFailure.unauthenticated when unauthenticated', () {
@@ -119,9 +120,9 @@ void main() {
       final authRepository = getAuthRepositoryForSigning();
       //Act
       final result = await authRepository.registerWithEmailAndPassword(
-          email: temail, password: tpassword);
+          email: email, password: password);
       //Assert
-      expect(result, right(const EverythngUser(email: temail, uid: tuid)));
+      expect(result, right(const EverythngUser(email: email, uid: uid)));
     });
 
     test('Should return Authfailure.invalidFailure if code does not match',
@@ -131,7 +132,7 @@ void main() {
           exception: AuthenticationException.invalidException());
       //Act
       final result = await authRepository.registerWithEmailAndPassword(
-          email: temail, password: tpassword);
+          email: email, password: password);
       //Assert
       expect(result, left(const AuthFailure.invalidFailure()));
     });
@@ -143,7 +144,7 @@ void main() {
           exception: AuthenticationException.userDisabled());
       //Act
       final result = await authRepository.registerWithEmailAndPassword(
-          email: temail, password: tpassword);
+          email: email, password: password);
       //Assert
       expect(result, left(const AuthFailure.userDisabled()));
     });
@@ -155,9 +156,9 @@ void main() {
       final authRepository = getAuthRepositoryForSigning();
       //Act
       final result = await authRepository.signInWithEmailAndPassword(
-          email: temail, password: tpassword);
+          email: email, password: password);
       //Assert
-      expect(result, right(const EverythngUser(email: temail, uid: tuid)));
+      expect(result, right(const EverythngUser(email: email, uid: uid)));
     });
 
     test('Should return Authfailure.invalidFailure if code does not match',
@@ -167,7 +168,7 @@ void main() {
           exception: AuthenticationException.invalidException());
       //Act
       final result = await authRepository.signInWithEmailAndPassword(
-          email: temail, password: tpassword);
+          email: email, password: password);
       //Assert
       expect(result, left(const AuthFailure.invalidFailure()));
     });
@@ -179,7 +180,7 @@ void main() {
           exception: AuthenticationException.userDisabled());
       //Act
       final result = await authRepository.signInWithEmailAndPassword(
-          email: temail, password: tpassword);
+          email: email, password: password);
       //Assert
       expect(result, left(const AuthFailure.userDisabled()));
     });
@@ -192,7 +193,7 @@ void main() {
           exception: AuthenticationException.wrongPassword());
       //Act
       final result = await authRepository.signInWithEmailAndPassword(
-          email: temail, password: tpassword);
+          email: email, password: password);
       //Assert
       expect(result, left(const AuthFailure.incorrectPassword()));
     });
@@ -204,7 +205,7 @@ void main() {
           exception: AuthenticationException.accountBlocked());
       //Act
       final result = await authRepository.signInWithEmailAndPassword(
-          email: temail, password: tpassword);
+          email: email, password: password);
       //Assert
       expect(result, left(const AuthFailure.accountBlocked()));
     });
