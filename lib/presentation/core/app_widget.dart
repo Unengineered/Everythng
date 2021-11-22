@@ -1,5 +1,7 @@
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
+import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/injection.dart';
+import 'package:everythng/presentation/core/auth_router.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,14 +13,19 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AuthCubit>(),
-      child: MaterialApp.router(
-        title: 'Everythng App',
-        debugShowCheckedModeBanner: false,
-        routerDelegate: _appRouter.delegate(),
-        routeInformationParser: _appRouter.defaultRouteParser(),
-      ),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => getIt<AuthCubit>()),
+          BlocProvider(create: (_) => getIt<AuthFormCubit>())
+        ],
+        child: AuthRouter(
+          router: _appRouter,
+          child: MaterialApp.router(
+            title: 'Everythng App',
+            debugShowCheckedModeBanner: false,
+            routerDelegate: _appRouter.delegate(),
+            routeInformationParser: _appRouter.defaultRouteParser(),
+          ),
+        ));
   }
 }

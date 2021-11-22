@@ -1,21 +1,25 @@
 
-
+import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:provider/provider.dart';
+import 'package:auto_route/auto_route.dart';
 
 class PasswordPage extends StatelessWidget {
   PasswordPage({Key? key}) : super(key: key);
-  final passwordEditingController = TextEditingController();
+  final _passwordEditingController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
     var everythngThemeData = Theme.of(context).everythngThemeData;
+
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
         builder: (context, visible) {
@@ -31,7 +35,7 @@ class PasswordPage extends StatelessWidget {
                         color: Colors.black,
                         size: 32,
                       ),
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () => context.router.pop(),
                     )
                   : null,
             ),
@@ -67,23 +71,20 @@ class PasswordPage extends StatelessWidget {
                       ),
                       EverythngBorderlessFormField(
                         formKey: _formKey,
-                        textEditingController: passwordEditingController,
+                        textEditingController: _passwordEditingController,
                         type: FormFieldType.password,
                       ),
                     ],
                   ),
                   Center(
                     child: EverythngTwoStateButton(
-                      textController: passwordEditingController,
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) {
-                              return PasswordPage();
-                            },
-                          ),
-                        );
+                        context
+                            .read<AuthFormCubit>()
+                            .setPassword(_passwordEditingController.text);
+                        context
+                            .read<AuthFormCubit>()
+                            .signInWithEmailAndPassword();
                       },
                     ),
                   )

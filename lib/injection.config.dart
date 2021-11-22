@@ -30,7 +30,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i5.FortKnox>(() => authInjectionModule.fortKnox);
   gh.factory<_i6.IAuthRepository>(
       () => _i7.AuthRepository(get<_i5.FortKnox>(), get<_i3.Client>()));
-  gh.factory<_i8.AuthCubit>(() => _i8.AuthCubit(get<_i6.IAuthRepository>()));
+  gh.lazySingleton<_i8.AuthCubit>(
+      () => _i8.AuthCubit(get<_i6.IAuthRepository>()));
   gh.factory<_i9.AuthFormCubit>(() =>
       _i9.AuthFormCubit(get<_i6.IAuthRepository>(), get<_i8.AuthCubit>()));
   return get;

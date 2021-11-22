@@ -42,6 +42,7 @@ void main() {
       expect(result, left(const AuthFailure.serverError()));
     });
   });
+
   group('getAuthStatusStream', () {
     test('should yield EverythngUser when authenticated', () async {
       //Arrange
@@ -125,7 +126,7 @@ void main() {
       expect(result, right(const EverythngUser(email: email, uid: uid)));
     });
 
-    test('Should return Authfailure.invalidFailure if code does not match',
+    test('Should return AuthFailure.invalidFailure if code does not match',
         () async {
       //Arrange
       final authRepository = getAuthRepositoryForSigning(
@@ -161,7 +162,7 @@ void main() {
       expect(result, right(const EverythngUser(email: email, uid: uid)));
     });
 
-    test('Should return Authfailure.invalidFailure if code does not match',
+    test('Should return AuthFailure.invalidFailure if code does not match',
         () async {
       //Arrange
       final authRepository = getAuthRepositoryForSigning(

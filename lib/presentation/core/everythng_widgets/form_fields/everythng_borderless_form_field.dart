@@ -10,13 +10,14 @@ class EverythngBorderlessFormField extends StatefulWidget {
     Key? key,
     required GlobalKey<FormState> formKey,
     required this.textEditingController,
-    required this.type,
+    required this.type, this.validator,
   })  : _formKey = formKey,
         super(key: key);
 
   final GlobalKey<FormState> _formKey;
   final TextEditingController textEditingController;
   final FormFieldType type;
+  final String? Function(String? value)? validator;
 
   @override
   State<EverythngBorderlessFormField> createState() =>
@@ -33,9 +34,12 @@ class _EverythngBorderlessFormFieldState
         Theme.of(context).everythngThemeData;
     final ExtendedTextTheme everythngTextTheme =
         Theme.of(context).textTheme.everythngTextTheme;
+
     return Form(
       key: widget._formKey,
       child: TextFormField(
+        validator: widget.validator,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         // autofocus: true,
         obscuringCharacter: '*',
         controller: widget.textEditingController,

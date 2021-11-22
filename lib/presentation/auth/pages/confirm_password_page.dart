@@ -1,5 +1,5 @@
-
-
+import 'package:provider/provider.dart';
+import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
@@ -66,6 +66,14 @@ class ConfirmPasswordPage extends StatelessWidget {
                         height: 30,
                       ),
                       EverythngBorderlessFormField(
+                        validator: (value) {
+                          if (value ==
+                              context.read<AuthFormCubit>().state.password) {
+                            return null;
+                          } else {
+                            return 'Passwords don\'t match';
+                          }
+                        },
                         formKey: _formKey,
                         textEditingController: passwordEditingController,
                         type: FormFieldType.password,
@@ -74,21 +82,17 @@ class ConfirmPasswordPage extends StatelessWidget {
                   ),
                   Center(
                     child: EverythngTwoStateButton(
-                      textController: passwordEditingController,
                       title: 'Create Account',
                       icon: Icon(
                         Icons.done_rounded,
                         color: everythngThemeData.successColor,
                       ),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) {
-                              return ConfirmPasswordPage();
-                            },
-                          ),
-                        );
+                        if (_formKey.currentState!.validate()) {
+                          context
+                              .read<AuthFormCubit>()
+                              .registerWIthEmailAndPassword();
+                        }
                       },
                     ),
                   )

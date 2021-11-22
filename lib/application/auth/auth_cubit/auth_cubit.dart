@@ -11,20 +11,31 @@ part 'auth_cubit.freezed.dart';
 
 part 'auth_state.dart';
 
-@Injectable()
+@LazySingleton()
 class AuthCubit extends Cubit<AuthState> {
   final IAuthRepository _authRepository;
 
   AuthCubit(this._authRepository) : super(const AuthState.initial());
 
+  @override
+  void onChange(Change<AuthState> change) {
+    super.onChange(change);
+    //print("Change state from ${change.currentState} to ${change.nextState}");
+  }
+
   //TODO: Add tests for checkAuthStatus
   void checkAuthStatus() {
+    //print("Checking auth status");
     _authRepository.getCurrentUser().fold(
         (failure) => failure.maybeMap(
-            unauthenticated: (_) => emit(const AuthState.unauthenticated()),
-            orElse: () {}),
-        (everythngUser) =>
-            emit(AuthState.authenticated(everythngUser: everythngUser)));
+            unauthenticated: (_) {
+              //print("Get current user returned unauthenticated");
+              emit(const AuthState.unauthenticated());
+            },
+            orElse: () {}), (everythngUser) {
+      //print("Get current user returned authenticated");
+      emit(AuthState.authenticated(everythngUser: everythngUser));
+    });
   }
 
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword(
@@ -47,8 +58,8 @@ class AuthCubit extends Cubit<AuthState> {
           call,
       required String email,
       required String password}) async {
-    return call(email: email, password: password).then(
-        (value) => value.fold((failure) => left(failure), (_) {
+    return call(email: email, password: password)
+        .then((value) => value.fold((failure) => left(failure), (_) {
               checkAuthStatus();
               return right(unit);
             }));

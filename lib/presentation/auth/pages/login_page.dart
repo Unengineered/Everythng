@@ -1,16 +1,15 @@
-// ignore_for_file: prefer_const_constructors
-
+import 'package:auto_route/auto_route.dart';
+import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
-import 'package:everythng/presentation/auth/pages/password_page.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -21,6 +20,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
+
+  var isProcessing = false;
 
   final emailEditingController = TextEditingController();
   late ShakeController _shakeController;
@@ -72,6 +73,11 @@ class _LoginPageState extends State<LoginPage>
                       ShakeAnimation(
                         shakeController: _shakeController,
                         child: EverythngBorderlessFormField(
+                          validator: (value) {
+                            return value!.isValidEmail()
+                                ? null
+                                : 'Enter a valid email';
+                          },
                           formKey: _formKey,
                           textEditingController: emailEditingController,
                           type: FormFieldType.email,
@@ -81,10 +87,29 @@ class _LoginPageState extends State<LoginPage>
                   ),
                   Center(
                     child: EverythngTwoStateButton(
-                      textController: emailEditingController,
                       onTap: () {
-                        _shakeController.shake();
-                        context.router.push(CreatePasswordPageRoute());
+                        if (_formKey.currentState!.validate()) {
+                          setState(() {
+                            isProcessing = true;
+                          });
+                          context
+                              .read<AuthFormCubit>()
+                              .setEmail(emailEditingController.text)
+                              .then((value) {
+                            setState(() {
+                              isProcessing = false;
+                            });
+                            value.fold(
+                                (failure) => print("Network error"),
+                                (value) => value
+                                    ? context.router.push(PasswordPageRoute())
+                                    : context.router
+                                        .push(const CreatePasswordPageRoute()));
+                          });
+                          //context.router.push(const CreatePasswordPageRoute());
+                        } else {
+                          _shakeController.shake();
+                        }
                       },
                     ),
                   )

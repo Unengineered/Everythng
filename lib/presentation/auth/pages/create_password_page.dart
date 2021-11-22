@@ -1,6 +1,8 @@
-
+import 'package:auto_route/auto_route.dart';
+import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
-import 'package:everythng/presentation/auth/pages/confirm_password_page.dart';
+import 'package:everythng/presentation/routes/app_router.dart';
+import 'package:provider/provider.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,7 +18,7 @@ class CreatePasswordPage extends StatefulWidget {
 
 class _CreatePasswordPageState extends State<CreatePasswordPage>
     with SingleTickerProviderStateMixin {
-  final passwordEditingController = TextEditingController();
+  final _passwordEditingController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -35,13 +37,13 @@ class _CreatePasswordPageState extends State<CreatePasswordPage>
         milliseconds: 500,
       ),
     );
-    passwordEditingController.addListener(() {
-      if (passwordEditingController.text.length > 6) {
+    _passwordEditingController.addListener(() {
+      if (_passwordEditingController.text.length > 6) {
         isGreaterThan6.value = true;
       } else {
         isGreaterThan6.value = false;
       }
-      if (passwordEditingController.text.containsSpecialCharacter()) {
+      if (_passwordEditingController.text.containsSpecialCharacter()) {
         containsSpecialCharacter.value = true;
       } else {
         containsSpecialCharacter.value = false;
@@ -104,7 +106,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage>
                       ),
                       EverythngBorderlessFormField(
                         formKey: _formKey,
-                        textEditingController: passwordEditingController,
+                        textEditingController: _passwordEditingController,
                         type: FormFieldType.password,
                       ),
                       const SizedBox(
@@ -169,16 +171,9 @@ class _CreatePasswordPageState extends State<CreatePasswordPage>
                   ),
                   Center(
                     child: EverythngTwoStateButton(
-                      textController: passwordEditingController,
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) {
-                              return ConfirmPasswordPage();
-                            },
-                          ),
-                        );
+                        context.read<AuthFormCubit>().setPassword(_passwordEditingController.text);
+                        context.router.push(ConfirmPasswordPageRoute());
                       },
                     ),
                   )
