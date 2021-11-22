@@ -1,32 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
 import 'package:everythng/domain/auth/entities/everythng_user.dart';
-import 'package:everythng/infrastructure/auth/auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fort_knox/fort_knox.dart';
-import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-
-class MockFortKnox extends Mock implements FortKnox {}
-
-class MockBaseUser extends Mock implements BaseUser {}
-
-class MockHttpClient extends Mock implements http.Client {}
+import '../../setup/auth_repository_implementation_helper.dart';
 
 void main() {
-  AuthRepository authRepository;
-  MockFortKnox mockFortKnox;
-  MockBaseUser mockBaseUser;
-  MockHttpClient mockHttpClient;
-  mockFortKnox = MockFortKnox();
-  const String url = 'http://www.everythng.in';
-  mockHttpClient = MockHttpClient();
-  authRepository = AuthRepository(mockFortKnox, mockHttpClient);
-  mockBaseUser = MockBaseUser();
-  const String temail = "email@unengineered.net";
-  const String tpassword = "password";
-  const String tuid = "UID";
-
   setUpAll(() {
     registerFallbackValue(Uri.parse(url));
   });
@@ -34,8 +14,7 @@ void main() {
   group('doesEmailExist', () {
     test('Should return true if email exists', () async {
       //Arrange
-      when(() => mockHttpClient.get(any())).thenAnswer((invocation) async =>
-          http.Response('{"accountFound" : true, "status":200}', 200));
+      final authRepository = getAuthRepositoryForEmailExist(true, 200);
       //Act
       final result = await authRepository.doesEmailExist(email: temail);
       //Assert
@@ -44,8 +23,7 @@ void main() {
 
     test('Should return false if email does not exist', () async {
       //Arrange
-      when(() => mockHttpClient.get(any())).thenAnswer((invocation) async =>
-          http.Response('{"accountFound" : false, "status":404}', 404));
+      final authRepository = getAuthRepositoryForEmailExist(false, 404);
       //Act
       final result = await authRepository.doesEmailExist(email: temail);
       //Assert
@@ -56,8 +34,7 @@ void main() {
         'Should return AuthFailure.serverError if api call does not return 404 or 200',
         () async {
       //Arrange
-      when(() => mockHttpClient.get(any())).thenAnswer((invocation) async =>
-          http.Response('{"accountFound" : error, "status":420}', 420));
+      final authRepository = getAuthRepositoryForEmailExist(false, 420);
       //Act
       final result = await authRepository.doesEmailExist(email: temail);
       //Assert
@@ -67,12 +44,7 @@ void main() {
   group('getAuthStatusStream', () {
     test('should yield EverythngUser when authenticated', () async {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.getAuthStatusStream())
-          .thenAnswer((invocation) async* {
-        yield mockBaseUser;
-      });
+      final authRepository = getAuthRepositoryForAuthStatusStream(true);
       //Act
       final result = authRepository.getAuthStatusStream();
       //Assert
@@ -81,12 +53,7 @@ void main() {
 
     test('should yield null when unauthenticated', () async {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.getAuthStatusStream())
-          .thenAnswer((invocation) async* {
-        yield null;
-      });
+      final authRepository = getAuthRepositoryForAuthStatusStream(false);
       //Act
       final result = authRepository.getAuthStatusStream();
       //Assert
@@ -97,9 +64,7 @@ void main() {
   group('getCurrentUser', () {
     test('should return EverythngUser when authenticated', () {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.getCurrentUser()).thenReturn(mockBaseUser);
+      final authRepository = getAuthRepositoryForCurrentUser(true);
       //Act
       final result = authRepository.getCurrentUser();
       //Assert
@@ -108,10 +73,7 @@ void main() {
 
     test('should return AuthFailure.unauthenticated when unauthenticated', () {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.getCurrentUser())
-          .thenThrow(AuthenticationException.unauthenticated());
+      final authRepository = getAuthRepositoryForCurrentUser(false);
       //Act
       final result = authRepository.getCurrentUser();
       //Assert
@@ -120,13 +82,9 @@ void main() {
   });
 
   group('getToken', () {
-    const String token = 'TOKEN';
-    const String refreshedToken = 'REFRESHEDTOKEN';
-
     test('should return a string token when authenticated', () async {
       //Arrange
-      when(() => mockFortKnox.getToken())
-          .thenAnswer((invocation) async => token);
+      final authRepository = getAuthRepositoryForToken(true);
       //Act
       final result = await authRepository.getToken();
       //Assert
@@ -136,8 +94,7 @@ void main() {
     test('should return AuthFailure.unauthenticated when unauthenticated',
         () async {
       //Arrange
-      when(() => mockFortKnox.getToken())
-          .thenThrow(AuthenticationException.unauthenticated());
+      final authRepository = getAuthRepositoryForToken(false);
       //Act
       final result = await authRepository.getToken();
       //Assert
@@ -146,8 +103,8 @@ void main() {
 
     test('should return a new token when forceRefresh is true', () async {
       //Arrange
-      when(() => mockFortKnox.getToken(forceRefresh: true))
-          .thenAnswer((invocation) async => refreshedToken);
+      final authRepository =
+          getAuthRepositoryForToken(true, forceRefresh: true);
       //Act
       final result = await authRepository.getToken(forceRefresh: true);
       //Assert
@@ -159,11 +116,7 @@ void main() {
     test('Should return EverythngUser if registration is successful ',
         () async {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.registerWithEmailAndPassword(
-          email: temail,
-          password: tpassword)).thenAnswer((invocation) async => mockBaseUser);
+      final authRepository = getAuthRepositoryForSigning();
       //Act
       final result = await authRepository.registerWithEmailAndPassword(
           email: temail, password: tpassword);
@@ -174,12 +127,8 @@ void main() {
     test('Should return Authfailure.invalidFailure if code does not match',
         () async {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.registerWithEmailAndPassword(
-              email: temail, password: tpassword))
-          .thenThrow(
-              const AuthenticationException(code: 'invalid', message: null));
+      final authRepository = getAuthRepositoryForSigning(
+          exception: AuthenticationException.invalidException());
       //Act
       final result = await authRepository.registerWithEmailAndPassword(
           email: temail, password: tpassword);
@@ -190,12 +139,8 @@ void main() {
     test('Should return AuthFailure.userDisabled if the user is disabled',
         () async {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.registerWithEmailAndPassword(
-              email: temail, password: tpassword))
-          .thenThrow(const AuthenticationException(
-              code: 'user-disabled', message: 'user-disabled'));
+      final authRepository = getAuthRepositoryForSigning(
+          exception: AuthenticationException.userDisabled());
       //Act
       final result = await authRepository.registerWithEmailAndPassword(
           email: temail, password: tpassword);
@@ -207,11 +152,7 @@ void main() {
   group('signInWithEmailAndPassword', () {
     test('Should return EverythngUser if sign in is successful', () async {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.signInWithEmailAndPassword(
-          email: temail,
-          password: tpassword)).thenAnswer((invocation) async => mockBaseUser);
+      final authRepository = getAuthRepositoryForSigning();
       //Act
       final result = await authRepository.signInWithEmailAndPassword(
           email: temail, password: tpassword);
@@ -222,12 +163,8 @@ void main() {
     test('Should return Authfailure.invalidFailure if code does not match',
         () async {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.signInWithEmailAndPassword(
-              email: temail, password: tpassword))
-          .thenThrow(
-              const AuthenticationException(code: 'invalid', message: null));
+      final authRepository = getAuthRepositoryForSigning(
+          exception: AuthenticationException.invalidException());
       //Act
       final result = await authRepository.signInWithEmailAndPassword(
           email: temail, password: tpassword);
@@ -238,12 +175,8 @@ void main() {
     test('Should return AuthFailure.userDisabled if the user is disabled',
         () async {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.signInWithEmailAndPassword(
-              email: temail, password: tpassword))
-          .thenThrow(const AuthenticationException(
-              code: 'user-disabled', message: 'user-disabled'));
+      final authRepository = getAuthRepositoryForSigning(
+          exception: AuthenticationException.userDisabled());
       //Act
       final result = await authRepository.signInWithEmailAndPassword(
           email: temail, password: tpassword);
@@ -255,15 +188,11 @@ void main() {
         'Should return AuthFailure.incorrectPassword if password is incorrect ',
         () async {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.signInWithEmailAndPassword(
-              email: temail, password: 'wrong password'))
-          .thenThrow(const AuthenticationException(
-              code: 'wrong-password', message: 'wrong-password'));
+      final authRepository = getAuthRepositoryForSigning(
+          exception: AuthenticationException.wrongPassword());
       //Act
       final result = await authRepository.signInWithEmailAndPassword(
-          email: temail, password: 'wrong password');
+          email: temail, password: tpassword);
       //Assert
       expect(result, left(const AuthFailure.incorrectPassword()));
     });
@@ -271,12 +200,8 @@ void main() {
     test('Should return AuthFailure.accountBlocked if the user is blocked',
         () async {
       //Arrange
-      when(() => mockBaseUser.email).thenReturn(temail);
-      when(() => mockBaseUser.uid).thenReturn(tuid);
-      when(() => mockFortKnox.signInWithEmailAndPassword(
-              email: temail, password: tpassword))
-          .thenThrow(const AuthenticationException(
-              code: 'account-blocked', message: 'account-blocked'));
+      final authRepository = getAuthRepositoryForSigning(
+          exception: AuthenticationException.accountBlocked());
       //Act
       final result = await authRepository.signInWithEmailAndPassword(
           email: temail, password: tpassword);
@@ -286,15 +211,13 @@ void main() {
   });
 
   group('signOut', () {
-    test('should return AuthFailure.unauthenticated when unauthenticated',
-        () async {
+    test('Should unauthenticate and clear data when signed out', () async {
       //Arrange
-      when(() => mockFortKnox.signOut())
-          .thenAnswer((invocation) async => () {});
+      final authRepository = getAuthRepositoryForSigning();
       //Act
       await authRepository.signOut();
       //Assert
-      verify(() => mockFortKnox.signOut());
+      verify(() => authRepository.signOut());
     });
   });
 }
