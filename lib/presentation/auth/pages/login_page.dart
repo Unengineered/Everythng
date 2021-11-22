@@ -3,9 +3,10 @@
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
-import 'package:everythng/presentation/auth/pages/create_password_page.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
+import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -31,7 +32,7 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
-    var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
+    final everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
 
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
@@ -82,7 +83,7 @@ class _LoginPageState extends State<LoginPage>
                       textController: emailEditingController,
                       onTap: () {
                         _shakeController.shake();
-
+                        context.router.push(CreatePasswordPageRoute());
                       },
                     ),
                   )
