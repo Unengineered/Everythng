@@ -1,4 +1,3 @@
-
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
@@ -39,56 +38,81 @@ class PasswordPage extends StatelessWidget {
                     )
                   : null,
             ),
-            body: AnimatedContainer(
-              duration: const Duration(milliseconds: 100),
-              margin: EdgeInsets.fromLTRB(
-                16,
-                64,
-                16,
-                visible ? 24 : 48,
-              ),
-              // color: Colors.black38,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'welcome back,\nenter your password',
-                        style: everythngTextTheme.headline1!,
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      Text(
-                        'some gibberish about something blah blah blah',
-                        style: everythngTextTheme.bodyTextMedium!,
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      EverythngBorderlessFormField(
-                        formKey: _formKey,
-                        textEditingController: _passwordEditingController,
-                        type: FormFieldType.password,
-                      ),
-                    ],
-                  ),
-                  Center(
-                    child: EverythngTwoStateButton(
-                      onTap: () {
-                        context
-                            .read<AuthFormCubit>()
-                            .setPassword(_passwordEditingController.text);
-                        context
-                            .read<AuthFormCubit>()
-                            .signInWithEmailAndPassword();
-                      },
+            body: BlocListener<AuthFormCubit, AuthFormState>(
+              listenWhen: (p, c) => p.authFailure != c.authFailure,
+              listener: (context, state) {
+                state.authFailure.fold(() {}, (failure) {
+                  failure.maybeMap(
+                    userDisabled: (_){
+                      //TODO: Add user disabled popup
+                      print('user disabled');
+                    },
+                    accountBlocked: (_){
+                      //TODO: Add account blocked popup
+                      print('account blocked');
+                    },
+                    incorrectPassword: (_) {
+                      //TODO: Add incorrect password popup
+                      print('incorrect password');
+                    },
+                    orElse: () {
+                      //TODO: Add invalid password popup
+                      print('invalid password');
+                    },
+                  );
+                });
+              },
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 100),
+                margin: EdgeInsets.fromLTRB(
+                  16,
+                  64,
+                  16,
+                  visible ? 24 : 48,
+                ),
+                // color: Colors.black38,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'welcome back,\nenter your password',
+                          style: everythngTextTheme.headline1!,
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        Text(
+                          'some gibberish about something blah blah blah',
+                          style: everythngTextTheme.bodyTextMedium!,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        EverythngBorderlessFormField(
+                          formKey: _formKey,
+                          textEditingController: _passwordEditingController,
+                          type: FormFieldType.password,
+                        ),
+                      ],
                     ),
-                  )
-                ],
+                    Center(
+                      child: EverythngTwoStateButton(
+                        onTap: () {
+                          context
+                              .read<AuthFormCubit>()
+                              .setPassword(_passwordEditingController.text);
+                          context
+                              .read<AuthFormCubit>()
+                              .signInWithEmailAndPassword();
+                        },
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           );

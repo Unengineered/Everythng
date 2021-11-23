@@ -39,7 +39,7 @@ class _EverythngBorderlessFormFieldState
       key: widget._formKey,
       child: TextFormField(
         validator: widget.validator,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
+        autovalidateMode: AutovalidateMode.disabled,
         // autofocus: true,
         obscuringCharacter: '*',
         controller: widget.textEditingController,

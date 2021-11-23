@@ -23,9 +23,14 @@ class AuthCubit extends Cubit<AuthState> {
     //print("Change state from ${change.currentState} to ${change.nextState}");
   }
 
+  void splashAuthCheck(){
+    checkAuthStatus();
+    //_authRepository.getAuthStatusStream().listen((event) => checkAuthStatus());
+  }
+
   //TODO: Add tests for checkAuthStatus
   void checkAuthStatus() {
-    //print("Checking auth status");
+    print("Checking auth status");
     _authRepository.getCurrentUser().fold(
         (failure) => failure.maybeMap(
             unauthenticated: (_) {

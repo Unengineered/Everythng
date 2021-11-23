@@ -99,8 +99,10 @@ class _LoginPageState extends State<LoginPage>
                             setState(() {
                               isProcessing = false;
                             });
-                            value.fold(
-                                (failure) => print("Network error"),
+                            value.fold((failure) {
+                              //TODO: Add popup for server error
+                              print("Network error");
+                            },
                                 (value) => value
                                     ? context.router.push(PasswordPageRoute())
                                     : context.router

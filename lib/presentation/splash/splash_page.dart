@@ -1,5 +1,4 @@
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
-import 'package:everythng/presentation/core/everythng_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,12 +12,12 @@ class SplashPage extends StatelessWidget {
     // function isn't called after every build as animations call the build function repeatedly.
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       final cubit = context.read<AuthCubit>();
-      if (cubit.state == const AuthState.initial()) cubit.checkAuthStatus();
+      if (cubit.state == const AuthState.initial()) cubit.splashAuthCheck();
     });
 
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        return const EverythngScaffold(body: Center(child: Text("SPLASH")));
+        return const Scaffold(body: Center(child: Text("SPLASH")));
       },
     );
   }
