@@ -1,14 +1,17 @@
+import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
-import 'package:everythng/presentation/core/everythng_scaffold.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:everythng/presentation/core/everythng_widgets/pop_ups/bottom_pop_up.dart';
+import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:provider/src/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -39,7 +42,7 @@ class _LoginPageState extends State<LoginPage>
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
         builder: (context, visible) {
-          return EverythngScaffold(
+          return Scaffold(
             body: AnimatedContainer(
               duration: const Duration(milliseconds: 100),
               margin: EdgeInsets.fromLTRB(
@@ -107,28 +110,6 @@ class _LoginPageState extends State<LoginPage>
                             return const BottomPopUp();
                           },
                         );
-                        // if (_formKey.currentState!.validate()) {
-                        //   setState(() {
-                        //     isProcessing = true;
-                        //   });
-                        //   context
-                        //       .read<AuthFormCubit>()
-                        //       .setEmail(emailEditingController.text)
-                        //       .then((value) {
-                        //     setState(() {
-                        //       isProcessing = false;
-                        //     });
-                        //     value.fold(
-                        //         (failure) => print("Network error"),
-                        //         (value) => value
-                        //             ? context.router.push(PasswordPageRoute())
-                        //             : context.router
-                        //                 .push(const CreatePasswordPageRoute()));
-                        //   });
-                        //   //context.router.push(const CreatePasswordPageRoute());
-                        // } else {
-                        //   _shakeController.shake();
-                        // }
                         if (_formKey.currentState!.validate()) {
                           setState(() {
                             isProcessing = true;
@@ -140,10 +121,8 @@ class _LoginPageState extends State<LoginPage>
                             setState(() {
                               isProcessing = false;
                             });
-                            value.fold((failure) {
-                              //TODO: Add popup for server error
-                              print("Network error");
-                            },
+                            value.fold(
+                                (failure) => print("Network error"),
                                 (value) => value
                                     ? context.router.push(PasswordPageRoute())
                                     : context.router
@@ -153,6 +132,7 @@ class _LoginPageState extends State<LoginPage>
                         } else {
                           _shakeController.shake();
                         }
+
                       },
                     ),
                   )

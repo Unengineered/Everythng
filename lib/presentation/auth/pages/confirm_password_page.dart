@@ -21,7 +21,7 @@ class ConfirmPasswordPage extends StatelessWidget {
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
         builder: (context, visible) {
-          return EverythngScaffold(
+          return Scaffold(
             appBar: AppBar(
               elevation: 0,
               backgroundColor: Colors.white,
