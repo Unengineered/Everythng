@@ -9,15 +9,17 @@ class EverythngBorderlessFormField extends StatefulWidget {
   const EverythngBorderlessFormField({
     Key? key,
     required GlobalKey<FormState> formKey,
-    required this.textEditingController,
-    required this.type, this.validator,
+    required this.controller,
+    required this.type,
+    this.validator, this.onChanged,
   })  : _formKey = formKey,
         super(key: key);
 
   final GlobalKey<FormState> _formKey;
-  final TextEditingController textEditingController;
+  final TextEditingController controller;
   final FormFieldType type;
   final String? Function(String? value)? validator;
+  final void Function(String)? onChanged;
 
   @override
   State<EverythngBorderlessFormField> createState() =>
@@ -38,11 +40,12 @@ class _EverythngBorderlessFormFieldState
     return Form(
       key: widget._formKey,
       child: TextFormField(
+        onChanged: widget.onChanged,
         validator: widget.validator,
         autovalidateMode: AutovalidateMode.disabled,
         // autofocus: true,
         obscuringCharacter: '*',
-        controller: widget.textEditingController,
+        controller: widget.controller,
         textAlign: TextAlign.start,
         textAlignVertical: TextAlignVertical.center,
         cursorColor: everythngThemeData.primaryColor,
@@ -63,13 +66,14 @@ class _EverythngBorderlessFormFieldState
                   color: everythngThemeData.textAndIconography!['disabled'],
                 )
               : null,
-          hintText: widget.type == FormFieldType.email ? 'abc@everythng.com' : '*************',
+          hintText: widget.type == FormFieldType.email
+              ? 'abc@everythng.com'
+              : '*************',
           hintStyle: everythngTextTheme.headline3Bold!.copyWith(
             color: everythngThemeData.textAndIconography!['disabled'],
           ),
           border: InputBorder.none,
         ),
-
       ),
     );
   }

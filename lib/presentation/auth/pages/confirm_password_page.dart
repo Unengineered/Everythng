@@ -96,7 +96,7 @@ class ConfirmPasswordPage extends StatelessWidget {
                             }
                           },
                           formKey: _formKey,
-                          textEditingController: passwordEditingController,
+                          controller: passwordEditingController,
                           type: FormFieldType.password,
                         ),
                       ],

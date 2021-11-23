@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
@@ -9,52 +10,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
-class CreatePasswordPage extends StatefulWidget {
-  const CreatePasswordPage({Key? key}) : super(key: key);
-
-  @override
-  State<CreatePasswordPage> createState() => _CreatePasswordPageState();
-}
-
-class _CreatePasswordPageState extends State<CreatePasswordPage>
-    with SingleTickerProviderStateMixin {
-  final _passwordEditingController = TextEditingController();
-
+class CreatePasswordPage extends HookWidget {
   final _formKey = GlobalKey<FormState>();
-
-  ValueNotifier<bool> isGreaterThan6 = ValueNotifier(false);
-
-  ValueNotifier<bool> containsSpecialCharacter = ValueNotifier(false);
-
-  late AnimationController _animationController;
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(
-        milliseconds: 500,
-      ),
-    );
-    _passwordEditingController.addListener(() {
-      if (_passwordEditingController.text.length > 6) {
-        isGreaterThan6.value = true;
-      } else {
-        isGreaterThan6.value = false;
-      }
-      if (_passwordEditingController.text.containsSpecialCharacter()) {
-        containsSpecialCharacter.value = true;
-      } else {
-        containsSpecialCharacter.value = false;
-      }
-    });
-  }
+  CreatePasswordPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
     var everythngThemeData = Theme.of(context).everythngThemeData;
+
+    final _isGreaterThan6 = useState(false);
+    final _containsSpecialCharacter = useState(false);
+    final _passwordController = useTextEditingController();
+
+    final _animationController =
+        useAnimationController(duration: const Duration(milliseconds: 500));
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
         builder: (context, visible) {
@@ -99,7 +69,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage>
                       ),
                       Text(
                         'please use special characters and not the name of your special one',
-                        style:  everythngTextTheme.bodyTextMedium!.copyWith(
+                        style: everythngTextTheme.bodyTextMedium!.copyWith(
                           color: everythngThemeData
                               .textAndIconography!['mediumEmphasis'],
                         ),
@@ -108,74 +78,78 @@ class _CreatePasswordPageState extends State<CreatePasswordPage>
                         height: 28,
                       ),
                       EverythngBorderlessFormField(
+                        onChanged: (value) {
+                          if (value.length > 6) {
+                            _isGreaterThan6.value = true;
+                          } else {
+                            _isGreaterThan6.value = false;
+                          }
+                          if (value.containsSpecialCharacter()) {
+                            _containsSpecialCharacter.value = true;
+                          } else {
+                            _containsSpecialCharacter.value = false;
+                          }
+                        },
                         formKey: _formKey,
-                        textEditingController: _passwordEditingController,
+                        controller: _passwordController,
                         type: FormFieldType.password,
                       ),
                       const SizedBox(
                         height: 24,
                       ),
-                      ValueListenableBuilder<bool>(
-                        valueListenable: isGreaterThan6,
-                        builder: (context, isGreaterThan6, child) {
-                          return Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
-                                isGreaterThan6
-                                    ? Icons.done_rounded
-                                    : Icons.close_rounded,
-                                color: isGreaterThan6
-                                    ? everythngThemeData.successColor
-                                    : everythngThemeData.errorColor,
-                                size: 20,
-                              ),
-                              const SizedBox(
-                                width: 4,
-                              ),
-                              Text(
-                                'must be greater than 6 letters',
-                                style: everythngTextTheme.bodyTextSemiBold!
-                                    .copyWith(color: Colors.grey[700]),
-                              )
-                            ],
-                          );
-                        },
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            _isGreaterThan6.value
+                                ? Icons.done_rounded
+                                : Icons.close_rounded,
+                            color: _isGreaterThan6.value
+                                ? everythngThemeData.successColor
+                                : everythngThemeData.errorColor,
+                            size: 20,
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            'must be greater than 6 letters',
+                            style: everythngTextTheme.bodyTextSemiBold!
+                                .copyWith(color: Colors.grey[700]),
+                          )
+                        ],
                       ),
                       const SizedBox(height: 8),
-                      ValueListenableBuilder<bool>(
-                        valueListenable: containsSpecialCharacter,
-                        builder: (context, containsSpecialCharacter, child) {
-                          return Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
-                                containsSpecialCharacter
-                                    ? Icons.done_rounded
-                                    : Icons.close_rounded,
-                                color: containsSpecialCharacter
-                                    ? everythngThemeData.successColor
-                                    : everythngThemeData.errorColor,
-                                size: 20,
-                              ),
-                              const SizedBox(
-                                width: 4,
-                              ),
-                              Text(
-                                'must contain special character',
-                                style: everythngTextTheme.bodyTextSemiBold!
-                                    .copyWith(color: Colors.grey[700]),
-                              )
-                            ],
-                          );
-                        },
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            _containsSpecialCharacter.value
+                                ? Icons.done_rounded
+                                : Icons.close_rounded,
+                            color: _containsSpecialCharacter.value
+                                ? everythngThemeData.successColor
+                                : everythngThemeData.errorColor,
+                            size: 20,
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            'must contain special character',
+                            style: everythngTextTheme.bodyTextSemiBold!
+                                .copyWith(color: Colors.grey[700]),
+                          )
+                        ],
                       ),
                     ],
                   ),
                   Center(
                     child: EverythngTwoStateButton(
                       onTap: () {
-                        context.read<AuthFormCubit>().setPassword(_passwordEditingController.text);
+                        context
+                            .read<AuthFormCubit>()
+                            .setPassword(_passwordController.text);
                         context.router.push(ConfirmPasswordPageRoute());
                       },
                     ),

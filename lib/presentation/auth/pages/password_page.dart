@@ -174,7 +174,7 @@ class PasswordPage extends StatelessWidget {
                         ),
                         EverythngBorderlessFormField(
                           formKey: _formKey,
-                          textEditingController: _passwordEditingController,
+                          controller: _passwordEditingController,
                           type: FormFieldType.password,
                         ),
                       ],
