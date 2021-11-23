@@ -129,6 +129,30 @@ class _LoginPageState extends State<LoginPage>
                         // } else {
                         //   _shakeController.shake();
                         // }
+                        if (_formKey.currentState!.validate()) {
+                          setState(() {
+                            isProcessing = true;
+                          });
+                          context
+                              .read<AuthFormCubit>()
+                              .setEmail(emailEditingController.text)
+                              .then((value) {
+                            setState(() {
+                              isProcessing = false;
+                            });
+                            value.fold((failure) {
+                              //TODO: Add popup for server error
+                              print("Network error");
+                            },
+                                (value) => value
+                                    ? context.router.push(PasswordPageRoute())
+                                    : context.router
+                                        .push(const CreatePasswordPageRoute()));
+                          });
+                          //context.router.push(const CreatePasswordPageRoute());
+                        } else {
+                          _shakeController.shake();
+                        }
                       },
                     ),
                   )

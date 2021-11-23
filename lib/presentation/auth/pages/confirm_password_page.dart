@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:everythng/presentation/core/everythng_scaffold.dart';
 import 'package:provider/provider.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
@@ -36,71 +37,88 @@ class ConfirmPasswordPage extends StatelessWidget {
                     )
                   : null,
             ),
-            body: AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
-              margin: EdgeInsets.fromLTRB(
-                16,
-                64,
-                16,
-                visible ? 24 : 48,
-              ),
-              // color: Colors.black38,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'confirm password to create account',
-                        style: everythngTextTheme.headline1Bold!,
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      Text(
-                        'You\'ll have to repeat that. Our App is kinda hard of hearing',
-                        style:  everythngTextTheme.headline4Bold!.copyWith(
+            body: BlocListener<AuthFormCubit, AuthFormState>(
+              listenWhen: (p, c) => p.authFailure != c.authFailure,
+              listener: (context, state) {
+                state.authFailure.fold(() {}, (failure) {
+                  failure.maybeMap(
+                    userDisabled: (_) {
+                      //TODO: Add user disabled popup
+                      print("User disabled");
+                    },
+                    orElse: () {
+                      //TODO: Add invalid failure popup
+                      print("invalid failure");
+                    },
+                  );
+                });
+              },
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                margin: EdgeInsets.fromLTRB(
+                  16,
+                  64,
+                  16,
+                  visible ? 24 : 48,
+                ),
+                // color: Colors.black38,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'confirm password to create account',
+                          style: everythngTextTheme.headline1Bold!,
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        Text(
+                          'You\'ll have to repeat that. Our App is kinda hard of hearing',
+                          style:  everythngTextTheme.headline4Bold!.copyWith(
                           color: everythngThemeData
                               .textAndIconography!['mediumEmphasis'],
                         ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      EverythngBorderlessFormField(
-                        validator: (value) {
-                          if (value ==
-                              context.read<AuthFormCubit>().state.password) {
-                            return null;
-                          } else {
-                            return 'Passwords don\'t match';
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        EverythngBorderlessFormField(
+                          validator: (value) {
+                            if (value ==
+                                context.read<AuthFormCubit>().state.password) {
+                              return null;
+                            } else {
+                              return 'Passwords don\'t match';
+                            }
+                          },
+                          formKey: _formKey,
+                          textEditingController: passwordEditingController,
+                          type: FormFieldType.password,
+                        ),
+                      ],
+                    ),
+                    Center(
+                      child: EverythngTwoStateButton(
+                        title: 'Create Account',
+                        icon: Icon(
+                          Icons.done_rounded,
+                          color: everythngThemeData.successColor,
+                        ),
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) {
+                            context
+                                .read<AuthFormCubit>()
+                                .registerWIthEmailAndPassword();
                           }
                         },
-                        formKey: _formKey,
-                        textEditingController: passwordEditingController,
-                        type: FormFieldType.password,
                       ),
-                    ],
-                  ),
-                  Center(
-                    child: EverythngTwoStateButton(
-                      title: 'Create Account',
-                      icon: Icon(
-                        Icons.done_rounded,
-                        color: everythngThemeData.successColor,
-                      ),
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          context
-                              .read<AuthFormCubit>()
-                              .registerWIthEmailAndPassword();
-                        }
-                      },
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           );
