@@ -24,8 +24,10 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: const HomePage());
     },
     LoginPageRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginPageRouteArgs>(
+          orElse: () => const LoginPageRouteArgs());
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const LoginPage());
+          routeData: routeData, child: LoginPage(key: args.key));
     },
     PasswordPageRoute.name: (routeData) {
       final args = routeData.argsAs<PasswordPageRouteArgs>(
@@ -34,8 +36,10 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: PasswordPage(key: args.key));
     },
     CreatePasswordPageRoute.name: (routeData) {
+      final args = routeData.argsAs<CreatePasswordPageRouteArgs>(
+          orElse: () => const CreatePasswordPageRouteArgs());
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const CreatePasswordPage());
+          routeData: routeData, child: CreatePasswordPage(key: args.key));
     },
     ConfirmPasswordPageRoute.name: (routeData) {
       final args = routeData.argsAs<ConfirmPasswordPageRouteArgs>(
@@ -73,10 +77,22 @@ class HomePageRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for [LoginPage]
-class LoginPageRoute extends PageRouteInfo<void> {
-  const LoginPageRoute() : super(name, path: '/login-page');
+class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
+  LoginPageRoute({Key? key})
+      : super(name, path: '/login-page', args: LoginPageRouteArgs(key: key));
 
   static const String name = 'LoginPageRoute';
+}
+
+class LoginPageRouteArgs {
+  const LoginPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'LoginPageRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for [PasswordPage]
@@ -100,10 +116,25 @@ class PasswordPageRouteArgs {
 }
 
 /// generated route for [CreatePasswordPage]
-class CreatePasswordPageRoute extends PageRouteInfo<void> {
-  const CreatePasswordPageRoute() : super(name, path: '/create-password-page');
+class CreatePasswordPageRoute
+    extends PageRouteInfo<CreatePasswordPageRouteArgs> {
+  CreatePasswordPageRoute({Key? key})
+      : super(name,
+            path: '/create-password-page',
+            args: CreatePasswordPageRouteArgs(key: key));
 
   static const String name = 'CreatePasswordPageRoute';
+}
+
+class CreatePasswordPageRouteArgs {
+  const CreatePasswordPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'CreatePasswordPageRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for [ConfirmPasswordPage]

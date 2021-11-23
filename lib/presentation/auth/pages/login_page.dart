@@ -9,34 +9,24 @@ import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:provider/provider.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
 
-class _LoginPageState extends State<LoginPage>
-    with SingleTickerProviderStateMixin {
+class LoginPage extends HookWidget {
   final _formKey = GlobalKey<FormState>();
 
-  var isProcessing = false;
-
-  final emailEditingController = TextEditingController();
-  late ShakeController _shakeController;
-
-  @override
-  initState() {
-    super.initState();
-    _shakeController = ShakeController(vsync: this);
-  }
+  LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
     final everythngThemeData = Theme.of(context).everythngThemeData;
+
+    final _emailEditingController = useTextEditingController();
+    final _shakeController = useAnimationController(duration: const Duration(milliseconds: 300));
+    final _isProcessing = useState(false);
 
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
@@ -84,7 +74,7 @@ class _LoginPageState extends State<LoginPage>
                                 : 'Enter a valid email';
                           },
                           formKey: _formKey,
-                          textEditingController: emailEditingController,
+                          controller: _emailEditingController,
                           type: FormFieldType.email,
                         ),
                       ),
@@ -92,28 +82,25 @@ class _LoginPageState extends State<LoginPage>
                   ),
                   Center(
                     child: EverythngTwoStateButton(
+                      title: _isProcessing.value ? 'Processing' : 'Continue',
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
-                          setState(() {
-                            isProcessing = true;
-                          });
+                          _isProcessing.value = true;
                           context
                               .read<AuthFormCubit>()
-                              .setEmail(emailEditingController.text)
+                              .setEmail(_emailEditingController.text)
                               .then((value) {
-                            setState(() {
-                              isProcessing = false;
-                            });
+                            _isProcessing.value = false;
                             value.fold(
                                 (failure) => print("Network error"),
                                 (value) => value
                                     ? context.router.push(PasswordPageRoute())
                                     : context.router
-                                        .push(const CreatePasswordPageRoute()));
+                                        .push(CreatePasswordPageRoute()));
                           });
                           //context.router.push(const CreatePasswordPageRoute());
                         } else {
-                          _shakeController.shake();
+                          shake(_shakeController);
                         }
 
                       },

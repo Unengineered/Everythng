@@ -18,7 +18,7 @@ class AuthRouter extends StatelessWidget {
         state.when(
             initial: () {},
             unauthenticated: () {
-              router.pushAndPopUntil(const LoginPageRoute(), predicate: (_) => false);
+              router.pushAndPopUntil(LoginPageRoute(), predicate: (_) => false);
             },
             authenticated: (_) {
               router.pushAndPopUntil(const HomePageRoute(), predicate: (_) => false);

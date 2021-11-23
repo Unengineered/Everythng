@@ -21,3 +21,28 @@ class ShakeController extends AnimationController {
     }
   }
 }
+
+shake(AnimationController controller) async {
+  if (controller.status == AnimationStatus.completed) {
+    await controller.reverse();
+  } else {
+    await controller.forward();
+  }
+}
+
+// ShakeController useShakeController({
+//   Duration? duration,
+//   Duration? reverseDuration,
+//   String? debugLabel,
+//   double initialValue = 0,
+//   double lowerBound = 0,
+//   double upperBound = 1,
+//   TickerProvider? vsync,
+//   AnimationBehavior animationBehavior = AnimationBehavior.normal,
+//   List<Object?>? keys,
+// }){
+//   vsync ??= useSingleTickerProvider(keys: keys);
+//
+//   return use(ShakeController(vsync: vsync));
+//
+// }
