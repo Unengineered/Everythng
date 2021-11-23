@@ -5,7 +5,6 @@ import 'package:everythng/presentation/core/animations/shake_animation/animation
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
-import 'package:everythng/presentation/core/everythng_widgets/pop_ups/bottom_pop_up.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -67,8 +66,8 @@ class _LoginPageState extends State<LoginPage>
                         height: 12,
                       ),
                       Text(
-                        ' Embarrassing old IDs are most welcome',
-                        style: everythngTextTheme.headline4Bold!.copyWith(
+                        'embarrassing old email ids are most welcome',
+                        style: everythngTextTheme.bodyTextMedium!.copyWith(
                           color: everythngThemeData
                               .textAndIconography!['mediumEmphasis'],
                         ),
@@ -94,22 +93,6 @@ class _LoginPageState extends State<LoginPage>
                   Center(
                     child: EverythngTwoStateButton(
                       onTap: () {
-                        showModalBottomSheet(
-                          context: context,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(16),
-                              topLeft: Radius.circular(16),
-                            )
-                          ),
-                          constraints:  BoxConstraints(
-                            maxHeight: 328,
-                            minWidth: MediaQuery.of(context).size.width,
-                          ),
-                          builder: (context) {
-                            return const BottomPopUp();
-                          },
-                        );
                         if (_formKey.currentState!.validate()) {
                           setState(() {
                             isProcessing = true;

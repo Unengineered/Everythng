@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
-import 'package:everythng/presentation/core/everythng_scaffold.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:provider/provider.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
@@ -99,8 +98,8 @@ class _CreatePasswordPageState extends State<CreatePasswordPage>
                         height: 12,
                       ),
                       Text(
-                        ' Please use special characters and not the name of your special one',
-                        style:  everythngTextTheme.headline4Bold!.copyWith(
+                        'please use special characters and not the name of your special one',
+                        style:  everythngTextTheme.bodyTextMedium!.copyWith(
                           color: everythngThemeData
                               .textAndIconography!['mediumEmphasis'],
                         ),

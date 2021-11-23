@@ -1,9 +1,14 @@
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
 
 class BottomPopUp extends StatelessWidget {
-  const BottomPopUp({Key? key}) : super(key: key);
+  final String title;
+  final String message;
+
+  const BottomPopUp({Key? key, required this.title, required this.message})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,7 @@ class BottomPopUp extends StatelessWidget {
         24,
       ),
       child: Column(
-        children:  [
+        children: [
           Icon(
             Icons.block_rounded,
             size: 84,
@@ -27,26 +32,24 @@ class BottomPopUp extends StatelessWidget {
             height: 32,
           ),
           Text(
-            'Account Blocked',
+            title,
             style: everythngTextTheme.headline2SemiBold!,
-
           ),
           const SizedBox(
             height: 8,
           ),
           Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin interdum metus sed est.',
+            // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin interdum metus sed est.',
+            message,
             style: everythngTextTheme.bodyTextMedium!.copyWith(
               color: everythngThemeData.textAndIconography!['mediumEmphasis'],
             ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(
-            height : 32
-          ),
+          const SizedBox(height: 32),
           EverythngTwoStateButton(
             onTap: () {
-              Navigator.pop(context);
+             context.router.pop();
             },
             title: 'Ok',
             backgroundColor: everythngThemeData.primaryColor,

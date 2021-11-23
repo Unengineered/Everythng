@@ -4,6 +4,7 @@ import 'package:everythng/constants/extended_text_theme.dart';
 import 'package:everythng/constants/extended_theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+//part 'extensions.freezed.dart';
 
 var fontFamily = 'inter';
 FontWeight extraBold = FontWeight.w800;
@@ -43,6 +44,13 @@ extension EverythngThemeData on ThemeData {
         errorColor: const Color(0xFFFF453A),
       );
 }
+
+// @freezed
+// class TextAndIconography with _$TextAndIconography{
+//     const factory TextAndIconography.highEmphasis() = _HighEmphasis;
+//     const factory TextAndIconography.mediumEmphasis() = _MediumEmphasis;
+//     const factory TextAndIconography.disabled() = _Disabled;
+// }
 
 extension EverythngTextTheme on TextTheme {
   ExtendedTextTheme get everythngTextTheme => ExtendedTextTheme(
