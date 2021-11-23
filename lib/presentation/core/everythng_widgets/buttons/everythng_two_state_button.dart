@@ -13,12 +13,14 @@ class EverythngTwoStateButton extends StatefulWidget {
       Icons.arrow_forward,
       color: Colors.white,
     ),
+    this.backgroundColor,
   }) : super(key: key);
 
   final bool enable;
   final Function() onTap;
   final String title;
   final Icon icon;
+  final Color? backgroundColor;
 
   @override
   State<EverythngTwoStateButton> createState() =>
@@ -42,9 +44,9 @@ class _EverythngTwoStateButtonState extends State<EverythngTwoStateButton> {
           horizontal: 104,
         ),
         decoration: BoxDecoration(
-          color: widget.enable
+          color: widget.backgroundColor ?? (widget.enable
               ? everythngThemeData.textAndIconography!['highEmphasis']
-              : everythngThemeData.textAndIconography!['disabled'],
+              : everythngThemeData.textAndIconography!['disabled']),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
@@ -52,7 +54,7 @@ class _EverythngTwoStateButtonState extends State<EverythngTwoStateButton> {
           children: [
             Text(
               widget.title,
-              style: everythngTextTheme.headline4!
+              style: everythngTextTheme.headline4Bold!
                   .copyWith(color: Colors.white),
             ),
             const SizedBox(

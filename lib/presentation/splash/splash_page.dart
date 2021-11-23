@@ -18,7 +18,11 @@ class SplashPage extends StatelessWidget {
 
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        return const EverythngScaffold(body: Center(child: Text("SPLASH")));
+        return const EverythngScaffold(
+          body: Center(
+            child: Text("SPLASH"),
+          ),
+        );
       },
     );
   }

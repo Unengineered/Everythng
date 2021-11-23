@@ -46,7 +46,7 @@ class _EverythngBorderlessFormFieldState
         textAlign: TextAlign.start,
         textAlignVertical: TextAlignVertical.center,
         cursorColor: everythngThemeData.primaryColor,
-        style: everythngTextTheme.headline3!,
+        style: everythngTextTheme.headline3Bold!,
         cursorWidth: 3,
         obscureText: widget.type == FormFieldType.password ? obscure : false,
         decoration: InputDecoration(
@@ -64,7 +64,7 @@ class _EverythngBorderlessFormFieldState
                 )
               : null,
           hintText: widget.type == FormFieldType.email ? 'abc@everythng.com' : '*************',
-          hintStyle: everythngTextTheme.headline3!.copyWith(
+          hintStyle: everythngTextTheme.headline3Bold!.copyWith(
             color: everythngThemeData.textAndIconography!['disabled'],
           ),
           border: InputBorder.none,

@@ -1,3 +1,4 @@
+import 'package:everythng/presentation/core/everythng_scaffold.dart';
 import 'package:provider/provider.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
@@ -19,7 +20,7 @@ class ConfirmPasswordPage extends StatelessWidget {
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
         builder: (context, visible) {
-          return Scaffold(
+          return EverythngScaffold(
             appBar: AppBar(
               elevation: 0,
               backgroundColor: Colors.white,
@@ -53,14 +54,17 @@ class ConfirmPasswordPage extends StatelessWidget {
                     children: [
                       Text(
                         'confirm password to create account',
-                        style: everythngTextTheme.headline1!,
+                        style: everythngTextTheme.headline1Bold!,
                       ),
                       const SizedBox(
                         height: 12,
                       ),
                       Text(
-                        'some gibberish about something blah blah blah',
-                        style: everythngTextTheme.bodyTextMedium!,
+                        'You\'ll have to repeat that. Our App is kinda hard of hearing',
+                        style:  everythngTextTheme.headline4Bold!.copyWith(
+                          color: everythngThemeData
+                              .textAndIconography!['mediumEmphasis'],
+                        ),
                       ),
                       const SizedBox(
                         height: 30,

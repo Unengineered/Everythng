@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class ExtendedTextTheme {
   final TextStyle? display;
-  final TextStyle? headline1;
-  final TextStyle? headline2;
-  final TextStyle? headline3;
-  final TextStyle? headline4;
+  final TextStyle? headline1Bold;
+  final TextStyle? headline2Bold;
+  final TextStyle? headline2SemiBold;
+  final TextStyle? headline3Bold;
+  final TextStyle? headline4Bold;
   final TextStyle? headline5;
   final TextStyle? headline6;
   final TextStyle? bodyTextMedium;
@@ -17,10 +18,11 @@ class ExtendedTextTheme {
 
   const ExtendedTextTheme({
     this.display,
-    this.headline1,
-    this.headline2,
-    this.headline3,
-    this.headline4,
+    this.headline1Bold,
+    this.headline2Bold,
+    this.headline2SemiBold,
+    this.headline3Bold,
+    this.headline4Bold,
     this.headline5,
     this.headline6,
     this.bodyTextMedium,

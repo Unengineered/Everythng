@@ -1,15 +1,14 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
+import 'package:everythng/presentation/core/everythng_scaffold.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
-import 'package:everythng/presentation/routes/app_router.dart';
+import 'package:everythng/presentation/core/everythng_widgets/pop_ups/bottom_pop_up.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -35,11 +34,12 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     final everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
+    final everythngThemeData = Theme.of(context).everythngThemeData;
 
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
         builder: (context, visible) {
-          return Scaffold(
+          return EverythngScaffold(
             body: AnimatedContainer(
               duration: const Duration(milliseconds: 100),
               margin: EdgeInsets.fromLTRB(
@@ -58,14 +58,17 @@ class _LoginPageState extends State<LoginPage>
                     children: [
                       Text(
                         'enter your email',
-                        style: everythngTextTheme.headline1!,
+                        style: everythngTextTheme.headline1Bold!,
                       ),
                       const SizedBox(
                         height: 12,
                       ),
                       Text(
-                        'some gibberish about something blah blah blah',
-                        style: everythngTextTheme.bodyTextMedium!,
+                        ' Embarrassing old IDs are most welcome',
+                        style: everythngTextTheme.headline4Bold!.copyWith(
+                          color: everythngThemeData
+                              .textAndIconography!['mediumEmphasis'],
+                        ),
                       ),
                       const SizedBox(
                         height: 30,
@@ -88,28 +91,44 @@ class _LoginPageState extends State<LoginPage>
                   Center(
                     child: EverythngTwoStateButton(
                       onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          setState(() {
-                            isProcessing = true;
-                          });
-                          context
-                              .read<AuthFormCubit>()
-                              .setEmail(emailEditingController.text)
-                              .then((value) {
-                            setState(() {
-                              isProcessing = false;
-                            });
-                            value.fold(
-                                (failure) => print("Network error"),
-                                (value) => value
-                                    ? context.router.push(PasswordPageRoute())
-                                    : context.router
-                                        .push(const CreatePasswordPageRoute()));
-                          });
-                          //context.router.push(const CreatePasswordPageRoute());
-                        } else {
-                          _shakeController.shake();
-                        }
+                        showModalBottomSheet(
+                          context: context,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(16),
+                              topLeft: Radius.circular(16),
+                            )
+                          ),
+                          constraints:  BoxConstraints(
+                            maxHeight: 328,
+                            minWidth: MediaQuery.of(context).size.width,
+                          ),
+                          builder: (context) {
+                            return const BottomPopUp();
+                          },
+                        );
+                        // if (_formKey.currentState!.validate()) {
+                        //   setState(() {
+                        //     isProcessing = true;
+                        //   });
+                        //   context
+                        //       .read<AuthFormCubit>()
+                        //       .setEmail(emailEditingController.text)
+                        //       .then((value) {
+                        //     setState(() {
+                        //       isProcessing = false;
+                        //     });
+                        //     value.fold(
+                        //         (failure) => print("Network error"),
+                        //         (value) => value
+                        //             ? context.router.push(PasswordPageRoute())
+                        //             : context.router
+                        //                 .push(const CreatePasswordPageRoute()));
+                        //   });
+                        //   //context.router.push(const CreatePasswordPageRoute());
+                        // } else {
+                        //   _shakeController.shake();
+                        // }
                       },
                     ),
                   )

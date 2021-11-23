@@ -1,6 +1,7 @@
 
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/presentation/core/everythng_scaffold.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,7 +24,7 @@ class PasswordPage extends StatelessWidget {
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
         builder: (context, visible) {
-          return Scaffold(
+          return EverythngScaffold(
             appBar: AppBar(
               elevation: 0,
               backgroundColor: Colors.white,
@@ -57,14 +58,17 @@ class PasswordPage extends StatelessWidget {
                     children: [
                       Text(
                         'welcome back,\nenter your password',
-                        style: everythngTextTheme.headline1!,
+                        style: everythngTextTheme.headline1Bold!,
                       ),
                       const SizedBox(
                         height: 12,
                       ),
                       Text(
-                        'some gibberish about something blah blah blah',
-                        style: everythngTextTheme.bodyTextMedium!,
+                        'It will be between just the two of us. Pinky promise!',
+                        style: everythngTextTheme.headline4Bold!.copyWith(
+                          color: everythngThemeData
+                              .textAndIconography!['mediumEmphasis'],
+                        ),
                       ),
                       const SizedBox(
                         height: 30,

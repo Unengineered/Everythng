@@ -9,9 +9,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: TextButton(
-              onPressed: () => context.read<AuthCubit>().signOut(),
-              child: const Text("Logout"))),
+        child: TextButton(
+          onPressed: () => context.read<AuthCubit>().signOut(),
+          child: const Text("Logout"),
+        ),
+      ),
     );
   }
 }

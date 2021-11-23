@@ -6,11 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 var fontFamily = 'inter';
+FontWeight extraBold = FontWeight.w800;
+FontWeight bold = FontWeight.bold;
+FontWeight semiBold = FontWeight.w600;
+FontWeight medium = FontWeight.w500;
+FontWeight regular = FontWeight.normal;
 
 extension EverythngThemeData on ThemeData {
   ExtendedThemeData get everythngThemeData => ExtendedThemeData(
         primaryColor: const MaterialColor(
-          0xFF0094FF,
+          0xFF007AE1,
           <int, Color>{
             50: Color(0xFFDFF2FF),
             100: Color(0xFFBFE4FF),
@@ -19,7 +24,7 @@ extension EverythngThemeData on ThemeData {
             250: Color(0xFF60BDFF),
             300: Color(0xFF40AFFF),
             350: Color(0xFF20A2FF),
-            400: Color(0xFF0094FF),
+            400: Color(0xFF007AE1),
             450: Color(0xFF0082DF),
             500: Color(0xFF0070BF),
             550: Color(0xFF005D9F),
@@ -41,51 +46,59 @@ extension EverythngThemeData on ThemeData {
 
 extension EverythngTextTheme on TextTheme {
   ExtendedTextTheme get everythngTextTheme => ExtendedTextTheme(
-        headline1: GoogleFonts.inter(
+    headline1Bold: GoogleFonts.inter(
           textStyle: TextStyle(
             color: Colors.black87,
             fontSize: 34,
-            fontWeight: FontWeight.bold,
+            fontWeight: bold,
             letterSpacing: -1.5,
           ),
         ),
-        headline2: GoogleFonts.inter(
+        headline2Bold: GoogleFonts.inter(
           textStyle: TextStyle(
             fontSize: 24,
             color: Colors.black87,
-            fontWeight: FontWeight.bold,
+            fontWeight: bold,
             letterSpacing: -1.5,
           ),
         ),
-        headline3: GoogleFonts.inter(
+        headline2SemiBold: GoogleFonts.inter(
           textStyle: TextStyle(
-            fontSize: 20,
+            fontSize: 24,
             color: Colors.black87,
-            fontWeight: FontWeight.bold,
+            fontWeight: semiBold,
             letterSpacing: -1.25,
           ),
         ),
-        headline4: GoogleFonts.inter(
+        headline3Bold: GoogleFonts.inter(
+          textStyle: TextStyle(
+            fontSize: 20,
+            color: Colors.black87,
+            fontWeight: bold,
+            letterSpacing: -1.25,
+          ),
+        ),
+        headline4Bold: GoogleFonts.inter(
           textStyle: TextStyle(
             fontSize: 16,
             color: Colors.black87,
-            fontWeight: FontWeight.bold,
+            fontWeight: bold,
             letterSpacing: -0.9,
           ),
         ),
-        headline5: GoogleFonts.inter(
+    headline5: GoogleFonts.inter(
           textStyle: TextStyle(
             fontSize: 14,
             color: Colors.black87,
-            fontWeight: FontWeight.w600,
+            fontWeight: semiBold,
             letterSpacing: -0.7,
           ),
         ),
-        headline6: GoogleFonts.inter(
+    headline6: GoogleFonts.inter(
           textStyle: TextStyle(
             fontSize: 12,
             color: Colors.black87,
-            fontWeight: FontWeight.w600,
+            fontWeight: semiBold,
             letterSpacing: -0.5,
           ),
         ),
@@ -93,23 +106,23 @@ extension EverythngTextTheme on TextTheme {
           textStyle: TextStyle(
             fontSize: 52,
             color: Colors.black87,
-            fontWeight: FontWeight.w800,
+            fontWeight: extraBold,
             letterSpacing: -3,
           ),
         ),
         bodyTextMedium: GoogleFonts.inter(
-          textStyle: const TextStyle(
+          textStyle: TextStyle(
             fontSize: 14,
             color: Colors.black87,
-            fontWeight: FontWeight.w500,
-            letterSpacing: -0.7,
+            fontWeight: medium,
+            letterSpacing: -0.6,
           ),
         ),
         bodyTextSemiBold: GoogleFonts.inter(
-          textStyle: const TextStyle(
+          textStyle: TextStyle(
             fontSize: 14,
             color: Colors.black87,
-            fontWeight: FontWeight.w600,
+            fontWeight: semiBold,
             letterSpacing: -0.7,
           ),
         ),
@@ -117,7 +130,7 @@ extension EverythngTextTheme on TextTheme {
           textStyle: TextStyle(
             fontSize: 11,
             color: Colors.black87,
-            fontWeight: FontWeight.w500,
+            fontWeight: medium,
             letterSpacing: -1,
           ),
         ),
@@ -125,7 +138,7 @@ extension EverythngTextTheme on TextTheme {
           textStyle: TextStyle(
             fontSize: 11,
             color: Colors.black87,
-            fontWeight: FontWeight.w600,
+            fontWeight: semiBold,
             letterSpacing: -1,
           ),
         ),
@@ -133,7 +146,7 @@ extension EverythngTextTheme on TextTheme {
           textStyle: TextStyle(
             fontSize: 10,
             color: Colors.black87,
-            fontWeight: FontWeight.normal,
+            fontWeight: regular,
             letterSpacing: -0.3,
           ),
         ),
@@ -141,7 +154,7 @@ extension EverythngTextTheme on TextTheme {
           textStyle: TextStyle(
             fontSize: 10,
             color: Colors.black87,
-            fontWeight: FontWeight.w600,
+            fontWeight: semiBold,
             letterSpacing: -0.3,
           ),
         ),
