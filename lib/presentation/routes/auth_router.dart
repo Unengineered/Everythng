@@ -15,14 +15,13 @@ class AuthRouter extends StatelessWidget {
       child: child,
       listenWhen: (_, __) => true,
       listener: (context, state) {
-        //print("Top level router triggered");
         state.when(
             initial: () {},
             unauthenticated: () {
-              router.replace(const LoginPageRoute());
+              router.pushAndPopUntil(const LoginPageRoute(), predicate: (_) => false);
             },
             authenticated: (_) {
-              router.replace(const HomePageRoute());
+              router.pushAndPopUntil(const HomePageRoute(), predicate: (_) => false);
             });
       },
     );

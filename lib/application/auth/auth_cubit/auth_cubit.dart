@@ -30,7 +30,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   //TODO: Add tests for checkAuthStatus
   void checkAuthStatus() {
-    print("Checking auth status");
+    //print("Checking auth status");
     _authRepository.getCurrentUser().fold(
         (failure) => failure.maybeMap(
             unauthenticated: (_) {
