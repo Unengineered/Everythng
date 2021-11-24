@@ -119,6 +119,7 @@ class CreatePasswordPage extends HookWidget {
                             shakeController: _isGreaterThan6ShakeController,
                             child: Text(
                               'must be greater than 6 letters',
+                              textAlign: TextAlign.center,
                               style: everythngTextTheme.bodyTextSemiBold!
                                   .copyWith(color: Colors.grey[700]),
                             ),

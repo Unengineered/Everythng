@@ -6,19 +6,22 @@ import 'package:everythng/presentation/core/everythng_widgets/pop_ups/bottom_pop
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_route/auto_route.dart';
 
-class PasswordPage extends StatelessWidget {
+class PasswordPage extends HookWidget {
   PasswordPage({Key? key}) : super(key: key);
-  final _passwordEditingController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
     var everythngThemeData = Theme.of(context).everythngThemeData;
+
+    final _passwordEditingController = useTextEditingController();
+    final _isProcessing = useState(false);
 
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
@@ -134,9 +137,10 @@ class PasswordPage extends StatelessWidget {
                           );
                         },
                       );
-                      print('invalid password');
+                      print('invalid error');
                     },
                   );
+                  _isProcessing.value = false;
                 });
               },
               child: AnimatedContainer(
@@ -173,6 +177,7 @@ class PasswordPage extends StatelessWidget {
                           height: 30,
                         ),
                         EverythngBorderlessFormField(
+                          enabled: !_isProcessing.value,
                           formKey: _formKey,
                           controller: _passwordEditingController,
                           type: FormFieldType.password,
@@ -181,7 +186,9 @@ class PasswordPage extends StatelessWidget {
                     ),
                     Center(
                       child: EverythngTwoStateButton(
+                        title: _isProcessing.value ? 'Processing' : 'Continue',
                         onTap: () {
+                          _isProcessing.value = true;
                           context
                               .read<AuthFormCubit>()
                               .setPassword(_passwordEditingController.text);

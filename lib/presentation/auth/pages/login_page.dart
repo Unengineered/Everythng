@@ -76,6 +76,7 @@ class LoginPage extends HookWidget {
                           formKey: _formKey,
                           controller: _emailEditingController,
                           type: FormFieldType.email,
+                          enabled: !_isProcessing.value,
                         ),
                       ),
                     ],

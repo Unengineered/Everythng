@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
@@ -7,16 +8,19 @@ import 'package:everythng/presentation/core/everythng_widgets/form_fields/everyt
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:auto_route/auto_route.dart';
 
-class ConfirmPasswordPage extends StatelessWidget {
+class ConfirmPasswordPage extends HookWidget {
   ConfirmPasswordPage({Key? key}) : super(key: key);
-  final passwordEditingController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
     var everythngThemeData = Theme.of(context).everythngThemeData;
+
+    final _passwordEditingController = useTextEditingController();
+    final _isProcessing = useState(false);
 
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
@@ -33,7 +37,7 @@ class ConfirmPasswordPage extends StatelessWidget {
                         color: Colors.black,
                         size: 32,
                       ),
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () => context.router.pop()
                     )
                   : null,
             ),
@@ -43,10 +47,12 @@ class ConfirmPasswordPage extends StatelessWidget {
                 state.authFailure.fold(() {}, (failure) {
                   failure.maybeMap(
                     userDisabled: (_) {
+                      _isProcessing.value = false;
                       //TODO: Add user disabled popup
                       print("User disabled");
                     },
                     orElse: () {
+                      _isProcessing.value = false;
                       //TODO: Add invalid failure popup
                       print("invalid failure");
                     },
@@ -95,8 +101,9 @@ class ConfirmPasswordPage extends StatelessWidget {
                               return 'Passwords don\'t match';
                             }
                           },
+                          enabled: !_isProcessing.value,
                           formKey: _formKey,
-                          controller: passwordEditingController,
+                          controller: _passwordEditingController,
                           type: FormFieldType.password,
                         ),
                       ],
@@ -110,6 +117,7 @@ class ConfirmPasswordPage extends StatelessWidget {
                         ),
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
+                            _isProcessing.value = true;
                             context
                                 .read<AuthFormCubit>()
                                 .registerWIthEmailAndPassword();

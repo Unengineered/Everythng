@@ -11,7 +11,7 @@ class EverythngBorderlessFormField extends StatefulWidget {
     required GlobalKey<FormState> formKey,
     required this.controller,
     required this.type,
-    this.validator, this.onChanged,
+    this.validator, this.onChanged, this.enabled,
   })  : _formKey = formKey,
         super(key: key);
 
@@ -20,6 +20,7 @@ class EverythngBorderlessFormField extends StatefulWidget {
   final FormFieldType type;
   final String? Function(String? value)? validator;
   final void Function(String)? onChanged;
+  final bool? enabled;
 
   @override
   State<EverythngBorderlessFormField> createState() =>
@@ -40,6 +41,7 @@ class _EverythngBorderlessFormFieldState
     return Form(
       key: widget._formKey,
       child: TextFormField(
+        enabled: widget.enabled,
         onChanged: widget.onChanged,
         validator: widget.validator,
         autovalidateMode: AutovalidateMode.disabled,
