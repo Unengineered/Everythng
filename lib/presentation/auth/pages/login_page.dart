@@ -13,7 +13,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:provider/provider.dart';
 
-
 class LoginPage extends HookWidget {
   final _formKey = GlobalKey<FormState>();
 
@@ -25,7 +24,8 @@ class LoginPage extends HookWidget {
     final everythngThemeData = Theme.of(context).everythngThemeData;
 
     final _emailEditingController = useTextEditingController();
-    final _shakeController = useAnimationController(duration: const Duration(milliseconds: 300));
+    final _shakeController =
+        useShakeController(duration: const Duration(milliseconds: 300));
     final _isProcessing = useState(false);
 
     return KeyboardDismissOnTap(
@@ -100,9 +100,8 @@ class LoginPage extends HookWidget {
                           });
                           //context.router.push(const CreatePasswordPageRoute());
                         } else {
-                          shake(_shakeController);
+                          _shakeController.shake();
                         }
-
                       },
                     ),
                   )

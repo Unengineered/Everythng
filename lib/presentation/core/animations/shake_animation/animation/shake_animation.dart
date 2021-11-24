@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart';
 
@@ -11,7 +12,7 @@ class ShakeAnimation extends StatelessWidget {
   })  : _animation = Tween<double>(begin: 50, end: 100).animate(shakeController),
         super(key: key);
   final Widget child;
-  final AnimationController shakeController;
+  final ShakeController shakeController;
   final Animation _animation;
 
   Vector3 _shake(double progress) {
