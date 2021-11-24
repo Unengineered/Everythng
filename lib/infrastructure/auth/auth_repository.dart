@@ -18,7 +18,7 @@ class AuthRepository implements IAuthRepository {
   @override
   Future<Either<AuthFailure, bool>> doesEmailExist(
       {required String email}) async {
-    final response = await client.get(Uri.parse('${url}account?email=$email'));
+    final response = await client.get(Uri.http(url,"/account",{"email":email.toString()}));
     if (response.statusCode == 200 || response.statusCode == 404) {
       return right(json.decode(response.body)['accountFound']);
     }
