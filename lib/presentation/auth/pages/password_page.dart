@@ -1,6 +1,7 @@
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
-import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
+import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
+
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:everythng/presentation/core/everythng_widgets/pop_ups/bottom_pop_up.dart';
 import 'package:flutter/cupertino.dart';
@@ -184,7 +185,7 @@ class PasswordPage extends HookWidget {
                       ],
                     ),
                     Center(
-                      child: EverythngTwoStateButton(
+                      child: TwoStateLargeButton(
                         title: _isProcessing.value ? 'Processing' : 'Continue',
                         onTap: () {
                           _isProcessing.value = true;

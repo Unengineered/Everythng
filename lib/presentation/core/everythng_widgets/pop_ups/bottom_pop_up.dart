@@ -1,5 +1,5 @@
 import 'package:everythng/constants/extensions.dart';
-import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
+import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -47,7 +47,7 @@ class BottomPopUp extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 32),
-          EverythngTwoStateButton(
+          TwoStateLargeButton(
             onTap: () {
              context.router.pop();
             },
