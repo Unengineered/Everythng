@@ -26,7 +26,6 @@ class PasswordPage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               elevation: 0,
-              backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
               leading: Navigator.canPop(context)
                   ? IconButton(
