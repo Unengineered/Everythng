@@ -1,9 +1,9 @@
+import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
-import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +108,7 @@ class ConfirmPasswordPage extends HookWidget {
                       ],
                     ),
                     Center(
-                      child: EverythngTwoStateButton(
+                      child: TwoStateLargeButton(
                         title: 'Create Account',
                         icon: Icon(
                           Icons.done_rounded,

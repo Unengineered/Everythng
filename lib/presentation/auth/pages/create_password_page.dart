@@ -3,10 +3,10 @@ import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart'
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
+import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
-import 'package:everythng/presentation/core/everythng_widgets/buttons/everythng_two_state_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -155,7 +155,7 @@ class CreatePasswordPage extends HookWidget {
                     ],
                   ),
                   Center(
-                    child: EverythngTwoStateButton(
+                    child: TwoStateLargeButton(
                       onTap: () {
                         if (!_isGreaterThan6.value) {
                           _isGreaterThan6ShakeController.shake();
