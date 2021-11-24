@@ -1,6 +1,7 @@
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -17,9 +18,9 @@ class SplashPage extends StatelessWidget {
 
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        return const Scaffold(
+        return  Scaffold(
           body: Center(
-            child: Text("SPLASH"),
+            child: SvgPicture.asset('assets/images/Everythng_logo.svg',width: 90,),
           ),
         );
       },
