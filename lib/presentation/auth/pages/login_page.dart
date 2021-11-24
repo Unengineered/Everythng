@@ -25,7 +25,7 @@ class LoginPage extends HookWidget {
 
     final _emailEditingController = useTextEditingController();
     final _shakeController =
-        useShakeController(duration: const Duration(milliseconds: 300));
+        useShakeController();
     final _isProcessing = useState(false);
 
     return KeyboardDismissOnTap(

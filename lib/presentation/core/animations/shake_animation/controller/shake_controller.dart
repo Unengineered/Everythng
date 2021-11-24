@@ -5,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class ShakeController extends AnimationController {
   ShakeController({
     required TickerProvider vsync,
-    duration = const Duration(milliseconds: 300),
+    Duration duration = const Duration(milliseconds: 300),
     this.shakeCount = 3,
   }) : super(
           vsync: vsync,
@@ -43,7 +43,7 @@ ShakeController useShakeController(
     int shakeCount = 3}) {
   vsync ??= useSingleTickerProvider(keys: [duration, shakeCount]);
   final controller = useMemoized(() => ShakeController(
-      vsync: vsync!, duration: duration, shakeCount: shakeCount));
+      vsync: vsync!, duration: duration ?? const Duration(milliseconds: 300), shakeCount: shakeCount));
 
   // useEffect(() {
   //   controller.dispose();

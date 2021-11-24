@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
+import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
@@ -23,8 +25,9 @@ class CreatePasswordPage extends HookWidget {
     final _containsSpecialCharacter = useState(false);
     final _passwordController = useTextEditingController();
 
-    final _animationController =
-        useAnimationController(duration: const Duration(milliseconds: 500));
+    final _isGreaterThan6ShakeController = useShakeController();
+    final _containsSpecialCharacterShakeController = useShakeController();
+
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
         builder: (context, visible) {
@@ -112,10 +115,13 @@ class CreatePasswordPage extends HookWidget {
                           const SizedBox(
                             width: 4,
                           ),
-                          Text(
-                            'must be greater than 6 letters',
-                            style: everythngTextTheme.bodyTextSemiBold!
-                                .copyWith(color: Colors.grey[700]),
+                          ShakeAnimation(
+                            shakeController: _isGreaterThan6ShakeController,
+                            child: Text(
+                              'must be greater than 6 letters',
+                              style: everythngTextTheme.bodyTextSemiBold!
+                                  .copyWith(color: Colors.grey[700]),
+                            ),
                           )
                         ],
                       ),
@@ -135,10 +141,14 @@ class CreatePasswordPage extends HookWidget {
                           const SizedBox(
                             width: 4,
                           ),
-                          Text(
-                            'must contain special character',
-                            style: everythngTextTheme.bodyTextSemiBold!
-                                .copyWith(color: Colors.grey[700]),
+                          ShakeAnimation(
+                            shakeController:
+                                _containsSpecialCharacterShakeController,
+                            child: Text(
+                              'must contain special character',
+                              style: everythngTextTheme.bodyTextSemiBold!
+                                  .copyWith(color: Colors.grey[700]),
+                            ),
                           )
                         ],
                       ),
@@ -147,6 +157,14 @@ class CreatePasswordPage extends HookWidget {
                   Center(
                     child: EverythngTwoStateButton(
                       onTap: () {
+                        if (!_isGreaterThan6.value) {
+                          _isGreaterThan6ShakeController.shake();
+                          return;
+                        }
+                        if (!_containsSpecialCharacter.value) {
+                          _containsSpecialCharacterShakeController.shake();
+                          return;
+                        }
                         context
                             .read<AuthFormCubit>()
                             .setPassword(_passwordController.text);
