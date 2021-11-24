@@ -23,6 +23,12 @@ class AppWidget extends StatelessWidget {
           child: MaterialApp.router(
             title: 'Everythng App',
             debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              scaffoldBackgroundColor: Colors.grey.shade50,
+              appBarTheme: AppBarTheme(
+                backgroundColor: Colors.grey.shade50,
+              )
+            ),
             routerDelegate: _appRouter.delegate(),
             routeInformationParser: _appRouter.defaultRouteParser(),
           ),
