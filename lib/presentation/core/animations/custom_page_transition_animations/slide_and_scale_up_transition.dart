@@ -11,8 +11,8 @@ class SlideAndScaleUpTransition extends StatelessWidget {
             Tween<Offset>(begin: const Offset(1, 0), end: const Offset(0, 0))
                 .animate(CurvedAnimation(
                     parent: parent,
-                    curve: const Interval(0.3, 0.6, curve: Curves.easeIn))),
-        scaleUpAnimation = Tween<double>(begin: 0.8, end: 1).animate(
+                    curve: const Interval(0.25, 0.6, curve: Curves.easeIn))),
+        scaleUpAnimation = Tween<double>(begin: 0.95, end: 1).animate(
             CurvedAnimation(
                 parent: parent,
                 curve: const Interval(0.6, 1, curve: Curves.easeIn))),

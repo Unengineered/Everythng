@@ -9,12 +9,18 @@ import 'package:flutter/cupertino.dart';
 
 part 'app_router.gr.dart';
 
-@CupertinoAutoRouter(routes: [
+@MaterialAutoRouter(routes: [
   CupertinoRoute(page: SplashPage, initial: true),
   CupertinoRoute(page: HomePage),
   CupertinoRoute(page: LoginPage),
   CupertinoRoute(page: PasswordPage),
   CupertinoRoute(page: CreatePasswordPage),
-  CupertinoRoute(page: ConfirmPasswordPage),
+  CupertinoRoute(page: ConfirmPasswordPage)
+  //To use custom route comment this out and apply it to all
+  // CustomRoute(
+  //     page: LoginPage,
+  //     transitionsBuilder: customTransition,
+  //     durationInMilliseconds: 1000,
+  //     reverseDurationInMilliseconds: 1000)
 ])
-class AppRouter extends _$AppRouter{}
+class AppRouter extends _$AppRouter {}
