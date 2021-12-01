@@ -2,7 +2,7 @@ import 'package:everythng/presentation/core/animations/custom_page_transition_an
 import 'package:everythng/presentation/core/animations/custom_page_transition_animations/slide_and_scale_up_transition.dart';
 import 'package:flutter/material.dart';
 
-Widget customTransition(
+Widget CustomTransition(
   BuildContext context,
   Animation<double> animation,
   Animation<double> secondaryAnimation,

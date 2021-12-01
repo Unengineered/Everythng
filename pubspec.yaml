@@ -27,6 +27,13 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  fort_knox:
+    git:
+      url: https://github.com/Unengineered/AuthKit
+  network_kit:
+    git:
+      url: https://github.com/Unengineered/NetworkKit
+  json_serializable: ^6.1.0
   flutter_hooks: ^0.18.1
   firebase_core: ^1.10.0
   firebase_auth: ^3.2.0
@@ -36,14 +43,12 @@ dependencies:
   dartz: ^0.10.0
   flutter_bloc: ^8.0.0
   freezed_annotation: ^1.0.0
-  fort_knox:
-    git:
-      url: https://github.com/Unengineered/FortKnox
   flutter:
     sdk: flutter
   google_fonts:
   flutter_keyboard_visibility:
   http: ^0.13.4
+#  TODO: Add version numbers
   vector_math:
   lottie:
   flutter_svg: 
@@ -55,6 +60,7 @@ dependencies:
   cupertino_icons: ^1.0.4
 
 dev_dependencies:
+  json_annotation: ^4.4.0
   auto_route_generator: ^3.1.0
   bloc_test: ^9.0.1
   mocktail: ^0.2.0
