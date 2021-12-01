@@ -19,9 +19,15 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const SplashPage());
     },
-    HomePageRoute.name: (routeData) {
+    DiscoverPageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const HomePage());
+          routeData: routeData, child: const DiscoverPage());
+    },
+    LoginPageRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginPageRouteArgs>(
+          orElse: () => const LoginPageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: LoginPage(key: args.key));
     },
     PasswordPageRoute.name: (routeData) {
       final args = routeData.argsAs<PasswordPageRouteArgs>(
@@ -40,31 +46,19 @@ class _$AppRouter extends RootStackRouter {
           orElse: () => const ConfirmPasswordPageRouteArgs());
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: ConfirmPasswordPage(key: args.key));
-    },
-    LoginPageRoute.name: (routeData) {
-      final args = routeData.argsAs<LoginPageRouteArgs>(
-          orElse: () => const LoginPageRouteArgs());
-      return CustomPage<dynamic>(
-          routeData: routeData,
-          child: LoginPage(key: args.key),
-          transitionsBuilder: CustomTransition,
-          durationInMilliseconds: 1000,
-          reverseDurationInMilliseconds: 1000,
-          opaque: true,
-          barrierDismissible: false);
     }
   };
 
   @override
   List<RouteConfig> get routes => [
         RouteConfig(SplashPageRoute.name, path: '/'),
-        RouteConfig(HomePageRoute.name, path: '/home-page'),
+        RouteConfig(DiscoverPageRoute.name, path: '/discover-page'),
+        RouteConfig(LoginPageRoute.name, path: '/login-page'),
         RouteConfig(PasswordPageRoute.name, path: '/password-page'),
         RouteConfig(CreatePasswordPageRoute.name,
             path: '/create-password-page'),
         RouteConfig(ConfirmPasswordPageRoute.name,
-            path: '/confirm-password-page'),
-        RouteConfig(LoginPageRoute.name, path: '/login-page')
+            path: '/confirm-password-page')
       ];
 }
 
@@ -75,11 +69,30 @@ class SplashPageRoute extends PageRouteInfo<void> {
   static const String name = 'SplashPageRoute';
 }
 
-/// generated route for [HomePage]
-class HomePageRoute extends PageRouteInfo<void> {
-  const HomePageRoute() : super(name, path: '/home-page');
+/// generated route for [DiscoverPage]
+class DiscoverPageRoute extends PageRouteInfo<void> {
+  const DiscoverPageRoute() : super(name, path: '/discover-page');
 
-  static const String name = 'HomePageRoute';
+  static const String name = 'DiscoverPageRoute';
+}
+
+/// generated route for [LoginPage]
+class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
+  LoginPageRoute({Key? key})
+      : super(name, path: '/login-page', args: LoginPageRouteArgs(key: key));
+
+  static const String name = 'LoginPageRoute';
+}
+
+class LoginPageRouteArgs {
+  const LoginPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'LoginPageRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for [PasswordPage]
@@ -143,24 +156,5 @@ class ConfirmPasswordPageRouteArgs {
   @override
   String toString() {
     return 'ConfirmPasswordPageRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for [LoginPage]
-class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
-  LoginPageRoute({Key? key})
-      : super(name, path: '/login-page', args: LoginPageRouteArgs(key: key));
-
-  static const String name = 'LoginPageRoute';
-}
-
-class LoginPageRouteArgs {
-  const LoginPageRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'LoginPageRouteArgs{key: $key}';
   }
 }

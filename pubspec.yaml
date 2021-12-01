@@ -48,7 +48,9 @@ dependencies:
   google_fonts:
   flutter_keyboard_visibility:
   http: ^0.13.4
-#  TODO: Add version numbers
+  colorful_safe_area: ^0.3.0
+  dropdown_button2: ^1.0.1
+  #  TODO: Add version numbers
   vector_math:
   lottie:
   flutter_svg: 
