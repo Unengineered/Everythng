@@ -186,7 +186,8 @@ class PasswordPage extends HookWidget {
                     ),
                     Center(
                       child: TwoStateLargeButton(
-                        title: _isProcessing.value ? 'Processing' : 'Continue',
+                        isProcessing: _isProcessing.value,
+                        title: 'Continue',
                         onTap: () {
                           _isProcessing.value = true;
                           context
