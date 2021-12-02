@@ -44,72 +44,72 @@ class DiscoverPage extends HookWidget {
             ],
           ),
         ),
-        body: Container(
-          margin: const EdgeInsets.fromLTRB(
-            16,
-            0,
-            16,
-            0,
-          ),
-          child: ListView(
-            scrollDirection: Axis.vertical,
-            physics: const BouncingScrollPhysics(),
-            children: [
-              Text(
+        body: ListView(
+          scrollDirection: Axis.vertical,
+          physics: const BouncingScrollPhysics(),
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: Text(
                 'Curated For You!',
                 style: everythngTextTheme.headline3Bold,
               ),
-              const SizedBox(
-                height: 12,
-              ),
-              Container(
-                height: 366,
-                child: ListView.separated(
-                  physics: const BouncingScrollPhysics(),
-                  clipBehavior: Clip.none,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return const ProductCard();
-                  },
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      width: 16,
-                    );
-                  },
-                  itemCount: 3,
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Text(
-                'Curated For You!',
-                style: everythngTextTheme.headline3Bold,
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              ListView.separated(
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            SizedBox(
+              height: 366,
+              child: ListView.separated(
+                padding: const EdgeInsets.only(left: 16),
+                physics: const BouncingScrollPhysics(),
                 clipBehavior: Clip.none,
-                scrollDirection: Axis.vertical,
-                physics: const NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return const StoreCard();
+                  return const ProductCard();
                 },
                 separatorBuilder: (context, index) {
                   return const SizedBox(
-                    height: 16,
+                    width: 16,
                   );
                 },
-                itemCount: 5,
+                itemCount: 3,
               ),
-              const SizedBox(
-                height: 32,
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16),
+              child: Text(
+                'Curated For You!',
+                style: everythngTextTheme.headline3Bold,
               ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            ListView.separated(
+              padding: const EdgeInsets.only(left: 16),
+              clipBehavior: Clip.none,
+              scrollDirection: Axis.vertical,
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return const StoreCard();
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(
+                  height: 16,
+                );
+              },
+              itemCount: 5,
+            ),
+            const SizedBox(
+              height: 32,
+            ),
+          ],
         ),
         bottomNavigationBar: ClipRRect(
           borderRadius: const BorderRadius.only(

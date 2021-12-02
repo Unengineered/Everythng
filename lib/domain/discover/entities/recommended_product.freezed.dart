@@ -25,13 +25,15 @@ class _$RecommendedProductTearOff {
       {required String id,
       required String name,
       required String size,
-      required Uri url,
+      required Uri picture,
+      Uri? brand,
       required double price}) {
     return _RecommendedProduct(
       id: id,
       name: name,
       size: size,
-      url: url,
+      picture: picture,
+      brand: brand,
       price: price,
     );
   }
@@ -49,7 +51,8 @@ mixin _$RecommendedProduct {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get size => throw _privateConstructorUsedError;
-  Uri get url => throw _privateConstructorUsedError;
+  Uri get picture => throw _privateConstructorUsedError;
+  Uri? get brand => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -63,7 +66,13 @@ abstract class $RecommendedProductCopyWith<$Res> {
   factory $RecommendedProductCopyWith(
           RecommendedProduct value, $Res Function(RecommendedProduct) then) =
       _$RecommendedProductCopyWithImpl<$Res>;
-  $Res call({String id, String name, String size, Uri url, double price});
+  $Res call(
+      {String id,
+      String name,
+      String size,
+      Uri picture,
+      Uri? brand,
+      double price});
 }
 
 /// @nodoc
@@ -80,7 +89,8 @@ class _$RecommendedProductCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? size = freezed,
-    Object? url = freezed,
+    Object? picture = freezed,
+    Object? brand = freezed,
     Object? price = freezed,
   }) {
     return _then(_value.copyWith(
@@ -96,10 +106,14 @@ class _$RecommendedProductCopyWithImpl<$Res>
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      picture: picture == freezed
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
               as Uri,
+      brand: brand == freezed
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as Uri?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -115,7 +129,13 @@ abstract class _$RecommendedProductCopyWith<$Res>
           _RecommendedProduct value, $Res Function(_RecommendedProduct) then) =
       __$RecommendedProductCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, String size, Uri url, double price});
+  $Res call(
+      {String id,
+      String name,
+      String size,
+      Uri picture,
+      Uri? brand,
+      double price});
 }
 
 /// @nodoc
@@ -134,7 +154,8 @@ class __$RecommendedProductCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? size = freezed,
-    Object? url = freezed,
+    Object? picture = freezed,
+    Object? brand = freezed,
     Object? price = freezed,
   }) {
     return _then(_RecommendedProduct(
@@ -150,10 +171,14 @@ class __$RecommendedProductCopyWithImpl<$Res>
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      picture: picture == freezed
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
               as Uri,
+      brand: brand == freezed
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as Uri?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -169,7 +194,8 @@ class _$_RecommendedProduct implements _RecommendedProduct {
       {required this.id,
       required this.name,
       required this.size,
-      required this.url,
+      required this.picture,
+      this.brand,
       required this.price});
 
   factory _$_RecommendedProduct.fromJson(Map<String, dynamic> json) =>
@@ -182,13 +208,15 @@ class _$_RecommendedProduct implements _RecommendedProduct {
   @override
   final String size;
   @override
-  final Uri url;
+  final Uri picture;
+  @override
+  final Uri? brand;
   @override
   final double price;
 
   @override
   String toString() {
-    return 'RecommendedProduct(id: $id, name: $name, size: $size, url: $url, price: $price)';
+    return 'RecommendedProduct(id: $id, name: $name, size: $size, picture: $picture, brand: $brand, price: $price)';
   }
 
   @override
@@ -199,12 +227,14 @@ class _$_RecommendedProduct implements _RecommendedProduct {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.size, size) || other.size == size) &&
-            (identical(other.url, url) || other.url == url) &&
+            (identical(other.picture, picture) || other.picture == picture) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
             (identical(other.price, price) || other.price == price));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, size, url, price);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, size, picture, brand, price);
 
   @JsonKey(ignore: true)
   @override
@@ -222,7 +252,8 @@ abstract class _RecommendedProduct implements RecommendedProduct {
       {required String id,
       required String name,
       required String size,
-      required Uri url,
+      required Uri picture,
+      Uri? brand,
       required double price}) = _$_RecommendedProduct;
 
   factory _RecommendedProduct.fromJson(Map<String, dynamic> json) =
@@ -235,7 +266,9 @@ abstract class _RecommendedProduct implements RecommendedProduct {
   @override
   String get size;
   @override
-  Uri get url;
+  Uri get picture;
+  @override
+  Uri? get brand;
   @override
   double get price;
   @override

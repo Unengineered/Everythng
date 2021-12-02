@@ -12,7 +12,8 @@ _$_RecommendedProduct _$$_RecommendedProductFromJson(
       id: json['id'] as String,
       name: json['name'] as String,
       size: json['size'] as String,
-      url: Uri.parse(json['url'] as String),
+      picture: Uri.parse(json['picture'] as String),
+      brand: json['brand'] == null ? null : Uri.parse(json['brand'] as String),
       price: (json['price'] as num).toDouble(),
     );
 
@@ -22,6 +23,7 @@ Map<String, dynamic> _$$_RecommendedProductToJson(
       'id': instance.id,
       'name': instance.name,
       'size': instance.size,
-      'url': instance.url.toString(),
+      'picture': instance.picture.toString(),
+      'brand': instance.brand?.toString(),
       'price': instance.price,
     };

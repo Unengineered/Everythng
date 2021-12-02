@@ -9,7 +9,8 @@ class RecommendedProduct with _$RecommendedProduct {
       {required String id,
         required String name,
         required String size,
-        required Uri url,
+        required Uri picture,
+        Uri? brand,
         required double price}) = _RecommendedProduct;
 
   factory RecommendedProduct.fromJson(Map<String, dynamic> json) => _$RecommendedProductFromJson(json);

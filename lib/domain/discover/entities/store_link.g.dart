@@ -10,7 +10,6 @@ _$_StoreLink _$$_StoreLinkFromJson(Map<String, dynamic> json) => _$_StoreLink(
       id: json['id'] as String,
       name: json['name'] as String,
       picture: Uri.parse(json['picture'] as String),
-      url: Uri.parse(json['url'] as String),
       tagline: json['tagline'] as String?,
     );
 
@@ -19,6 +18,5 @@ Map<String, dynamic> _$$_StoreLinkToJson(_$_StoreLink instance) =>
       'id': instance.id,
       'name': instance.name,
       'picture': instance.picture.toString(),
-      'url': instance.url.toString(),
       'tagline': instance.tagline,
     };

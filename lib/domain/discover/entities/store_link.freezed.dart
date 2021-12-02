@@ -25,13 +25,11 @@ class _$StoreLinkTearOff {
       {required String id,
       required String name,
       required Uri picture,
-      required Uri url,
       String? tagline}) {
     return _StoreLink(
       id: id,
       name: name,
       picture: picture,
-      url: url,
       tagline: tagline,
     );
   }
@@ -49,7 +47,6 @@ mixin _$StoreLink {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   Uri get picture => throw _privateConstructorUsedError;
-  Uri get url => throw _privateConstructorUsedError;
   String? get tagline => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -62,7 +59,7 @@ mixin _$StoreLink {
 abstract class $StoreLinkCopyWith<$Res> {
   factory $StoreLinkCopyWith(StoreLink value, $Res Function(StoreLink) then) =
       _$StoreLinkCopyWithImpl<$Res>;
-  $Res call({String id, String name, Uri picture, Uri url, String? tagline});
+  $Res call({String id, String name, Uri picture, String? tagline});
 }
 
 /// @nodoc
@@ -78,7 +75,6 @@ class _$StoreLinkCopyWithImpl<$Res> implements $StoreLinkCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? picture = freezed,
-    Object? url = freezed,
     Object? tagline = freezed,
   }) {
     return _then(_value.copyWith(
@@ -94,10 +90,6 @@ class _$StoreLinkCopyWithImpl<$Res> implements $StoreLinkCopyWith<$Res> {
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
               as Uri,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as Uri,
       tagline: tagline == freezed
           ? _value.tagline
           : tagline // ignore: cast_nullable_to_non_nullable
@@ -112,7 +104,7 @@ abstract class _$StoreLinkCopyWith<$Res> implements $StoreLinkCopyWith<$Res> {
           _StoreLink value, $Res Function(_StoreLink) then) =
       __$StoreLinkCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, Uri picture, Uri url, String? tagline});
+  $Res call({String id, String name, Uri picture, String? tagline});
 }
 
 /// @nodoc
@@ -129,7 +121,6 @@ class __$StoreLinkCopyWithImpl<$Res> extends _$StoreLinkCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? picture = freezed,
-    Object? url = freezed,
     Object? tagline = freezed,
   }) {
     return _then(_StoreLink(
@@ -144,10 +135,6 @@ class __$StoreLinkCopyWithImpl<$Res> extends _$StoreLinkCopyWithImpl<$Res>
       picture: picture == freezed
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
               as Uri,
       tagline: tagline == freezed
           ? _value.tagline
@@ -164,7 +151,6 @@ class _$_StoreLink implements _StoreLink {
       {required this.id,
       required this.name,
       required this.picture,
-      required this.url,
       this.tagline});
 
   factory _$_StoreLink.fromJson(Map<String, dynamic> json) =>
@@ -177,13 +163,11 @@ class _$_StoreLink implements _StoreLink {
   @override
   final Uri picture;
   @override
-  final Uri url;
-  @override
   final String? tagline;
 
   @override
   String toString() {
-    return 'StoreLink(id: $id, name: $name, picture: $picture, url: $url, tagline: $tagline)';
+    return 'StoreLink(id: $id, name: $name, picture: $picture, tagline: $tagline)';
   }
 
   @override
@@ -194,12 +178,11 @@ class _$_StoreLink implements _StoreLink {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.picture, picture) || other.picture == picture) &&
-            (identical(other.url, url) || other.url == url) &&
             (identical(other.tagline, tagline) || other.tagline == tagline));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, picture, url, tagline);
+  int get hashCode => Object.hash(runtimeType, id, name, picture, tagline);
 
   @JsonKey(ignore: true)
   @override
@@ -217,7 +200,6 @@ abstract class _StoreLink implements StoreLink {
       {required String id,
       required String name,
       required Uri picture,
-      required Uri url,
       String? tagline}) = _$_StoreLink;
 
   factory _StoreLink.fromJson(Map<String, dynamic> json) =
@@ -229,8 +211,6 @@ abstract class _StoreLink implements StoreLink {
   String get name;
   @override
   Uri get picture;
-  @override
-  Uri get url;
   @override
   String? get tagline;
   @override

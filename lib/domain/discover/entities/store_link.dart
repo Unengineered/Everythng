@@ -9,7 +9,6 @@ class StoreLink with _$StoreLink {
       {required String id,
       required String name,
       required Uri picture,
-      required Uri url,
       String? tagline}) = _StoreLink;
 
   factory StoreLink.fromJson(Map<String, dynamic> json) => _$StoreLinkFromJson(json);

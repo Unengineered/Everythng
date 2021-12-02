@@ -12,5 +12,4 @@ class RecommendedStore with _$RecommendedStore {
       required List<RecommendedProduct> products}) = _RecommendedStore;
 
   factory RecommendedStore.fromJson(Map<String, dynamic> json) => _$RecommendedStoreFromJson(json);
-
 }

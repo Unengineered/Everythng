@@ -7,8 +7,6 @@ class StoreCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     final everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
