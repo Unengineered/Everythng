@@ -23,5 +23,5 @@ Map<String, dynamic> _$$_RecommendedStoreToJson(_$_RecommendedStore instance) =>
       'name': instance.name,
       'picture': instance.picture.toString(),
       'tagline': instance.tagline,
-      'products': instance.products,
+      'products': instance.products.map((e) => e.toJson()).toList(),
     };

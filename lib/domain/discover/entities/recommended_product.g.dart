@@ -29,5 +29,5 @@ Map<String, dynamic> _$$_RecommendedProductToJson(
       'picture': instance.picture.toString(),
       'brand': instance.brand?.toString(),
       'price': instance.price,
-      'store': instance.storeLink,
+      'store': instance.storeLink?.toJson(),
     };
