@@ -1,3 +1,4 @@
+import 'package:everythng/domain/discover/entities/store_link.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'recommended_product.freezed.dart';
@@ -11,7 +12,9 @@ class RecommendedProduct with _$RecommendedProduct {
         required String size,
         required Uri picture,
         Uri? brand,
-        required double price}) = _RecommendedProduct;
+        required double price,
+        @JsonKey(name: "store")
+        required StoreLink? storeLink,}) = _RecommendedProduct;
 
   factory RecommendedProduct.fromJson(Map<String, dynamic> json) => _$RecommendedProductFromJson(json);
 }

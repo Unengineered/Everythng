@@ -8,7 +8,10 @@ part of 'recommended_store.dart';
 
 _$_RecommendedStore _$$_RecommendedStoreFromJson(Map<String, dynamic> json) =>
     _$_RecommendedStore(
-      storeLink: StoreLink.fromJson(json['storeLink'] as Map<String, dynamic>),
+      id: json['id'] as String,
+      name: json['name'] as String,
+      picture: Uri.parse(json['picture'] as String),
+      tagline: json['tagline'] as String?,
       products: (json['products'] as List<dynamic>)
           .map((e) => RecommendedProduct.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -16,6 +19,9 @@ _$_RecommendedStore _$$_RecommendedStoreFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_RecommendedStoreToJson(_$_RecommendedStore instance) =>
     <String, dynamic>{
-      'storeLink': instance.storeLink,
+      'id': instance.id,
+      'name': instance.name,
+      'picture': instance.picture.toString(),
+      'tagline': instance.tagline,
       'products': instance.products,
     };

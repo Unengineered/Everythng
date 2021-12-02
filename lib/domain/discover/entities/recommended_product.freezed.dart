@@ -27,7 +27,8 @@ class _$RecommendedProductTearOff {
       required String size,
       required Uri picture,
       Uri? brand,
-      required double price}) {
+      required double price,
+      @JsonKey(name: "store") required StoreLink? storeLink}) {
     return _RecommendedProduct(
       id: id,
       name: name,
@@ -35,6 +36,7 @@ class _$RecommendedProductTearOff {
       picture: picture,
       brand: brand,
       price: price,
+      storeLink: storeLink,
     );
   }
 
@@ -54,6 +56,8 @@ mixin _$RecommendedProduct {
   Uri get picture => throw _privateConstructorUsedError;
   Uri? get brand => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
+  @JsonKey(name: "store")
+  StoreLink? get storeLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,7 +76,10 @@ abstract class $RecommendedProductCopyWith<$Res> {
       String size,
       Uri picture,
       Uri? brand,
-      double price});
+      double price,
+      @JsonKey(name: "store") StoreLink? storeLink});
+
+  $StoreLinkCopyWith<$Res>? get storeLink;
 }
 
 /// @nodoc
@@ -92,6 +99,7 @@ class _$RecommendedProductCopyWithImpl<$Res>
     Object? picture = freezed,
     Object? brand = freezed,
     Object? price = freezed,
+    Object? storeLink = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -118,7 +126,22 @@ class _$RecommendedProductCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      storeLink: storeLink == freezed
+          ? _value.storeLink
+          : storeLink // ignore: cast_nullable_to_non_nullable
+              as StoreLink?,
     ));
+  }
+
+  @override
+  $StoreLinkCopyWith<$Res>? get storeLink {
+    if (_value.storeLink == null) {
+      return null;
+    }
+
+    return $StoreLinkCopyWith<$Res>(_value.storeLink!, (value) {
+      return _then(_value.copyWith(storeLink: value));
+    });
   }
 }
 
@@ -135,7 +158,11 @@ abstract class _$RecommendedProductCopyWith<$Res>
       String size,
       Uri picture,
       Uri? brand,
-      double price});
+      double price,
+      @JsonKey(name: "store") StoreLink? storeLink});
+
+  @override
+  $StoreLinkCopyWith<$Res>? get storeLink;
 }
 
 /// @nodoc
@@ -157,6 +184,7 @@ class __$RecommendedProductCopyWithImpl<$Res>
     Object? picture = freezed,
     Object? brand = freezed,
     Object? price = freezed,
+    Object? storeLink = freezed,
   }) {
     return _then(_RecommendedProduct(
       id: id == freezed
@@ -183,6 +211,10 @@ class __$RecommendedProductCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      storeLink: storeLink == freezed
+          ? _value.storeLink
+          : storeLink // ignore: cast_nullable_to_non_nullable
+              as StoreLink?,
     ));
   }
 }
@@ -196,7 +228,8 @@ class _$_RecommendedProduct implements _RecommendedProduct {
       required this.size,
       required this.picture,
       this.brand,
-      required this.price});
+      required this.price,
+      @JsonKey(name: "store") required this.storeLink});
 
   factory _$_RecommendedProduct.fromJson(Map<String, dynamic> json) =>
       _$$_RecommendedProductFromJson(json);
@@ -213,10 +246,13 @@ class _$_RecommendedProduct implements _RecommendedProduct {
   final Uri? brand;
   @override
   final double price;
+  @override
+  @JsonKey(name: "store")
+  final StoreLink? storeLink;
 
   @override
   String toString() {
-    return 'RecommendedProduct(id: $id, name: $name, size: $size, picture: $picture, brand: $brand, price: $price)';
+    return 'RecommendedProduct(id: $id, name: $name, size: $size, picture: $picture, brand: $brand, price: $price, storeLink: $storeLink)';
   }
 
   @override
@@ -229,12 +265,14 @@ class _$_RecommendedProduct implements _RecommendedProduct {
             (identical(other.size, size) || other.size == size) &&
             (identical(other.picture, picture) || other.picture == picture) &&
             (identical(other.brand, brand) || other.brand == brand) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.storeLink, storeLink) ||
+                other.storeLink == storeLink));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, size, picture, brand, price);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, size, picture, brand, price, storeLink);
 
   @JsonKey(ignore: true)
   @override
@@ -249,12 +287,14 @@ class _$_RecommendedProduct implements _RecommendedProduct {
 
 abstract class _RecommendedProduct implements RecommendedProduct {
   const factory _RecommendedProduct(
-      {required String id,
-      required String name,
-      required String size,
-      required Uri picture,
-      Uri? brand,
-      required double price}) = _$_RecommendedProduct;
+          {required String id,
+          required String name,
+          required String size,
+          required Uri picture,
+          Uri? brand,
+          required double price,
+          @JsonKey(name: "store") required StoreLink? storeLink}) =
+      _$_RecommendedProduct;
 
   factory _RecommendedProduct.fromJson(Map<String, dynamic> json) =
       _$_RecommendedProduct.fromJson;
@@ -271,6 +311,9 @@ abstract class _RecommendedProduct implements RecommendedProduct {
   Uri? get brand;
   @override
   double get price;
+  @override
+  @JsonKey(name: "store")
+  StoreLink? get storeLink;
   @override
   @JsonKey(ignore: true)
   _$RecommendedProductCopyWith<_RecommendedProduct> get copyWith =>

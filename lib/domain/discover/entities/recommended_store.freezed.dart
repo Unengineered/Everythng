@@ -22,10 +22,16 @@ class _$RecommendedStoreTearOff {
   const _$RecommendedStoreTearOff();
 
   _RecommendedStore call(
-      {required StoreLink storeLink,
+      {required String id,
+      required String name,
+      required Uri picture,
+      String? tagline,
       required List<RecommendedProduct> products}) {
     return _RecommendedStore(
-      storeLink: storeLink,
+      id: id,
+      name: name,
+      picture: picture,
+      tagline: tagline,
       products: products,
     );
   }
@@ -40,7 +46,10 @@ const $RecommendedStore = _$RecommendedStoreTearOff();
 
 /// @nodoc
 mixin _$RecommendedStore {
-  StoreLink get storeLink => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  Uri get picture => throw _privateConstructorUsedError;
+  String? get tagline => throw _privateConstructorUsedError;
   List<RecommendedProduct> get products => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,9 +63,12 @@ abstract class $RecommendedStoreCopyWith<$Res> {
   factory $RecommendedStoreCopyWith(
           RecommendedStore value, $Res Function(RecommendedStore) then) =
       _$RecommendedStoreCopyWithImpl<$Res>;
-  $Res call({StoreLink storeLink, List<RecommendedProduct> products});
-
-  $StoreLinkCopyWith<$Res> get storeLink;
+  $Res call(
+      {String id,
+      String name,
+      Uri picture,
+      String? tagline,
+      List<RecommendedProduct> products});
 }
 
 /// @nodoc
@@ -70,26 +82,34 @@ class _$RecommendedStoreCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? storeLink = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? picture = freezed,
+    Object? tagline = freezed,
     Object? products = freezed,
   }) {
     return _then(_value.copyWith(
-      storeLink: storeLink == freezed
-          ? _value.storeLink
-          : storeLink // ignore: cast_nullable_to_non_nullable
-              as StoreLink,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      picture: picture == freezed
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      tagline: tagline == freezed
+          ? _value.tagline
+          : tagline // ignore: cast_nullable_to_non_nullable
+              as String?,
       products: products == freezed
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<RecommendedProduct>,
     ));
-  }
-
-  @override
-  $StoreLinkCopyWith<$Res> get storeLink {
-    return $StoreLinkCopyWith<$Res>(_value.storeLink, (value) {
-      return _then(_value.copyWith(storeLink: value));
-    });
   }
 }
 
@@ -100,10 +120,12 @@ abstract class _$RecommendedStoreCopyWith<$Res>
           _RecommendedStore value, $Res Function(_RecommendedStore) then) =
       __$RecommendedStoreCopyWithImpl<$Res>;
   @override
-  $Res call({StoreLink storeLink, List<RecommendedProduct> products});
-
-  @override
-  $StoreLinkCopyWith<$Res> get storeLink;
+  $Res call(
+      {String id,
+      String name,
+      Uri picture,
+      String? tagline,
+      List<RecommendedProduct> products});
 }
 
 /// @nodoc
@@ -119,14 +141,29 @@ class __$RecommendedStoreCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? storeLink = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? picture = freezed,
+    Object? tagline = freezed,
     Object? products = freezed,
   }) {
     return _then(_RecommendedStore(
-      storeLink: storeLink == freezed
-          ? _value.storeLink
-          : storeLink // ignore: cast_nullable_to_non_nullable
-              as StoreLink,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      picture: picture == freezed
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      tagline: tagline == freezed
+          ? _value.tagline
+          : tagline // ignore: cast_nullable_to_non_nullable
+              as String?,
       products: products == freezed
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
@@ -138,19 +175,30 @@ class __$RecommendedStoreCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_RecommendedStore implements _RecommendedStore {
-  const _$_RecommendedStore({required this.storeLink, required this.products});
+  const _$_RecommendedStore(
+      {required this.id,
+      required this.name,
+      required this.picture,
+      this.tagline,
+      required this.products});
 
   factory _$_RecommendedStore.fromJson(Map<String, dynamic> json) =>
       _$$_RecommendedStoreFromJson(json);
 
   @override
-  final StoreLink storeLink;
+  final String id;
+  @override
+  final String name;
+  @override
+  final Uri picture;
+  @override
+  final String? tagline;
   @override
   final List<RecommendedProduct> products;
 
   @override
   String toString() {
-    return 'RecommendedStore(storeLink: $storeLink, products: $products)';
+    return 'RecommendedStore(id: $id, name: $name, picture: $picture, tagline: $tagline, products: $products)';
   }
 
   @override
@@ -158,14 +206,16 @@ class _$_RecommendedStore implements _RecommendedStore {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RecommendedStore &&
-            (identical(other.storeLink, storeLink) ||
-                other.storeLink == storeLink) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.picture, picture) || other.picture == picture) &&
+            (identical(other.tagline, tagline) || other.tagline == tagline) &&
             const DeepCollectionEquality().equals(other.products, products));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, storeLink, const DeepCollectionEquality().hash(products));
+  int get hashCode => Object.hash(runtimeType, id, name, picture, tagline,
+      const DeepCollectionEquality().hash(products));
 
   @JsonKey(ignore: true)
   @override
@@ -180,14 +230,23 @@ class _$_RecommendedStore implements _RecommendedStore {
 
 abstract class _RecommendedStore implements RecommendedStore {
   const factory _RecommendedStore(
-      {required StoreLink storeLink,
+      {required String id,
+      required String name,
+      required Uri picture,
+      String? tagline,
       required List<RecommendedProduct> products}) = _$_RecommendedStore;
 
   factory _RecommendedStore.fromJson(Map<String, dynamic> json) =
       _$_RecommendedStore.fromJson;
 
   @override
-  StoreLink get storeLink;
+  String get id;
+  @override
+  String get name;
+  @override
+  Uri get picture;
+  @override
+  String? get tagline;
   @override
   List<RecommendedProduct> get products;
   @override
