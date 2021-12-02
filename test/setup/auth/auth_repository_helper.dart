@@ -5,7 +5,7 @@ import 'package:everythng/domain/auth/i_auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 class MockAuthRepository extends Mock implements IAuthRepository {}
 

@@ -2,7 +2,7 @@ import 'package:everythng/infrastructure/auth/auth_repository.dart';
 import 'package:fort_knox/fort_knox.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:http/http.dart' as http;
-import 'constants.dart';
+import '../constants.dart';
 import 'fort_knox_helper.dart';
 
 class MockBaseUser extends Mock implements BaseUser {}

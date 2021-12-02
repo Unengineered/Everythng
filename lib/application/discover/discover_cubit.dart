@@ -7,7 +7,6 @@ import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'discover_cubit.freezed.dart';
-
 part 'discover_state.dart';
 
 @Injectable()
@@ -19,21 +18,27 @@ class DiscoverCubit extends Cubit<DiscoverState> {
   void getRecommendations() async {
     List<RecommendedProduct>? products;
     List<RecommendedStore>? stores;
+
+    bool error = false;
     emit(const DiscoverState.loading());
 
-    _repository.getRecommendedStores().then((result) => result.fold((l) {
-          emit(const DiscoverState.error('network-error'));
-          return;
-        }, (values) => stores = values));
+    final storeResult = await _repository.getRecommendedStores();
+    storeResult.fold((l) {
+      emit(const DiscoverState.error('network-failure'));
+      error = true;
+    }, (values) => stores = values);
 
-    _repository.getRecommendedProducts().then((result) => result.fold((l) {
-          emit(const DiscoverState.error('network-error'));
-          return;
-        }, (values) => products = values));
+    final productResult = await _repository.getRecommendedProducts();
+    productResult.fold((l) {
+      emit(const DiscoverState.error('network-failure'));
+      error = true;
+    }, (values) => products = values);
 
     if (products != null && stores != null) {
       emit(DiscoverState.loaded(
           recommendedProducts: products!, recommendedStores: stores!));
+    } else {
+      if (!error) emit(const DiscoverState.error('error'));
     }
   }
 }

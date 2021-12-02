@@ -4,7 +4,7 @@ import 'package:everythng/domain/auth/entities/everythng_user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fort_knox/fort_knox.dart';
 import 'package:mocktail/mocktail.dart';
-import '../../setup/auth_repository_implementation_helper.dart';
+import '../../setup/auth/auth_repository_implementation_helper.dart';
 import '../../setup/constants.dart';
 
 void main() {

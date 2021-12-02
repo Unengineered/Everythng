@@ -5,7 +5,7 @@ import 'package:everythng/domain/auth/entities/auth_failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../setup/auth_cubit_helper.dart';
-import '../../../setup/auth_repository_helper.dart';
+import '../../../setup/auth/auth_repository_helper.dart';
 import '../../../setup/constants.dart';
 
 void main() {
