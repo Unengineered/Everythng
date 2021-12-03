@@ -10,7 +10,7 @@ const password = "skjfasj.ka129!@";
 const uid = "UID";
 const String token = 'TOKEN';
 const String refreshedToken = 'REFRESHEDTOKEN';
-const String url = 'http://www.everythng.in';
+
 
 const user = EverythngUser(email: email, uid: uid);
 

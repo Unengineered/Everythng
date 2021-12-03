@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:everythng/constants/url.dart';
 import 'package:everythng/domain/core/network_failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -11,11 +12,12 @@ void main() {
   });
 
   group('getRecommendedProducts', () {
-    var list = [];
+
     test('Should return List<ReccomendedProduct> on succesful get request',
         () async {
       //Arrange
       final discoverRepository = getDiscoverRepository();
+      var list = [];
       //Act
       final result = await discoverRepository.getRecommendedProducts();
       result.fold((l) => null, (r) {
@@ -37,15 +39,16 @@ void main() {
   });
 
   group('getRecommendedStores', () {
-    var list = [];
+    
     test('Should return List<ReccomendedStore> on succesful get request',
         () async {
       //Arrange
       final discoverRepository = getDiscoverRepository();
+       var list = [];
       //Act
       final result = await discoverRepository.getRecommendedStores();
       result.fold((l) => null, (r) {
-        list = r;
+         list = r;
       });
       //Assert
       expect(list, recommendedStoresEx);
