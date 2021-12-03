@@ -1,10 +1,14 @@
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/constants/shadows.dart';
+import 'package:everythng/domain/discover/entities/recommended_store.dart';
+import 'package:everythng/presentation/core/network_image.dart';
 import 'package:flutter/material.dart';
 
 //TODO : Integrate with API
 class StoreCard extends StatelessWidget {
-  const StoreCard({
+  final RecommendedStore store;
+  const StoreCard(
+    this.store, {
     Key? key,
   }) : super(key: key);
 
@@ -18,7 +22,7 @@ class StoreCard extends StatelessWidget {
         horizontal: 8,
       ),
       decoration: BoxDecoration(
-        color : Colors.white,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(8),
         boxShadow: everythngComponentShadow,
       ),
@@ -34,22 +38,27 @@ class StoreCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Unengineered',
+                      store.name,
                       style: everythngTextTheme.headline3Bold,
                     ),
                     const SizedBox(
                       height: 4,
                     ),
                     Text(
-                      'A sustainable fashion brand',
+                      store.tagline!,
                       style: everythngTextTheme.footerSemiBold,
                     ),
                   ],
                 ),
-                Image.asset(
-                  'assets/images/logo.png',
+                // Image.asset(
+                //   'assets/images/logo.png',
+                //   height: 42,
+                // ),
+                SizedBox(
+                  width: 40,
                   height: 42,
-                ),
+                  child: EverythngNetworkImage(url: store.picture.toString()),
+                )
               ],
             ),
           ),
@@ -64,7 +73,7 @@ class StoreCard extends StatelessWidget {
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount: 3,
+              itemCount: store.products.length,
               itemBuilder: (context, index) {
                 return Container(
                   width: 100,
@@ -72,10 +81,7 @@ class StoreCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Image.asset(
-                    'assets/images/akshi.png',
-                    fit: BoxFit.cover,
-                  ),
+                  child: EverythngNetworkImage(url: store.products[index].picture.toString(),)
                 );
               },
               separatorBuilder: (context, index) {

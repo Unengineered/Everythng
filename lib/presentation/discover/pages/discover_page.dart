@@ -77,7 +77,8 @@ class DiscoverPage extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
-                            return ProductCard(loadedState.recommendedProducts[index]);
+                            return ProductCard(
+                                loadedState.recommendedProducts[index]);
                           },
                           separatorBuilder: (context, index) {
                             return const SizedBox(
@@ -110,21 +111,37 @@ class DiscoverPage extends StatelessWidget {
               const SizedBox(
                 height: 12,
               ),
-              ListView.separated(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                clipBehavior: Clip.none,
-                scrollDirection: Axis.vertical,
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return const StoreCard();
+              BlocBuilder<DiscoverCubit, DiscoverState>(
+                builder: (context, state) {
+                  return state.map(loading:(_) {
+                    return const CircularProgressIndicator();
+                  },
+                      loaded: (state){
+                    return  ListView.separated(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      clipBehavior: Clip.none,
+                      scrollDirection: Axis.vertical,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return  StoreCard(state.recommendedStores[index]);
+                      },
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(
+                          height: 16,
+                        );
+                      },
+                      itemCount: state.recommendedStores.length,
+                    );
+                      },
+                      initialised: (_){
+                    return const CircularProgressIndicator();
+                      },
+                      error: (_){
+                        return const Text("Error");
+                      });
+
                 },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    height: 16,
-                  );
-                },
-                itemCount: 5,
               ),
               const SizedBox(
                 height: 32,

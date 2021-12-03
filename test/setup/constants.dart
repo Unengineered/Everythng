@@ -61,7 +61,7 @@ const recommendedProductsJson = '''
 const recommendedStoresJson = '''
 [{
 	"id": "12398njvqwe",
-	"name": "product's name",
+	"name": "store's name",
 	"picture": "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2",
 	"tagline" : "Store tagline",
 	"products": [
@@ -85,7 +85,7 @@ const recommendedStoresJson = '''
 },
 {
 	"id": "12398njvqwe",
-	"name": "product's name",
+	"name": "store's name",
 	"picture": "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2",
 	"tagline" : "Store tagline",
 	"products": [
@@ -109,7 +109,7 @@ const recommendedStoresJson = '''
 },
 {
 	"id": "12398njvqwe",
-	"name": "product's name",
+	"name": "store's name",
 	"picture": "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2",
 	"tagline" : "Store tagline",
 	"products": [
