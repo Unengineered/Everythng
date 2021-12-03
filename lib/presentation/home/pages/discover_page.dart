@@ -13,10 +13,12 @@ import 'package:provider/src/provider.dart';
 class DiscoverPage extends HookWidget {
   const DiscoverPage({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+
     final everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
-    return EverythngScaffold(
+    return Scaffold(
         appBar: AppBar(
           elevation: 0,
           title: Row(
@@ -91,7 +93,7 @@ class DiscoverPage extends HookWidget {
               height: 12,
             ),
             ListView.separated(
-              padding: const EdgeInsets.only(left: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               clipBehavior: Clip.none,
               scrollDirection: Axis.vertical,
               physics: const NeverScrollableScrollPhysics(),
