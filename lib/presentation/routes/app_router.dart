@@ -3,8 +3,7 @@ import 'package:everythng/presentation/auth/pages/confirm_password_page.dart';
 import 'package:everythng/presentation/auth/pages/create_password_page.dart';
 import 'package:everythng/presentation/auth/pages/login_page.dart';
 import 'package:everythng/presentation/auth/pages/password_page.dart';
-import 'package:everythng/presentation/core/animations/custom_page_transition_animations/custom_page_route.dart';
-import 'package:everythng/presentation/home/pages/discover_page.dart';
+import 'package:everythng/presentation/discover/pages/discover_page.dart';
 import 'package:everythng/presentation/splash/splash_page.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -17,7 +16,7 @@ part 'app_router.gr.dart';
   CupertinoRoute(page: PasswordPage),
   CupertinoRoute(page: CreatePasswordPage),
   CupertinoRoute(page: ConfirmPasswordPage),
-  //To use custom route comment this out and apply it to all
+  // To use custom route comment this out and apply it to all
   // CustomRoute(
   //     page: LoginPage,
   //     transitionsBuilder: CustomTransition,

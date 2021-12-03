@@ -6,15 +6,16 @@ part 'recommended_product.g.dart';
 
 @freezed
 class RecommendedProduct with _$RecommendedProduct {
-  const factory RecommendedProduct(
-      {required String id,
-        required String name,
-        required String size,
-        required Uri picture,
-        Uri? brand,
-        required double price,
-        @JsonKey(name: "store")
-        required StoreLink? storeLink,}) = _RecommendedProduct;
+  const factory RecommendedProduct({
+    required String id,
+    required String name,
+    required String size,
+    required Uri picture,
+    Uri? brand,
+    required double price,
+    @JsonKey(name: "store") required StoreLink? storeLink,
+  }) = _RecommendedProduct;
 
-  factory RecommendedProduct.fromJson(Map<String, dynamic> json) => _$RecommendedProductFromJson(json);
+  factory RecommendedProduct.fromJson(Map<String, dynamic> json) =>
+      _$RecommendedProductFromJson(json);
 }

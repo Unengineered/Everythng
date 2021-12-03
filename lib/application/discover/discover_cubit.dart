@@ -9,7 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'discover_cubit.freezed.dart';
 part 'discover_state.dart';
 
-@Injectable()
+@lazySingleton
 class DiscoverCubit extends Cubit<DiscoverState> {
   final IDiscoverRepository _repository;
 

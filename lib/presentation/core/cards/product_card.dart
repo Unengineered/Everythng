@@ -1,23 +1,27 @@
 import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/domain/discover/entities/recommended_product.dart';
 import 'package:everythng/presentation/core/cards/single_detail_card.dart';
+import 'package:everythng/presentation/core/network_image.dart';
 import 'package:flutter/material.dart';
 
 //TODO : Integrate with API
 class ProductCard extends StatelessWidget {
-  const ProductCard({
+  final RecommendedProduct product;
+  const ProductCard(
+    this.product, {
     Key? key,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-
     final everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
     final everythngThemeData = Theme.of(context).everythngThemeData;
+
+    // print(product.picture.toString());
     return Container(
       constraints: const BoxConstraints(
         maxWidth: 259,
         maxHeight: 366,
       ),
-
       child: Card(
         clipBehavior: Clip.hardEdge,
         shape: RoundedRectangleBorder(
@@ -27,8 +31,11 @@ class ProductCard extends StatelessWidget {
         child: Stack(
           children: [
             //TODO : Use cached network image widget
-            Image.asset(
-              "assets/images/akshi.png",
+            SizedBox(
+              height: 300,
+              child: EverythngNetworkImage(
+                url: product.picture.toString(),
+              ),
             ),
             Positioned(
               left: 16,
@@ -44,8 +51,8 @@ class ProductCard extends StatelessWidget {
                       Row(
                         children: [
                           SingleDetailCard(
-                            child: Image.asset(
-                              'assets/images/709px-H&M-Logo 1.png',
+                            child: EverythngNetworkImage(
+                              url: product.storeLink!.picture.toString(),
                             ),
                           ),
                           const SizedBox(
@@ -53,7 +60,7 @@ class ProductCard extends StatelessWidget {
                           ),
                           SingleDetailCard(
                             child: Text(
-                              'M',
+                              product.size,
                               style: everythngTextTheme.headline5,
                             ),
                           )
@@ -77,7 +84,7 @@ class ProductCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Pink Solid Basic Jump Suit',
+                            product.name,
                             style: everythngTextTheme.captionSemiBold,
                           ),
                           const SizedBox(
@@ -85,38 +92,38 @@ class ProductCard extends StatelessWidget {
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.min,
-
                             children: [
                               CircleAvatar(
                                 radius: 6,
-                                child: Image.asset('assets/images/placeholder.png'),
+                                child: Image.asset(
+                                    'assets/images/placeholder.png'),
                               ),
                               const SizedBox(
                                 width: 4,
                               ),
                               Text(
-                                'Vaidehi',
-                                style: everythngTextTheme.footerSemiBold!.copyWith(
-                                  color: everythngThemeData.textAndIconography!['disabled'],
+                                product.storeLink!.name,
+                                style:
+                                    everythngTextTheme.footerSemiBold!.copyWith(
+                                  color: everythngThemeData
+                                      .textAndIconography!['disabled'],
                                 ),
-
                               )
                             ],
                           )
                         ],
                       ),
                       Text(
-                        'Rs. 345',
+                        'Rs. ${product.price}',
                         style: everythngTextTheme.headline4Bold!.copyWith(
-                            color: everythngThemeData.textAndIconography!['mediumEmphasis']
-                        ),
+                            color: everythngThemeData
+                                .textAndIconography!['mediumEmphasis']),
                       )
                     ],
                   )
                 ],
               ),
             ),
-
           ],
         ),
       ),

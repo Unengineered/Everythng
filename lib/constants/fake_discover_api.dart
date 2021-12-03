@@ -1,20 +1,9 @@
+//DISCOVER
 import 'dart:convert';
 
-import 'package:everythng/domain/auth/entities/everythng_user.dart';
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
 
-//AUTH
-const email = "user@everythng.com";
-const password = "skjfasj.ka129!@";
-const uid = "UID";
-const String token = 'TOKEN';
-const String refreshedToken = 'REFRESHEDTOKEN';
-
-
-const user = EverythngUser(email: email, uid: uid);
-
-//DISCOVER
 const recommendedProductsJson = '''
 [{
 	"id": "12398njvqwe",
@@ -134,10 +123,10 @@ const recommendedStoresJson = '''
 ''';
 
 final List<RecommendedProduct> recommendedProductsEx =
-    (json.decode(recommendedProductsJson) as List<dynamic>)
-        .map((json) => RecommendedProduct.fromJson(json))
-        .toList();
+(json.decode(recommendedProductsJson) as List<dynamic>)
+    .map((json) => RecommendedProduct.fromJson(json))
+    .toList();
 final List<RecommendedStore> recommendedStoresEx =
-    (json.decode(recommendedStoresJson) as List<dynamic>)
-        .map((json) => RecommendedStore.fromJson(json))
-        .toList();
+(json.decode(recommendedStoresJson) as List<dynamic>)
+    .map((json) => RecommendedStore.fromJson(json))
+    .toList();

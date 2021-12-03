@@ -13,10 +13,10 @@ DiscoverRepository getDiscoverRepository({bool networkFailure = false}) {
   final service = DiscoverRepository(mockNetworkKit);
   if (networkFailure == false) {
     when(() => mockNetworkKit.get(Uri.http(url, '/recommendations/stores')))
-        .thenAnswer((invocation) async => Response(recommendedStoreJson, 200));
+        .thenAnswer((invocation) async => Response(recommendedStoresJson, 200));
     when(() => mockNetworkKit.get(Uri.http(url, '/recommendations/products')))
         .thenAnswer(
-            (invocation) async => Response(recommendedProductJson, 200));
+            (invocation) async => Response(recommendedProductsJson, 200));
   } else {
     when(() => mockNetworkKit.get(any()))
         .thenAnswer((invocation) async => Response('failure', 400));

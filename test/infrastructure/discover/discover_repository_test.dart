@@ -13,7 +13,7 @@ void main() {
 
   group('getRecommendedProducts', () {
 
-    test('Should return List<ReccomendedProduct> on succesful get request',
+    test('Should return List<RecommendedProduct> on successful get request',
         () async {
       //Arrange
       final discoverRepository = getDiscoverRepository();
@@ -40,7 +40,7 @@ void main() {
 
   group('getRecommendedStores', () {
     
-    test('Should return List<ReccomendedStore> on succesful get request',
+    test('Should return List<RecommendedStore> on successful get request',
         () async {
       //Arrange
       final discoverRepository = getDiscoverRepository();

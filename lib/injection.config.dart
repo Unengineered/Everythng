@@ -41,7 +41,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       _i10.AuthFormCubit(get<_i6.IAuthRepository>(), get<_i9.AuthCubit>()));
   gh.factory<_i11.IDiscoverRepository>(
       () => _i12.DiscoverRepository(get<_i8.NetworkKit>()));
-  gh.factory<_i13.DiscoverCubit>(
+  gh.lazySingleton<_i13.DiscoverCubit>(
       () => _i13.DiscoverCubit(get<_i11.IDiscoverRepository>()));
   return get;
 }

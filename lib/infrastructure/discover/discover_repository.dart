@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:everythng/constants/fake_discover_api.dart';
 import 'package:everythng/constants/url.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
@@ -18,6 +19,9 @@ class DiscoverRepository implements IDiscoverRepository {
   @override
   Future<Either<NetworkFailure, List<RecommendedProduct>>>
       getRecommendedProducts() async {
+
+    return right(recommendedProductsEx);
+
     final response =
         await networkKit.get(Uri.http(url, '/recommendations/products'));
     if (response.statusCode != 200) {
@@ -32,6 +36,10 @@ class DiscoverRepository implements IDiscoverRepository {
   @override
   Future<Either<NetworkFailure, List<RecommendedStore>>>
       getRecommendedStores() async {
+
+    return right(recommendedStoresEx);
+
+
     final response =
         await networkKit.get(Uri.http(url, '/recommendations/stores'));
     if (response.statusCode != 200) {
