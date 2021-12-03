@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:everythng/constants/url.dart';
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
 import 'package:everythng/domain/auth/entities/everythng_user.dart';
 import 'package:flutter_test/flutter_test.dart';
