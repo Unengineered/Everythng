@@ -56,7 +56,7 @@ class ProductCard extends StatelessWidget {
                           ),
                           SingleDetailCard(
                             child: Text(
-                              'M',
+                              product.size,
                               style: everythngTextTheme.headline5,
                             ),
                           )
@@ -90,9 +90,10 @@ class ProductCard extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               CircleAvatar(
+                                backgroundColor: Colors.transparent,
                                 radius: 6,
-                                child: Image.asset(
-                                    'assets/images/placeholder.png'),
+                                child: EverythngNetworkImage(
+                                    url: product.storeLink!.picture.toString()),
                               ),
                               const SizedBox(
                                 width: 4,
@@ -110,7 +111,7 @@ class ProductCard extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        'Rs. 345',
+                        'Rs. ${product.price}',
                         style: everythngTextTheme.headline4Bold!.copyWith(
                             color: everythngThemeData
                                 .textAndIconography!['mediumEmphasis']),
