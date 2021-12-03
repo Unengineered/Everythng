@@ -20,7 +20,7 @@ class _EverythngScaffoldState extends State<EverythngScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: widget.body),
+      body: widget.body,
       appBar: widget.appBar,
       bottomNavigationBar: widget.bottomNavigationBar ,
     );

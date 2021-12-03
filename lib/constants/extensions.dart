@@ -59,7 +59,7 @@ extension EverythngTextTheme on TextTheme {
             color: Colors.black87,
             fontSize: 34,
             fontWeight: bold,
-            letterSpacing: -1.5,
+            letterSpacing: -1,
           ),
         ),
         headline2Bold: GoogleFonts.inter(
@@ -67,7 +67,7 @@ extension EverythngTextTheme on TextTheme {
             fontSize: 24,
             color: Colors.black87,
             fontWeight: bold,
-            letterSpacing: -1.5,
+            letterSpacing: -1,
           ),
         ),
         headline2SemiBold: GoogleFonts.inter(
@@ -75,7 +75,7 @@ extension EverythngTextTheme on TextTheme {
             fontSize: 24,
             color: Colors.black87,
             fontWeight: semiBold,
-            letterSpacing: -1.25,
+            letterSpacing: -1,
           ),
         ),
         headline3Bold: GoogleFonts.inter(
@@ -83,7 +83,7 @@ extension EverythngTextTheme on TextTheme {
             fontSize: 20,
             color: Colors.black87,
             fontWeight: bold,
-            letterSpacing: -1.25,
+            letterSpacing: -1,
           ),
         ),
         headline4Bold: GoogleFonts.inter(
@@ -91,7 +91,7 @@ extension EverythngTextTheme on TextTheme {
             fontSize: 16,
             color: Colors.black87,
             fontWeight: bold,
-            letterSpacing: -0.9,
+            letterSpacing: -0.5,
           ),
         ),
     headline5: GoogleFonts.inter(
@@ -99,7 +99,7 @@ extension EverythngTextTheme on TextTheme {
             fontSize: 14,
             color: Colors.black87,
             fontWeight: semiBold,
-            letterSpacing: -0.7,
+            letterSpacing: -0.5,
           ),
         ),
     headline6: GoogleFonts.inter(
@@ -115,7 +115,7 @@ extension EverythngTextTheme on TextTheme {
             fontSize: 52,
             color: Colors.black87,
             fontWeight: extraBold,
-            letterSpacing: -3,
+            letterSpacing: -0.3,
           ),
         ),
         bodyTextMedium: GoogleFonts.inter(
@@ -139,7 +139,7 @@ extension EverythngTextTheme on TextTheme {
             fontSize: 11,
             color: Colors.black87,
             fontWeight: medium,
-            letterSpacing: -1,
+            letterSpacing: -0.5,
           ),
         ),
         captionSemiBold: GoogleFonts.inter(
@@ -147,7 +147,7 @@ extension EverythngTextTheme on TextTheme {
             fontSize: 11,
             color: Colors.black87,
             fontWeight: semiBold,
-            letterSpacing: -1,
+            letterSpacing: -0.5,
           ),
         ),
         footerMedium: GoogleFonts.inter(
@@ -155,7 +155,7 @@ extension EverythngTextTheme on TextTheme {
             fontSize: 10,
             color: Colors.black87,
             fontWeight: regular,
-            letterSpacing: -0.3,
+            letterSpacing: -0,
           ),
         ),
         footerSemiBold: GoogleFonts.inter(
@@ -163,7 +163,7 @@ extension EverythngTextTheme on TextTheme {
             fontSize: 10,
             color: Colors.black87,
             fontWeight: semiBold,
-            letterSpacing: -0.3,
+            letterSpacing: -0,
           ),
         ),
       );
