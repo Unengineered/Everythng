@@ -23,9 +23,10 @@ class DiscoverRepository implements IDiscoverRepository {
     if (response.statusCode != 200) {
       return left(const NetworkFailure());
     }
-    final data = json.decode(response.body) as List<dynamic>;
     return right<NetworkFailure, List<RecommendedProduct>>(
-        data.map((e) => RecommendedProduct.fromJson(e)).toList());
+        (json.decode(response.body) as List<dynamic>)
+            .map((e) => RecommendedProduct.fromJson(e))
+            .toList());
   }
 
   @override
@@ -36,7 +37,6 @@ class DiscoverRepository implements IDiscoverRepository {
     if (response.statusCode != 200) {
       return left(const NetworkFailure());
     }
-    //final data = json.decode(response.body) as List<dynamic>;
     return right<NetworkFailure, List<RecommendedStore>>(
         (json.decode(response.body) as List<dynamic>)
             .map((json) => RecommendedStore.fromJson(json))
