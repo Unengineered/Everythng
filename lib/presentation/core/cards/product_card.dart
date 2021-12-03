@@ -18,7 +18,6 @@ class ProductCard extends StatelessWidget {
     return Container(
         clipBehavior: Clip.hardEdge,
         constraints: const BoxConstraints(
-          maxWidth: 259,
           maxHeight: 366,
         ),
         decoration: BoxDecoration(
@@ -28,12 +27,13 @@ class ProductCard extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            SizedBox(
-              height: 300,
-              child: EverythngNetworkImage(
-                url: product.picture.toString(),
-              ),
+            Container(
+            height: 300,
+            width: 259,
+            child: EverythngNetworkImage(
+              url: product.picture.toString(),
             ),
+          ),
             Positioned(
               left: 16,
               right: 8,
@@ -112,16 +112,18 @@ class ProductCard extends StatelessWidget {
                       ),
                       Text(
                         'Rs. ${product.price}',
-                        style: everythngTextTheme.headline4Bold!.copyWith(
-                            color: everythngThemeData
-                                .textAndIconography!['mediumEmphasis']),
-                      )
-                    ],
-                  )
-                ],
-              ),
+                      style: everythngTextTheme.headline4Bold!.copyWith(
+                        color: everythngThemeData
+                            .textAndIconography!['mediumEmphasis'],
+                      ),
+                    )
+                  ],
+                )
+              ],
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -1,22 +1,28 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'animations/shimmer_widget.dart';
 
 class EverythngNetworkImage extends StatelessWidget {
   final String url;
+  final BoxFit fit;
+
   final Widget Function(BuildContext, ImageProvider<Object>)? imageBuilder;
-  const EverythngNetworkImage({Key? key, required this.url, this.imageBuilder})
-      : super(key: key);
+
+  const EverythngNetworkImage({
+    Key? key,
+    required this.url,
+    this.imageBuilder,
+    this.fit = BoxFit.cover,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       placeholder: (context, loading) {
-        return Transform.scale(
-          scale: 1.5,
-          child: const ShimmerWidget.rectangular(),
-        );
+        return const ShimmerWidget.rectangular();
       },
       imageBuilder: imageBuilder,
       errorWidget: (context, url, error) {
@@ -26,7 +32,8 @@ class EverythngNetworkImage extends StatelessWidget {
         );
       },
       imageUrl: url,
-      fit: BoxFit.fitWidth,
+      fit: fit,
+      alignment: Alignment.topCenter,
     );
   }
 }

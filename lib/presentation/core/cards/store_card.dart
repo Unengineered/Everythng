@@ -57,7 +57,10 @@ class StoreCard extends StatelessWidget {
                 SizedBox(
                   width: 40,
                   height: 42,
-                  child: EverythngNetworkImage(url: store.picture.toString()),
+                  child: EverythngNetworkImage(
+                    url: store.picture.toString(),
+                    fit: BoxFit.fitHeight,
+                  ),
                 )
               ],
             ),
@@ -76,12 +79,14 @@ class StoreCard extends StatelessWidget {
               itemCount: store.products.length,
               itemBuilder: (context, index) {
                 return Container(
-                  width: 100,
+                  width: MediaQuery.of(context).size.width >= 400 ? 100 : 90,
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: EverythngNetworkImage(url: store.products[index].picture.toString(),)
+                  child: EverythngNetworkImage(
+                    url: store.products[index].picture.toString(),
+                  ),
                 );
               },
               separatorBuilder: (context, index) {
