@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "246091361259",
+    "project_id": "everything-25",
+    "storage_bucket": "everything-25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246091361259:android:ac9ee2f4c7b34215d247ae",
+        "android_client_info": {
+          "package_name": "com.unengineered.everythng"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246091361259-vceti0fli4u3u7f6eno5752ql6ijsvme.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo1MZ0BOsGcGy8xBMVrgrva-M-pwuVlFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246091361259-vceti0fli4u3u7f6eno5752ql6ijsvme.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "246091361259-rf79iuplgmp961cacoscuqgb37u7v8bc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.unengineered.everythng"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
