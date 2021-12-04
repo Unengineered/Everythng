@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
-import 'package:everythng/domain/auth/entities/everythng_user.dart';
+import 'package:everythng/domain/auth/entities/everythng_user_auth.dart';
 import 'package:everythng/domain/auth/i_auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -19,7 +19,7 @@ IAuthRepository getAuthRepoForSigning({AuthFailure? failure}) {
     when(() => service.signInWithEmailAndPassword(
         email: any(named: 'email'),
         password: any(named: 'password'))).thenAnswer((invocation) async {
-      final user = EverythngUser(
+      final user = EverythngUserA(
           email: invocation.namedArguments[const Symbol('email')], uid: uid);
       when(() => service.getCurrentUser()).thenReturn(right(user));
       return right(user);
@@ -28,7 +28,7 @@ IAuthRepository getAuthRepoForSigning({AuthFailure? failure}) {
     when(() => service.registerWithEmailAndPassword(
         email: any(named: 'email'),
         password: any(named: 'password'))).thenAnswer((invocation) async {
-      final user = EverythngUser(
+      final user = EverythngUserA(
           email: invocation.namedArguments[const Symbol('email')], uid: uid);
       when(() => service.getCurrentUser()).thenReturn(right(user));
       return right(user);

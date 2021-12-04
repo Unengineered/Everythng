@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'everythng_user.dart';
+part of 'everythng_user_auth.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,11 +14,11 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$EverythngUserTearOff {
-  const _$EverythngUserTearOff();
+class _$EverythngUserATearOff {
+  const _$EverythngUserATearOff();
 
-  _EverythngUser call({required String email, required String uid}) {
-    return _EverythngUser(
+  _EverythngUserA call({required String email, required String uid}) {
+    return _EverythngUserA(
       email: email,
       uid: uid,
     );
@@ -26,34 +26,34 @@ class _$EverythngUserTearOff {
 }
 
 /// @nodoc
-const $EverythngUser = _$EverythngUserTearOff();
+const $EverythngUserA = _$EverythngUserATearOff();
 
 /// @nodoc
-mixin _$EverythngUser {
+mixin _$EverythngUserA {
   String get email => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EverythngUserCopyWith<EverythngUser> get copyWith =>
+  $EverythngUserACopyWith<EverythngUserA> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EverythngUserCopyWith<$Res> {
-  factory $EverythngUserCopyWith(
-          EverythngUser value, $Res Function(EverythngUser) then) =
-      _$EverythngUserCopyWithImpl<$Res>;
+abstract class $EverythngUserACopyWith<$Res> {
+  factory $EverythngUserACopyWith(
+          EverythngUserA value, $Res Function(EverythngUserA) then) =
+      _$EverythngUserACopyWithImpl<$Res>;
   $Res call({String email, String uid});
 }
 
 /// @nodoc
-class _$EverythngUserCopyWithImpl<$Res>
-    implements $EverythngUserCopyWith<$Res> {
-  _$EverythngUserCopyWithImpl(this._value, this._then);
+class _$EverythngUserACopyWithImpl<$Res>
+    implements $EverythngUserACopyWith<$Res> {
+  _$EverythngUserACopyWithImpl(this._value, this._then);
 
-  final EverythngUser _value;
+  final EverythngUserA _value;
   // ignore: unused_field
-  final $Res Function(EverythngUser) _then;
+  final $Res Function(EverythngUserA) _then;
 
   @override
   $Res call({
@@ -74,32 +74,32 @@ class _$EverythngUserCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$EverythngUserCopyWith<$Res>
-    implements $EverythngUserCopyWith<$Res> {
-  factory _$EverythngUserCopyWith(
-          _EverythngUser value, $Res Function(_EverythngUser) then) =
-      __$EverythngUserCopyWithImpl<$Res>;
+abstract class _$EverythngUserACopyWith<$Res>
+    implements $EverythngUserACopyWith<$Res> {
+  factory _$EverythngUserACopyWith(
+          _EverythngUserA value, $Res Function(_EverythngUserA) then) =
+      __$EverythngUserACopyWithImpl<$Res>;
   @override
   $Res call({String email, String uid});
 }
 
 /// @nodoc
-class __$EverythngUserCopyWithImpl<$Res>
-    extends _$EverythngUserCopyWithImpl<$Res>
-    implements _$EverythngUserCopyWith<$Res> {
-  __$EverythngUserCopyWithImpl(
-      _EverythngUser _value, $Res Function(_EverythngUser) _then)
-      : super(_value, (v) => _then(v as _EverythngUser));
+class __$EverythngUserACopyWithImpl<$Res>
+    extends _$EverythngUserACopyWithImpl<$Res>
+    implements _$EverythngUserACopyWith<$Res> {
+  __$EverythngUserACopyWithImpl(
+      _EverythngUserA _value, $Res Function(_EverythngUserA) _then)
+      : super(_value, (v) => _then(v as _EverythngUserA));
 
   @override
-  _EverythngUser get _value => super._value as _EverythngUser;
+  _EverythngUserA get _value => super._value as _EverythngUserA;
 
   @override
   $Res call({
     Object? email = freezed,
     Object? uid = freezed,
   }) {
-    return _then(_EverythngUser(
+    return _then(_EverythngUserA(
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -114,8 +114,8 @@ class __$EverythngUserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EverythngUser extends _EverythngUser {
-  const _$_EverythngUser({required this.email, required this.uid}) : super._();
+class _$_EverythngUserA extends _EverythngUserA {
+  const _$_EverythngUserA({required this.email, required this.uid}) : super._();
 
   @override
   final String email;
@@ -124,14 +124,14 @@ class _$_EverythngUser extends _EverythngUser {
 
   @override
   String toString() {
-    return 'EverythngUser(email: $email, uid: $uid)';
+    return 'EverythngUserA(email: $email, uid: $uid)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EverythngUser &&
+            other is _EverythngUserA &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.uid, uid) || other.uid == uid));
   }
@@ -141,14 +141,14 @@ class _$_EverythngUser extends _EverythngUser {
 
   @JsonKey(ignore: true)
   @override
-  _$EverythngUserCopyWith<_EverythngUser> get copyWith =>
-      __$EverythngUserCopyWithImpl<_EverythngUser>(this, _$identity);
+  _$EverythngUserACopyWith<_EverythngUserA> get copyWith =>
+      __$EverythngUserACopyWithImpl<_EverythngUserA>(this, _$identity);
 }
 
-abstract class _EverythngUser extends EverythngUser {
-  const factory _EverythngUser({required String email, required String uid}) =
-      _$_EverythngUser;
-  const _EverythngUser._() : super._();
+abstract class _EverythngUserA extends EverythngUserA {
+  const factory _EverythngUserA({required String email, required String uid}) =
+      _$_EverythngUserA;
+  const _EverythngUserA._() : super._();
 
   @override
   String get email;
@@ -156,6 +156,6 @@ abstract class _EverythngUser extends EverythngUser {
   String get uid;
   @override
   @JsonKey(ignore: true)
-  _$EverythngUserCopyWith<_EverythngUser> get copyWith =>
+  _$EverythngUserACopyWith<_EverythngUserA> get copyWith =>
       throw _privateConstructorUsedError;
 }

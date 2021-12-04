@@ -2,7 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
-import 'package:everythng/domain/auth/entities/everythng_user.dart';
+import 'package:everythng/domain/auth/entities/everythng_user_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -35,7 +35,7 @@ void main() {
         expect: () => const [
               AuthState.authenticated(
                   everythngUser:
-                      EverythngUser(email: email, uid: uid))
+                      EverythngUserA(email: email, uid: uid))
             ]);
 
     test('should pass failures on unsuccessful login', () async {
@@ -84,7 +84,7 @@ void main() {
         expect: () => const [
               AuthState.authenticated(
                   everythngUser:
-                      EverythngUser(email: email, uid: uid))
+                      EverythngUserA(email: email, uid: uid))
             ]);
 
     test('should pass failures on unsuccessful login', () async {

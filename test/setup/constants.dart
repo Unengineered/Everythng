@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:everythng/domain/auth/entities/everythng_user.dart';
+import 'package:everythng/domain/auth/entities/everythng_user_auth.dart';
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
+import 'package:everythng/domain/profile/entities/everythng_user.dart';
 
 //AUTH
 const email = "user@everythng.com";
@@ -12,7 +13,7 @@ const String token = 'TOKEN';
 const String refreshedToken = 'REFRESHEDTOKEN';
 
 
-const user = EverythngUser(email: email, uid: uid);
+const user = EverythngUserA(email: email, uid: uid);
 
 //DISCOVER
 const recommendedProductsJson = '''
@@ -132,7 +133,51 @@ const recommendedStoresJson = '''
 	]
 }]
 ''';
-
+const profileData = '''
+ {
+		"id": "312413209vfjk",
+		"firstname": "someone",
+		"lastname": "someone",
+		"phone": "8413939090",
+		"email": "something@soemthing.com",
+		"picture": "picture url",
+		"addresses": 
+    [{
+			  "line1": "",
+		    "line2": "",
+		    "pincode" : 400789,
+		    "city" : "Mumbai",
+		    "state" : "Maharashtra"
+		}],
+		"store": {
+			"name" : "store name",
+			"id" : "store id",
+			"tagline" : "tagline",
+			"picture" : "picture url"
+		}
+}
+''';
+final profileBody ={
+    "id": "312413209vfjk",
+    "firstname": "someone",
+		"lastname": "someone",
+		"phone": "8413939090",
+    "picture": "picture url",
+		"addresses": 
+    [{
+			  "line1": "",
+		    "line2": "",
+		    "pincode" : 400789,
+		    "city" : "Mumbai",
+		    "state" : "Maharashtra"
+		}],
+		"store": {
+			"name" : "store name",
+			"id" : "store id",
+			"tagline" : "tagline",
+			"picture" : "picture url"
+		}
+};
 final List<RecommendedProduct> recommendedProductsEx =
     (json.decode(recommendedProductsJson) as List<dynamic>)
         .map((json) => RecommendedProduct.fromJson(json))
@@ -141,3 +186,5 @@ final List<RecommendedStore> recommendedStoresEx =
     (json.decode(recommendedStoresJson) as List<dynamic>)
         .map((json) => RecommendedStore.fromJson(json))
         .toList();
+
+final everythngUser = EverythngUser.fromJson(json.decode(profileData));
