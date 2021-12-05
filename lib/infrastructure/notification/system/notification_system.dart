@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:everythng/infrastructure/notfication/handlers/background_message_handler.dart';
-import 'package:everythng/infrastructure/notfication/handlers/foreground_message_handler.dart';
+import 'package:everythng/infrastructure/notification/handlers/background_message_handler.dart';
+import 'package:everythng/infrastructure/notification/handlers/foreground_message_handler.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 
