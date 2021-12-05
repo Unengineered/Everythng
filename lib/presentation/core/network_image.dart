@@ -26,7 +26,6 @@ class EverythngNetworkImage extends StatelessWidget {
       },
       imageBuilder: imageBuilder,
       errorWidget: (context, url, error) {
-        print(error);
         return const Icon(
           Icons.error,
         );

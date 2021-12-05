@@ -48,10 +48,10 @@ dependencies:
   freezed_annotation: ^1.0.0
   flutter:
     sdk: flutter
-  google_fonts:
-  flutter_keyboard_visibility:
   http: ^0.13.4
   #  TODO: Add version numbers
+  google_fonts:
+  flutter_keyboard_visibility:
   vector_math:
   lottie:
   flutter_svg: 
