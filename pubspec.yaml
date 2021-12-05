@@ -50,6 +50,8 @@ dependencies:
     sdk: flutter
   google_fonts:
   flutter_keyboard_visibility:
+  firebase_messaging: ^11.2.0
+  flutter_local_notifications: ^9.1.4
   http: ^0.13.4
   #  TODO: Add version numbers
   vector_math:
