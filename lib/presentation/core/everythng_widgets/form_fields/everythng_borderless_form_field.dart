@@ -3,7 +3,7 @@ import 'package:everythng/constants/extended_theme_data.dart';
 import 'package:everythng/constants/extensions.dart';
 import 'package:flutter/material.dart';
 
-enum FormFieldType { email, password }
+enum FormFieldType { normal, password, phoneNumber }
 
 class EverythngBorderlessFormField extends StatefulWidget {
   const EverythngBorderlessFormField({
@@ -11,12 +11,16 @@ class EverythngBorderlessFormField extends StatefulWidget {
     required GlobalKey<FormState> formKey,
     required this.controller,
     required this.type,
-    this.validator, this.onChanged, this.enabled,
+    required this.hintText,
+    this.validator,
+    this.onChanged,
+    this.enabled,
   })  : _formKey = formKey,
         super(key: key);
 
   final GlobalKey<FormState> _formKey;
   final TextEditingController controller;
+  final String hintText;
   final FormFieldType type;
   final String? Function(String? value)? validator;
   final void Function(String)? onChanged;
@@ -55,6 +59,12 @@ class _EverythngBorderlessFormFieldState
         cursorWidth: 3,
         obscureText: widget.type == FormFieldType.password ? obscure : false,
         decoration: InputDecoration(
+          prefixStyle: everythngTextTheme.headline3Bold!.copyWith(color: Colors.black) ,
+          prefix: widget.type == FormFieldType.phoneNumber
+              ? const Text(
+                  '+91',
+                )
+              : null,
           suffixIcon: widget.type == FormFieldType.password
               ? IconButton(
                   onPressed: () {
@@ -68,9 +78,7 @@ class _EverythngBorderlessFormFieldState
                   color: everythngThemeData.textAndIconography!['disabled'],
                 )
               : null,
-          hintText: widget.type == FormFieldType.email
-              ? 'abc@everythng.com'
-              : '*************',
+          hintText: widget.hintText,
           hintStyle: everythngTextTheme.headline3Bold!.copyWith(
             color: everythngThemeData.textAndIconography!['disabled'],
           ),
