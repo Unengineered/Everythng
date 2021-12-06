@@ -1,7 +1,9 @@
 import 'package:everythng/constants/extended_text_theme.dart';
 import 'package:everythng/constants/extended_theme_data.dart';
 import 'package:everythng/constants/extensions.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 enum FormFieldType { normal, password, phoneNumber }
 
@@ -45,6 +47,9 @@ class _EverythngBorderlessFormFieldState
     return Form(
       key: widget._formKey,
       child: TextFormField(
+        keyboardType: widget.type == FormFieldType.phoneNumber
+            ? TextInputType.phone
+            : TextInputType.text,
         enabled: widget.enabled,
         onChanged: widget.onChanged,
         validator: widget.validator,
@@ -59,10 +64,18 @@ class _EverythngBorderlessFormFieldState
         cursorWidth: 3,
         obscureText: widget.type == FormFieldType.password ? obscure : false,
         decoration: InputDecoration(
-          prefixStyle: everythngTextTheme.headline3Bold!.copyWith(color: Colors.black) ,
-          prefix: widget.type == FormFieldType.phoneNumber
-              ? const Text(
-                  '+91',
+          prefixStyle:
+              everythngTextTheme.headline3Bold!.copyWith(color: Colors.black),
+          prefixIcon: widget.type == FormFieldType.phoneNumber
+              ? SizedBox(
+                  child: Center(
+                    widthFactor: 0.0,
+                    child: Text(
+                      '+91',
+                      style: everythngTextTheme.headline3Bold!
+                          .copyWith(color: Colors.black),
+                    ),
+                  ),
                 )
               : null,
           suffixIcon: widget.type == FormFieldType.password
@@ -76,7 +89,7 @@ class _EverythngBorderlessFormFieldState
                       ? const Icon(Icons.visibility_off_rounded)
                       : const Icon(Icons.visibility_rounded),
                   color: everythngThemeData.textAndIconography!['disabled'],
-                )
+          )
               : null,
           hintText: widget.hintText,
           hintStyle: everythngTextTheme.headline3Bold!.copyWith(
