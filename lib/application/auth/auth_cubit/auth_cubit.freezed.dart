@@ -25,7 +25,7 @@ class _$AuthStateTearOff {
     return const _Unauthenticated();
   }
 
-  _Authenticated authenticated({required EverythngUserA everythngUser}) {
+  _Authenticated authenticated({required BaseUser everythngUser}) {
     return _Authenticated(
       everythngUser: everythngUser,
     );
@@ -41,21 +41,21 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() unauthenticated,
-    required TResult Function(EverythngUserA everythngUser) authenticated,
+    required TResult Function(BaseUser everythngUser) authenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticated,
-    TResult Function(EverythngUserA everythngUser)? authenticated,
+    TResult Function(BaseUser everythngUser)? authenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticated,
-    TResult Function(EverythngUserA everythngUser)? authenticated,
+    TResult Function(BaseUser everythngUser)? authenticated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,7 +138,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() unauthenticated,
-    required TResult Function(EverythngUserA everythngUser) authenticated,
+    required TResult Function(BaseUser everythngUser) authenticated,
   }) {
     return initial();
   }
@@ -148,7 +148,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticated,
-    TResult Function(EverythngUserA everythngUser)? authenticated,
+    TResult Function(BaseUser everythngUser)? authenticated,
   }) {
     return initial?.call();
   }
@@ -158,7 +158,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticated,
-    TResult Function(EverythngUserA everythngUser)? authenticated,
+    TResult Function(BaseUser everythngUser)? authenticated,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -248,7 +248,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() unauthenticated,
-    required TResult Function(EverythngUserA everythngUser) authenticated,
+    required TResult Function(BaseUser everythngUser) authenticated,
   }) {
     return unauthenticated();
   }
@@ -258,7 +258,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticated,
-    TResult Function(EverythngUserA everythngUser)? authenticated,
+    TResult Function(BaseUser everythngUser)? authenticated,
   }) {
     return unauthenticated?.call();
   }
@@ -268,7 +268,7 @@ class _$_Unauthenticated implements _Unauthenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticated,
-    TResult Function(EverythngUserA everythngUser)? authenticated,
+    TResult Function(BaseUser everythngUser)? authenticated,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -321,9 +321,7 @@ abstract class _$AuthenticatedCopyWith<$Res> {
   factory _$AuthenticatedCopyWith(
           _Authenticated value, $Res Function(_Authenticated) then) =
       __$AuthenticatedCopyWithImpl<$Res>;
-  $Res call({EverythngUserA everythngUser});
-
-  $EverythngUserACopyWith<$Res> get everythngUser;
+  $Res call({BaseUser everythngUser});
 }
 
 /// @nodoc
@@ -344,15 +342,8 @@ class __$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
       everythngUser: everythngUser == freezed
           ? _value.everythngUser
           : everythngUser // ignore: cast_nullable_to_non_nullable
-              as EverythngUserA,
+              as BaseUser,
     ));
-  }
-
-  @override
-  $EverythngUserACopyWith<$Res> get everythngUser {
-    return $EverythngUserACopyWith<$Res>(_value.everythngUser, (value) {
-      return _then(_value.copyWith(everythngUser: value));
-    });
   }
 }
 
@@ -362,7 +353,7 @@ class _$_Authenticated implements _Authenticated {
   const _$_Authenticated({required this.everythngUser});
 
   @override
-  final EverythngUserA everythngUser;
+  final BaseUser everythngUser;
 
   @override
   String toString() {
@@ -391,7 +382,7 @@ class _$_Authenticated implements _Authenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() unauthenticated,
-    required TResult Function(EverythngUserA everythngUser) authenticated,
+    required TResult Function(BaseUser everythngUser) authenticated,
   }) {
     return authenticated(everythngUser);
   }
@@ -401,7 +392,7 @@ class _$_Authenticated implements _Authenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticated,
-    TResult Function(EverythngUserA everythngUser)? authenticated,
+    TResult Function(BaseUser everythngUser)? authenticated,
   }) {
     return authenticated?.call(everythngUser);
   }
@@ -411,7 +402,7 @@ class _$_Authenticated implements _Authenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? unauthenticated,
-    TResult Function(EverythngUserA everythngUser)? authenticated,
+    TResult Function(BaseUser everythngUser)? authenticated,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -456,10 +447,10 @@ class _$_Authenticated implements _Authenticated {
 }
 
 abstract class _Authenticated implements AuthState {
-  const factory _Authenticated({required EverythngUserA everythngUser}) =
+  const factory _Authenticated({required BaseUser everythngUser}) =
       _$_Authenticated;
 
-  EverythngUserA get everythngUser;
+  BaseUser get everythngUser;
   @JsonKey(ignore: true)
   _$AuthenticatedCopyWith<_Authenticated> get copyWith =>
       throw _privateConstructorUsedError;

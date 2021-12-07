@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 import '../constants.dart';
 import 'fort_knox_helper.dart';
 
-class MockBaseUser extends Mock implements BaseUser {}
 
 class MockHttpClient extends Mock implements http.Client {}
 
@@ -24,9 +23,7 @@ AuthRepository getAuthRepositoryForAuthStatusStream(bool isAuthenticated) {
   final mockFortKnox = MockFortKnox();
   final mockHttpClient = MockHttpClient();
 
-  final mockBaseUser = MockBaseUser();
-  when(() => mockBaseUser.email).thenReturn(email);
-  when(() => mockBaseUser.uid).thenReturn(uid);
+  const mockBaseUser = BaseUser(email: email, uid: uid);
   when(() => mockFortKnox.getAuthStatusStream())
       .thenAnswer((invocation) async* {
     yield isAuthenticated ? mockBaseUser : null;
@@ -37,9 +34,7 @@ AuthRepository getAuthRepositoryForAuthStatusStream(bool isAuthenticated) {
 AuthRepository getAuthRepositoryForCurrentUser(bool isAuthenticated) {
   final mockFortKnox = MockFortKnox();
   final mockHttpClient = MockHttpClient();
-  final mockBaseUser = MockBaseUser();
-  when(() => mockBaseUser.email).thenReturn(email);
-  when(() => mockBaseUser.uid).thenReturn(uid);
+  const mockBaseUser = BaseUser(email: email, uid: uid);
   if (isAuthenticated == false) {
     when(() => mockFortKnox.getCurrentUser())
         .thenThrow(AuthenticationException.unauthenticated());
@@ -75,9 +70,8 @@ AuthRepository getAuthRepositoryForSigning(
     {AuthenticationException? exception}) {
   final mockFortKnox = MockFortKnox();
   final mockHttpClient = MockHttpClient();
-  final mockBaseUser = MockBaseUser();
-  when(() => mockBaseUser.email).thenReturn(email);
-  when(() => mockBaseUser.uid).thenReturn(uid);
+  const mockBaseUser = BaseUser(email: email, uid: uid);
+
   if (exception != null) {
     when(() => mockFortKnox.registerWithEmailAndPassword(
         email: email, password: password)).thenThrow(exception);

@@ -4,5 +4,5 @@ part of 'auth_cubit.dart';
 class AuthState with _$AuthState{
     const factory AuthState.initial() = _Initial;
     const factory AuthState.unauthenticated() = _Unauthenticated;
-    const factory AuthState.authenticated({required EverythngUserA everythngUser}) = _Authenticated;
+    const factory AuthState.authenticated({required BaseUser everythngUser}) = _Authenticated;
 }

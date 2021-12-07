@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:everythng/domain/auth/entities/everythng_user_auth.dart';
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
 import 'package:everythng/domain/profile/entities/everythng_user.dart';
+import 'package:fort_knox/fort_knox.dart';
 
 //AUTH
 const email = "user@everythng.com";
@@ -13,7 +13,7 @@ const String token = 'TOKEN';
 const String refreshedToken = 'REFRESHEDTOKEN';
 
 
-const user = EverythngUserA(email: email, uid: uid);
+const user = BaseUser(email: email, uid: uid);
 
 //DISCOVER
 const recommendedProductsJson = '''

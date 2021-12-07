@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
-import 'package:everythng/domain/auth/entities/everythng_user_auth.dart';
 import 'package:everythng/domain/auth/i_auth_repository.dart';
+import 'package:fort_knox/fort_knox.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -58,7 +58,7 @@ class AuthCubit extends Cubit<AuthState> {
           password: password);
 
   Future<Either<AuthFailure, Unit>> _authenticationHandler(
-      {required Future<Either<AuthFailure, EverythngUserA>> Function(
+      {required Future<Either<AuthFailure, BaseUser>> Function(
               {required String email, required String password})
           call,
       required String email,

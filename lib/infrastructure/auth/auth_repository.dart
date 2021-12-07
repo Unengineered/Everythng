@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:everythng/domain/auth/entities/everythng_user_auth.dart';
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:everythng/domain/auth/i_auth_repository.dart';
@@ -28,16 +27,13 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Stream<EverythngUserA?> getAuthStatusStream() =>
-      _fortKnox.getAuthStatusStream().map((baseUser) => baseUser == null
-          ? null
-          : EverythngUserA.fromBaseUserAndDetails(baseUser));
+  Stream<BaseUser?> getAuthStatusStream() =>
+      _fortKnox.getAuthStatusStream();
 
   @override
-  Either<AuthFailure, EverythngUserA> getCurrentUser() {
+  Either<AuthFailure, BaseUser> getCurrentUser() {
     try {
-      return right(
-          EverythngUserA.fromBaseUserAndDetails(_fortKnox.getCurrentUser()));
+      return right(_fortKnox.getCurrentUser());
     } on AuthenticationException catch (exception) {
       if (exception == AuthenticationException.unauthenticated()) {
         return left(const AuthFailure.unauthenticated());
@@ -62,11 +58,11 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<AuthFailure, EverythngUserA>> registerWithEmailAndPassword(
+  Future<Either<AuthFailure, BaseUser>> registerWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      return right(EverythngUserA.fromBaseUserAndDetails(await _fortKnox
-          .registerWithEmailAndPassword(email: email, password: password)));
+      return right(await _fortKnox
+          .registerWithEmailAndPassword(email: email, password: password));
     } on AuthenticationException catch (exception) {
       if (exception == AuthenticationException.userDisabled()) {
         return left(const AuthFailure.userDisabled());
@@ -77,11 +73,11 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<AuthFailure, EverythngUserA>> signInWithEmailAndPassword(
+  Future<Either<AuthFailure, BaseUser>> signInWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      return right(EverythngUserA.fromBaseUserAndDetails(await _fortKnox
-          .signInWithEmailAndPassword(email: email, password: password)));
+      return right(await _fortKnox
+          .signInWithEmailAndPassword(email: email, password: password));
     } on AuthenticationException catch (exception) {
       if (exception == AuthenticationException.userDisabled()) {
         return left(const AuthFailure.userDisabled());

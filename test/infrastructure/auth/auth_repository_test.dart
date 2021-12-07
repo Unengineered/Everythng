@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:everythng/constants/url.dart';
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
-import 'package:everythng/domain/auth/entities/everythng_user_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fort_knox/fort_knox.dart';
 import 'package:mocktail/mocktail.dart';
@@ -51,7 +50,7 @@ void main() {
       //Act
       final result = authRepository.getAuthStatusStream();
       //Assert
-      expect(result, emitsInAnyOrder([emits(isA<EverythngUserA>()), emitsDone]));
+      expect(result, emitsInAnyOrder([emits(isA<BaseUser>()), emitsDone]));
     });
 
     test('should yield null when unauthenticated', () async {
@@ -65,13 +64,13 @@ void main() {
   });
 
   group('getCurrentUser', () {
-    test('should return EverythngUser when authenticated', () {
+    test('should return BaseUser when authenticated', () {
       //Arrange
       final authRepository = getAuthRepositoryForCurrentUser(true);
       //Act
       final result = authRepository.getCurrentUser();
       //Assert
-      expect(result, right(const EverythngUserA(email: email, uid: uid)));
+      expect(result, right(const BaseUser(email: email, uid: uid)));
     });
 
     test('should return AuthFailure.unauthenticated when unauthenticated', () {
@@ -116,7 +115,7 @@ void main() {
   });
 
   group('registerWithEmailAndPassword', () {
-    test('Should return EverythngUser if registration is successful ',
+    test('Should return BaseUser if registration is successful ',
         () async {
       //Arrange
       final authRepository = getAuthRepositoryForSigning();
@@ -124,7 +123,7 @@ void main() {
       final result = await authRepository.registerWithEmailAndPassword(
           email: email, password: password);
       //Assert
-      expect(result, right(const EverythngUserA(email: email, uid: uid)));
+      expect(result, right(const BaseUser(email: email, uid: uid)));
     });
 
     test('Should return AuthFailure.invalidFailure if code does not match',
@@ -160,7 +159,7 @@ void main() {
       final result = await authRepository.signInWithEmailAndPassword(
           email: email, password: password);
       //Assert
-      expect(result, right(const EverythngUserA(email: email, uid: uid)));
+      expect(result, right(const BaseUser(email: email, uid: uid)));
     });
 
     test('Should return AuthFailure.invalidFailure if code does not match',
