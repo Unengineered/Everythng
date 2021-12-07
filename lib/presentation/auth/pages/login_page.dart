@@ -68,6 +68,7 @@ class LoginPage extends HookWidget {
                       ShakeAnimation(
                         shakeController: _shakeController,
                         child: EverythngBorderlessFormField(
+                          hintText: 'abc@everythng.com',
                           validator: (value) {
                             return value!.isValidEmail()
                                 ? null
@@ -75,7 +76,7 @@ class LoginPage extends HookWidget {
                           },
                           formKey: _formKey,
                           controller: _emailEditingController,
-                          type: FormFieldType.email,
+                          type: FormFieldType.normal,
                           enabled: !_isProcessing.value,
                         ),
                       ),

@@ -80,6 +80,7 @@ class CreatePasswordPage extends HookWidget {
                         height: 28,
                       ),
                       EverythngBorderlessFormField(
+                        hintText: '**********',
                         onChanged: (value) {
                           if (value.length > 6) {
                             _isGreaterThan6.value = true;

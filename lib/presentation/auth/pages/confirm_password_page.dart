@@ -92,6 +92,7 @@ class ConfirmPasswordPage extends HookWidget {
                           height: 30,
                         ),
                         EverythngBorderlessFormField(
+                          hintText: '**********',
                           validator: (value) {
                             if (value ==
                                 context.read<AuthFormCubit>().state.password) {
