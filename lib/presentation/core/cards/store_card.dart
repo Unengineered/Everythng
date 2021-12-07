@@ -4,7 +4,7 @@ import 'package:everythng/domain/discover/entities/recommended_store.dart';
 import 'package:everythng/presentation/core/network_image.dart';
 import 'package:flutter/material.dart';
 
-//TODO : Integrate with API
+
 class StoreCard extends StatelessWidget {
   final RecommendedStore store;
   const StoreCard(
@@ -50,10 +50,6 @@ class StoreCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                // Image.asset(
-                //   'assets/images/logo.png',
-                //   height: 42,
-                // ),
                 SizedBox(
                   width: 40,
                   height: 42,

@@ -20,37 +20,37 @@ class DiscoverPage extends StatelessWidget {
     return BlocProvider.value(
       value: getIt<DiscoverCubit>()..getRecommendations(),
       child: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.checkroom_rounded,
-                      color: Colors.black,
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Text(
-                      'Thrifting',
-                      style: everythngTextTheme.headline3Bold,
-                    )
-                  ],
-                ),
-                TextButton(
-                  onPressed: () => context.read<AuthCubit>().signOut(),
-                  child: const Text("Logout"),
-                ),
-              ],
-            ),
-          ),
           body: ListView(
             scrollDirection: Axis.vertical,
             physics: const BouncingScrollPhysics(),
             children: [
+              AppBar(
+                elevation: 0,
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.checkroom_rounded,
+                          color: Colors.black,
+                        ),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          'Thrifting',
+                          style: everythngTextTheme.headline3Bold,
+                        )
+                      ],
+                    ),
+                    TextButton(
+                      onPressed: () => context.read<AuthCubit>().signOut(),
+                      child: const Text("Logout"),
+                    ),
+                  ],
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),
                 child: Text(
