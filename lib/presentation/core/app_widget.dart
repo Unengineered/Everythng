@@ -16,7 +16,7 @@ class AppWidget extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => getIt<AuthCubit>()),
-          BlocProvider(create: (_) => getIt<AuthFormCubit>())
+          BlocProvider(create: (_) => getIt<AuthFormCubit>()),
         ],
         child: AuthRouter(
           router: _appRouter,
@@ -24,11 +24,10 @@ class AppWidget extends StatelessWidget {
             title: 'Everythng App',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              scaffoldBackgroundColor: Colors.grey.shade50,
-              appBarTheme: AppBarTheme(
-                backgroundColor: Colors.grey.shade50,
-              )
-            ),
+                scaffoldBackgroundColor: Colors.grey.shade50,
+                appBarTheme: AppBarTheme(
+                  backgroundColor: Colors.grey.shade50,
+                )),
             routerDelegate: _appRouter.delegate(),
             routeInformationParser: _appRouter.defaultRouteParser(),
           ),
