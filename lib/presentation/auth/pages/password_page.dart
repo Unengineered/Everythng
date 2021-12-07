@@ -18,11 +18,12 @@ class PasswordPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _passwordEditingController = useTextEditingController();
+  final _isProcessing = useState(false);
     var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
     var everythngThemeData = Theme.of(context).everythngThemeData;
 
-    final _passwordEditingController = useTextEditingController();
-    final _isProcessing = useState(false);
+
 
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
@@ -177,6 +178,7 @@ class PasswordPage extends HookWidget {
                           height: 30,
                         ),
                         EverythngBorderlessFormField(
+                          hintText: '**********',
                           enabled: !_isProcessing.value,
                           formKey: _formKey,
                           controller: _passwordEditingController,

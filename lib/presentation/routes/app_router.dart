@@ -4,13 +4,22 @@ import 'package:everythng/presentation/auth/pages/create_password_page.dart';
 import 'package:everythng/presentation/auth/pages/login_page.dart';
 import 'package:everythng/presentation/auth/pages/password_page.dart';
 import 'package:everythng/presentation/discover/pages/discover_page.dart';
+import 'package:everythng/presentation/profile/pages/address_page.dart';
+import 'package:everythng/presentation/profile/pages/first_name_page.dart';
+import 'package:everythng/presentation/profile/pages/last_name_page.dart';
+import 'package:everythng/presentation/profile/pages/phone_number_page.dart';
 import 'package:everythng/presentation/splash/splash_page.dart';
 import 'package:flutter/cupertino.dart';
 
 part 'app_router.gr.dart';
 
 @MaterialAutoRouter(routes: [
-  CupertinoRoute(page: SplashPage, initial: true),
+  CupertinoRoute(page: SplashPage ,initial: true) ,
+  // CupertinoRoute(page: FirstNamePage, initial: true),
+  // CupertinoRoute(page: LastNamePage),
+  // CupertinoRoute(page: PhoneNumberPage),
+  // CupertinoRoute(page: AddressPage),
+
   CupertinoRoute(page: DiscoverPage),
   CupertinoRoute(page: LoginPage),
   CupertinoRoute(page: PasswordPage),
