@@ -4,7 +4,7 @@ import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart'
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../setup/auth_cubit_helper.dart';
+import '../../../setup/auth/cubit/auth_cubit_helper.dart';
 import '../../../setup/auth/auth_repository_helper.dart';
 import '../../../setup/constants.dart';
 

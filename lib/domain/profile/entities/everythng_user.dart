@@ -8,11 +8,10 @@ part 'everythng_user.g.dart';
 class EverythngUser with _$EverythngUser {
   const factory EverythngUser(
       {
-      required String id,
       required String firstname,
       required String lastname,
       required String phone,
-      required String picture,
+      required Uri? picture,
       required List<Address> addresses,
       @JsonKey(name: "store") required StoreLink? storeLink}) = _EverythngUser;
 

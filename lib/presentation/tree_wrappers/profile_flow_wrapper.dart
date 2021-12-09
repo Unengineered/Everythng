@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class AuthenticatedWrapper extends StatelessWidget {
-  const AuthenticatedWrapper({Key? key}) : super(key: key);
+class ProfileFlowWrapper extends StatelessWidget {
+  const ProfileFlowWrapper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -9,20 +9,21 @@ import '../constants.dart';
 
 class MockNetworkKit extends Mock implements NetworkKit {}
 
-ProfileRepository getProfileRepository({bool networkFailure = false}) {
+ProfileRepository getProfileRepository({int? failureCode}) {
   final mockNetworkKit = MockNetworkKit();
   final service = ProfileRepository(mockNetworkKit);
-  if (networkFailure == false) {
+
+  if (failureCode == null) {
     when(() => mockNetworkKit.get(Uri.http(url, '/profile/')))
         .thenAnswer((invocation) async => Response(profileData, 200));
-    when(() => mockNetworkKit.post(Uri.http(url, '/profile/update'),body: profileBody))
+    when(() => mockNetworkKit.post(Uri.http(url, '/profile/update'), body: everythngUserConst.toJson()))
         .thenAnswer(
             (invocation) async => Response(profileData, 200));
   } else {
     when(() => mockNetworkKit.get(Uri.http(url, '/profile/')))
-        .thenAnswer((invocation) async => Response('failure', 400));
-     when(() => mockNetworkKit.post(Uri.http(url, '/profile/update'),body: profileBody))
-        .thenAnswer((invocation) async => Response('failure', 400));
+        .thenAnswer((invocation) async => Response('failure', failureCode));
+     when(() => mockNetworkKit.post(Uri.http(url, '/profile/update'), body: everythngUserConst.toJson()))
+        .thenAnswer((invocation) async => Response('failure', failureCode));
   }
   return service;
 }

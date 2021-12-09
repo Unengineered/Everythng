@@ -22,15 +22,13 @@ class _$EverythngUserTearOff {
   const _$EverythngUserTearOff();
 
   _EverythngUser call(
-      {required String id,
-      required String firstname,
+      {required String firstname,
       required String lastname,
       required String phone,
-      required String picture,
+      required Uri? picture,
       required List<Address> addresses,
       @JsonKey(name: "store") required StoreLink? storeLink}) {
     return _EverythngUser(
-      id: id,
       firstname: firstname,
       lastname: lastname,
       phone: phone,
@@ -50,11 +48,10 @@ const $EverythngUser = _$EverythngUserTearOff();
 
 /// @nodoc
 mixin _$EverythngUser {
-  String get id => throw _privateConstructorUsedError;
   String get firstname => throw _privateConstructorUsedError;
   String get lastname => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
-  String get picture => throw _privateConstructorUsedError;
+  Uri? get picture => throw _privateConstructorUsedError;
   List<Address> get addresses => throw _privateConstructorUsedError;
   @JsonKey(name: "store")
   StoreLink? get storeLink => throw _privateConstructorUsedError;
@@ -71,11 +68,10 @@ abstract class $EverythngUserCopyWith<$Res> {
           EverythngUser value, $Res Function(EverythngUser) then) =
       _$EverythngUserCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String firstname,
+      {String firstname,
       String lastname,
       String phone,
-      String picture,
+      Uri? picture,
       List<Address> addresses,
       @JsonKey(name: "store") StoreLink? storeLink});
 
@@ -93,7 +89,6 @@ class _$EverythngUserCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
     Object? firstname = freezed,
     Object? lastname = freezed,
     Object? phone = freezed,
@@ -102,10 +97,6 @@ class _$EverythngUserCopyWithImpl<$Res>
     Object? storeLink = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       firstname: firstname == freezed
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
@@ -121,7 +112,7 @@ class _$EverythngUserCopyWithImpl<$Res>
       picture: picture == freezed
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Uri?,
       addresses: addresses == freezed
           ? _value.addresses
           : addresses // ignore: cast_nullable_to_non_nullable
@@ -153,11 +144,10 @@ abstract class _$EverythngUserCopyWith<$Res>
       __$EverythngUserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String firstname,
+      {String firstname,
       String lastname,
       String phone,
-      String picture,
+      Uri? picture,
       List<Address> addresses,
       @JsonKey(name: "store") StoreLink? storeLink});
 
@@ -178,7 +168,6 @@ class __$EverythngUserCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
     Object? firstname = freezed,
     Object? lastname = freezed,
     Object? phone = freezed,
@@ -187,10 +176,6 @@ class __$EverythngUserCopyWithImpl<$Res>
     Object? storeLink = freezed,
   }) {
     return _then(_EverythngUser(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       firstname: firstname == freezed
           ? _value.firstname
           : firstname // ignore: cast_nullable_to_non_nullable
@@ -206,7 +191,7 @@ class __$EverythngUserCopyWithImpl<$Res>
       picture: picture == freezed
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Uri?,
       addresses: addresses == freezed
           ? _value.addresses
           : addresses // ignore: cast_nullable_to_non_nullable
@@ -223,8 +208,7 @@ class __$EverythngUserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_EverythngUser implements _EverythngUser {
   const _$_EverythngUser(
-      {required this.id,
-      required this.firstname,
+      {required this.firstname,
       required this.lastname,
       required this.phone,
       required this.picture,
@@ -235,15 +219,13 @@ class _$_EverythngUser implements _EverythngUser {
       _$$_EverythngUserFromJson(json);
 
   @override
-  final String id;
-  @override
   final String firstname;
   @override
   final String lastname;
   @override
   final String phone;
   @override
-  final String picture;
+  final Uri? picture;
   @override
   final List<Address> addresses;
   @override
@@ -252,7 +234,7 @@ class _$_EverythngUser implements _EverythngUser {
 
   @override
   String toString() {
-    return 'EverythngUser(id: $id, firstname: $firstname, lastname: $lastname, phone: $phone, picture: $picture, addresses: $addresses, storeLink: $storeLink)';
+    return 'EverythngUser(firstname: $firstname, lastname: $lastname, phone: $phone, picture: $picture, addresses: $addresses, storeLink: $storeLink)';
   }
 
   @override
@@ -260,7 +242,6 @@ class _$_EverythngUser implements _EverythngUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _EverythngUser &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.firstname, firstname) ||
                 other.firstname == firstname) &&
             (identical(other.lastname, lastname) ||
@@ -273,7 +254,7 @@ class _$_EverythngUser implements _EverythngUser {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, firstname, lastname, phone,
+  int get hashCode => Object.hash(runtimeType, firstname, lastname, phone,
       picture, const DeepCollectionEquality().hash(addresses), storeLink);
 
   @JsonKey(ignore: true)
@@ -289,11 +270,10 @@ class _$_EverythngUser implements _EverythngUser {
 
 abstract class _EverythngUser implements EverythngUser {
   const factory _EverythngUser(
-          {required String id,
-          required String firstname,
+          {required String firstname,
           required String lastname,
           required String phone,
-          required String picture,
+          required Uri? picture,
           required List<Address> addresses,
           @JsonKey(name: "store") required StoreLink? storeLink}) =
       _$_EverythngUser;
@@ -302,15 +282,13 @@ abstract class _EverythngUser implements EverythngUser {
       _$_EverythngUser.fromJson;
 
   @override
-  String get id;
-  @override
   String get firstname;
   @override
   String get lastname;
   @override
   String get phone;
   @override
-  String get picture;
+  Uri? get picture;
   @override
   List<Address> get addresses;
   @override

@@ -1,12 +1,13 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:everythng/application/profile/profile_form_cubit/profile_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
-import 'package:everythng/presentation/profile/pages/last_name_page.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:provider/provider.dart';
+import 'package:auto_route/auto_route.dart';
 
 class FirstNamePage extends HookWidget {
    FirstNamePage({Key? key}) : super(key: key);
@@ -20,7 +21,6 @@ class FirstNamePage extends HookWidget {
     var everythngThemeData = Theme.of(context).everythngThemeData;
 
     return KeyboardDismissOnTap(
-
       child: KeyboardVisibilityBuilder(
         builder: (context , visible) {
           return Scaffold(
@@ -71,7 +71,8 @@ class FirstNamePage extends HookWidget {
                       isProcessing: _isProcessing.value,
                       title: 'Continue',
                       onTap: () {
-                        // context.router.push(LastNamePageRoute());
+                        context.read<ProfileFormCubit>().setFirstName(_firstNameEditingController.text);
+                        context.router.push(LastNamePageRoute());
                       },
                     ),
                   )

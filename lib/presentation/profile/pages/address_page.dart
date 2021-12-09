@@ -1,10 +1,13 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:everythng/application/profile/profile_form_cubit/profile_form_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/domain/profile/entities/address.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:provider/provider.dart';
 
 class AddressPage extends HookWidget {
   AddressPage({Key? key}) : super(key: key);
@@ -154,7 +157,6 @@ class AddressPage extends HookWidget {
                         ),
                         EverythngBorderlessFormField(
                           hintText: 'Maharashtra',
-
                           enabled: !_isProcessing.value,
                           formKey: _stateFormKey,
                           controller: _stateEditingController,
@@ -169,7 +171,17 @@ class AddressPage extends HookWidget {
                       child: TwoStateLargeButton(
                         isProcessing: _isProcessing.value,
                         title: 'Continue',
-                        onTap: () {},
+                        onTap: () {
+                          final address = Address(
+                            line1: _lineOneEditingController.text,
+                            line2: _lineTwoEditingController.text,
+                            pincode: int.parse(_pinCodeEditingController.text),
+                            city: _cityEditingController.text,
+                            state: _stateEditingController.text
+                          );
+                          context.read<ProfileFormCubit>().setAddress(address);
+                          context.read<ProfileFormCubit>().setProfileData();
+                        },
                       ),
                     )
                   ],

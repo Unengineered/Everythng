@@ -13,13 +13,15 @@ import 'package:network_kit/network_kit.dart' as _i8;
 
 import 'application/auth/auth_cubit/auth_cubit.dart' as _i9;
 import 'application/auth/auth_form_cubit/auth_form_cubit.dart' as _i10;
-import 'application/discover/discover_cubit.dart' as _i15;
+import 'application/discover/discover_cubit.dart' as _i17;
+import 'application/profile/profile_cubit/profile_cubit.dart' as _i15;
+import 'application/profile/profile_form_cubit/profile_form_cubit.dart' as _i16;
 import 'domain/auth/i_auth_repository.dart' as _i6;
 import 'domain/discover/i_discover_repository.dart' as _i11;
 import 'domain/profile/i_profile_repository.dart' as _i13;
-import 'infrastructure/auth/auth_injection_module.dart' as _i17;
+import 'infrastructure/auth/auth_injection_module.dart' as _i19;
 import 'infrastructure/auth/auth_repository.dart' as _i7;
-import 'infrastructure/core/core_injection_module.dart' as _i16;
+import 'infrastructure/core/core_injection_module.dart' as _i18;
 import 'infrastructure/discover/discover_repository.dart' as _i12;
 import 'infrastructure/profile/profile_repository.dart'
     as _i14; // ignore_for_file: unnecessary_lambdas
@@ -45,11 +47,15 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i12.DiscoverRepository(get<_i8.NetworkKit>()));
   gh.factory<_i13.IProfileRepository>(
       () => _i14.ProfileRepository(get<_i8.NetworkKit>()));
-  gh.lazySingleton<_i15.DiscoverCubit>(
-      () => _i15.DiscoverCubit(get<_i11.IDiscoverRepository>()));
+  gh.singleton<_i15.ProfileCubit>(
+      _i15.ProfileCubit(get<_i9.AuthCubit>(), get<_i13.IProfileRepository>()));
+  gh.factory<_i16.ProfileFormCubit>(
+      () => _i16.ProfileFormCubit(get<_i15.ProfileCubit>()));
+  gh.lazySingleton<_i17.DiscoverCubit>(
+      () => _i17.DiscoverCubit(get<_i11.IDiscoverRepository>()));
   return get;
 }
 
-class _$CoreInjectionModule extends _i16.CoreInjectionModule {}
+class _$CoreInjectionModule extends _i18.CoreInjectionModule {}
 
-class _$AuthInjectionModule extends _i17.AuthInjectionModule {}
+class _$AuthInjectionModule extends _i19.AuthInjectionModule {}

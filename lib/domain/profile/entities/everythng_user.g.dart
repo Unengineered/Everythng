@@ -8,11 +8,11 @@ part of 'everythng_user.dart';
 
 _$_EverythngUser _$$_EverythngUserFromJson(Map<String, dynamic> json) =>
     _$_EverythngUser(
-      id: json['id'] as String,
       firstname: json['firstname'] as String,
       lastname: json['lastname'] as String,
       phone: json['phone'] as String,
-      picture: json['picture'] as String,
+      picture:
+          json['picture'] == null ? null : Uri.parse(json['picture'] as String),
       addresses: (json['addresses'] as List<dynamic>)
           .map((e) => Address.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -23,11 +23,10 @@ _$_EverythngUser _$$_EverythngUserFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_EverythngUserToJson(_$_EverythngUser instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'firstname': instance.firstname,
       'lastname': instance.lastname,
       'phone': instance.phone,
-      'picture': instance.picture,
+      'picture': instance.picture?.toString(),
       'addresses': instance.addresses.map((e) => e.toJson()).toList(),
       'store': instance.storeLink?.toJson(),
     };

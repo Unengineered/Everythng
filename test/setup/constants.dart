@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
+import 'package:everythng/domain/profile/entities/address.dart';
 import 'package:everythng/domain/profile/entities/everythng_user.dart';
 import 'package:fort_knox/fort_knox.dart';
 
@@ -11,9 +12,23 @@ const password = "skjfasj.ka129!@";
 const uid = "UID";
 const String token = 'TOKEN';
 const String refreshedToken = 'REFRESHEDTOKEN';
-
-
 const user = BaseUser(email: email, uid: uid);
+
+//PROFILE
+final everythngUserConst = EverythngUser(
+		firstname: 'firstname',
+		lastname: 'lastname',
+		phone: '9920644868',
+		picture: Uri.http('www.google.com', '/pic'),
+		addresses: [
+			const Address(
+					line1: 'line1',
+					line2: 'line2',
+					pincode: 400705,
+					city: 'city',
+					state: 'state')
+		],
+		storeLink: null);
 
 //DISCOVER
 const recommendedProductsJson = '''

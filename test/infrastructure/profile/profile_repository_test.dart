@@ -7,8 +7,6 @@ import 'package:mocktail/mocktail.dart';
 import '../../setup/constants.dart';
 import '../../setup/profile/profile_repository_impl_helper.dart';
 
-
-
 void main() {
   setUpAll(() {
     registerFallbackValue(Uri.parse(url));
@@ -26,10 +24,21 @@ void main() {
       expect(result, right(everythngUser));
     });
 
+    test('should return NetworkFailure.noProfileData on 404 response', () async {
+      //Arrange
+      final profileRepository = getProfileRepository(failureCode: 404);
+
+      //Act
+      final result = await profileRepository.getProfileData();
+
+      //Assert
+      expect(result, left(const NetworkFailure.noProfileData()));
+    });
+
     test('Should return NetworkFailure.serverError on unsuccessful get request',
         () async {
       //Arrange
-      final profileRepository = getProfileRepository(networkFailure: true);
+      final profileRepository = getProfileRepository(failureCode: 400);
       //Act
       final result = await profileRepository.getProfileData();
       //Assert
@@ -44,16 +53,16 @@ void main() {
       //Arrange
       final profileRepository = getProfileRepository();
       //Act
-      final result = await profileRepository.updateProfileData(profileData: profileBody);
+      final result = await profileRepository.updateProfileData(everythngUser: everythngUserConst);
       //Assert
       expect(result, right(everythngUser));
     });
     test('Should return NetworkFailure.serverError on unsuccessful post request',
         () async {
       //Arrange
-      final profileRepository = getProfileRepository(networkFailure: true);
+      final profileRepository = getProfileRepository(failureCode: 400);
       //Act
-      final result = await profileRepository.updateProfileData(profileData: profileBody);
+      final result = await profileRepository.updateProfileData(everythngUser: everythngUserConst);
       //Assert
       expect(result, left(const NetworkFailure()));
     });
