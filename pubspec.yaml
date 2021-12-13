@@ -54,6 +54,8 @@ dependencies:
   vector_math: ^2.1.0
   lottie: ^1.2.1
   flutter_svg: ^1.0.0
+  responsive_framework: ^0.1.5
+  device_preview: ^1.0.0
 
 
 
