@@ -23,7 +23,7 @@ class StoreCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
-        boxShadow: everythngComponentShadow,
+        boxShadow: everythng6LayerComponentShadow,
       ),
       child: Column(
         children: [

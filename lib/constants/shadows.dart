@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-List<BoxShadow> everythngComponentShadow = [
-   BoxShadow(
+List<BoxShadow> everythng6LayerComponentShadow = [
+  BoxShadow(
     color: Colors.black.withOpacity(0.07),
     blurRadius: 80,
-     offset: const Offset(0,100),
+    offset: const Offset(0, 100),
   ),
   BoxShadow(
     color: Colors.black.withOpacity(0.0247),
     blurRadius: 33.42,
-     offset: const Offset(0,22.33),
+    offset: const Offset(0, 22.33),
   ),
   BoxShadow(
     color: Colors.black.withOpacity(0.0199),
@@ -30,6 +30,19 @@ List<BoxShadow> everythngComponentShadow = [
     color: Colors.black.withOpacity(0.02047),
     blurRadius: 2.21,
      offset: const Offset(0,-0.02),
+  ),
+];
+
+List<BoxShadow> everythng2LayerComponentShadow =  [
+   BoxShadow(
+    color: Colors.black.withOpacity(0.13),
+    blurRadius: 212,
+    offset: const Offset(0,47),
+  ),
+  BoxShadow(
+    color: Colors.black.withOpacity(0.0589),
+    blurRadius: 26.55,
+    offset: const Offset(0,5.89),
   ),
 
 ];
