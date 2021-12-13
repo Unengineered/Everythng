@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
 import 'package:everythng/application/profile/profile_cubit/profile_cubit.dart';
@@ -26,13 +25,13 @@ class TreeRouter extends StatelessWidget {
   }
 
   void checkStatesAndSetTree() {
-    log('fired check state and set tree function');
+    // log('fired check state and set tree function');
     final currentPage = router.current;
     final authState = getIt<AuthCubit>().state;
     final profileState = getIt<ProfileCubit>().state;
 
-    log("current page ${currentPage.name}");
-    log("auth state $authState");
+    // log("current page ${currentPage.name}");
+    // log("auth state $authState");
 
     authState.map(
         initial: (_) {},
@@ -57,7 +56,7 @@ class TreeRouter extends StatelessWidget {
                 }
               },
               noData: (_){
-                if (currentPage.name != DiscoverPageRoute.name) {
+                if (currentPage.name != FirstNamePageRoute.name) {
                   router.pushAndPopUntil(const ProfileFlowWrapperRoute(),
                       predicate: (_) => false);
                   return;

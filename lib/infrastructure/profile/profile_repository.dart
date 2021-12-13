@@ -15,7 +15,8 @@ class ProfileRepository implements IProfileRepository {
 
   ProfileRepository(this.networkKit);
 
-  final everythngUserConst =  EverythngUser(
+  //TODO: Remove this
+  final everythngUserConst = EverythngUser(
       firstname: 'firstname',
       lastname: 'lastname',
       phone: '9920644868',
@@ -32,18 +33,16 @@ class ProfileRepository implements IProfileRepository {
 
   @override
   Future<Either<NetworkFailure, EverythngUser>> getProfileData() async {
-
     //TODO: Turn off fake API
-    //return right(everythngUserConst);
+    return right(everythngUserConst);
     //return left(const NetworkFailure.noProfileData());
 
     final response = await networkKit.get(Uri.http(url, '/profile/'));
 
-    if(response.statusCode == 404) {
-      return left(const NetworkFailure.noProfileData());
-    }
-
     if (response.statusCode != 200) {
+      if (response.statusCode == 404) {
+        return left(const NetworkFailure.noProfileData());
+      }
       return left(const NetworkFailure());
     }
 
@@ -53,8 +52,8 @@ class ProfileRepository implements IProfileRepository {
   @override
   Future<Either<NetworkFailure, EverythngUser>> updateProfileData(
       {required EverythngUser everythngUser}) async {
-    final response =
-        await networkKit.post(Uri.http(url, '/profile/update'), body: everythngUser.toJson());
+    final response = await networkKit.put(Uri.http(url, '/profile/update'),
+        body: everythngUser.toJson());
     if (response.statusCode != 200) {
       return left(const NetworkFailure());
     }
