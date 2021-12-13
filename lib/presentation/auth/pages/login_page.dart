@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
-import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
+import 'package:everythng/constants/extensions/extension_string.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
@@ -20,8 +21,6 @@ class LoginPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
-    final everythngThemeData = Theme.of(context).everythngThemeData;
 
     final _emailEditingController = useTextEditingController();
     final _shakeController =
@@ -50,15 +49,15 @@ class LoginPage extends HookWidget {
                     children: [
                       Text(
                         'enter your email',
-                        style: everythngTextTheme.headline1Bold!,
+                        style: context.everythngTextTheme.headline1Bold!,
                       ),
                       const SizedBox(
                         height: 12,
                       ),
                       Text(
                         'embarrassing old email ids are most welcome',
-                        style: everythngTextTheme.bodyTextMedium!.copyWith(
-                          color: everythngThemeData
+                        style: context.everythngTextTheme.bodyTextMedium!.copyWith(
+                          color: context.everythngThemeData
                               .textAndIconography!['mediumEmphasis'],
                         ),
                       ),

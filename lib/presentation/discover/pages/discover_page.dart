@@ -1,6 +1,6 @@
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
 import 'package:everythng/application/discover/discover_cubit.dart';
-import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
 import 'package:everythng/injection.dart';
 import 'package:everythng/presentation/core/cards/product_card.dart';
 import 'package:everythng/presentation/core/cards/store_card.dart';
@@ -16,7 +16,6 @@ class DiscoverPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
     return BlocProvider.value(
       value: getIt<DiscoverCubit>()..getRecommendations(),
       child: Scaffold(
@@ -40,7 +39,7 @@ class DiscoverPage extends StatelessWidget {
                         ),
                         Text(
                           'Thrifting',
-                          style: everythngTextTheme.headline3Bold,
+                          style: context.everythngTextTheme.headline3Bold,
                         )
                       ],
                     ),
@@ -55,7 +54,7 @@ class DiscoverPage extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16.0),
                 child: Text(
                   'Clothes',
-                  style: everythngTextTheme.headline3Bold,
+                  style: context.everythngTextTheme.headline3Bold,
                 ),
               ),
               const SizedBox(
@@ -105,7 +104,7 @@ class DiscoverPage extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16),
                 child: Text(
                   'Stores',
-                  style: everythngTextTheme.headline3Bold,
+                  style: context.everythngTextTheme.headline3Bold,
                 ),
               ),
               const SizedBox(

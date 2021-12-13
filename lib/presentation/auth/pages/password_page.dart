@@ -1,5 +1,5 @@
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
-import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
@@ -20,8 +20,6 @@ class PasswordPage extends HookWidget {
   Widget build(BuildContext context) {
     final _passwordEditingController = useTextEditingController();
   final _isProcessing = useState(false);
-    var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
-    var everythngThemeData = Theme.of(context).everythngThemeData;
 
 
 
@@ -162,15 +160,15 @@ class PasswordPage extends HookWidget {
                       children: [
                         Text(
                           'welcome back,\nenter your password',
-                          style: everythngTextTheme.headline1Bold!,
+                          style: context.everythngTextTheme.headline1Bold!,
                         ),
                         const SizedBox(
                           height: 12,
                         ),
                         Text(
                           'it will be between just the two of us, pinky promise!',
-                          style: everythngTextTheme.bodyTextMedium!.copyWith(
-                            color: everythngThemeData
+                          style: context.everythngTextTheme.bodyTextMedium!.copyWith(
+                            color: context.everythngThemeData
                                 .textAndIconography!['mediumEmphasis'],
                           ),
                         ),

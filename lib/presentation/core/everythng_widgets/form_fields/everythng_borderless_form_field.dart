@@ -1,6 +1,6 @@
 import 'package:everythng/constants/extended_text_theme.dart';
 import 'package:everythng/constants/extended_theme_data.dart';
-import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -44,10 +44,6 @@ class _EverythngBorderlessFormFieldState
 
   @override
   Widget build(BuildContext context) {
-    final ExtendedThemeData everythngThemeData =
-        Theme.of(context).everythngThemeData;
-    final ExtendedTextTheme everythngTextTheme =
-        Theme.of(context).textTheme.everythngTextTheme;
 
     return Form(
       key: widget._formKey,
@@ -66,20 +62,18 @@ class _EverythngBorderlessFormFieldState
         controller: widget.controller,
         textAlign: TextAlign.start,
         textAlignVertical: TextAlignVertical.center,
-        cursorColor: everythngThemeData.primaryColor,
-        style: everythngTextTheme.headline3Bold!,
+        cursorColor: context.everythngThemeData.primaryColor,
+        style: context.everythngTextTheme.headline3Bold!,
         cursorWidth: 3,
         obscureText: widget.type == FormFieldType.password ? obscure : false,
         decoration: InputDecoration(
-          prefixStyle:
-          everythngTextTheme.headline3Bold!.copyWith(color: Colors.black),
           prefixIcon: widget.type == FormFieldType.phoneNumber
               ? SizedBox(
             child: Center(
               widthFactor: 0.0,
               child: Text(
                 '+91',
-                style: everythngTextTheme.headline3Bold!
+                style: context.everythngTextTheme.headline3Bold!
                     .copyWith(color: Colors.black),
               ),
             ),
@@ -95,12 +89,12 @@ class _EverythngBorderlessFormFieldState
             icon: obscure
                 ? const Icon(Icons.visibility_off_rounded)
                 : const Icon(Icons.visibility_rounded),
-            color: everythngThemeData.textAndIconography!['disabled'],
+            color: context.everythngThemeData.textAndIconography!['disabled'],
           )
               : null,
           hintText: widget.hintText,
-          hintStyle: everythngTextTheme.headline3Bold!.copyWith(
-            color: everythngThemeData.textAndIconography!['disabled'],
+          hintStyle: context.everythngTextTheme.headline3Bold!.copyWith(
+            color: context.everythngThemeData.textAndIconography!['disabled'],
           ),
           border: InputBorder.none,
         ),

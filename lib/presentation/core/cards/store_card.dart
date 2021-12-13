@@ -1,4 +1,4 @@
-import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
 import 'package:everythng/constants/shadows.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
 import 'package:everythng/presentation/core/network_image.dart';
@@ -14,7 +14,6 @@ class StoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
     return Container(
       height: 236,
       padding: const EdgeInsets.symmetric(
@@ -39,14 +38,14 @@ class StoreCard extends StatelessWidget {
                   children: [
                     Text(
                       store.name,
-                      style: everythngTextTheme.headline3Bold,
+                      style: context.everythngTextTheme.headline3Bold,
                     ),
                     const SizedBox(
                       height: 4,
                     ),
                     Text(
                       store.tagline!,
-                      style: everythngTextTheme.footerSemiBold,
+                      style: context.everythngTextTheme.footerSemiBold,
                     ),
                   ],
                 ),
