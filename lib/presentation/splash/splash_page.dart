@@ -12,15 +12,20 @@ class SplashPage extends StatelessWidget {
     // but if you decide add an animation on this page, add a checker so that the checkAuthState()
     // function isn't called after every build as animations call the build function repeatedly.
     WidgetsBinding.instance!.addPostFrameCallback((_) {
-      final cubit = context.read<AuthCubit>();
-      if (cubit.state == const AuthState.initial()) cubit.splashAuthCheck();
+      Future.delayed(const Duration(milliseconds: 500), () {
+        final cubit = context.read<AuthCubit>();
+        if (cubit.state == const AuthState.initial()) cubit.splashAuthCheck();
+      });
     });
 
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        return  Scaffold(
+        return Scaffold(
           body: Center(
-            child: SvgPicture.asset('assets/images/Everythng_logo.svg',width: 90,),
+            child: SvgPicture.asset(
+              'assets/images/Everythng_logo.svg',
+              width: 90,
+            ),
           ),
         );
       },

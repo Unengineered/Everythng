@@ -20,6 +20,7 @@ class DiscoverRepository implements IDiscoverRepository {
   Future<Either<NetworkFailure, List<RecommendedProduct>>>
       getRecommendedProducts() async {
 
+    //TODO: Switch fake API off
     return right(recommendedProductsEx);
 
     final response =
@@ -37,6 +38,7 @@ class DiscoverRepository implements IDiscoverRepository {
   Future<Either<NetworkFailure, List<RecommendedStore>>>
       getRecommendedStores() async {
 
+    //TODO: Switch fake API off
     return right(recommendedStoresEx);
 
 

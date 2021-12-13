@@ -20,13 +20,56 @@ class _$NetworkFailureTearOff {
   _NetworkFailure call() {
     return const _NetworkFailure();
   }
+
+  _NoProfileData noProfileData() {
+    return const _NoProfileData();
+  }
 }
 
 /// @nodoc
 const $NetworkFailure = _$NetworkFailureTearOff();
 
 /// @nodoc
-mixin _$NetworkFailure {}
+mixin _$NetworkFailure {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() noProfileData,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? noProfileData,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? noProfileData,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_NetworkFailure value) $default, {
+    required TResult Function(_NoProfileData value) noProfileData,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_NetworkFailure value)? $default, {
+    TResult Function(_NoProfileData value)? noProfileData,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_NetworkFailure value)? $default, {
+    TResult Function(_NoProfileData value)? noProfileData,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $NetworkFailureCopyWith<$Res> {
@@ -82,8 +125,175 @@ class _$_NetworkFailure implements _NetworkFailure {
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() noProfileData,
+  }) {
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? noProfileData,
+  }) {
+    return $default?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? noProfileData,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_NetworkFailure value) $default, {
+    required TResult Function(_NoProfileData value) noProfileData,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_NetworkFailure value)? $default, {
+    TResult Function(_NoProfileData value)? noProfileData,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_NetworkFailure value)? $default, {
+    TResult Function(_NoProfileData value)? noProfileData,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _NetworkFailure implements NetworkFailure {
   const factory _NetworkFailure() = _$_NetworkFailure;
+}
+
+/// @nodoc
+abstract class _$NoProfileDataCopyWith<$Res> {
+  factory _$NoProfileDataCopyWith(
+          _NoProfileData value, $Res Function(_NoProfileData) then) =
+      __$NoProfileDataCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NoProfileDataCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res>
+    implements _$NoProfileDataCopyWith<$Res> {
+  __$NoProfileDataCopyWithImpl(
+      _NoProfileData _value, $Res Function(_NoProfileData) _then)
+      : super(_value, (v) => _then(v as _NoProfileData));
+
+  @override
+  _NoProfileData get _value => super._value as _NoProfileData;
+}
+
+/// @nodoc
+
+class _$_NoProfileData implements _NoProfileData {
+  const _$_NoProfileData();
+
+  @override
+  String toString() {
+    return 'NetworkFailure.noProfileData()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _NoProfileData);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() noProfileData,
+  }) {
+    return noProfileData();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? noProfileData,
+  }) {
+    return noProfileData?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? noProfileData,
+    required TResult orElse(),
+  }) {
+    if (noProfileData != null) {
+      return noProfileData();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_NetworkFailure value) $default, {
+    required TResult Function(_NoProfileData value) noProfileData,
+  }) {
+    return noProfileData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult Function(_NetworkFailure value)? $default, {
+    TResult Function(_NoProfileData value)? noProfileData,
+  }) {
+    return noProfileData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_NetworkFailure value)? $default, {
+    TResult Function(_NoProfileData value)? noProfileData,
+    required TResult orElse(),
+  }) {
+    if (noProfileData != null) {
+      return noProfileData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoProfileData implements NetworkFailure {
+  const factory _NoProfileData() = _$_NoProfileData;
 }

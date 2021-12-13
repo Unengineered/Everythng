@@ -19,9 +19,17 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const SplashPage());
     },
-    DiscoverPageRoute.name: (routeData) {
+    SigningFlowWrapperRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const DiscoverPage());
+          routeData: routeData, child: const SigningFlowWrapper());
+    },
+    MainAppWrapperRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const MainAppWrapper());
+    },
+    ProfileFlowWrapperRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const ProfileFlowWrapper());
     },
     LoginPageRoute.name: (routeData) {
       final args = routeData.argsAs<LoginPageRouteArgs>(
@@ -46,19 +54,73 @@ class _$AppRouter extends RootStackRouter {
           orElse: () => const ConfirmPasswordPageRouteArgs());
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: ConfirmPasswordPage(key: args.key));
+    },
+    DiscoverPageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const DiscoverPage());
+    },
+    FirstNamePageRoute.name: (routeData) {
+      final args = routeData.argsAs<FirstNamePageRouteArgs>(
+          orElse: () => const FirstNamePageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: FirstNamePage(key: args.key));
+    },
+    LastNamePageRoute.name: (routeData) {
+      final args = routeData.argsAs<LastNamePageRouteArgs>(
+          orElse: () => const LastNamePageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: LastNamePage(key: args.key));
+    },
+    PhoneNumberPageRoute.name: (routeData) {
+      final args = routeData.argsAs<PhoneNumberPageRouteArgs>(
+          orElse: () => const PhoneNumberPageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: PhoneNumberPage(key: args.key));
+    },
+    AddressPageRoute.name: (routeData) {
+      final args = routeData.argsAs<AddressPageRouteArgs>(
+          orElse: () => const AddressPageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: AddressPage(key: args.key));
     }
   };
 
   @override
   List<RouteConfig> get routes => [
         RouteConfig(SplashPageRoute.name, path: '/'),
-        RouteConfig(DiscoverPageRoute.name, path: '/discover-page'),
-        RouteConfig(LoginPageRoute.name, path: '/login-page'),
-        RouteConfig(PasswordPageRoute.name, path: '/password-page'),
-        RouteConfig(CreatePasswordPageRoute.name,
-            path: '/create-password-page'),
-        RouteConfig(ConfirmPasswordPageRoute.name,
-            path: '/confirm-password-page')
+        RouteConfig(SigningFlowWrapperRoute.name,
+            path: '/signing-flow-wrapper',
+            children: [
+              RouteConfig(LoginPageRoute.name,
+                  path: '', parent: SigningFlowWrapperRoute.name),
+              RouteConfig(PasswordPageRoute.name,
+                  path: 'password-page', parent: SigningFlowWrapperRoute.name),
+              RouteConfig(CreatePasswordPageRoute.name,
+                  path: 'create-password-page',
+                  parent: SigningFlowWrapperRoute.name),
+              RouteConfig(ConfirmPasswordPageRoute.name,
+                  path: 'confirm-password-page',
+                  parent: SigningFlowWrapperRoute.name)
+            ]),
+        RouteConfig(MainAppWrapperRoute.name,
+            path: '/main-app-wrapper',
+            children: [
+              RouteConfig(DiscoverPageRoute.name,
+                  path: '', parent: MainAppWrapperRoute.name)
+            ]),
+        RouteConfig(ProfileFlowWrapperRoute.name,
+            path: '/profile-flow-wrapper',
+            children: [
+              RouteConfig(FirstNamePageRoute.name,
+                  path: '', parent: ProfileFlowWrapperRoute.name),
+              RouteConfig(LastNamePageRoute.name,
+                  path: 'last-name-page', parent: ProfileFlowWrapperRoute.name),
+              RouteConfig(PhoneNumberPageRoute.name,
+                  path: 'phone-number-page',
+                  parent: ProfileFlowWrapperRoute.name),
+              RouteConfig(AddressPageRoute.name,
+                  path: 'address-page', parent: ProfileFlowWrapperRoute.name)
+            ])
       ];
 }
 
@@ -69,17 +131,34 @@ class SplashPageRoute extends PageRouteInfo<void> {
   static const String name = 'SplashPageRoute';
 }
 
-/// generated route for [DiscoverPage]
-class DiscoverPageRoute extends PageRouteInfo<void> {
-  const DiscoverPageRoute() : super(name, path: '/discover-page');
+/// generated route for [SigningFlowWrapper]
+class SigningFlowWrapperRoute extends PageRouteInfo<void> {
+  const SigningFlowWrapperRoute({List<PageRouteInfo>? children})
+      : super(name, path: '/signing-flow-wrapper', initialChildren: children);
 
-  static const String name = 'DiscoverPageRoute';
+  static const String name = 'SigningFlowWrapperRoute';
+}
+
+/// generated route for [MainAppWrapper]
+class MainAppWrapperRoute extends PageRouteInfo<void> {
+  const MainAppWrapperRoute({List<PageRouteInfo>? children})
+      : super(name, path: '/main-app-wrapper', initialChildren: children);
+
+  static const String name = 'MainAppWrapperRoute';
+}
+
+/// generated route for [ProfileFlowWrapper]
+class ProfileFlowWrapperRoute extends PageRouteInfo<void> {
+  const ProfileFlowWrapperRoute({List<PageRouteInfo>? children})
+      : super(name, path: '/profile-flow-wrapper', initialChildren: children);
+
+  static const String name = 'ProfileFlowWrapperRoute';
 }
 
 /// generated route for [LoginPage]
 class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
   LoginPageRoute({Key? key})
-      : super(name, path: '/login-page', args: LoginPageRouteArgs(key: key));
+      : super(name, path: '', args: LoginPageRouteArgs(key: key));
 
   static const String name = 'LoginPageRoute';
 }
@@ -99,7 +178,7 @@ class LoginPageRouteArgs {
 class PasswordPageRoute extends PageRouteInfo<PasswordPageRouteArgs> {
   PasswordPageRoute({Key? key})
       : super(name,
-            path: '/password-page', args: PasswordPageRouteArgs(key: key));
+            path: 'password-page', args: PasswordPageRouteArgs(key: key));
 
   static const String name = 'PasswordPageRoute';
 }
@@ -120,7 +199,7 @@ class CreatePasswordPageRoute
     extends PageRouteInfo<CreatePasswordPageRouteArgs> {
   CreatePasswordPageRoute({Key? key})
       : super(name,
-            path: '/create-password-page',
+            path: 'create-password-page',
             args: CreatePasswordPageRouteArgs(key: key));
 
   static const String name = 'CreatePasswordPageRoute';
@@ -142,7 +221,7 @@ class ConfirmPasswordPageRoute
     extends PageRouteInfo<ConfirmPasswordPageRouteArgs> {
   ConfirmPasswordPageRoute({Key? key})
       : super(name,
-            path: '/confirm-password-page',
+            path: 'confirm-password-page',
             args: ConfirmPasswordPageRouteArgs(key: key));
 
   static const String name = 'ConfirmPasswordPageRoute';
@@ -156,5 +235,91 @@ class ConfirmPasswordPageRouteArgs {
   @override
   String toString() {
     return 'ConfirmPasswordPageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for [DiscoverPage]
+class DiscoverPageRoute extends PageRouteInfo<void> {
+  const DiscoverPageRoute() : super(name, path: '');
+
+  static const String name = 'DiscoverPageRoute';
+}
+
+/// generated route for [FirstNamePage]
+class FirstNamePageRoute extends PageRouteInfo<FirstNamePageRouteArgs> {
+  FirstNamePageRoute({Key? key})
+      : super(name, path: '', args: FirstNamePageRouteArgs(key: key));
+
+  static const String name = 'FirstNamePageRoute';
+}
+
+class FirstNamePageRouteArgs {
+  const FirstNamePageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'FirstNamePageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for [LastNamePage]
+class LastNamePageRoute extends PageRouteInfo<LastNamePageRouteArgs> {
+  LastNamePageRoute({Key? key})
+      : super(name,
+            path: 'last-name-page', args: LastNamePageRouteArgs(key: key));
+
+  static const String name = 'LastNamePageRoute';
+}
+
+class LastNamePageRouteArgs {
+  const LastNamePageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'LastNamePageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for [PhoneNumberPage]
+class PhoneNumberPageRoute extends PageRouteInfo<PhoneNumberPageRouteArgs> {
+  PhoneNumberPageRoute({Key? key})
+      : super(name,
+            path: 'phone-number-page',
+            args: PhoneNumberPageRouteArgs(key: key));
+
+  static const String name = 'PhoneNumberPageRoute';
+}
+
+class PhoneNumberPageRouteArgs {
+  const PhoneNumberPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'PhoneNumberPageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for [AddressPage]
+class AddressPageRoute extends PageRouteInfo<AddressPageRouteArgs> {
+  AddressPageRoute({Key? key})
+      : super(name, path: 'address-page', args: AddressPageRouteArgs(key: key));
+
+  static const String name = 'AddressPageRoute';
+}
+
+class AddressPageRouteArgs {
+  const AddressPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'AddressPageRouteArgs{key: $key}';
   }
 }
