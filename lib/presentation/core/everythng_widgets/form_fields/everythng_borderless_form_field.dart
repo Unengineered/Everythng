@@ -17,7 +17,10 @@ class EverythngBorderlessFormField extends StatefulWidget {
     this.validator,
     this.onChanged,
     this.enabled,
-  })  : _formKey = formKey,
+    this.textInputAction = TextInputAction.done,
+    this.onEditingComplete,
+  })
+      : _formKey = formKey,
         super(key: key);
 
   final GlobalKey<FormState> _formKey;
@@ -26,7 +29,9 @@ class EverythngBorderlessFormField extends StatefulWidget {
   final FormFieldType type;
   final String? Function(String? value)? validator;
   final void Function(String)? onChanged;
+  final void Function()? onEditingComplete;
   final bool? enabled;
+  final TextInputAction textInputAction;
 
   @override
   State<EverythngBorderlessFormField> createState() =>
@@ -47,6 +52,8 @@ class _EverythngBorderlessFormFieldState
     return Form(
       key: widget._formKey,
       child: TextFormField(
+        onEditingComplete: widget.onEditingComplete,
+        textInputAction: widget.textInputAction,
         keyboardType: widget.type == FormFieldType.phoneNumber
             ? TextInputType.phone
             : TextInputType.text,
@@ -65,30 +72,30 @@ class _EverythngBorderlessFormFieldState
         obscureText: widget.type == FormFieldType.password ? obscure : false,
         decoration: InputDecoration(
           prefixStyle:
-              everythngTextTheme.headline3Bold!.copyWith(color: Colors.black),
+          everythngTextTheme.headline3Bold!.copyWith(color: Colors.black),
           prefixIcon: widget.type == FormFieldType.phoneNumber
               ? SizedBox(
-                  child: Center(
-                    widthFactor: 0.0,
-                    child: Text(
-                      '+91',
-                      style: everythngTextTheme.headline3Bold!
-                          .copyWith(color: Colors.black),
-                    ),
-                  ),
-                )
+            child: Center(
+              widthFactor: 0.0,
+              child: Text(
+                '+91',
+                style: everythngTextTheme.headline3Bold!
+                    .copyWith(color: Colors.black),
+              ),
+            ),
+          )
               : null,
           suffixIcon: widget.type == FormFieldType.password
               ? IconButton(
-                  onPressed: () {
-                    setState(() {
-                      obscure = !obscure;
-                    });
-                  },
-                  icon: obscure
-                      ? const Icon(Icons.visibility_off_rounded)
-                      : const Icon(Icons.visibility_rounded),
-                  color: everythngThemeData.textAndIconography!['disabled'],
+            onPressed: () {
+              setState(() {
+                obscure = !obscure;
+              });
+            },
+            icon: obscure
+                ? const Icon(Icons.visibility_off_rounded)
+                : const Icon(Icons.visibility_rounded),
+            color: everythngThemeData.textAndIconography!['disabled'],
           )
               : null,
           hintText: widget.hintText,

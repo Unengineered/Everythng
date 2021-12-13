@@ -1,13 +1,10 @@
-import 'package:everythng/application/profile/profile_form_cubit/profile_form_cubit.dart';
+import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:everythng/constants/extensions.dart';
-import 'package:everythng/domain/profile/entities/address.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:provider/provider.dart';
 
 class AddressPage extends HookWidget {
   AddressPage({Key? key}) : super(key: key);
@@ -47,147 +44,158 @@ class AddressPage extends HookWidget {
                   : null,
             ),
             body: AnimatedContainer(
-              duration: const Duration(milliseconds: 100),
-              margin: EdgeInsets.fromLTRB(
-                16,
-                64,
-                16,
-                visible ? 24 : 48,
-              ),
-              // color: Colors.black38,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'your address',
-                          style: everythngTextTheme.headline1Bold!,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          'it will be between just the two of us, pinky promise!',
-                          style: everythngTextTheme.bodyTextMedium!.copyWith(
-                            color: everythngThemeData
-                                .textAndIconography!['mediumEmphasis'],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          'line one (flat number, etc)',
-                          style: everythngTextTheme.headline4Bold!,
-                        ),
-                        const SizedBox(
-                          height: 4,
-                        ),
-                        EverythngBorderlessFormField(
-                          hintText: 'A-402',
-                          enabled: !_isProcessing.value,
-                          formKey: _lineOneFormKey,
-                          controller: _lineOneEditingController,
-                          type: FormFieldType.normal,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          'line two (building name, etc)',
-                          style: everythngTextTheme.headline4Bold!,
-                        ),
-                        const SizedBox(
-                          height: 4,
-                        ),
-                        EverythngBorderlessFormField(
-                          hintText: 'Sea Queen Heritage',
-                          enabled: !_isProcessing.value,
-                          formKey: _lineTwoFormKey,
-                          controller: _lineTwoEditingController,
-                          type: FormFieldType.normal,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          'pincode',
-                          style: everythngTextTheme.headline4Bold!,
-                        ),
-                        const SizedBox(
-                          height: 4,
-                        ),
-                        EverythngBorderlessFormField(
-                          hintText: '400705',
-                          enabled: !_isProcessing.value,
-                          formKey: _pinCodeFormKey,
-                          controller: _pinCodeEditingController,
-                          type: FormFieldType.normal,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          'city',
-                          style: everythngTextTheme.headline4Bold!,
-                        ),
-                        const SizedBox(
-                          height: 4,
-                        ),
-                        EverythngBorderlessFormField(
-                          hintText: 'Navi Mumbai',
-                          enabled: !_isProcessing.value,
-                          formKey: _cityFormKey,
-                          controller: _cityEditingController,
-                          type: FormFieldType.normal,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          'state',
-                          style: everythngTextTheme.headline4Bold!,
-                        ),
-                        const SizedBox(
-                          height: 4,
-                        ),
-                        EverythngBorderlessFormField(
-                          hintText: 'Maharashtra',
-                          enabled: !_isProcessing.value,
-                          formKey: _stateFormKey,
-                          controller: _stateEditingController,
-                          type: FormFieldType.normal,
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                      ],
-                    ),
-                    Center(
-                      child: TwoStateLargeButton(
-                        isProcessing: _isProcessing.value,
-                        title: 'Continue',
-                        onTap: () {
-                          final address = Address(
-                            line1: _lineOneEditingController.text,
-                            line2: _lineTwoEditingController.text,
-                            pincode: int.parse(_pinCodeEditingController.text),
-                            city: _cityEditingController.text,
-                            state: _stateEditingController.text
-                          );
-                          context.read<ProfileFormCubit>().setAddress(address);
-                          context.read<ProfileFormCubit>().setProfileData();
-                        },
-                      ),
-                    )
-                  ],
+                clipBehavior: Clip.none,
+                duration: const Duration(milliseconds: 100),
+                margin: EdgeInsets.fromLTRB(
+                  16,
+                  64,
+                  16,
+                  visible ? 0 : 48,
                 ),
-              ),
-            ),
+                // color: Colors.black38,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return SingleChildScrollView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minWidth: constraints.maxWidth,
+                          minHeight: constraints.maxHeight,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'your address',
+                                  style: everythngTextTheme.headline1Bold!,
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Text(
+                                  'it will be between just the two of us, pinky promise!',
+                                  style: everythngTextTheme.bodyTextMedium!
+                                      .copyWith(
+                                    color: everythngThemeData
+                                        .textAndIconography!['mediumEmphasis'],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                Text(
+                                  'line 1',
+                                  style: everythngTextTheme.headline4Bold!,
+                                ),
+                                EverythngBorderlessFormField(
+                                  hintText: 'Flat/House/Block No.',
+                                  enabled: !_isProcessing.value,
+                                  formKey: _lineOneFormKey,
+                                  controller: _lineOneEditingController,
+                                  type: FormFieldType.normal,
+                                  textInputAction: TextInputAction.next,
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Text(
+                                  'line 2',
+                                  style: everythngTextTheme.headline4Bold!,
+                                ),
+                                EverythngBorderlessFormField(
+                                  hintText: 'Apartment/Road/Area',
+                                  enabled: !_isProcessing.value,
+                                  formKey: _lineTwoFormKey,
+                                  controller: _lineTwoEditingController,
+                                  type: FormFieldType.normal,
+                                  textInputAction: TextInputAction.next,
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'pincode',
+                                          style:
+                                              everythngTextTheme.headline4Bold!,
+                                        ),
+                                        SizedBox(
+                                          width: 150,
+                                          child: EverythngBorderlessFormField(
+                                            hintText: '400001',
+                                            enabled: !_isProcessing.value,
+                                            formKey: _pinCodeFormKey,
+                                            controller:
+                                                _pinCodeEditingController,
+                                            type: FormFieldType.normal,
+                                            textInputAction: TextInputAction.next,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'city',
+                                          style:
+                                              everythngTextTheme.headline4Bold!,
+                                        ),
+                                        SizedBox(
+                                          width: 200,
+                                          child: EverythngBorderlessFormField(
+                                            hintText: 'Mumbai',
+                                            enabled: !_isProcessing.value,
+                                            formKey: _cityFormKey,
+                                            controller: _cityEditingController,
+                                            type: FormFieldType.normal,
+                                            textInputAction: TextInputAction.next,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Text(
+                                  'state',
+                                  style: everythngTextTheme.headline4Bold!,
+                                ),
+                                EverythngBorderlessFormField(
+                                  hintText: 'Maharashtra',
+                                  enabled: !_isProcessing.value,
+                                  formKey: _stateFormKey,
+                                  controller: _stateEditingController,
+                                  type: FormFieldType.normal,
+                                  textInputAction: TextInputAction.done,
+                                ),
+                              ],
+                            ),
+                            Center(
+                              child: TwoStateLargeButton(
+                                isProcessing: _isProcessing.value,
+                                title: 'Continue',
+                                onTap: () {},
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                )),
           );
         },
       ),
