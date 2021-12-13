@@ -48,7 +48,7 @@ class AddressPage extends HookWidget {
                 duration: const Duration(milliseconds: 100),
                 margin: EdgeInsets.fromLTRB(
                   16,
-                  64,
+                  visible ? 0 : 64,
                   16,
                   visible ? 0 : 48,
                 ),
@@ -56,7 +56,7 @@ class AddressPage extends HookWidget {
                 child: LayoutBuilder(
                   builder: (context, constraints) {
                     return SingleChildScrollView(
-                      physics: const NeverScrollableScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       child: ConstrainedBox(
                         constraints: BoxConstraints(
                           minWidth: constraints.maxWidth,
@@ -129,7 +129,7 @@ class AddressPage extends HookWidget {
                                               everythngTextTheme.headline4Bold!,
                                         ),
                                         SizedBox(
-                                          width: 150,
+                                          width: MediaQuery.of(context).size.width * 0.35,
                                           child: EverythngBorderlessFormField(
                                             hintText: '400001',
                                             enabled: !_isProcessing.value,
@@ -152,7 +152,7 @@ class AddressPage extends HookWidget {
                                               everythngTextTheme.headline4Bold!,
                                         ),
                                         SizedBox(
-                                          width: 200,
+                                          width: MediaQuery.of(context).size.width * 0.55,
                                           child: EverythngBorderlessFormField(
                                             hintText: 'Mumbai',
                                             enabled: !_isProcessing.value,

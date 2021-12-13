@@ -10,10 +10,7 @@ void main() async {
   await Firebase.initializeApp();
   configureDependencies();
   runApp(
-    DevicePreview(
-      enabled: true,
-      builder: (context) => AppWidget(),
-    ),
+    AppWidget(),
     //   AppWidget()
   );
 }
