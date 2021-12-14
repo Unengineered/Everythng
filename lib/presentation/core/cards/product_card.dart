@@ -46,14 +46,14 @@ class ProductCard extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          SingleDetailCard(
+                          if(product.brand != null) ...[SingleDetailCard(
                             child: EverythngNetworkImage(
-                              url: product.storeLink!.picture.toString(),
+                              url: product.brand!.toString(),
                             ),
                           ),
                           const SizedBox(
                             width: 8,
-                          ),
+                          )],
                           SingleDetailCard(
                             child: Text(
                               product.size,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
@@ -25,7 +27,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   void getProfileData() async {
     final result = await _profileRepository.getProfileData();
     result.fold((failure) {
-      failure.map((value) => null,
+      failure.map((value) => log("incorrect failure"),
           noProfileData: (_) => emit(const ProfileState.noData()));
     }, (everythngUser) {
       emit(ProfileState.loaded(everythngUser: everythngUser));
@@ -48,7 +50,14 @@ class ProfileCubit extends Cubit<ProfileState> {
     }, unauthenticated: (_) {
       emit(const ProfileState.initial());
     }, authenticated: (_) {
+      log("got authenticated state");
       getProfileData();
     });
+  }
+
+  @override
+  void onChange(Change<ProfileState> change) {
+    log("changing state from ${change.currentState} to ${change.nextState}");
+    super.onChange(change);
   }
 }

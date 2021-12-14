@@ -15,20 +15,19 @@ const String refreshedToken = 'REFRESHEDTOKEN';
 const user = BaseUser(email: email, uid: uid);
 
 //PROFILE
-final everythngUserConst = EverythngUser(
-		firstname: 'firstname',
-		lastname: 'lastname',
-		phone: '9920644868',
-		picture: Uri.http('www.google.com', '/pic'),
-		addresses: [
-			const Address(
-					line1: 'line1',
-					line2: 'line2',
-					pincode: 400705,
-					city: 'city',
-					state: 'state')
-		],
-		storeLink: null);
+const everythngUserConst = EverythngUser(
+    firstname: 'firstname',
+    lastname: 'lastname',
+    phone: '9920644868',
+    addresses: [
+      Address(
+          line1: 'line1',
+          line2: 'line2',
+          pincode: 400705,
+          city: 'city',
+          state: 'state')
+    ],
+    storeLink: null);
 
 //DISCOVER
 const recommendedProductsJson = '''
@@ -172,26 +171,27 @@ const profileData = '''
 		}
 }
 ''';
-final profileBody ={
-    "id": "312413209vfjk",
-    "firstname": "someone",
-		"lastname": "someone",
-		"phone": "8413939090",
-    "picture": "picture url",
-		"addresses": 
-    [{
-			  "line1": "",
-		    "line2": "",
-		    "pincode" : 400789,
-		    "city" : "Mumbai",
-		    "state" : "Maharashtra"
-		}],
-		"store": {
-			"name" : "store name",
-			"id" : "store id",
-			"tagline" : "tagline",
-			"picture" : "picture url"
-		}
+final profileBody = {
+  "id": "312413209vfjk",
+  "firstname": "someone",
+  "lastname": "someone",
+  "phone": "8413939090",
+  "picture": "picture url",
+  "addresses": [
+    {
+      "line1": "",
+      "line2": "",
+      "pincode": 400789,
+      "city": "Mumbai",
+      "state": "Maharashtra"
+    }
+  ],
+  "store": {
+    "name": "store name",
+    "id": "store id",
+    "tagline": "tagline",
+    "picture": "picture url"
+  }
 };
 final List<RecommendedProduct> recommendedProductsEx =
     (json.decode(recommendedProductsJson) as List<dynamic>)

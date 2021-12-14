@@ -9,5 +9,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   configureDependencies();
+  //log((await getIt<FortKnox>().getToken()).toString());
   runApp(AppWidget());
 }

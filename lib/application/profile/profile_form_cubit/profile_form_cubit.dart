@@ -29,7 +29,6 @@ class ProfileFormCubit extends Cubit<ProfileFormState> {
         firstname: state.firstName,
         lastname: state.lastName,
         phone: state.phoneNumber,
-        picture: null,
         addresses: [state.address],
         storeLink: null));
   }

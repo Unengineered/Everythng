@@ -25,14 +25,12 @@ class _$EverythngUserTearOff {
       {required String firstname,
       required String lastname,
       required String phone,
-      required Uri? picture,
       required List<Address> addresses,
       @JsonKey(name: "store") required StoreLink? storeLink}) {
     return _EverythngUser(
       firstname: firstname,
       lastname: lastname,
       phone: phone,
-      picture: picture,
       addresses: addresses,
       storeLink: storeLink,
     );
@@ -51,7 +49,6 @@ mixin _$EverythngUser {
   String get firstname => throw _privateConstructorUsedError;
   String get lastname => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
-  Uri? get picture => throw _privateConstructorUsedError;
   List<Address> get addresses => throw _privateConstructorUsedError;
   @JsonKey(name: "store")
   StoreLink? get storeLink => throw _privateConstructorUsedError;
@@ -71,7 +68,6 @@ abstract class $EverythngUserCopyWith<$Res> {
       {String firstname,
       String lastname,
       String phone,
-      Uri? picture,
       List<Address> addresses,
       @JsonKey(name: "store") StoreLink? storeLink});
 
@@ -92,7 +88,6 @@ class _$EverythngUserCopyWithImpl<$Res>
     Object? firstname = freezed,
     Object? lastname = freezed,
     Object? phone = freezed,
-    Object? picture = freezed,
     Object? addresses = freezed,
     Object? storeLink = freezed,
   }) {
@@ -109,10 +104,6 @@ class _$EverythngUserCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      picture: picture == freezed
-          ? _value.picture
-          : picture // ignore: cast_nullable_to_non_nullable
-              as Uri?,
       addresses: addresses == freezed
           ? _value.addresses
           : addresses // ignore: cast_nullable_to_non_nullable
@@ -147,7 +138,6 @@ abstract class _$EverythngUserCopyWith<$Res>
       {String firstname,
       String lastname,
       String phone,
-      Uri? picture,
       List<Address> addresses,
       @JsonKey(name: "store") StoreLink? storeLink});
 
@@ -171,7 +161,6 @@ class __$EverythngUserCopyWithImpl<$Res>
     Object? firstname = freezed,
     Object? lastname = freezed,
     Object? phone = freezed,
-    Object? picture = freezed,
     Object? addresses = freezed,
     Object? storeLink = freezed,
   }) {
@@ -188,10 +177,6 @@ class __$EverythngUserCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      picture: picture == freezed
-          ? _value.picture
-          : picture // ignore: cast_nullable_to_non_nullable
-              as Uri?,
       addresses: addresses == freezed
           ? _value.addresses
           : addresses // ignore: cast_nullable_to_non_nullable
@@ -211,7 +196,6 @@ class _$_EverythngUser implements _EverythngUser {
       {required this.firstname,
       required this.lastname,
       required this.phone,
-      required this.picture,
       required this.addresses,
       @JsonKey(name: "store") required this.storeLink});
 
@@ -225,8 +209,6 @@ class _$_EverythngUser implements _EverythngUser {
   @override
   final String phone;
   @override
-  final Uri? picture;
-  @override
   final List<Address> addresses;
   @override
   @JsonKey(name: "store")
@@ -234,7 +216,7 @@ class _$_EverythngUser implements _EverythngUser {
 
   @override
   String toString() {
-    return 'EverythngUser(firstname: $firstname, lastname: $lastname, phone: $phone, picture: $picture, addresses: $addresses, storeLink: $storeLink)';
+    return 'EverythngUser(firstname: $firstname, lastname: $lastname, phone: $phone, addresses: $addresses, storeLink: $storeLink)';
   }
 
   @override
@@ -247,7 +229,6 @@ class _$_EverythngUser implements _EverythngUser {
             (identical(other.lastname, lastname) ||
                 other.lastname == lastname) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.picture, picture) || other.picture == picture) &&
             const DeepCollectionEquality().equals(other.addresses, addresses) &&
             (identical(other.storeLink, storeLink) ||
                 other.storeLink == storeLink));
@@ -255,7 +236,7 @@ class _$_EverythngUser implements _EverythngUser {
 
   @override
   int get hashCode => Object.hash(runtimeType, firstname, lastname, phone,
-      picture, const DeepCollectionEquality().hash(addresses), storeLink);
+      const DeepCollectionEquality().hash(addresses), storeLink);
 
   @JsonKey(ignore: true)
   @override
@@ -273,7 +254,6 @@ abstract class _EverythngUser implements EverythngUser {
           {required String firstname,
           required String lastname,
           required String phone,
-          required Uri? picture,
           required List<Address> addresses,
           @JsonKey(name: "store") required StoreLink? storeLink}) =
       _$_EverythngUser;
@@ -287,8 +267,6 @@ abstract class _EverythngUser implements EverythngUser {
   String get lastname;
   @override
   String get phone;
-  @override
-  Uri? get picture;
   @override
   List<Address> get addresses;
   @override
