@@ -1,5 +1,4 @@
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
-import 'package:everythng/application/context/context_cubit.dart';
 import 'package:everythng/application/discover/discover_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/injection.dart';
