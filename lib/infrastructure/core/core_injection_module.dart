@@ -4,6 +4,7 @@ import 'package:fort_knox/fort_knox.dart';
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
 import 'package:network_kit/network_kit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @module
 abstract class CoreInjectionModule {
@@ -12,4 +13,7 @@ abstract class CoreInjectionModule {
   
   @lazySingleton
   NetworkKit get networkKit => NetworkKit(getIt<FortKnox>());
+
+  @preResolve
+  Future<SharedPreferences> get sharedPreferences => SharedPreferences.getInstance();
 }
