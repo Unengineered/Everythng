@@ -23,9 +23,21 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const SigningFlowWrapper());
     },
-    MainAppWrapperRoute.name: (routeData) {
+    ThriftingMarketplaceWrapperRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const MainAppWrapper());
+          routeData: routeData, child: const ThriftingMarketplaceWrapper());
+    },
+    BuyingMarketplaceWrapperRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const BuyingMarketplaceWrapper());
+    },
+    StoreWrapperRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const StoreWrapper());
+    },
+    RentingMarketplaceWrapperRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const RentingMarketplaceWrapper());
     },
     ProfileFlowWrapperRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
@@ -58,6 +70,18 @@ class _$AppRouter extends RootStackRouter {
     DiscoverPageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const DiscoverPage());
+    },
+    BuyingPageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const BuyingPage());
+    },
+    StorePageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const StorePage());
+    },
+    RentingPageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const RentingPage());
     },
     FirstNamePageRoute.name: (routeData) {
       final args = routeData.argsAs<FirstNamePageRouteArgs>(
@@ -102,11 +126,27 @@ class _$AppRouter extends RootStackRouter {
                   path: 'confirm-password-page',
                   parent: SigningFlowWrapperRoute.name)
             ]),
-        RouteConfig(MainAppWrapperRoute.name,
-            path: '/main-app-wrapper',
+        RouteConfig(ThriftingMarketplaceWrapperRoute.name,
+            path: '/thrifting-marketplace-wrapper',
             children: [
               RouteConfig(DiscoverPageRoute.name,
-                  path: '', parent: MainAppWrapperRoute.name)
+                  path: '', parent: ThriftingMarketplaceWrapperRoute.name)
+            ]),
+        RouteConfig(BuyingMarketplaceWrapperRoute.name,
+            path: '/buying-marketplace-wrapper',
+            children: [
+              RouteConfig(BuyingPageRoute.name,
+                  path: '', parent: BuyingMarketplaceWrapperRoute.name)
+            ]),
+        RouteConfig(StoreWrapperRoute.name, path: '/store-wrapper', children: [
+          RouteConfig(StorePageRoute.name,
+              path: '', parent: StoreWrapperRoute.name)
+        ]),
+        RouteConfig(RentingMarketplaceWrapperRoute.name,
+            path: '/renting-marketplace-wrapper',
+            children: [
+              RouteConfig(RentingPageRoute.name,
+                  path: '', parent: RentingMarketplaceWrapperRoute.name)
             ]),
         RouteConfig(ProfileFlowWrapperRoute.name,
             path: '/profile-flow-wrapper',
@@ -139,12 +179,39 @@ class SigningFlowWrapperRoute extends PageRouteInfo<void> {
   static const String name = 'SigningFlowWrapperRoute';
 }
 
-/// generated route for [MainAppWrapper]
-class MainAppWrapperRoute extends PageRouteInfo<void> {
-  const MainAppWrapperRoute({List<PageRouteInfo>? children})
-      : super(name, path: '/main-app-wrapper', initialChildren: children);
+/// generated route for [ThriftingMarketplaceWrapper]
+class ThriftingMarketplaceWrapperRoute extends PageRouteInfo<void> {
+  const ThriftingMarketplaceWrapperRoute({List<PageRouteInfo>? children})
+      : super(name,
+            path: '/thrifting-marketplace-wrapper', initialChildren: children);
 
-  static const String name = 'MainAppWrapperRoute';
+  static const String name = 'ThriftingMarketplaceWrapperRoute';
+}
+
+/// generated route for [BuyingMarketplaceWrapper]
+class BuyingMarketplaceWrapperRoute extends PageRouteInfo<void> {
+  const BuyingMarketplaceWrapperRoute({List<PageRouteInfo>? children})
+      : super(name,
+            path: '/buying-marketplace-wrapper', initialChildren: children);
+
+  static const String name = 'BuyingMarketplaceWrapperRoute';
+}
+
+/// generated route for [StoreWrapper]
+class StoreWrapperRoute extends PageRouteInfo<void> {
+  const StoreWrapperRoute({List<PageRouteInfo>? children})
+      : super(name, path: '/store-wrapper', initialChildren: children);
+
+  static const String name = 'StoreWrapperRoute';
+}
+
+/// generated route for [RentingMarketplaceWrapper]
+class RentingMarketplaceWrapperRoute extends PageRouteInfo<void> {
+  const RentingMarketplaceWrapperRoute({List<PageRouteInfo>? children})
+      : super(name,
+            path: '/renting-marketplace-wrapper', initialChildren: children);
+
+  static const String name = 'RentingMarketplaceWrapperRoute';
 }
 
 /// generated route for [ProfileFlowWrapper]
@@ -243,6 +310,27 @@ class DiscoverPageRoute extends PageRouteInfo<void> {
   const DiscoverPageRoute() : super(name, path: '');
 
   static const String name = 'DiscoverPageRoute';
+}
+
+/// generated route for [BuyingPage]
+class BuyingPageRoute extends PageRouteInfo<void> {
+  const BuyingPageRoute() : super(name, path: '');
+
+  static const String name = 'BuyingPageRoute';
+}
+
+/// generated route for [StorePage]
+class StorePageRoute extends PageRouteInfo<void> {
+  const StorePageRoute() : super(name, path: '');
+
+  static const String name = 'StorePageRoute';
+}
+
+/// generated route for [RentingPage]
+class RentingPageRoute extends PageRouteInfo<void> {
+  const RentingPageRoute() : super(name, path: '');
+
+  static const String name = 'RentingPageRoute';
 }
 
 /// generated route for [FirstNamePage]

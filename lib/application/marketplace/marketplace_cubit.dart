@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:everythng/domain/marketplace/entities/marketplace.dart';
 import 'package:everythng/domain/marketplace/entities/marketplace_failure.dart';
-import 'package:everythng/infrastructure/marketplace/marketplace_repository.dart';
+import 'package:everythng/domain/marketplace/i_marketplace_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,7 +11,7 @@ part 'marketplace_cubit.freezed.dart';
 
 @lazySingleton
 class MarketplaceCubit extends Cubit<MarketplaceState> {
-  final MarketplaceRepository _marketplaceRepository;
+  final IMarketplaceRepository _marketplaceRepository;
   MarketplaceCubit(this._marketplaceRepository)
       : super(const MarketplaceState.initial());
 

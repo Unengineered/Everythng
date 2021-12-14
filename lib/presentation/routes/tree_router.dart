@@ -1,4 +1,6 @@
+
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
+import 'package:everythng/application/marketplace/marketplace_cubit.dart';
 import 'package:everythng/application/profile/profile_cubit/profile_cubit.dart';
 import 'package:everythng/injection.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
@@ -20,18 +22,17 @@ class TreeRouter extends StatelessWidget {
       BlocListener<ProfileCubit, ProfileState>(
         listener: (_, __) => checkStatesAndSetTree(),
       ),
+      BlocListener<MarketplaceCubit, MarketplaceState>(
+          listener: (_, __) => checkStatesAndSetTree())
     ], child: child);
   }
 
   void checkStatesAndSetTree() {
-    // log('fired check state and set tree function');
     final stack = router.stack;
     final currentPage = router.current;
     final authState = getIt<AuthCubit>().state;
     final profileState = getIt<ProfileCubit>().state;
-
-    // log("current page ${currentPage.name}");
-    // log("auth state $authState");
+    final marketplaceSwitcherState = getIt<MarketplaceCubit>().state;
 
     authState.map(
         initial: (_) {},
@@ -47,11 +48,42 @@ class TreeRouter extends StatelessWidget {
           }, loading: (_) {
             return;
           }, loaded: (_) {
-            if (currentPage.name != DiscoverPageRoute.name) {
-              router.pushAndPopUntil(const MainAppWrapperRoute(),
-                  predicate: (_) => false);
-              return;
-            }
+            marketplaceSwitcherState.map(
+                initial: (_) {
+                  return;
+                },
+                page: (page) {
+                  page.marketplace.map(
+                      thrifting: (_){
+                        if (currentPage.name != ThriftingMarketplaceWrapperRoute.name) {
+                          router.pushAndPopUntil(const ThriftingMarketplaceWrapperRoute(),
+                              predicate: (_) => false);
+                          return;
+                        }
+                      },
+                      renting: (_){
+                        if (currentPage.name != RentingMarketplaceWrapperRoute.name) {
+                          router.pushAndPopUntil(const RentingMarketplaceWrapperRoute(),
+                              predicate: (_) => false);
+                          return;
+                        }
+                      },
+                      buying: (_){
+                        if (currentPage.name != BuyingMarketplaceWrapperRoute.name) {
+                          router.pushAndPopUntil(const BuyingMarketplaceWrapperRoute(),
+                              predicate: (_) => false);
+                          return;
+                        }
+                      },
+                      store: (_){
+                        if (currentPage.name != StoreWrapperRoute.name) {
+                          router.pushAndPopUntil(const StoreWrapperRoute(),
+                              predicate: (_) => false);
+                          return;
+                        }
+                      },
+                  );
+                });
           }, noData: (_) {
             if (currentPage.name != FirstNamePageRoute.name) {
               router.pushAndPopUntil(const ProfileFlowWrapperRoute(),

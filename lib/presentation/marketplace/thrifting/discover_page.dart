@@ -4,6 +4,7 @@ import 'package:everythng/constants/extensions.dart';
 import 'package:everythng/injection.dart';
 import 'package:everythng/presentation/core/cards/product_card.dart';
 import 'package:everythng/presentation/core/cards/store_card.dart';
+import 'package:everythng/presentation/marketplace/marketplace_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -51,6 +52,7 @@ class DiscoverPage extends StatelessWidget {
                   ],
                 ),
               ),
+              const MarketplaceSwitcher(),
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),
                 child: Text(
