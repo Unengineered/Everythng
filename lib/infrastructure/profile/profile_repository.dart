@@ -33,7 +33,7 @@ class ProfileRepository implements IProfileRepository {
   @override
   Future<Either<NetworkFailure, EverythngUser>> getProfileData() async {
     //TODO: Turn off fake API
-    return right(everythngUserConst);
+    //return right(everythngUserConst);
     //return left(const NetworkFailure.noProfileData());
     final response = await networkKit.get(Uri.http(url, '/profile'));
     log(response.statusCode.toString());
