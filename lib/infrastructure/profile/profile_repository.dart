@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:everythng/constants/url.dart';
 import 'package:everythng/domain/profile/entities/everythng_user.dart';
@@ -17,7 +16,7 @@ class ProfileRepository implements IProfileRepository {
   @override
   Future<Either<NetworkFailure, EverythngUser>> getProfileData() async {
     final response = await networkKit.get(Uri.http(url, '/profile'));
-    log(response.statusCode.toString());
+
     if (response.statusCode != 200) {
       if (response.statusCode == 404) {
         return left(const NetworkFailure.noProfileData());
