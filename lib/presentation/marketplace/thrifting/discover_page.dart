@@ -1,13 +1,16 @@
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
 import 'package:everythng/application/discover/discover_cubit.dart';
+import 'package:everythng/application/marketplace/marketplace_cubit.dart';
 import 'package:everythng/constants/extensions/extension_context.dart';
 import 'package:everythng/constants/functions/everythng_show_modal_bottom_sheet.dart';
+import 'package:everythng/constants/shadows.dart';
 import 'package:everythng/injection.dart';
 import 'package:everythng/presentation/core/cards/product_card.dart';
 import 'package:everythng/presentation/core/cards/store_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -35,13 +38,188 @@ class DiscoverPage extends StatelessWidget {
                           context: context,
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Select a marketplace',
-                                  style: ,
-                                ),
-                              ],
+                            child:
+                                BlocBuilder<MarketplaceCubit, MarketplaceState>(
+                              builder: (context, state) {
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Select a marketplace',
+                                      style: context
+                                          .everythngTextTheme.headline3Bold!
+                                          .copyWith(
+                                        color: context.everythngThemeData
+                                            .textAndIconography!['disabled'],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                        vertical: 16,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        boxShadow:
+                                            everythng2LayerComponentShadow,
+                                        color: Colors.grey.shade800,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            height: 30,
+                                            width: 30,
+                                            color: Colors.grey.shade300,
+                                          ),
+                                          const SizedBox(
+                                            width: 12,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Thrifting',
+                                                style: context
+                                                    .everythngTextTheme
+                                                    .headline3Bold!
+                                                    .copyWith(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              Text(
+                                                'catchy thrifting line',
+                                                style: context
+                                                    .everythngTextTheme
+                                                    .captionMedium!
+                                                    .copyWith(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                        vertical: 16,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        boxShadow:
+                                            everythng2LayerComponentShadow,
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            height: 30,
+                                            width: 30,
+                                            color: Colors.grey.shade300,
+                                          ),
+                                          const SizedBox(
+                                            width: 12,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text('Thrifting',
+                                                  style: context
+                                                      .everythngTextTheme
+                                                      .headline3Bold),
+                                              Text('catchy thrifting line',
+                                                  style: context
+                                                      .everythngTextTheme
+                                                      .captionMedium),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                        vertical: 16,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        boxShadow:
+                                            everythng2LayerComponentShadow,
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: Colors.white,
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            height: 30,
+                                            width: 30,
+                                            color: Colors.grey.shade300,
+                                          ),
+                                          const SizedBox(
+                                            width: 12,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text('Thrifting',
+                                                  style: context
+                                                      .everythngTextTheme
+                                                      .headline3Bold),
+                                              Text('catchy thrifting line',
+                                                  style: context
+                                                      .everythngTextTheme
+                                                      .captionMedium),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 16,
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                        vertical: 16,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        boxShadow:
+                                        everythng2LayerComponentShadow,
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: Colors.white,
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Add your own store',
+                                            style: context.everythngTextTheme.headline4Bold,
+                                          ),
+                                          const SizedBox(
+                                            width: 4,
+                                          ),
+                                          const Icon(
+                                            Icons.add_rounded,
+                                            size: 20,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
                             ),
                           ),
                         );

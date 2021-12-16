@@ -12,7 +12,7 @@ Future<T?> showEverythngModalBottomSheet<T>({
         )),
     constraints: BoxConstraints(
       minHeight: 100,
-      maxHeight: 328,
+      maxHeight: 400,
       minWidth: MediaQueryData.fromWindow(WidgetsBinding.instance!.window).size.width,
     ),
     context: context,
