@@ -1,33 +1,50 @@
-import 'package:everythng/application/profile/profile_form_cubit/profile_form_cubit.dart';
+import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:everythng/constants/extensions/extension_context.dart';
+import 'package:everythng/constants/shadows.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:provider/provider.dart';
-import 'package:auto_route/auto_route.dart';
 
-class FirstNamePage extends HookWidget {
-   FirstNamePage({Key? key}) : super(key: key);
-   final _formKey = GlobalKey<FormState>();
+class BusinessEmailPage extends HookWidget {
+  final _formKey = GlobalKey<FormState>();
+
+  BusinessEmailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _firstNameEditingController = useTextEditingController();
-   final _isProcessing = useState(false);
+    final _storeNameEditingController = useTextEditingController();
+    final _isProcessing = useState(false);
 
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
-        builder: (context , visible) {
+        builder: (context, visible) {
           return Scaffold(
+            appBar: AppBar(
+              elevation: 0,
+              automaticallyImplyLeading: false,
+              leading: Navigator.canPop(context)
+                  ? IconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                  size: 32,
+                ),
+                onPressed: () => context.router.pop(),
+              )
+                  : null,
+            ),
             body: AnimatedContainer(
               duration: const Duration(milliseconds: 100),
               margin: EdgeInsets.fromLTRB(
-                16,
-                148,
-                16,
+                20,
+                64,
+                20,
                 visible ? 24 : 48,
               ),
               // color: Colors.black38,
@@ -39,28 +56,31 @@ class FirstNamePage extends HookWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'your first name',
+                        'business email',
                         style: context.everythngTextTheme.headline1Bold!,
                       ),
                       const SizedBox(
                         height: 12,
                       ),
                       Text(
-                        'it will be between just the two of us, pinky promise!',
-                        style: context.everythngTextTheme.bodyTextMedium!.copyWith(
+                        'embarrassing old email ids are most welcome',
+                        style:
+                        context.everythngTextTheme.bodyTextMedium!.copyWith(
                           color: context.everythngThemeData
                               .textAndIconography!['mediumEmphasis'],
                         ),
                       ),
                       const SizedBox(
-                        height: 30,
+                        height: 24,
                       ),
+
                       EverythngBorderlessFormField(
-                        hintText: 'advait',
-                        enabled: !_isProcessing.value,
+                        hintText: 'abcd@company.com',
+                        validator: (value) {},
                         formKey: _formKey,
-                        controller: _firstNameEditingController,
+                        controller: _storeNameEditingController,
                         type: FormFieldType.normal,
+                        enabled: !_isProcessing.value,
                       ),
                     ],
                   ),
@@ -69,8 +89,8 @@ class FirstNamePage extends HookWidget {
                       isProcessing: _isProcessing.value,
                       title: 'Continue',
                       onTap: () {
-                        context.read<ProfileFormCubit>().setFirstName(_firstNameEditingController.text);
-                        context.router.push(LastNamePageRoute());
+                        // context.router.push(StoreAddressPageRoute());
+
                       },
                     ),
                   )

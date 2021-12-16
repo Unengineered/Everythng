@@ -1,4 +1,4 @@
-import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
 import 'package:everythng/constants/shadows.dart';
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
 import 'package:everythng/presentation/core/cards/single_detail_card.dart';
@@ -13,8 +13,6 @@ class ProductCard extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
-    final everythngThemeData = Theme.of(context).everythngThemeData;
     return Container(
         clipBehavior: Clip.hardEdge,
         constraints: const BoxConstraints(
@@ -23,7 +21,7 @@ class ProductCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8),
-          boxShadow: everythngComponentShadow,
+          boxShadow: everythng6LayerComponentShadow,
         ),
         child: Stack(
           children: [
@@ -57,7 +55,7 @@ class ProductCard extends StatelessWidget {
                           SingleDetailCard(
                             child: Text(
                               product.size,
-                              style: everythngTextTheme.headline5,
+                              style: context.everythngTextTheme.headline5,
                             ),
                           )
                         ],
@@ -81,7 +79,7 @@ class ProductCard extends StatelessWidget {
                         children: [
                           Text(
                             product.name,
-                            style: everythngTextTheme.captionSemiBold,
+                            style: context.everythngTextTheme.captionSemiBold,
                           ),
                           const SizedBox(
                             height: 4,
@@ -101,8 +99,8 @@ class ProductCard extends StatelessWidget {
                               Text(
                                 product.storeLink!.name,
                                 style:
-                                    everythngTextTheme.footerSemiBold!.copyWith(
-                                  color: everythngThemeData
+                                    context.everythngTextTheme.footerSemiBold!.copyWith(
+                                  color: context.everythngThemeData
                                       .textAndIconography!['disabled'],
                                 ),
                               )
@@ -112,8 +110,8 @@ class ProductCard extends StatelessWidget {
                       ),
                       Text(
                         'Rs. ${product.price}',
-                      style: everythngTextTheme.headline4Bold!.copyWith(
-                        color: everythngThemeData
+                      style: context.everythngTextTheme.headline4Bold!.copyWith(
+                        color: context.everythngThemeData
                             .textAndIconography!['mediumEmphasis'],
                       ),
                     )

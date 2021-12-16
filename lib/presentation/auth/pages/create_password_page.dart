@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
-import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
+import 'package:everythng/constants/extensions/extension_string.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
@@ -18,8 +19,6 @@ class CreatePasswordPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
-    var everythngThemeData = Theme.of(context).everythngThemeData;
 
     final _isGreaterThan6 = useState(false);
     final _containsSpecialCharacter = useState(false);
@@ -64,15 +63,15 @@ class CreatePasswordPage extends HookWidget {
                     children: [
                       Text(
                         'create password for your account',
-                        style: everythngTextTheme.headline1Bold!,
+                        style: context.everythngTextTheme.headline1Bold!,
                       ),
                       const SizedBox(
                         height: 12,
                       ),
                       Text(
                         'please use special characters and not the name of your special one',
-                        style: everythngTextTheme.bodyTextMedium!.copyWith(
-                          color: everythngThemeData
+                        style: context.everythngTextTheme.bodyTextMedium!.copyWith(
+                          color: context.everythngThemeData
                               .textAndIconography!['mediumEmphasis'],
                         ),
                       ),
@@ -108,8 +107,8 @@ class CreatePasswordPage extends HookWidget {
                                 ? Icons.done_rounded
                                 : Icons.close_rounded,
                             color: _isGreaterThan6.value
-                                ? everythngThemeData.successColor
-                                : everythngThemeData.errorColor,
+                                ? context.everythngThemeData.successColor
+                                : context.everythngThemeData.errorColor,
                             size: 20,
                           ),
                           const SizedBox(
@@ -120,7 +119,7 @@ class CreatePasswordPage extends HookWidget {
                             child: Text(
                               'must be greater than 6 letters',
                               textAlign: TextAlign.center,
-                              style: everythngTextTheme.bodyTextSemiBold!
+                              style: context.everythngTextTheme.bodyTextSemiBold!
                                   .copyWith(color: Colors.grey[700]),
                             ),
                           )
@@ -135,8 +134,8 @@ class CreatePasswordPage extends HookWidget {
                                 ? Icons.done_rounded
                                 : Icons.close_rounded,
                             color: _containsSpecialCharacter.value
-                                ? everythngThemeData.successColor
-                                : everythngThemeData.errorColor,
+                                ? context.everythngThemeData.successColor
+                                : context.everythngThemeData.errorColor,
                             size: 20,
                           ),
                           const SizedBox(
@@ -147,7 +146,7 @@ class CreatePasswordPage extends HookWidget {
                                 _containsSpecialCharacterShakeController,
                             child: Text(
                               'must contain special character',
-                              style: everythngTextTheme.bodyTextSemiBold!
+                              style: context.everythngTextTheme.bodyTextSemiBold!
                                   .copyWith(color: Colors.grey[700]),
                             ),
                           )

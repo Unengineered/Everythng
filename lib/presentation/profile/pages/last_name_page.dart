@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:everythng/application/profile/profile_form_cubit/profile_form_cubit.dart';
-import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
@@ -17,8 +17,6 @@ class LastNamePage extends HookWidget {
   Widget build(BuildContext context) {
     final _lastNameEditingController = useTextEditingController();
     final _isProcessing = useState(false);
-    var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
-    var everythngThemeData = Theme.of(context).everythngThemeData;
 
     return KeyboardDismissOnTap(
 
@@ -57,15 +55,15 @@ class LastNamePage extends HookWidget {
                     children: [
                       Text(
                         'your last name',
-                        style: everythngTextTheme.headline1Bold!,
+                        style: context.everythngTextTheme.headline1Bold!,
                       ),
                       const SizedBox(
                         height: 12,
                       ),
                       Text(
                         'it will be between just the two of us, pinky promise!',
-                        style: everythngTextTheme.bodyTextMedium!.copyWith(
-                          color: everythngThemeData
+                        style: context.everythngTextTheme.bodyTextMedium!.copyWith(
+                          color: context.everythngThemeData
                               .textAndIconography!['mediumEmphasis'],
                         ),
                       ),

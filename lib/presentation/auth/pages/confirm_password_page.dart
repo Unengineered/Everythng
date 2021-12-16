@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
-import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +16,7 @@ class ConfirmPasswordPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
-    var everythngThemeData = Theme.of(context).everythngThemeData;
+
 
     final _passwordEditingController = useTextEditingController();
     final _isProcessing = useState(false);
@@ -76,15 +75,15 @@ class ConfirmPasswordPage extends HookWidget {
                       children: [
                         Text(
                           'confirm password to create account',
-                          style: everythngTextTheme.headline1Bold!,
+                          style: context.everythngTextTheme.headline1Bold!,
                         ),
                         const SizedBox(
                           height: 12,
                         ),
                         Text(
                           'you\'ll have to repeat that. I\'m kind of hard of hearing',
-                          style:  everythngTextTheme.bodyTextMedium!.copyWith(
-                          color: everythngThemeData
+                          style:  context.everythngTextTheme.bodyTextMedium!.copyWith(
+                          color: context.everythngThemeData
                               .textAndIconography!['mediumEmphasis'],
                         ),
                         ),
@@ -113,7 +112,7 @@ class ConfirmPasswordPage extends HookWidget {
                         title: 'Create Account',
                         icon: Icon(
                           Icons.done_rounded,
-                          color: everythngThemeData.successColor,
+                          color: context.everythngThemeData.successColor,
                         ),
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
