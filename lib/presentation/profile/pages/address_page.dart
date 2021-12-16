@@ -1,6 +1,11 @@
+
 import 'package:everythng/application/profile/profile_form_cubit/profile_form_cubit.dart';
-import 'package:everythng/constants/extensions.dart';
+
 import 'package:everythng/domain/profile/entities/address.dart';
+
+import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
+
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +30,7 @@ class AddressPage extends HookWidget {
     final _cityEditingController = useTextEditingController();
     final _stateEditingController = useTextEditingController();
     final _isProcessing = useState(false);
-    var everythngTextTheme = Theme.of(context).textTheme.everythngTextTheme;
-    var everythngThemeData = Theme.of(context).everythngThemeData;
+
 
     return KeyboardDismissOnTap(
       child: KeyboardVisibilityBuilder(
@@ -51,7 +55,7 @@ class AddressPage extends HookWidget {
                 duration: const Duration(milliseconds: 100),
                 margin: EdgeInsets.fromLTRB(
                   16,
-                  64,
+                  visible ? 0 : 64,
                   16,
                   visible ? 0 : 48,
                 ),
@@ -59,7 +63,7 @@ class AddressPage extends HookWidget {
                 child: LayoutBuilder(
                   builder: (context, constraints) {
                     return SingleChildScrollView(
-                      physics: const NeverScrollableScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       child: ConstrainedBox(
                         constraints: BoxConstraints(
                           minWidth: constraints.maxWidth,
@@ -74,16 +78,16 @@ class AddressPage extends HookWidget {
                               children: [
                                 Text(
                                   'your address',
-                                  style: everythngTextTheme.headline1Bold!,
+                                  style: context.everythngTextTheme.headline1Bold!,
                                 ),
                                 const SizedBox(
                                   height: 8,
                                 ),
                                 Text(
                                   'it will be between just the two of us, pinky promise!',
-                                  style: everythngTextTheme.bodyTextMedium!
+                                  style: context.everythngTextTheme.bodyTextMedium!
                                       .copyWith(
-                                    color: everythngThemeData
+                                    color: context.everythngThemeData
                                         .textAndIconography!['mediumEmphasis'],
                                   ),
                                 ),
@@ -92,7 +96,7 @@ class AddressPage extends HookWidget {
                                 ),
                                 Text(
                                   'line 1',
-                                  style: everythngTextTheme.headline4Bold!,
+                                  style: context.everythngTextTheme.headline4Bold!,
                                 ),
                                 EverythngBorderlessFormField(
                                   hintText: 'Flat/House/Block No.',
@@ -107,7 +111,7 @@ class AddressPage extends HookWidget {
                                 ),
                                 Text(
                                   'line 2',
-                                  style: everythngTextTheme.headline4Bold!,
+                                  style: context.everythngTextTheme.headline4Bold!,
                                 ),
                                 EverythngBorderlessFormField(
                                   hintText: 'Apartment/Road/Area',
@@ -129,10 +133,10 @@ class AddressPage extends HookWidget {
                                         Text(
                                           'pincode',
                                           style:
-                                              everythngTextTheme.headline4Bold!,
+                                              context.everythngTextTheme.headline4Bold!,
                                         ),
                                         SizedBox(
-                                          width: 150,
+                                          width: MediaQuery.of(context).size.width * 0.35,
                                           child: EverythngBorderlessFormField(
                                             hintText: '400001',
                                             enabled: !_isProcessing.value,
@@ -153,10 +157,10 @@ class AddressPage extends HookWidget {
                                         Text(
                                           'city',
                                           style:
-                                              everythngTextTheme.headline4Bold!,
+                                              context.everythngTextTheme.headline4Bold!,
                                         ),
                                         SizedBox(
-                                          width: 200,
+                                          width: MediaQuery.of(context).size.width * 0.55,
                                           child: EverythngBorderlessFormField(
                                             hintText: 'Mumbai',
                                             enabled: !_isProcessing.value,
@@ -176,7 +180,7 @@ class AddressPage extends HookWidget {
                                 ),
                                 Text(
                                   'state',
-                                  style: everythngTextTheme.headline4Bold!,
+                                  style: context.everythngTextTheme.headline4Bold!,
                                 ),
                                 EverythngBorderlessFormField(
                                   hintText: 'Maharashtra',
