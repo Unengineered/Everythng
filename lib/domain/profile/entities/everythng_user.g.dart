@@ -11,8 +11,6 @@ _$_EverythngUser _$$_EverythngUserFromJson(Map<String, dynamic> json) =>
       firstname: json['firstname'] as String,
       lastname: json['lastname'] as String,
       phone: json['phone'] as String,
-      picture:
-          json['picture'] == null ? null : Uri.parse(json['picture'] as String),
       addresses: (json['addresses'] as List<dynamic>)
           .map((e) => Address.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -26,7 +24,6 @@ Map<String, dynamic> _$$_EverythngUserToJson(_$_EverythngUser instance) =>
       'firstname': instance.firstname,
       'lastname': instance.lastname,
       'phone': instance.phone,
-      'picture': instance.picture?.toString(),
       'addresses': instance.addresses.map((e) => e.toJson()).toList(),
       'store': instance.storeLink?.toJson(),
     };

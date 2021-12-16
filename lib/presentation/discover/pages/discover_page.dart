@@ -112,18 +112,17 @@ class DiscoverPage extends StatelessWidget {
               ),
               BlocBuilder<DiscoverCubit, DiscoverState>(
                 builder: (context, state) {
-                  return state.map(loading:(_) {
+                  return state.map(loading: (_) {
                     return const CircularProgressIndicator();
-                  },
-                      loaded: (state){
-                    return  ListView.separated(
+                  }, loaded: (state) {
+                    return ListView.separated(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       clipBehavior: Clip.none,
                       scrollDirection: Axis.vertical,
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        return  StoreCard(state.recommendedStores[index]);
+                        return StoreCard(state.recommendedStores[index]);
                       },
                       separatorBuilder: (context, index) {
                         return const SizedBox(
@@ -132,14 +131,11 @@ class DiscoverPage extends StatelessWidget {
                       },
                       itemCount: state.recommendedStores.length,
                     );
-                      },
-                      initialised: (_){
+                  }, initialised: (_) {
                     return const CircularProgressIndicator();
-                      },
-                      error: (_){
-                        return const Text("Error");
-                      });
-
+                  }, error: (_) {
+                    return const Text("Error");
+                  });
                 },
               ),
               const SizedBox(

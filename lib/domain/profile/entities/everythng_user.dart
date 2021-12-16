@@ -11,7 +11,6 @@ class EverythngUser with _$EverythngUser {
       required String firstname,
       required String lastname,
       required String phone,
-      required Uri? picture,
       required List<Address> addresses,
       @JsonKey(name: "store") required StoreLink? storeLink}) = _EverythngUser;
 

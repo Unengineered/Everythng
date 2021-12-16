@@ -21,7 +21,7 @@ class AppWidget extends StatelessWidget {
           BlocProvider(create: (_) => getIt<AuthCubit>()),
           BlocProvider(create: (_) => getIt<AuthFormCubit>()),
           BlocProvider(create: (_) => getIt<ProfileCubit>()),
-          BlocProvider(create: (_) => getIt<ProfileFormCubit>())
+          BlocProvider(create: (_) => getIt<ProfileFormCubit>()),
         ],
         child: TreeRouter(
           router: _appRouter,
