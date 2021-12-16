@@ -1,10 +1,10 @@
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
 import 'package:everythng/application/discover/discover_cubit.dart';
 import 'package:everythng/constants/extensions.dart';
+import 'package:everythng/constants/functions/everythng_show_modal_bottom_sheet.dart';
 import 'package:everythng/injection.dart';
 import 'package:everythng/presentation/core/cards/product_card.dart';
 import 'package:everythng/presentation/core/cards/store_card.dart';
-import 'package:everythng/presentation/marketplace/marketplace_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -30,20 +30,38 @@ class DiscoverPage extends StatelessWidget {
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.checkroom_rounded,
-                          color: Colors.black,
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          'Thrifting',
-                          style: everythngTextTheme.headline3Bold,
-                        )
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        showEverythngModalBottomSheet(
+                          context: context,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Select a marketplace',
+                                  style: ,
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.checkroom_rounded,
+                            color: Colors.black,
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            'Thrifting',
+                            style: everythngTextTheme.headline3Bold,
+                          )
+                        ],
+                      ),
                     ),
                     TextButton(
                       onPressed: () => context.read<AuthCubit>().signOut(),
@@ -52,7 +70,6 @@ class DiscoverPage extends StatelessWidget {
                   ],
                 ),
               ),
-              const MarketplaceSwitcher(),
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),
                 child: Text(
