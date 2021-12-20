@@ -1,5 +1,7 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:everythng/application/store/store_form_cubit/store_form_cubit.dart';
 import 'package:everythng/constants/extensions/extension_context.dart';
+import 'package:everythng/domain/store/entities/bank_details.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
@@ -9,6 +11,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:provider/provider.dart';
 
 class BankDetailsPage extends HookWidget {
   final _accountNumberFormKey = GlobalKey<FormState>();
@@ -120,7 +123,6 @@ class BankDetailsPage extends HookWidget {
                                 type: FormFieldType.normal,
                                 enabled: !_isProcessing.value,
                                 textInputAction: TextInputAction.next,
-
                               ),
                               const SizedBox(
                                 height: 8,
@@ -162,7 +164,16 @@ class BankDetailsPage extends HookWidget {
                               isProcessing: _isProcessing.value,
                               title: 'Continue',
                               onTap: () {
-                                // context.router.push(BusinessEmailPageRoute());
+                                context.read<StoreFormCubit>().setBankDetails(
+                                    BankDetails(
+                                        accountNo:
+                                            _accountNumberEditingController
+                                                .text,
+                                        accountHolderName:
+                                            _holdersNameEditingController.text,
+                                        ifscCode:
+                                            _ifscCodeEditingController.text));
+                                context.router.push(BusinessEmailPageRoute());
                               },
                             ),
                           )

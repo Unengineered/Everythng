@@ -30,12 +30,13 @@ dependencies:
   fort_knox:
     git:
       url: https://github.com/Unengineered/AuthKit
-  network_kit:
+  network_kit: 
     git:
       url: https://github.com/Unengineered/NetworkKit
   json_serializable: ^6.1.0
   json_annotation: 4.4.0
   cached_network_image: 3.2.0
+  image_picker: ^0.8.4+4
   shimmer: ^2.0.0
   flutter_hooks: ^0.18.1
   firebase_core: ^1.10.0
@@ -54,8 +55,7 @@ dependencies:
   vector_math: ^2.1.0
   lottie: ^1.2.1
   flutter_svg: ^1.0.0
-  responsive_framework: ^0.1.5
-  device_preview: ^1.0.0
+ 
 
 
 

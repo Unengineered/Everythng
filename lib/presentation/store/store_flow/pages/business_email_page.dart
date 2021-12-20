@@ -1,6 +1,6 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:everythng/application/store/store_form_cubit/store_form_cubit.dart';
 import 'package:everythng/constants/extensions/extension_context.dart';
-import 'package:everythng/constants/shadows.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
@@ -10,6 +10,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:provider/provider.dart';
 
 class BusinessEmailPage extends HookWidget {
   final _formKey = GlobalKey<FormState>();
@@ -18,7 +19,7 @@ class BusinessEmailPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _storeNameEditingController = useTextEditingController();
+    final _buisnessEmailEditingController = useTextEditingController();
     final _isProcessing = useState(false);
 
     return KeyboardDismissOnTap(
@@ -78,7 +79,7 @@ class BusinessEmailPage extends HookWidget {
                         hintText: 'abcd@company.com',
                         validator: (value) {},
                         formKey: _formKey,
-                        controller: _storeNameEditingController,
+                        controller: _buisnessEmailEditingController,
                         type: FormFieldType.normal,
                         enabled: !_isProcessing.value,
                       ),
@@ -89,7 +90,8 @@ class BusinessEmailPage extends HookWidget {
                       isProcessing: _isProcessing.value,
                       title: 'Continue',
                       onTap: () {
-                        // context.router.push(StoreAddressPageRoute());
+                        context.read<StoreFormCubit>().setBuisnessEmail(_buisnessEmailEditingController.text);
+                        context.router.push(StoreAddressPageRoute());
 
                       },
                     ),

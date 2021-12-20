@@ -19,10 +19,6 @@ class DiscoverRepository implements IDiscoverRepository {
   @override
   Future<Either<NetworkFailure, List<RecommendedProduct>>>
       getRecommendedProducts() async {
-
-    //TODO: Switch fake API off
-    return right(recommendedProductsEx);
-
     final response =
         await networkKit.get(Uri.http(url, '/recommendations/products'));
     if (response.statusCode != 200) {
@@ -37,11 +33,6 @@ class DiscoverRepository implements IDiscoverRepository {
   @override
   Future<Either<NetworkFailure, List<RecommendedStore>>>
       getRecommendedStores() async {
-
-    //TODO: Switch fake API off
-    return right(recommendedStoresEx);
-
-
     final response =
         await networkKit.get(Uri.http(url, '/recommendations/stores'));
     if (response.statusCode != 200) {

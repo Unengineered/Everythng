@@ -211,6 +211,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  cross_file:
+    dependency: transitive
+    description:
+      name: cross_file
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.2"
   crypto:
     dependency: transitive
     description:
@@ -246,20 +253,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.0"
-  device_frame:
-    dependency: transitive
-    description:
-      name: device_frame
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
-  device_preview:
-    dependency: "direct main"
-    description:
-      name: device_preview
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   diff_match_patch:
     dependency: transitive
     description:
@@ -405,11 +398,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
-  flutter_localizations:
+  flutter_plugin_android_lifecycle:
     dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
+    description:
+      name: flutter_plugin_android_lifecycle
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.5"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -513,6 +508,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  image_picker:
+    dependency: "direct main"
+    description:
+      name: image_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.4+4"
+  image_picker_for_web:
+    dependency: transitive
+    description:
+      name: image_picker_for_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.4"
+  image_picker_platform_interface:
+    dependency: transitive
+    description:
+      name: image_picker_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.4.1"
   injectable:
     dependency: "direct main"
     description:
@@ -623,7 +639,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "74169b38bc928a3efe5989f619c59b3cbdf0d8af"
+      resolved-ref: "43abc327edf22b8c1f338a404409ebba04186897"
       url: "https://github.com/Unengineered/NetworkKit"
     source: git
     version: "0.0.1"
@@ -781,13 +797,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  responsive_framework:
-    dependency: "direct main"
-    description:
-      name: responsive_framework
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.5"
   rxdart:
     dependency: transitive
     description:
@@ -795,62 +804,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.3"
-  shared_preferences:
-    dependency: transitive
-    description:
-      name: shared_preferences
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.9"
-  shared_preferences_android:
-    dependency: transitive
-    description:
-      name: shared_preferences_android
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.9"
-  shared_preferences_ios:
-    dependency: transitive
-    description:
-      name: shared_preferences_ios
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.8"
-  shared_preferences_linux:
-    dependency: transitive
-    description:
-      name: shared_preferences_linux
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.3"
-  shared_preferences_macos:
-    dependency: transitive
-    description:
-      name: shared_preferences_macos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.2"
-  shared_preferences_platform_interface:
-    dependency: transitive
-    description:
-      name: shared_preferences_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  shared_preferences_web:
-    dependency: transitive
-    description:
-      name: shared_preferences_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.2"
-  shared_preferences_windows:
-    dependency: transitive
-    description:
-      name: shared_preferences_windows
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.3"
   shelf:
     dependency: transitive
     description:

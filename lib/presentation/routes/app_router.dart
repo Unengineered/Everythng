@@ -33,15 +33,14 @@ part 'app_router.gr.dart';
   ]),
 
   CupertinoRoute(page: MainAppWrapper, children: [
-
-    CupertinoRoute(page: DiscoverPage, initial: true),
+    CupertinoRoute(page: DiscoverPage),
     // CupertinoRoute(page: DiscoverPage),
-    // CupertinoRoute(page: StoreNamePage, initial: true),
-    // CupertinoRoute(page: StoreDetailPage),
-    // CupertinoRoute(page: IdentityProofPage),
-    // CupertinoRoute(page: BankDetailsPage),
-    // CupertinoRoute(page: BusinessEmailPage),
-    // CupertinoRoute(page: StoreAddressPage),
+    CupertinoRoute(page: StoreNamePage, initial: true),
+    CupertinoRoute(page: StoreDetailPage),
+    CupertinoRoute(page: IdentityProofPage),
+    CupertinoRoute(page: BankDetailsPage),
+    CupertinoRoute(page: BusinessEmailPage),
+    CupertinoRoute(page: StoreAddressPage),
   ]),
 
   CupertinoRoute(page: ProfileFlowWrapper, children: [
