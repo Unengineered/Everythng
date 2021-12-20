@@ -84,7 +84,7 @@ class ConfirmPasswordPage extends HookWidget {
                           'you\'ll have to repeat that. I\'m kind of hard of hearing',
                           style:  context.everythngTextTheme.bodyTextMedium!.copyWith(
                           color: context.everythngThemeData
-                              .textAndIconography!['mediumEmphasis'],
+                              .textAndIconography!.medium,
                         ),
                         ),
                         const SizedBox(

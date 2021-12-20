@@ -1,5 +1,4 @@
-import 'package:everythng/constants/extended_text_theme.dart';
-import 'package:everythng/constants/extended_theme_data.dart';
+
 import 'package:everythng/constants/extensions/extension_context.dart';
 import 'package:flutter/material.dart';
 
@@ -39,8 +38,8 @@ class _TwoStateBaseButtonState extends State<TwoStateBaseButton> {
         decoration: BoxDecoration(
           color: widget.backgroundColor ??
               (!widget.isProcessing
-                  ? context.everythngThemeData.textAndIconography!['highEmphasis']
-                  : context.everythngThemeData.textAndIconography!['disabled']),
+                  ? context.everythngThemeData.textAndIconography!.high
+                  : context.everythngThemeData.textAndIconography!.disabled),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(

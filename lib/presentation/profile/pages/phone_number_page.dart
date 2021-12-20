@@ -64,7 +64,7 @@ class PhoneNumberPage extends HookWidget {
                         'it will be between just the two of us, pinky promise!',
                         style: context.everythngTextTheme.bodyTextMedium!.copyWith(
                           color: context.everythngThemeData
-                              .textAndIconography!['mediumEmphasis'],
+                              .textAndIconography!.medium,
                         ),
                       ),
                       const SizedBox(

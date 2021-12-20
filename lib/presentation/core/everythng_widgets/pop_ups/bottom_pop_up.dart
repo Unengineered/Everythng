@@ -40,7 +40,7 @@ class BottomPopUp extends StatelessWidget {
             // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin interdum metus sed est.',
             message,
             style: context.everythngTextTheme.bodyTextMedium!.copyWith(
-              color: context.everythngThemeData.textAndIconography!['mediumEmphasis'],
+              color: context.everythngThemeData.textAndIconography!.medium,
             ),
             textAlign: TextAlign.center,
           ),

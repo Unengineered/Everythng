@@ -88,7 +88,7 @@ class AddressPage extends HookWidget {
                                   style: context.everythngTextTheme.bodyTextMedium!
                                       .copyWith(
                                     color: context.everythngThemeData
-                                        .textAndIconography!['mediumEmphasis'],
+                                        .textAndIconography!.medium,
                                   ),
                                 ),
                                 const SizedBox(

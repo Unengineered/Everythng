@@ -58,7 +58,7 @@ class LoginPage extends HookWidget {
                         'embarrassing old email ids are most welcome',
                         style: context.everythngTextTheme.bodyTextMedium!.copyWith(
                           color: context.everythngThemeData
-                              .textAndIconography!['mediumEmphasis'],
+                              .textAndIconography!.medium,
                         ),
                       ),
                       const SizedBox(
