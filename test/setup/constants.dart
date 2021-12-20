@@ -18,13 +18,13 @@ const String refreshedToken = 'REFRESHEDTOKEN';
 const user = BaseUser(email: email, uid: uid);
 
 //PROFILE
-final everythngUserConst = EverythngUser(
+const everythngUserConst = EverythngUser(
     firstname: 'firstname',
     lastname: 'lastname',
     phone: '9920644868',
-    picture: Uri.http('www.google.com', '/pic'),
+
     addresses: [
-      const Address(
+       Address(
           line1: 'line1',
           line2: 'line2',
           pincode: 400705,

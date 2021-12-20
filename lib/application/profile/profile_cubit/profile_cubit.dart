@@ -25,7 +25,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   void getProfileData() async {
     final result = await _profileRepository.getProfileData();
     result.fold((failure) {
-      failure.map((value) => null,
+      failure.map((value){},
           noProfileData: (_) => emit(const ProfileState.noData()));
     }, (everythngUser) {
       emit(ProfileState.loaded(everythngUser: everythngUser));

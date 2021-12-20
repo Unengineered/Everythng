@@ -84,7 +84,7 @@ class LastNamePage extends HookWidget {
                       isProcessing: _isProcessing.value,
                       title: 'Continue',
                       onTap: () {
-                        context.read<ProfileFormCubit>().setFirstName(_lastNameEditingController.text);
+                        context.read<ProfileFormCubit>().setLastName(_lastNameEditingController.text);
                         context.router.push(PhoneNumberPageRoute());
                       },
                     ),

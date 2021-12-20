@@ -7,7 +7,8 @@ part 'recommended_store.g.dart';
 @freezed
 class RecommendedStore with _$RecommendedStore {
   const factory RecommendedStore(
-      {required String id,
+      {
+      required String id,
       required String name,
       required Uri picture,
       String? tagline,
