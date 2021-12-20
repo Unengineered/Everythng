@@ -1,7 +1,7 @@
-import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
-import 'package:everythng/presentation/marketplace/marketplace_switcher.dart';
+import 'package:everythng/constants/extensions/extension_context.dart';
+import 'package:everythng/presentation/core/everythng_widgets/bottom_navigation_bar/everythng_bottom_navigation_bar.dart';
+import 'package:everythng/presentation/marketplace/app_bar/marketplace_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class BuyingPage extends StatelessWidget {
   const BuyingPage({Key? key}) : super(key: key);
@@ -9,18 +9,23 @@ class BuyingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            TextButton(
-              onPressed: () => context.read<AuthCubit>().signOut(),
-              child: const Text("Logout"),
+      body: Column(
+        children: [
+          const MarketPlaceAppBar(),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 350),
+            child: Text(
+              "We're cutting the best deals from top sustainable fashion brands around, just for you. \nStay tuned!",
+              style: context.everythngTextTheme.headline3Bold!.copyWith(
+                color: context.everythngThemeData.textAndIconography!.disabled,
+              ),
+              textAlign: TextAlign.center,
             ),
-            const MarketplaceSwitcher(),
-            const Text("Store"),
-          ],
-        ),
+          ),
+        ],
       ),
+      bottomNavigationBar: const EverythngBottomNavigationBar(),
     );
   }
 }

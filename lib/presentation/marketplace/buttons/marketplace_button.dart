@@ -20,9 +20,9 @@ class MarketplaceButton extends StatelessWidget {
         final cubit = context.read<MarketplaceCubit>();
         marketplace.maybeMap(
             renting: (_) => cubit.switchToRenting(),
-            thrifting: (_) => cubit.switchToThrifting(),
-            buying: (_) => cubit.switchToBuying(),
-          orElse: (){}
+          thrifting: (_) => cubit.switchToThrifting(),
+          buying: (_) => cubit.switchToBuying(),
+          orElse: () {},
         );
       },
       child: Container(
@@ -49,16 +49,22 @@ class MarketplaceButton extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                    marketplace.maybeMap(
-                        renting: (_) => 'Renting',
-                        thrifting: (_) => 'Thrifting',
-                        buying: (_) => 'Buying',
-                        orElse: () => ''),
-                    style: context.everythngTextTheme.headline3Bold!
-                        .copyWith(color: active ? Colors.white : null)),
-                Text('catchy thrifting line',
-                    style: context.everythngTextTheme.captionMedium!
-                        .copyWith(color: active ? Colors.white : null)),
+                  marketplace.maybeMap(
+                    renting: (_) => 'Renting',
+                    thrifting: (_) => 'Thrifting',
+                    buying: (_) => 'Buying',
+                    orElse: () => '',
+                  ),
+                  style: context.everythngTextTheme.headline3Bold!.copyWith(
+                    color: active ? Colors.white : null,
+                  ),
+                ),
+                Text(
+                  'catchy thrifting line',
+                  style: context.everythngTextTheme.captionMedium!.copyWith(
+                    color: active ? Colors.white : null,
+                  ),
+                ),
               ],
             )
           ],

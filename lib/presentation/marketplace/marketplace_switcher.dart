@@ -24,36 +24,47 @@ class MarketplaceSwitcher extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Select a marketplace',
-                        style:
-                            context.everythngTextTheme.headline3Bold!.copyWith(
-                          color: context.everythngThemeData
-                              .textAndIconography!['disabled'],
-                        ),
+                      'Select a marketplace',
+                      style: context.everythngTextTheme.headline3Bold!.copyWith(
+                        color: context
+                            .everythngThemeData.textAndIconography!.disabled,
                       ),
-                      const SizedBox(
-                        height: 16,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    MarketplaceButton(
+                      marketplace: const Marketplace.buying(),
+                      active: const Marketplace.buying() ==
+                          marketplaceInfo.marketplace,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    MarketplaceButton(
+                      marketplace: const Marketplace.thrifting(),
+                      active: const Marketplace.thrifting() ==
+                          marketplaceInfo.marketplace,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    MarketplaceButton(
+                      marketplace: const Marketplace.renting(),
+                      active: const Marketplace.renting() ==
+                          marketplaceInfo.marketplace,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 16,
                       ),
-                      MarketplaceButton(marketplace: const Marketplace.buying(), active: const Marketplace.buying() == marketplaceInfo.marketplace),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      MarketplaceButton(marketplace: const Marketplace.thrifting(), active: const Marketplace.thrifting() == marketplaceInfo.marketplace),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      MarketplaceButton(marketplace: const Marketplace.renting(), active: const Marketplace.renting() == marketplaceInfo.marketplace),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 16,
-                        ),
-                        decoration: BoxDecoration(
-                          boxShadow: everythng2LayerComponentShadow,
-                          borderRadius: BorderRadius.circular(8),
+                      decoration: BoxDecoration(
+                        boxShadow: everythng2LayerComponentShadow,
+                        borderRadius: BorderRadius.circular(8),
                           color: Colors.white,
                         ),
                         child: Row(
@@ -65,17 +76,18 @@ class MarketplaceSwitcher extends StatelessWidget {
                             ),
                             const SizedBox(
                               width: 4,
-                            ),
-                            const Icon(
-                              Icons.add_rounded,
-                              size: 20,
-                            )
-                          ],
-                        ),
+                          ),
+                          const Icon(
+                            Icons.add_rounded,
+                            size: 20,
+                          )
+                        ],
                       ),
-                    ],
-                  );
-                });
+                    ),
+                  ],
+                );
+              },
+            );
           },
         ),
       ),
