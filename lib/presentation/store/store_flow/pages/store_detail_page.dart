@@ -102,11 +102,14 @@ class StoreDetailPage extends HookWidget {
                         ),
                         GestureDetector(
                           onTap: () async {
-                              await _picker
+
+                            try { await _picker
                                 .pickImage(source: ImageSource.gallery)
                                 .then((file) {
                               context.read<StoreFormCubit>().setStoreLogo(file!);
-                            });
+                            });} catch(e){
+                              print(e);
+                            }
                           },
                           child: Container(
                             padding: const EdgeInsets.fromLTRB(
