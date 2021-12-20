@@ -1,5 +1,7 @@
+import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
 import 'package:everythng/presentation/marketplace/marketplace_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BuyingPage extends StatelessWidget {
   const BuyingPage({Key? key}) : super(key: key);
@@ -9,9 +11,13 @@ class BuyingPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: const[
-            MarketplaceSwitcher(),
-            Text("Buying"),
+          children: [
+            TextButton(
+              onPressed: () => context.read<AuthCubit>().signOut(),
+              child: const Text("Logout"),
+            ),
+            const MarketplaceSwitcher(),
+            const Text("Store"),
           ],
         ),
       ),
