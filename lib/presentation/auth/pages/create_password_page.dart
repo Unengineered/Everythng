@@ -72,7 +72,7 @@ class CreatePasswordPage extends HookWidget {
                         'please use special characters and not the name of your special one',
                         style: context.everythngTextTheme.bodyTextMedium!.copyWith(
                           color: context.everythngThemeData
-                              .textAndIconography!['mediumEmphasis'],
+                              .textAndIconography!.medium,
                         ),
                       ),
                       const SizedBox(

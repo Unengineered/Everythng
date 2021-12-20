@@ -101,7 +101,7 @@ class ProductCard extends StatelessWidget {
                                 style:
                                     context.everythngTextTheme.footerSemiBold!.copyWith(
                                   color: context.everythngThemeData
-                                      .textAndIconography!['disabled'],
+                                      .textAndIconography!.disabled,
                                 ),
                               )
                             ],
@@ -112,7 +112,7 @@ class ProductCard extends StatelessWidget {
                         'Rs. ${product.price}',
                       style: context.everythngTextTheme.headline4Bold!.copyWith(
                         color: context.everythngThemeData
-                            .textAndIconography!['mediumEmphasis'],
+                            .textAndIconography!.medium,
                       ),
                     )
                   ],
