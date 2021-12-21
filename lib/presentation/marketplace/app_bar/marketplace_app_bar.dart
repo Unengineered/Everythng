@@ -7,27 +7,25 @@ import 'package:everythng/presentation/marketplace/marketplace_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MarketPlaceAppBar extends StatelessWidget {
-  const MarketPlaceAppBar({
+class MarketPlaceAppBar extends AppBar {
+  MarketPlaceAppBar({
     Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      elevation: 0,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: () {
-              showEverythngModalBottomSheet(
-                context: context,
-                child: const MarketplaceSwitcher(),
-              );
-            },
-            child: BlocBuilder<MarketplaceCubit, MarketplaceState>(
-              builder: (context, state) {
+  }) : super(
+          key: key,
+          title: Builder(
+            builder: (context) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      showEverythngModalBottomSheet(
+                        context: context,
+                        child: const MarketplaceSwitcher(),
+                      );
+                    },
+                    child: BlocBuilder<MarketplaceCubit, MarketplaceState>(
+                      builder: (context, state) {
                 return state.map(
                   initial: (_) => Container(),
                   page: (marketPlaceInfo) {
@@ -52,17 +50,19 @@ class MarketPlaceAppBar extends StatelessWidget {
                         )
                       ],
                     );
-                  },
-                );
-              },
-            ),
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () => context.read<AuthCubit>().signOut(),
+                    child: const Text("Logout"),
+                  ),
+                ],
+              );
+            },
           ),
-          TextButton(
-            onPressed: () => context.read<AuthCubit>().signOut(),
-            child: const Text("Logout"),
-          ),
-        ],
-      ),
-    );
-  }
+          elevation: 0,
+        );
 }

@@ -11,7 +11,7 @@ class StorePage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const MarketPlaceAppBar(),
+           MarketPlaceAppBar(),
           Center(
             child: Text(
               "We're cutting the best deals from top sustainable fashion brands around, just for you. Stay tuned",

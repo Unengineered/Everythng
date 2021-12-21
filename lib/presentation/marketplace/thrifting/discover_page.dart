@@ -24,7 +24,7 @@ class DiscoverPage extends StatelessWidget {
             scrollDirection: Axis.vertical,
             physics: const BouncingScrollPhysics(),
             children: [
-            const MarketPlaceAppBar(),
+             MarketPlaceAppBar(),
             Padding(
               padding: const EdgeInsets.only(left: 16.0),
               child: Text(
