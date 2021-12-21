@@ -1,6 +1,6 @@
 import 'package:everythng/application/marketplace/marketplace_cubit.dart';
-import 'package:everythng/constants/extensions/extension_context.dart';
-import 'package:everythng/constants/shadows.dart';
+import 'package:everythng/core/extensions/extension_context.dart';
+import 'package:everythng/core/constants/shadows.dart';
 import 'package:everythng/domain/marketplace/entities/marketplace.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +27,7 @@ class MarketplaceSwitcher extends StatelessWidget {
                       'Select a marketplace',
                       style: context.everythngTextTheme.headline3Bold!.copyWith(
                         color: context
-                            .everythngThemeData.textAndIconography!.disabled,
+                            .everythngThemeData.textAndIconography.disabled,
                       ),
                     ),
                     const SizedBox(

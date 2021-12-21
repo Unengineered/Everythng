@@ -1,5 +1,5 @@
 import 'package:everythng/application/discover/discover_cubit.dart';
-import 'package:everythng/constants/extensions/extension_context.dart';
+import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:everythng/injection.dart';
 import 'package:everythng/presentation/core/cards/product_card.dart';
 import 'package:everythng/presentation/core/cards/store_card.dart';
