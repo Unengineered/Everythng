@@ -1,4 +1,4 @@
-import 'package:everythng/constants/extensions/extension_context.dart';
+import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
@@ -40,7 +40,7 @@ class BottomPopUp extends StatelessWidget {
             // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin interdum metus sed est.',
             message,
             style: context.everythngTextTheme.bodyTextMedium!.copyWith(
-              color: context.everythngThemeData.textAndIconography!.medium,
+              color: context.everythngThemeData.textAndIconography.medium,
             ),
             textAlign: TextAlign.center,
           ),

@@ -1,5 +1,5 @@
 import 'package:everythng/application/profile/profile_form_cubit/profile_form_cubit.dart';
-import 'package:everythng/constants/extensions/extension_context.dart';
+import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
 import 'package:everythng/presentation/core/everythng_widgets/form_fields/everythng_borderless_form_field.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
@@ -64,7 +64,7 @@ class PhoneNumberPage extends HookWidget {
                         'it will be between just the two of us, pinky promise!',
                         style: context.everythngTextTheme.bodyTextMedium!.copyWith(
                           color: context.everythngThemeData
-                              .textAndIconography!.medium,
+                              .textAndIconography.medium,
                         ),
                       ),
                       const SizedBox(

@@ -11,7 +11,7 @@ import 'package:everythng/presentation/profile/pages/phone_number_page.dart';
 import 'package:everythng/presentation/splash/splash_page.dart';
 import 'package:everythng/presentation/tree_wrappers/main_app_wrapper.dart';
 import 'package:everythng/presentation/tree_wrappers/profile_flow_wrapper.dart';
-import 'package:everythng/presentation/tree_wrappers/sigining_flow_wrapper.dart';
+import 'package:everythng/presentation/tree_wrappers/signing_flow_wrapper.dart';
 import 'package:flutter/cupertino.dart';
 
 part 'app_router.gr.dart';

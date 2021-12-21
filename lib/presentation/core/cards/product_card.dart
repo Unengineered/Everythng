@@ -1,5 +1,5 @@
-import 'package:everythng/constants/extensions/extension_context.dart';
-import 'package:everythng/constants/shadows.dart';
+import 'package:everythng/core/extensions/extension_context.dart';
+import 'package:everythng/core/constants/shadows.dart';
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
 import 'package:everythng/presentation/core/cards/single_detail_card.dart';
 import 'package:everythng/presentation/core/network_image.dart';
@@ -101,7 +101,7 @@ class ProductCard extends StatelessWidget {
                                 style:
                                     context.everythngTextTheme.footerSemiBold!.copyWith(
                                   color: context.everythngThemeData
-                                      .textAndIconography!.disabled,
+                                      .textAndIconography.disabled,
                                 ),
                               )
                             ],
@@ -112,7 +112,7 @@ class ProductCard extends StatelessWidget {
                         'Rs. ${product.price}',
                       style: context.everythngTextTheme.headline4Bold!.copyWith(
                         color: context.everythngThemeData
-                            .textAndIconography!.medium,
+                            .textAndIconography.medium,
                       ),
                     )
                   ],

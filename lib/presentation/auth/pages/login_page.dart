@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
-import 'package:everythng/constants/extensions/extension_context.dart';
-import 'package:everythng/constants/extensions/extension_string.dart';
+import 'package:everythng/core/extensions/extension_context.dart';
+import 'package:everythng/core/extensions/extension_string.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/animation/shake_animation.dart';
 import 'package:everythng/presentation/core/animations/shake_animation/controller/shake_controller.dart';
 import 'package:everythng/presentation/core/everythng_widgets/buttons/two_state_button/two_state_large_button.dart';
@@ -58,7 +58,7 @@ class LoginPage extends HookWidget {
                         'embarrassing old email ids are most welcome',
                         style: context.everythngTextTheme.bodyTextMedium!.copyWith(
                           color: context.everythngThemeData
-                              .textAndIconography!.medium,
+                              .textAndIconography.medium,
                         ),
                       ),
                       const SizedBox(

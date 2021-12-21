@@ -34,15 +34,14 @@ List<BoxShadow> everythng6LayerComponentShadow = [
 ];
 
 List<BoxShadow> everythng2LayerComponentShadow =  [
-   BoxShadow(
+  BoxShadow(
     color: Colors.black.withOpacity(0.13),
     blurRadius: 212,
-    offset: const Offset(0,47),
+    offset: const Offset(0, 47),
   ),
   BoxShadow(
     color: Colors.black.withOpacity(0.0589),
     blurRadius: 26.55,
     offset: const Offset(0,5.89),
   ),
-
 ];

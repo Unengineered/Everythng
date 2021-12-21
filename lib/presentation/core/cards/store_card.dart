@@ -1,5 +1,5 @@
-import 'package:everythng/constants/extensions/extension_context.dart';
-import 'package:everythng/constants/shadows.dart';
+import 'package:everythng/core/extensions/extension_context.dart';
+import 'package:everythng/core/constants/shadows.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
 import 'package:everythng/presentation/core/network_image.dart';
 import 'package:flutter/material.dart';

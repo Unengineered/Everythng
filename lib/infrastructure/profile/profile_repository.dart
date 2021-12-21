@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:everythng/constants/url.dart';
+import 'package:everythng/core/api/url.dart';
 import 'package:everythng/domain/profile/entities/everythng_user.dart';
 import 'package:everythng/domain/core/network_failure.dart';
 import 'package:dartz/dartz.dart';

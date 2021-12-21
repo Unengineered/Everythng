@@ -1,4 +1,4 @@
-import 'package:everythng/constants/url.dart';
+import 'package:everythng/core/api/url.dart';
 import 'package:everythng/infrastructure/discover/discover_repository.dart';
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';

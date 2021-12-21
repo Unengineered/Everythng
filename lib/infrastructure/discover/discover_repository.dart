@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:everythng/constants/url.dart';
+import 'package:everythng/core/api/url.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
 import 'package:everythng/domain/core/network_failure.dart';

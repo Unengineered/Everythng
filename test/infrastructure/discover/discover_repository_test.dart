@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:everythng/constants/url.dart';
+import 'package:everythng/core/api/url.dart';
 import 'package:everythng/domain/core/network_failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

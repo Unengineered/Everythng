@@ -1,5 +1,5 @@
 
-import 'package:everythng/constants/extensions/extension_context.dart';
+import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -88,12 +88,12 @@ class _EverythngBorderlessFormFieldState
             icon: obscure
                 ? const Icon(Icons.visibility_off_rounded)
                 : const Icon(Icons.visibility_rounded),
-            color: context.everythngThemeData.textAndIconography!.disabled,
+            color: context.everythngThemeData.textAndIconography.disabled,
           )
               : null,
           hintText: widget.hintText,
           hintStyle: context.everythngTextTheme.headline3Bold!.copyWith(
-            color: context.everythngThemeData.textAndIconography!.disabled,
+            color: context.everythngThemeData.textAndIconography.disabled,
           ),
           border: InputBorder.none,
         ),

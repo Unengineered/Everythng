@@ -5,7 +5,7 @@ import 'package:everythng/domain/auth/i_auth_repository.dart';
 import 'package:fort_knox/fort_knox.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-import 'package:everythng/constants/url.dart';
+import 'package:everythng/core/api/url.dart';
 
 @Injectable(as: IAuthRepository)
 class AuthRepository implements IAuthRepository {
