@@ -7,7 +7,7 @@ import 'injection.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  configureDependencies();
+  await configureDependencies();
   //log((await getIt<FortKnox>().getToken()).toString());
   runApp(AppWidget());
 }
