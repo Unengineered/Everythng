@@ -166,7 +166,7 @@ class BankDetailsPage extends HookWidget {
                               onTap: () {
                                 context.read<StoreFormCubit>().setBankDetails(
                                     BankDetails(
-                                        accountNo:
+                                        accountNumber:
                                             _accountNumberEditingController
                                                 .text,
                                         accountHolderName:

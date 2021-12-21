@@ -31,7 +31,7 @@ class StoreFormCubit extends Cubit<StoreFormState> {
   void setBankDetails(BankDetails bankDetails) =>
       emit(state.copyWith(bankDetails: bankDetails));
   void setBuisnessEmail(String? buisnessEmail) =>
-      emit(state.copyWith(buisnessEmail: buisnessEmail));
+      emit(state.copyWith(businessEmail: buisnessEmail));
   void setAddress(Address address) => emit(state.copyWith(address: address));
   void setStore() {
     _storeCubit.setStore(Store(
@@ -40,7 +40,7 @@ class StoreFormCubit extends Cubit<StoreFormState> {
         storeTagline: state.storeTagline,
         identityProof: state.identityProof,
         bankDetails: state.bankDetails,
-        buisnessEmail: state.buisnessEmail,
+        businessEmail: state.businessEmail,
         address: state.address));
   }
 }

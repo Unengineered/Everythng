@@ -218,11 +218,11 @@ const storeModel = '''
 							"panCardImage": "s3 URL"		
 					},
 "bankDetails": {
-								"accountNo": "2324923",
+								"accountNumber": "2324923",
 								"accountHolderName": "account holder name",
 								"ifscCode": "IFSC code"
 							},
-"buisnessEmail": "abc@abc.com (not mandatory)",
+"businessEmail": "abc@abc.com (not mandatory)",
 "address": {
           "line1":"line1",
           "line2":"line2",

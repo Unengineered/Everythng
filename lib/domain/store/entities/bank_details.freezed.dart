@@ -22,11 +22,11 @@ class _$BankDetailsTearOff {
   const _$BankDetailsTearOff();
 
   _BankDetails call(
-      {required String accountNo,
+      {required String accountNumber,
       required String accountHolderName,
       required String ifscCode}) {
     return _BankDetails(
-      accountNo: accountNo,
+      accountNumber: accountNumber,
       accountHolderName: accountHolderName,
       ifscCode: ifscCode,
     );
@@ -42,7 +42,7 @@ const $BankDetails = _$BankDetailsTearOff();
 
 /// @nodoc
 mixin _$BankDetails {
-  String get accountNo => throw _privateConstructorUsedError;
+  String get accountNumber => throw _privateConstructorUsedError;
   String get accountHolderName => throw _privateConstructorUsedError;
   String get ifscCode => throw _privateConstructorUsedError;
 
@@ -57,7 +57,7 @@ abstract class $BankDetailsCopyWith<$Res> {
   factory $BankDetailsCopyWith(
           BankDetails value, $Res Function(BankDetails) then) =
       _$BankDetailsCopyWithImpl<$Res>;
-  $Res call({String accountNo, String accountHolderName, String ifscCode});
+  $Res call({String accountNumber, String accountHolderName, String ifscCode});
 }
 
 /// @nodoc
@@ -70,14 +70,14 @@ class _$BankDetailsCopyWithImpl<$Res> implements $BankDetailsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? accountNo = freezed,
+    Object? accountNumber = freezed,
     Object? accountHolderName = freezed,
     Object? ifscCode = freezed,
   }) {
     return _then(_value.copyWith(
-      accountNo: accountNo == freezed
-          ? _value.accountNo
-          : accountNo // ignore: cast_nullable_to_non_nullable
+      accountNumber: accountNumber == freezed
+          ? _value.accountNumber
+          : accountNumber // ignore: cast_nullable_to_non_nullable
               as String,
       accountHolderName: accountHolderName == freezed
           ? _value.accountHolderName
@@ -98,7 +98,7 @@ abstract class _$BankDetailsCopyWith<$Res>
           _BankDetails value, $Res Function(_BankDetails) then) =
       __$BankDetailsCopyWithImpl<$Res>;
   @override
-  $Res call({String accountNo, String accountHolderName, String ifscCode});
+  $Res call({String accountNumber, String accountHolderName, String ifscCode});
 }
 
 /// @nodoc
@@ -113,14 +113,14 @@ class __$BankDetailsCopyWithImpl<$Res> extends _$BankDetailsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? accountNo = freezed,
+    Object? accountNumber = freezed,
     Object? accountHolderName = freezed,
     Object? ifscCode = freezed,
   }) {
     return _then(_BankDetails(
-      accountNo: accountNo == freezed
-          ? _value.accountNo
-          : accountNo // ignore: cast_nullable_to_non_nullable
+      accountNumber: accountNumber == freezed
+          ? _value.accountNumber
+          : accountNumber // ignore: cast_nullable_to_non_nullable
               as String,
       accountHolderName: accountHolderName == freezed
           ? _value.accountHolderName
@@ -138,7 +138,7 @@ class __$BankDetailsCopyWithImpl<$Res> extends _$BankDetailsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_BankDetails implements _BankDetails {
   const _$_BankDetails(
-      {required this.accountNo,
+      {required this.accountNumber,
       required this.accountHolderName,
       required this.ifscCode});
 
@@ -146,7 +146,7 @@ class _$_BankDetails implements _BankDetails {
       _$$_BankDetailsFromJson(json);
 
   @override
-  final String accountNo;
+  final String accountNumber;
   @override
   final String accountHolderName;
   @override
@@ -154,7 +154,7 @@ class _$_BankDetails implements _BankDetails {
 
   @override
   String toString() {
-    return 'BankDetails(accountNo: $accountNo, accountHolderName: $accountHolderName, ifscCode: $ifscCode)';
+    return 'BankDetails(accountNumber: $accountNumber, accountHolderName: $accountHolderName, ifscCode: $ifscCode)';
   }
 
   @override
@@ -162,8 +162,8 @@ class _$_BankDetails implements _BankDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _BankDetails &&
-            (identical(other.accountNo, accountNo) ||
-                other.accountNo == accountNo) &&
+            (identical(other.accountNumber, accountNumber) ||
+                other.accountNumber == accountNumber) &&
             (identical(other.accountHolderName, accountHolderName) ||
                 other.accountHolderName == accountHolderName) &&
             (identical(other.ifscCode, ifscCode) ||
@@ -172,7 +172,7 @@ class _$_BankDetails implements _BankDetails {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, accountNo, accountHolderName, ifscCode);
+      Object.hash(runtimeType, accountNumber, accountHolderName, ifscCode);
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +187,7 @@ class _$_BankDetails implements _BankDetails {
 
 abstract class _BankDetails implements BankDetails {
   const factory _BankDetails(
-      {required String accountNo,
+      {required String accountNumber,
       required String accountHolderName,
       required String ifscCode}) = _$_BankDetails;
 
@@ -195,7 +195,7 @@ abstract class _BankDetails implements BankDetails {
       _$_BankDetails.fromJson;
 
   @override
-  String get accountNo;
+  String get accountNumber;
   @override
   String get accountHolderName;
   @override

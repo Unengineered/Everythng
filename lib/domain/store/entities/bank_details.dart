@@ -6,7 +6,7 @@ part 'bank_details.g.dart';
 @freezed
 class BankDetails with _$BankDetails {
   const factory BankDetails({
-    required String accountNo,
+    required String accountNumber,
     required String accountHolderName,
     required String ifscCode,
   }) = _BankDetails;

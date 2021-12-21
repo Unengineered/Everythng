@@ -8,7 +8,7 @@ class StoreFormState with _$StoreFormState {
     required String storeTagline,
     required IdentityProof identityProof,
     required BankDetails bankDetails,
-    required String? buisnessEmail,
+    required String? businessEmail,
     required Address address,
   }) = _StoreFormState;
   factory StoreFormState.initial() => StoreFormState(
@@ -17,8 +17,8 @@ class StoreFormState with _$StoreFormState {
       storeTagline: '',
       identityProof: const IdentityProof(panCardNo: '', panCardImage: ''),
       bankDetails:
-          const BankDetails(accountNo: '', accountHolderName: '', ifscCode: ''),
-      buisnessEmail: '',
+          const BankDetails(accountNumber: '', accountHolderName: '', ifscCode: ''),
+      businessEmail: '',
       address: const Address(
           line1: '', line2: '', pincode: 000000, city: '', state: ''));
 }

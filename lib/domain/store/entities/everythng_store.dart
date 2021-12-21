@@ -15,7 +15,7 @@ class Store with _$Store {
     required String storeTagline,
     required IdentityProof identityProof,
     required BankDetails bankDetails,
-    required String? buisnessEmail,
+    required String? businessEmail,
     required Address address,
   }) = _Store;
 

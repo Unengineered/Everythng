@@ -27,7 +27,7 @@ class _$StoreTearOff {
       required String storeTagline,
       required IdentityProof identityProof,
       required BankDetails bankDetails,
-      required String? buisnessEmail,
+      required String? businessEmail,
       required Address address}) {
     return _Store(
       storeName: storeName,
@@ -35,7 +35,7 @@ class _$StoreTearOff {
       storeTagline: storeTagline,
       identityProof: identityProof,
       bankDetails: bankDetails,
-      buisnessEmail: buisnessEmail,
+      businessEmail: businessEmail,
       address: address,
     );
   }
@@ -55,7 +55,7 @@ mixin _$Store {
   String get storeTagline => throw _privateConstructorUsedError;
   IdentityProof get identityProof => throw _privateConstructorUsedError;
   BankDetails get bankDetails => throw _privateConstructorUsedError;
-  String? get buisnessEmail => throw _privateConstructorUsedError;
+  String? get businessEmail => throw _privateConstructorUsedError;
   Address get address => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -73,7 +73,7 @@ abstract class $StoreCopyWith<$Res> {
       String storeTagline,
       IdentityProof identityProof,
       BankDetails bankDetails,
-      String? buisnessEmail,
+      String? businessEmail,
       Address address});
 
   $IdentityProofCopyWith<$Res> get identityProof;
@@ -96,7 +96,7 @@ class _$StoreCopyWithImpl<$Res> implements $StoreCopyWith<$Res> {
     Object? storeTagline = freezed,
     Object? identityProof = freezed,
     Object? bankDetails = freezed,
-    Object? buisnessEmail = freezed,
+    Object? businessEmail = freezed,
     Object? address = freezed,
   }) {
     return _then(_value.copyWith(
@@ -120,9 +120,9 @@ class _$StoreCopyWithImpl<$Res> implements $StoreCopyWith<$Res> {
           ? _value.bankDetails
           : bankDetails // ignore: cast_nullable_to_non_nullable
               as BankDetails,
-      buisnessEmail: buisnessEmail == freezed
-          ? _value.buisnessEmail
-          : buisnessEmail // ignore: cast_nullable_to_non_nullable
+      businessEmail: businessEmail == freezed
+          ? _value.businessEmail
+          : businessEmail // ignore: cast_nullable_to_non_nullable
               as String?,
       address: address == freezed
           ? _value.address
@@ -164,7 +164,7 @@ abstract class _$StoreCopyWith<$Res> implements $StoreCopyWith<$Res> {
       String storeTagline,
       IdentityProof identityProof,
       BankDetails bankDetails,
-      String? buisnessEmail,
+      String? businessEmail,
       Address address});
 
   @override
@@ -191,7 +191,7 @@ class __$StoreCopyWithImpl<$Res> extends _$StoreCopyWithImpl<$Res>
     Object? storeTagline = freezed,
     Object? identityProof = freezed,
     Object? bankDetails = freezed,
-    Object? buisnessEmail = freezed,
+    Object? businessEmail = freezed,
     Object? address = freezed,
   }) {
     return _then(_Store(
@@ -215,9 +215,9 @@ class __$StoreCopyWithImpl<$Res> extends _$StoreCopyWithImpl<$Res>
           ? _value.bankDetails
           : bankDetails // ignore: cast_nullable_to_non_nullable
               as BankDetails,
-      buisnessEmail: buisnessEmail == freezed
-          ? _value.buisnessEmail
-          : buisnessEmail // ignore: cast_nullable_to_non_nullable
+      businessEmail: businessEmail == freezed
+          ? _value.businessEmail
+          : businessEmail // ignore: cast_nullable_to_non_nullable
               as String?,
       address: address == freezed
           ? _value.address
@@ -236,7 +236,7 @@ class _$_Store implements _Store {
       required this.storeTagline,
       required this.identityProof,
       required this.bankDetails,
-      required this.buisnessEmail,
+      required this.businessEmail,
       required this.address});
 
   factory _$_Store.fromJson(Map<String, dynamic> json) =>
@@ -253,13 +253,13 @@ class _$_Store implements _Store {
   @override
   final BankDetails bankDetails;
   @override
-  final String? buisnessEmail;
+  final String? businessEmail;
   @override
   final Address address;
 
   @override
   String toString() {
-    return 'Store(storeName: $storeName, storeLogo: $storeLogo, storeTagline: $storeTagline, identityProof: $identityProof, bankDetails: $bankDetails, buisnessEmail: $buisnessEmail, address: $address)';
+    return 'Store(storeName: $storeName, storeLogo: $storeLogo, storeTagline: $storeTagline, identityProof: $identityProof, bankDetails: $bankDetails, businessEmail: $businessEmail, address: $address)';
   }
 
   @override
@@ -277,14 +277,14 @@ class _$_Store implements _Store {
                 other.identityProof == identityProof) &&
             (identical(other.bankDetails, bankDetails) ||
                 other.bankDetails == bankDetails) &&
-            (identical(other.buisnessEmail, buisnessEmail) ||
-                other.buisnessEmail == buisnessEmail) &&
+            (identical(other.businessEmail, businessEmail) ||
+                other.businessEmail == businessEmail) &&
             (identical(other.address, address) || other.address == address));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, storeName, storeLogo,
-      storeTagline, identityProof, bankDetails, buisnessEmail, address);
+      storeTagline, identityProof, bankDetails, businessEmail, address);
 
   @JsonKey(ignore: true)
   @override
@@ -304,7 +304,7 @@ abstract class _Store implements Store {
       required String storeTagline,
       required IdentityProof identityProof,
       required BankDetails bankDetails,
-      required String? buisnessEmail,
+      required String? businessEmail,
       required Address address}) = _$_Store;
 
   factory _Store.fromJson(Map<String, dynamic> json) = _$_Store.fromJson;
@@ -320,7 +320,7 @@ abstract class _Store implements Store {
   @override
   BankDetails get bankDetails;
   @override
-  String? get buisnessEmail;
+  String? get businessEmail;
   @override
   Address get address;
   @override

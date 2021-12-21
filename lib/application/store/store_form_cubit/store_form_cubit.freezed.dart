@@ -23,7 +23,7 @@ class _$StoreFormStateTearOff {
       required String storeTagline,
       required IdentityProof identityProof,
       required BankDetails bankDetails,
-      required String? buisnessEmail,
+      required String? businessEmail,
       required Address address}) {
     return _StoreFormState(
       storeName: storeName,
@@ -31,7 +31,7 @@ class _$StoreFormStateTearOff {
       storeTagline: storeTagline,
       identityProof: identityProof,
       bankDetails: bankDetails,
-      buisnessEmail: buisnessEmail,
+      businessEmail: businessEmail,
       address: address,
     );
   }
@@ -47,7 +47,7 @@ mixin _$StoreFormState {
   String get storeTagline => throw _privateConstructorUsedError;
   IdentityProof get identityProof => throw _privateConstructorUsedError;
   BankDetails get bankDetails => throw _privateConstructorUsedError;
-  String? get buisnessEmail => throw _privateConstructorUsedError;
+  String? get businessEmail => throw _privateConstructorUsedError;
   Address get address => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -66,7 +66,7 @@ abstract class $StoreFormStateCopyWith<$Res> {
       String storeTagline,
       IdentityProof identityProof,
       BankDetails bankDetails,
-      String? buisnessEmail,
+      String? businessEmail,
       Address address});
 
   $IdentityProofCopyWith<$Res> get identityProof;
@@ -90,7 +90,7 @@ class _$StoreFormStateCopyWithImpl<$Res>
     Object? storeTagline = freezed,
     Object? identityProof = freezed,
     Object? bankDetails = freezed,
-    Object? buisnessEmail = freezed,
+    Object? businessEmail = freezed,
     Object? address = freezed,
   }) {
     return _then(_value.copyWith(
@@ -114,9 +114,9 @@ class _$StoreFormStateCopyWithImpl<$Res>
           ? _value.bankDetails
           : bankDetails // ignore: cast_nullable_to_non_nullable
               as BankDetails,
-      buisnessEmail: buisnessEmail == freezed
-          ? _value.buisnessEmail
-          : buisnessEmail // ignore: cast_nullable_to_non_nullable
+      businessEmail: businessEmail == freezed
+          ? _value.businessEmail
+          : businessEmail // ignore: cast_nullable_to_non_nullable
               as String?,
       address: address == freezed
           ? _value.address
@@ -160,7 +160,7 @@ abstract class _$StoreFormStateCopyWith<$Res>
       String storeTagline,
       IdentityProof identityProof,
       BankDetails bankDetails,
-      String? buisnessEmail,
+      String? businessEmail,
       Address address});
 
   @override
@@ -189,7 +189,7 @@ class __$StoreFormStateCopyWithImpl<$Res>
     Object? storeTagline = freezed,
     Object? identityProof = freezed,
     Object? bankDetails = freezed,
-    Object? buisnessEmail = freezed,
+    Object? businessEmail = freezed,
     Object? address = freezed,
   }) {
     return _then(_StoreFormState(
@@ -213,9 +213,9 @@ class __$StoreFormStateCopyWithImpl<$Res>
           ? _value.bankDetails
           : bankDetails // ignore: cast_nullable_to_non_nullable
               as BankDetails,
-      buisnessEmail: buisnessEmail == freezed
-          ? _value.buisnessEmail
-          : buisnessEmail // ignore: cast_nullable_to_non_nullable
+      businessEmail: businessEmail == freezed
+          ? _value.businessEmail
+          : businessEmail // ignore: cast_nullable_to_non_nullable
               as String?,
       address: address == freezed
           ? _value.address
@@ -234,7 +234,7 @@ class _$_StoreFormState implements _StoreFormState {
       required this.storeTagline,
       required this.identityProof,
       required this.bankDetails,
-      required this.buisnessEmail,
+      required this.businessEmail,
       required this.address});
 
   @override
@@ -248,13 +248,13 @@ class _$_StoreFormState implements _StoreFormState {
   @override
   final BankDetails bankDetails;
   @override
-  final String? buisnessEmail;
+  final String? businessEmail;
   @override
   final Address address;
 
   @override
   String toString() {
-    return 'StoreFormState(storeName: $storeName, storeLogo: $storeLogo, storeTagline: $storeTagline, identityProof: $identityProof, bankDetails: $bankDetails, buisnessEmail: $buisnessEmail, address: $address)';
+    return 'StoreFormState(storeName: $storeName, storeLogo: $storeLogo, storeTagline: $storeTagline, identityProof: $identityProof, bankDetails: $bankDetails, businessEmail: $businessEmail, address: $address)';
   }
 
   @override
@@ -272,14 +272,14 @@ class _$_StoreFormState implements _StoreFormState {
                 other.identityProof == identityProof) &&
             (identical(other.bankDetails, bankDetails) ||
                 other.bankDetails == bankDetails) &&
-            (identical(other.buisnessEmail, buisnessEmail) ||
-                other.buisnessEmail == buisnessEmail) &&
+            (identical(other.businessEmail, businessEmail) ||
+                other.businessEmail == businessEmail) &&
             (identical(other.address, address) || other.address == address));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, storeName, storeLogo,
-      storeTagline, identityProof, bankDetails, buisnessEmail, address);
+      storeTagline, identityProof, bankDetails, businessEmail, address);
 
   @JsonKey(ignore: true)
   @override
@@ -294,7 +294,7 @@ abstract class _StoreFormState implements StoreFormState {
       required String storeTagline,
       required IdentityProof identityProof,
       required BankDetails bankDetails,
-      required String? buisnessEmail,
+      required String? businessEmail,
       required Address address}) = _$_StoreFormState;
 
   @override
@@ -308,7 +308,7 @@ abstract class _StoreFormState implements StoreFormState {
   @override
   BankDetails get bankDetails;
   @override
-  String? get buisnessEmail;
+  String? get businessEmail;
   @override
   Address get address;
   @override

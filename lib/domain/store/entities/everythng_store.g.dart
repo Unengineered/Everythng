@@ -14,7 +14,7 @@ _$_Store _$$_StoreFromJson(Map<String, dynamic> json) => _$_Store(
           IdentityProof.fromJson(json['identityProof'] as Map<String, dynamic>),
       bankDetails:
           BankDetails.fromJson(json['bankDetails'] as Map<String, dynamic>),
-      buisnessEmail: json['buisnessEmail'] as String?,
+      businessEmail: json['businessEmail'] as String?,
       address: Address.fromJson(json['address'] as Map<String, dynamic>),
     );
 
@@ -24,6 +24,6 @@ Map<String, dynamic> _$$_StoreToJson(_$_Store instance) => <String, dynamic>{
       'storeTagline': instance.storeTagline,
       'identityProof': instance.identityProof.toJson(),
       'bankDetails': instance.bankDetails.toJson(),
-      'buisnessEmail': instance.buisnessEmail,
+      'businessEmail': instance.businessEmail,
       'address': instance.address.toJson(),
     };
