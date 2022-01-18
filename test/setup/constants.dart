@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
+import 'package:everythng/domain/list/entities/item_lists.dart';
+import 'package:everythng/domain/list/entities/user_list.dart';
 import 'package:everythng/domain/profile/entities/address.dart';
 import 'package:everythng/domain/profile/entities/everythng_user.dart';
 import 'package:fort_knox/fort_knox.dart';
@@ -203,3 +205,30 @@ final List<RecommendedStore> recommendedStoresEx =
         .toList();
 
 final everythngUser = EverythngUser.fromJson(json.decode(profileData));
+
+const listJson = '''
+ {
+   "cart":[
+   "dbdecdj",
+   "dcdcdcd"
+   ],
+   "wish_list":[],
+   "lists":{
+    "list1":[],
+    "list2":[]
+    }
+ }
+''';
+
+final itemLists = ItemLists.fromJson(json.decode(listJson));
+
+const userListJson = '''
+ {
+   "list1":[
+   "DDDDD",
+   "DFFFF"
+   ]
+ }
+''';
+
+final userList = UserList.fromJson(json.decode(userListJson));
