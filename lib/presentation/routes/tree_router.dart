@@ -27,6 +27,7 @@ class TreeRouter extends StatelessWidget {
     ], child: child);
   }
 
+  //TODO(advait): Update this function to not change pages when background updates.
   void checkStatesAndSetTree() {
     final stack = router.stack;
     final currentPage = router.current;

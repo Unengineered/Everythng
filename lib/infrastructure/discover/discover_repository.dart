@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 import 'dart:developer';
 
 import 'package:everythng/core/api/url.dart';
@@ -23,36 +23,48 @@ class DiscoverRepository implements IDiscoverRepository {
     //TODO: Switch fake API off
     //return right(recommendedProductsEx);
 
-    final response =
-        await networkKit.get(Uri.http(url, '/recommendations/products'));
-    if (response.statusCode != 200) {
-      log(response.statusCode.toString());
-      log(response.body);
+    try{
+      final response = await networkKit.get(Uri.http(url, '/recommendations/product'));
+
+      if (response.statusCode != 200) {
+        log(response.statusCode.toString());
+        log(response.body.toString());
+        return left(const NetworkFailure());
+      }
+      return right<NetworkFailure, List<RecommendedProduct>>(
+          (response.body["recommended_products"] as List<dynamic>)
+              .map((e) => RecommendedProduct.fromJson(e))
+              .toList());
+    } on NetworkKitException catch (_){
+      log('caught networkKit exception');
       return left(const NetworkFailure());
     }
-    return right<NetworkFailure, List<RecommendedProduct>>(
-        (json.decode(response.body) as List<dynamic>)
-            .map((e) => RecommendedProduct.fromJson(e))
-            .toList());
+
+
   }
 
   @override
   Future<Either<NetworkFailure, List<RecommendedStore>>>
       getRecommendedStores() async {
-
-    //TODO: Switch fake API off
+    //Fake API
     //return right(recommendedStoresEx);
 
-    final response =
-        await networkKit.get(Uri.http(url, '/recommendations/stores'));
-    if (response.statusCode != 200) {
-      log(response.statusCode.toString());
-      log(response.body);
+    try{
+      final response =
+      await networkKit.get(Uri.http(url, '/recommendations/store'));
+      if (response.statusCode != 200) {
+        log(response.statusCode.toString());
+        log(response.body.toString());
+        return left(const NetworkFailure());
+      }
+      return right<NetworkFailure, List<RecommendedStore>>(
+          (response.body['recommended_stores'] as List<dynamic>)
+              .map((json) => RecommendedStore.fromJson(json))
+              .toList());
+    } on NetworkKitException catch (_){
+      log('caught networkKit exception');
       return left(const NetworkFailure());
     }
-    return right<NetworkFailure, List<RecommendedStore>>(
-        (json.decode(response.body) as List<dynamic>)
-            .map((json) => RecommendedStore.fromJson(json))
-            .toList());
+
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
@@ -24,8 +26,14 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   void getProfileData() async {
     final result = await _profileRepository.getProfileData();
-    result.fold((failure) {
-      failure.map((value){},
+    result.fold((NetworkFailure failure) {
+      failure.map((value){
+        log("Failed to get profile data");
+        Future.delayed(const Duration(seconds: 2), (){
+          log("Retrying for profile data");
+          getProfileData();
+        });
+      },
           noProfileData: (_) => emit(const ProfileState.noData()));
     }, (everythngUser) {
       emit(ProfileState.loaded(everythngUser: everythngUser));

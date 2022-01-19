@@ -206,15 +206,20 @@ class _$_RecommendedStore implements _RecommendedStore {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RecommendedStore &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.picture, picture) || other.picture == picture) &&
-            (identical(other.tagline, tagline) || other.tagline == tagline) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.picture, picture) &&
+            const DeepCollectionEquality().equals(other.tagline, tagline) &&
             const DeepCollectionEquality().equals(other.products, products));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, picture, tagline,
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(picture),
+      const DeepCollectionEquality().hash(tagline),
       const DeepCollectionEquality().hash(products));
 
   @JsonKey(ignore: true)

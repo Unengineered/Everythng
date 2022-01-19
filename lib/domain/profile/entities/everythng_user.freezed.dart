@@ -224,19 +224,21 @@ class _$_EverythngUser implements _EverythngUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _EverythngUser &&
-            (identical(other.firstname, firstname) ||
-                other.firstname == firstname) &&
-            (identical(other.lastname, lastname) ||
-                other.lastname == lastname) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
+            const DeepCollectionEquality().equals(other.firstname, firstname) &&
+            const DeepCollectionEquality().equals(other.lastname, lastname) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality().equals(other.addresses, addresses) &&
-            (identical(other.storeLink, storeLink) ||
-                other.storeLink == storeLink));
+            const DeepCollectionEquality().equals(other.storeLink, storeLink));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, firstname, lastname, phone,
-      const DeepCollectionEquality().hash(addresses), storeLink);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(firstname),
+      const DeepCollectionEquality().hash(lastname),
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(addresses),
+      const DeepCollectionEquality().hash(storeLink));
 
   @JsonKey(ignore: true)
   @override

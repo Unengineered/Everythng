@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
@@ -39,6 +41,11 @@ class DiscoverCubit extends Cubit<DiscoverState> {
           recommendedProducts: products!, recommendedStores: stores!));
     } else {
       if (!error) emit(const DiscoverState.error('error'));
+      log("Failed to get recommendations will retry in 2 seconds.");
+      Future.delayed(const Duration(seconds: 2), (){
+        log("Retrying for recommendations now!");
+        getRecommendations();
+      });
     }
   }
 }
