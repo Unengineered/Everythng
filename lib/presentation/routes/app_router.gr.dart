@@ -43,6 +43,14 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const ProfileFlowWrapper());
     },
+    SavedPageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const SavedPage());
+    },
+    ItemsPageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const ItemsPage());
+    },
     LoginPageRoute.name: (routeData) {
       final args = routeData.argsAs<LoginPageRouteArgs>(
           orElse: () => const LoginPageRouteArgs());
@@ -115,8 +123,12 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(SigningFlowWrapperRoute.name,
             path: '/signing-flow-wrapper',
             children: [
-              RouteConfig(LoginPageRoute.name,
+              RouteConfig(SavedPageRoute.name,
                   path: '', parent: SigningFlowWrapperRoute.name),
+              RouteConfig(ItemsPageRoute.name,
+                  path: 'items-page', parent: SigningFlowWrapperRoute.name),
+              RouteConfig(LoginPageRoute.name,
+                  path: 'login-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(PasswordPageRoute.name,
                   path: 'password-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(CreatePasswordPageRoute.name,
@@ -222,10 +234,24 @@ class ProfileFlowWrapperRoute extends PageRouteInfo<void> {
   static const String name = 'ProfileFlowWrapperRoute';
 }
 
+/// generated route for [SavedPage]
+class SavedPageRoute extends PageRouteInfo<void> {
+  const SavedPageRoute() : super(name, path: '');
+
+  static const String name = 'SavedPageRoute';
+}
+
+/// generated route for [ItemsPage]
+class ItemsPageRoute extends PageRouteInfo<void> {
+  const ItemsPageRoute() : super(name, path: 'items-page');
+
+  static const String name = 'ItemsPageRoute';
+}
+
 /// generated route for [LoginPage]
 class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
   LoginPageRoute({Key? key})
-      : super(name, path: '', args: LoginPageRouteArgs(key: key));
+      : super(name, path: 'login-page', args: LoginPageRouteArgs(key: key));
 
   static const String name = 'LoginPageRoute';
 }
