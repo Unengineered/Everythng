@@ -150,15 +150,18 @@ class _$_AuthFormState implements _AuthFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AuthFormState &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.authFailure, authFailure) ||
-                other.authFailure == authFailure));
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.password, password) &&
+            const DeepCollectionEquality()
+                .equals(other.authFailure, authFailure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, authFailure);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(password),
+      const DeepCollectionEquality().hash(authFailure));
 
   @JsonKey(ignore: true)
   @override

@@ -5,10 +5,14 @@ class ItemPageAppBar extends StatelessWidget {
   const ItemPageAppBar({
     Key? key,
     required ValueNotifier<bool> isEditing,
+    required this.emoji,
+    required this.listName,
   })  : _isEditing = isEditing,
         super(key: key);
 
   final ValueNotifier<bool> _isEditing;
+  final String emoji;
+  final String listName;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +36,9 @@ class ItemPageAppBar extends StatelessWidget {
                       onPressed: () => Navigator.of(context).pop(),
                     )
                   : Container(),
-              const Text(
-                '❤',
-                style: TextStyle(
+               Text(
+                emoji,
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
@@ -42,7 +46,7 @@ class ItemPageAppBar extends StatelessWidget {
                 width: 4,
               ),
               Text(
-                'Wishlist',
+                listName,
                 style: context.everythngTextTheme.headline3Bold,
               ),
             ],
@@ -54,7 +58,7 @@ class ItemPageAppBar extends StatelessWidget {
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 100),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(16),
                 color: _isEditing.value
                     ? const Color(0xff007AFF)
                     : Colors.transparent,

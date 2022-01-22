@@ -248,12 +248,13 @@ class _$_Page implements _Page {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Page &&
-            (identical(other.marketplace, marketplace) ||
-                other.marketplace == marketplace));
+            const DeepCollectionEquality()
+                .equals(other.marketplace, marketplace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, marketplace);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(marketplace));
 
   @JsonKey(ignore: true)
   @override

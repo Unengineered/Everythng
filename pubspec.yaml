@@ -33,7 +33,6 @@ dependencies:
   network_kit:
     git:
       url: https://github.com/Unengineered/NetworkKit
-      ref: 74169b38bc928a3efe5989f619c59b3cbdf0d8af
   json_serializable: ^6.1.0
   json_annotation: 4.4.0
   cached_network_image: 3.2.0

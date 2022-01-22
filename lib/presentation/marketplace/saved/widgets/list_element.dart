@@ -23,7 +23,10 @@ class ListElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.router.push(const ItemsPageRoute());
+        context.router.push(ItemsPageRoute(
+          emoji: emoji,
+          listName: listName,
+        ));
       },
       child: Container(
         height: 53,

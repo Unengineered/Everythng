@@ -144,15 +144,16 @@ class _$_UserList implements _UserList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UserList &&
-            (identical(other.listName, listName) ||
-                other.listName == listName) &&
+            const DeepCollectionEquality().equals(other.listName, listName) &&
             (identical(other.emoji, emoji) || other.emoji == emoji) &&
             const DeepCollectionEquality().equals(other.list, list));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, listName, emoji, const DeepCollectionEquality().hash(list));
+      runtimeType,
+      const DeepCollectionEquality().hash(listName),
+     emoji, const DeepCollectionEquality().hash(list));
 
   @JsonKey(ignore: true)
   @override

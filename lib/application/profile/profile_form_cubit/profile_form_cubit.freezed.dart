@@ -182,18 +182,20 @@ class _$_ProfileFormState implements _ProfileFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ProfileFormState &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.address, address) || other.address == address));
+            const DeepCollectionEquality().equals(other.firstName, firstName) &&
+            const DeepCollectionEquality().equals(other.lastName, lastName) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber) &&
+            const DeepCollectionEquality().equals(other.address, address));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, firstName, lastName, phoneNumber, address);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(firstName),
+      const DeepCollectionEquality().hash(lastName),
+      const DeepCollectionEquality().hash(phoneNumber),
+      const DeepCollectionEquality().hash(address));
 
   @JsonKey(ignore: true)
   @override

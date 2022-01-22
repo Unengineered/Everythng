@@ -1,10 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import 'package:everythng/presentation/marketplace/saved/pages/saved_page.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_route/auto_route.dart';
 
-Future<dynamic> showEmojiKeyboard(BuildContext context, ValueNotifier<String> _emoji, ValueNotifier<bool> _isTapped ) {
+Future<dynamic> showEmojiKeyboard(
+  BuildContext context,
+  ValueNotifier<String> _emoji,
+  FocusNode _focusNode,
+  ValueNotifier<bool> _autofocus,
+) {
   return showModalBottomSheet(
       backgroundColor: Colors.transparent,
       barrierColor: Colors.transparent,
@@ -20,7 +24,8 @@ Future<dynamic> showEmojiKeyboard(BuildContext context, ValueNotifier<String> _e
                 child: FloatingActionButton.small(
                   elevation: 0,
                   onPressed: () {
-                    _isTapped.value = true;
+                    _autofocus.value = true;
+                    _focusNode.requestFocus();
                     context.router.popUntilRouteWithName(SavedPageRoute.name);
                   },
                   child: const Icon(Icons.done_rounded),
@@ -50,6 +55,7 @@ Future<dynamic> showEmojiKeyboard(BuildContext context, ValueNotifier<String> _e
                   ),
                   onEmojiSelected: (category, emoji) {
                     _emoji.value = emoji.emoji.toString();
+                    _autofocus.value = false;
                   },
                 ),
               ),
