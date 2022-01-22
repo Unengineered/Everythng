@@ -1,6 +1,5 @@
 import 'package:everythng/core/api/url.dart';
 import 'package:everythng/infrastructure/discover/discover_repository.dart';
-import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:network_kit/network_kit.dart';
 
@@ -12,14 +11,14 @@ DiscoverRepository getDiscoverRepository({bool networkFailure = false}) {
   final mockNetworkKit = MockNetworkKit();
   final service = DiscoverRepository(mockNetworkKit);
   if (networkFailure == false) {
-    when(() => mockNetworkKit.get(Uri.http(url, '/recommendations/stores')))
-        .thenAnswer((invocation) async => Response(recommendedStoresJson, 200));
-    when(() => mockNetworkKit.get(Uri.http(url, '/recommendations/products')))
+    when(() => mockNetworkKit.get(Uri.http(url, '/recommendations/store')))
+        .thenAnswer((invocation) async => WebsocketResponse(body: recommendedStoresJson, statusCode: 200, statusMessage: "OK", headers: {}, responseId: "ID"));
+    when(() => mockNetworkKit.get(Uri.http(url, '/recommendations/product')))
         .thenAnswer(
-            (invocation) async => Response(recommendedProductsJson, 200));
+            (invocation) async => WebsocketResponse(body: recommendedProductsJson, statusCode: 200, statusMessage: "OK", headers: {}, responseId: "ID"));
   } else {
     when(() => mockNetworkKit.get(any()))
-        .thenAnswer((invocation) async => Response('failure', 400));
+        .thenAnswer((invocation) async => WebsocketResponse(statusCode: 400, statusMessage: 'failure', body: {}, headers: {}, responseId: 'ID'));
   }
   return service;
 }

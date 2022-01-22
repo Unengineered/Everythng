@@ -20,7 +20,6 @@ class DiscoverRepository implements IDiscoverRepository {
   Future<Either<NetworkFailure, List<RecommendedProduct>>>
       getRecommendedProducts() async {
 
-    //TODO: Switch fake API off
     //return right(recommendedProductsEx);
 
     try{

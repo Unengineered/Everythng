@@ -1,7 +1,6 @@
 
 import 'package:everythng/core/api/url.dart';
 import 'package:everythng/infrastructure/profile/profile_repository.dart';
-import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:network_kit/network_kit.dart';
 
@@ -15,15 +14,15 @@ ProfileRepository getProfileRepository({int? failureCode}) {
 
   if (failureCode == null) {
     when(() => mockNetworkKit.get(Uri.http(url, '/profile/')))
-        .thenAnswer((invocation) async => Response(profileData, 200));
+        .thenAnswer((invocation) async => WebsocketResponse(body: profileData, statusCode: 200, statusMessage: "OK", headers: {}, responseId: "ID"));
     when(() => mockNetworkKit.post(Uri.http(url, '/profile/update'), body: everythngUserConst.toJson()))
         .thenAnswer(
-            (invocation) async => Response(profileData, 200));
+            (invocation) async => WebsocketResponse(body: profileData, statusCode: 200, statusMessage: "OK", headers: {}, responseId: "ID"));
   } else {
     when(() => mockNetworkKit.get(Uri.http(url, '/profile/')))
-        .thenAnswer((invocation) async => Response('failure', failureCode));
+        .thenAnswer((invocation) async => WebsocketResponse(body: {}, statusCode: failureCode, statusMessage: "failure", headers: {}, responseId: "ID"));
      when(() => mockNetworkKit.post(Uri.http(url, '/profile/update'), body: everythngUserConst.toJson()))
-        .thenAnswer((invocation) async => Response('failure', failureCode));
+        .thenAnswer((invocation) async => WebsocketResponse(body: {}, statusCode: failureCode, statusMessage: "failure", headers: {}, responseId: "ID"));
   }
   return service;
 }
