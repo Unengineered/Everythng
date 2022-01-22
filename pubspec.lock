@@ -21,7 +21,7 @@ packages:
       name: archive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.8"
+    version: "3.1.9"
   args:
     dependency: transitive
     description:
@@ -416,7 +416,7 @@ packages:
       name: flutter_svg
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -623,7 +623,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: e2161337b869f9556e8349ae21a25ac3289e39d9
+      resolved-ref: ea8cf7dd99c06b219698ac378b3067e0e7d3d2ce
       url: "https://github.com/Unengineered/NetworkKit"
     source: git
     version: "0.0.1"
@@ -1093,7 +1093,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.6"
+    version: "2.3.8"
   xdg_directories:
     dependency: transitive
     description:

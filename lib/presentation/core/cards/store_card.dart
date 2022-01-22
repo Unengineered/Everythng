@@ -53,7 +53,7 @@ class StoreCard extends StatelessWidget {
                   width: 40,
                   height: 42,
                   child: EverythngNetworkImage(
-                    url: store.picture.toString(),
+                    url: store.logo.toString(),
                     fit: BoxFit.fitHeight,
                   ),
                 )
