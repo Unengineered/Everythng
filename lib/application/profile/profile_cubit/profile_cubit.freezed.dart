@@ -279,12 +279,13 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Loaded &&
-            (identical(other.everythngUser, everythngUser) ||
-                other.everythngUser == everythngUser));
+            const DeepCollectionEquality()
+                .equals(other.everythngUser, everythngUser));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, everythngUser);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(everythngUser));
 
   @JsonKey(ignore: true)
   @override

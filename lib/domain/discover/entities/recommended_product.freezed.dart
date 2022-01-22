@@ -260,19 +260,25 @@ class _$_RecommendedProduct implements _RecommendedProduct {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _RecommendedProduct &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.size, size) || other.size == size) &&
-            (identical(other.picture, picture) || other.picture == picture) &&
-            (identical(other.brand, brand) || other.brand == brand) &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.storeLink, storeLink) ||
-                other.storeLink == storeLink));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.size, size) &&
+            const DeepCollectionEquality().equals(other.picture, picture) &&
+            const DeepCollectionEquality().equals(other.brand, brand) &&
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality().equals(other.storeLink, storeLink));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, size, picture, brand, price, storeLink);
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(size),
+      const DeepCollectionEquality().hash(picture),
+      const DeepCollectionEquality().hash(brand),
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(storeLink));
 
   @JsonKey(ignore: true)
   @override

@@ -203,16 +203,21 @@ class _$_Address with DiagnosticableTreeMixin implements _Address {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Address &&
-            (identical(other.line1, line1) || other.line1 == line1) &&
-            (identical(other.line2, line2) || other.line2 == line2) &&
-            (identical(other.pincode, pincode) || other.pincode == pincode) &&
-            (identical(other.city, city) || other.city == city) &&
-            (identical(other.state, state) || other.state == state));
+            const DeepCollectionEquality().equals(other.line1, line1) &&
+            const DeepCollectionEquality().equals(other.line2, line2) &&
+            const DeepCollectionEquality().equals(other.pincode, pincode) &&
+            const DeepCollectionEquality().equals(other.city, city) &&
+            const DeepCollectionEquality().equals(other.state, state));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, line1, line2, pincode, city, state);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(line1),
+      const DeepCollectionEquality().hash(line2),
+      const DeepCollectionEquality().hash(pincode),
+      const DeepCollectionEquality().hash(city),
+      const DeepCollectionEquality().hash(state));
 
   @JsonKey(ignore: true)
   @override

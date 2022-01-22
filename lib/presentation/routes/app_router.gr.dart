@@ -7,6 +7,8 @@
 // **************************************************************************
 // AutoRouteGenerator
 // **************************************************************************
+//
+// ignore_for_file: type=lint
 
 part of 'app_router.dart';
 
@@ -164,68 +166,80 @@ class _$AppRouter extends RootStackRouter {
       ];
 }
 
-/// generated route for [SplashPage]
+/// generated route for
+/// [SplashPage]
 class SplashPageRoute extends PageRouteInfo<void> {
-  const SplashPageRoute() : super(name, path: '/');
+  const SplashPageRoute() : super(SplashPageRoute.name, path: '/');
 
   static const String name = 'SplashPageRoute';
 }
 
-/// generated route for [SigningFlowWrapper]
+/// generated route for
+/// [SigningFlowWrapper]
 class SigningFlowWrapperRoute extends PageRouteInfo<void> {
   const SigningFlowWrapperRoute({List<PageRouteInfo>? children})
-      : super(name, path: '/signing-flow-wrapper', initialChildren: children);
+      : super(SigningFlowWrapperRoute.name,
+            path: '/signing-flow-wrapper', initialChildren: children);
 
   static const String name = 'SigningFlowWrapperRoute';
 }
 
-/// generated route for [ThriftingMarketplaceWrapper]
+/// generated route for
+/// [ThriftingMarketplaceWrapper]
 class ThriftingMarketplaceWrapperRoute extends PageRouteInfo<void> {
   const ThriftingMarketplaceWrapperRoute({List<PageRouteInfo>? children})
-      : super(name,
+      : super(ThriftingMarketplaceWrapperRoute.name,
             path: '/thrifting-marketplace-wrapper', initialChildren: children);
 
   static const String name = 'ThriftingMarketplaceWrapperRoute';
 }
 
-/// generated route for [BuyingMarketplaceWrapper]
+/// generated route for
+/// [BuyingMarketplaceWrapper]
 class BuyingMarketplaceWrapperRoute extends PageRouteInfo<void> {
   const BuyingMarketplaceWrapperRoute({List<PageRouteInfo>? children})
-      : super(name,
+      : super(BuyingMarketplaceWrapperRoute.name,
             path: '/buying-marketplace-wrapper', initialChildren: children);
 
   static const String name = 'BuyingMarketplaceWrapperRoute';
 }
 
-/// generated route for [StoreWrapper]
+/// generated route for
+/// [StoreWrapper]
 class StoreWrapperRoute extends PageRouteInfo<void> {
   const StoreWrapperRoute({List<PageRouteInfo>? children})
-      : super(name, path: '/store-wrapper', initialChildren: children);
+      : super(StoreWrapperRoute.name,
+            path: '/store-wrapper', initialChildren: children);
 
   static const String name = 'StoreWrapperRoute';
 }
 
-/// generated route for [RentingMarketplaceWrapper]
+/// generated route for
+/// [RentingMarketplaceWrapper]
 class RentingMarketplaceWrapperRoute extends PageRouteInfo<void> {
   const RentingMarketplaceWrapperRoute({List<PageRouteInfo>? children})
-      : super(name,
+      : super(RentingMarketplaceWrapperRoute.name,
             path: '/renting-marketplace-wrapper', initialChildren: children);
 
   static const String name = 'RentingMarketplaceWrapperRoute';
 }
 
-/// generated route for [ProfileFlowWrapper]
+/// generated route for
+/// [ProfileFlowWrapper]
 class ProfileFlowWrapperRoute extends PageRouteInfo<void> {
   const ProfileFlowWrapperRoute({List<PageRouteInfo>? children})
-      : super(name, path: '/profile-flow-wrapper', initialChildren: children);
+      : super(ProfileFlowWrapperRoute.name,
+            path: '/profile-flow-wrapper', initialChildren: children);
 
   static const String name = 'ProfileFlowWrapperRoute';
 }
 
-/// generated route for [LoginPage]
+/// generated route for
+/// [LoginPage]
 class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
   LoginPageRoute({Key? key})
-      : super(name, path: '', args: LoginPageRouteArgs(key: key));
+      : super(LoginPageRoute.name,
+            path: '', args: LoginPageRouteArgs(key: key));
 
   static const String name = 'LoginPageRoute';
 }
@@ -241,10 +255,11 @@ class LoginPageRouteArgs {
   }
 }
 
-/// generated route for [PasswordPage]
+/// generated route for
+/// [PasswordPage]
 class PasswordPageRoute extends PageRouteInfo<PasswordPageRouteArgs> {
   PasswordPageRoute({Key? key})
-      : super(name,
+      : super(PasswordPageRoute.name,
             path: 'password-page', args: PasswordPageRouteArgs(key: key));
 
   static const String name = 'PasswordPageRoute';
@@ -261,11 +276,12 @@ class PasswordPageRouteArgs {
   }
 }
 
-/// generated route for [CreatePasswordPage]
+/// generated route for
+/// [CreatePasswordPage]
 class CreatePasswordPageRoute
     extends PageRouteInfo<CreatePasswordPageRouteArgs> {
   CreatePasswordPageRoute({Key? key})
-      : super(name,
+      : super(CreatePasswordPageRoute.name,
             path: 'create-password-page',
             args: CreatePasswordPageRouteArgs(key: key));
 
@@ -283,11 +299,12 @@ class CreatePasswordPageRouteArgs {
   }
 }
 
-/// generated route for [ConfirmPasswordPage]
+/// generated route for
+/// [ConfirmPasswordPage]
 class ConfirmPasswordPageRoute
     extends PageRouteInfo<ConfirmPasswordPageRouteArgs> {
   ConfirmPasswordPageRoute({Key? key})
-      : super(name,
+      : super(ConfirmPasswordPageRoute.name,
             path: 'confirm-password-page',
             args: ConfirmPasswordPageRouteArgs(key: key));
 
@@ -305,38 +322,44 @@ class ConfirmPasswordPageRouteArgs {
   }
 }
 
-/// generated route for [DiscoverPage]
+/// generated route for
+/// [DiscoverPage]
 class DiscoverPageRoute extends PageRouteInfo<void> {
-  const DiscoverPageRoute() : super(name, path: '');
+  const DiscoverPageRoute() : super(DiscoverPageRoute.name, path: '');
 
   static const String name = 'DiscoverPageRoute';
 }
 
-/// generated route for [BuyingPage]
+/// generated route for
+/// [BuyingPage]
 class BuyingPageRoute extends PageRouteInfo<void> {
-  const BuyingPageRoute() : super(name, path: '');
+  const BuyingPageRoute() : super(BuyingPageRoute.name, path: '');
 
   static const String name = 'BuyingPageRoute';
 }
 
-/// generated route for [StorePage]
+/// generated route for
+/// [StorePage]
 class StorePageRoute extends PageRouteInfo<void> {
-  const StorePageRoute() : super(name, path: '');
+  const StorePageRoute() : super(StorePageRoute.name, path: '');
 
   static const String name = 'StorePageRoute';
 }
 
-/// generated route for [RentingPage]
+/// generated route for
+/// [RentingPage]
 class RentingPageRoute extends PageRouteInfo<void> {
-  const RentingPageRoute() : super(name, path: '');
+  const RentingPageRoute() : super(RentingPageRoute.name, path: '');
 
   static const String name = 'RentingPageRoute';
 }
 
-/// generated route for [FirstNamePage]
+/// generated route for
+/// [FirstNamePage]
 class FirstNamePageRoute extends PageRouteInfo<FirstNamePageRouteArgs> {
   FirstNamePageRoute({Key? key})
-      : super(name, path: '', args: FirstNamePageRouteArgs(key: key));
+      : super(FirstNamePageRoute.name,
+            path: '', args: FirstNamePageRouteArgs(key: key));
 
   static const String name = 'FirstNamePageRoute';
 }
@@ -352,10 +375,11 @@ class FirstNamePageRouteArgs {
   }
 }
 
-/// generated route for [LastNamePage]
+/// generated route for
+/// [LastNamePage]
 class LastNamePageRoute extends PageRouteInfo<LastNamePageRouteArgs> {
   LastNamePageRoute({Key? key})
-      : super(name,
+      : super(LastNamePageRoute.name,
             path: 'last-name-page', args: LastNamePageRouteArgs(key: key));
 
   static const String name = 'LastNamePageRoute';
@@ -372,10 +396,11 @@ class LastNamePageRouteArgs {
   }
 }
 
-/// generated route for [PhoneNumberPage]
+/// generated route for
+/// [PhoneNumberPage]
 class PhoneNumberPageRoute extends PageRouteInfo<PhoneNumberPageRouteArgs> {
   PhoneNumberPageRoute({Key? key})
-      : super(name,
+      : super(PhoneNumberPageRoute.name,
             path: 'phone-number-page',
             args: PhoneNumberPageRouteArgs(key: key));
 
@@ -393,10 +418,12 @@ class PhoneNumberPageRouteArgs {
   }
 }
 
-/// generated route for [AddressPage]
+/// generated route for
+/// [AddressPage]
 class AddressPageRoute extends PageRouteInfo<AddressPageRouteArgs> {
   AddressPageRoute({Key? key})
-      : super(name, path: 'address-page', args: AddressPageRouteArgs(key: key));
+      : super(AddressPageRoute.name,
+            path: 'address-page', args: AddressPageRouteArgs(key: key));
 
   static const String name = 'AddressPageRoute';
 }
