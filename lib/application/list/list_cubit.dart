@@ -1,5 +1,7 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
-import 'package:everythng/domain/list/entities/user_list.dart';
+import 'package:everythng/domain/list/entities/item_lists.dart';
 import 'package:everythng/domain/list/i_list_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,65 +14,39 @@ class ListCubit extends Cubit<ListState> {
 
   void getLists() async {
     emit(const ListState.loading());
-    final lists = await _repository.getLists();
-    lists.fold(
-        (failure) => emit(const ListState.error()),
-        (itemLists) => emit(ListState.loaded(
-            cart: itemLists.cart,
-            wishList: itemLists.wishList,
-            lists: itemLists.lists)));
+    final result = _repository.getLists();
+    result.fold((failure) => {
+      Future.delayed(const Duration(seconds: 2), (){
+          log("Retrying for profile data");
+          getLists();
+        })
+    }, (unit) => emit(const ListState.loading()));
   }
 
-  void addList(String listName) async {
+  void addList({required String name, required String emoji}) async {
     emit(const ListState.loading());
-    final lists = await _repository.addList(listName);
-    lists.fold(
-        (failure) => emit(const ListState.error()),
-        (itemLists) => emit(ListState.loaded(
-            cart: itemLists.cart,
-            wishList: itemLists.wishList,
-            lists: itemLists.lists)));
+    _repository.addList(name: name, emoji: emoji);
   }
 
-  void removeList(String listName) async {
+  void removeList(String name) async {
     emit(const ListState.loading());
-    final lists = await _repository.removeList(listName);
-    lists.fold(
-        (failure) => emit(const ListState.error()),
-        (itemLists) => emit(ListState.loaded(
-            cart: itemLists.cart,
-            wishList: itemLists.wishList,
-            lists: itemLists.lists)));
+    _repository.removeList(name);
   }
 
-  void addItem({required String productId, required String listName}) async {
-    final list =
-        await _repository.addItem(name: listName, productId: productId);
-    list.fold((failure) => emit(const ListState.error()), (userList) {
-      state.maybeMap(
-          loaded: (state) {
-            final newList = state.lists;
-            final index = state.lists
-                .indexWhere((element) => userList.listName == element.listName);
-            newList[index] = userList;
-            return emit(state.copyWith(lists: newList));
-          },
-          orElse: () {});
-    });
+  void addItem({required String productId, required String listName}) {
+    emit(const ListState.loading());
+    _repository.addItem(name: listName, productId: productId);
   }
 
-  void removeItem({required String productId, required String listName}) async {
-    final list =
-        await _repository.removeItem(name: listName, productId: productId);
-    list.fold((failure) => emit(const ListState.error()), (userList) {
-      state.maybeMap(
-          loaded: (state) {
-            final index = state.lists
-                .indexWhere((element) => userList.listName == element.listName);
-            state.lists[index] = userList;
-            return emit(state);
-          },
-          orElse: () {});
+  void removeItem({required String productId, required String listName}) {
+    emit(const ListState.loading());
+    _repository.removeItem(name: listName, productId: productId);
+  }
+
+  void getListStream() {
+    emit(const ListState.loading());
+    _repository.listStream().listen((itemLists) {
+      emit(ListState.loaded(itemLists));
     });
   }
 }

@@ -17,9 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$UserListTearOff {
   const _$UserListTearOff();
 
-  _UserList call({required String listName, required List<String> list}) {
+  _UserList call(
+      {required String listName,
+      required String emoji,
+      required List<String> list}) {
     return _UserList(
       listName: listName,
+      emoji: emoji,
       list: list,
     );
   }
@@ -31,6 +35,7 @@ const $UserList = _$UserListTearOff();
 /// @nodoc
 mixin _$UserList {
   String get listName => throw _privateConstructorUsedError;
+  String get emoji => throw _privateConstructorUsedError;
   List<String> get list => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -42,7 +47,7 @@ mixin _$UserList {
 abstract class $UserListCopyWith<$Res> {
   factory $UserListCopyWith(UserList value, $Res Function(UserList) then) =
       _$UserListCopyWithImpl<$Res>;
-  $Res call({String listName, List<String> list});
+  $Res call({String listName, String emoji, List<String> list});
 }
 
 /// @nodoc
@@ -56,12 +61,17 @@ class _$UserListCopyWithImpl<$Res> implements $UserListCopyWith<$Res> {
   @override
   $Res call({
     Object? listName = freezed,
+    Object? emoji = freezed,
     Object? list = freezed,
   }) {
     return _then(_value.copyWith(
       listName: listName == freezed
           ? _value.listName
           : listName // ignore: cast_nullable_to_non_nullable
+              as String,
+      emoji: emoji == freezed
+          ? _value.emoji
+          : emoji // ignore: cast_nullable_to_non_nullable
               as String,
       list: list == freezed
           ? _value.list
@@ -76,7 +86,7 @@ abstract class _$UserListCopyWith<$Res> implements $UserListCopyWith<$Res> {
   factory _$UserListCopyWith(_UserList value, $Res Function(_UserList) then) =
       __$UserListCopyWithImpl<$Res>;
   @override
-  $Res call({String listName, List<String> list});
+  $Res call({String listName, String emoji, List<String> list});
 }
 
 /// @nodoc
@@ -91,12 +101,17 @@ class __$UserListCopyWithImpl<$Res> extends _$UserListCopyWithImpl<$Res>
   @override
   $Res call({
     Object? listName = freezed,
+    Object? emoji = freezed,
     Object? list = freezed,
   }) {
     return _then(_UserList(
       listName: listName == freezed
           ? _value.listName
           : listName // ignore: cast_nullable_to_non_nullable
+              as String,
+      emoji: emoji == freezed
+          ? _value.emoji
+          : emoji // ignore: cast_nullable_to_non_nullable
               as String,
       list: list == freezed
           ? _value.list
@@ -109,16 +124,19 @@ class __$UserListCopyWithImpl<$Res> extends _$UserListCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UserList implements _UserList {
-  const _$_UserList({required this.listName, required this.list});
+  const _$_UserList(
+      {required this.listName, required this.emoji, required this.list});
 
   @override
   final String listName;
+  @override
+  final String emoji;
   @override
   final List<String> list;
 
   @override
   String toString() {
-    return 'UserList(listName: $listName, list: $list)';
+    return 'UserList(listName: $listName, emoji: $emoji, list: $list)';
   }
 
   @override
@@ -128,12 +146,13 @@ class _$_UserList implements _UserList {
             other is _UserList &&
             (identical(other.listName, listName) ||
                 other.listName == listName) &&
+            (identical(other.emoji, emoji) || other.emoji == emoji) &&
             const DeepCollectionEquality().equals(other.list, list));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, listName, const DeepCollectionEquality().hash(list));
+      runtimeType, listName, emoji, const DeepCollectionEquality().hash(list));
 
   @JsonKey(ignore: true)
   @override
@@ -143,10 +162,14 @@ class _$_UserList implements _UserList {
 
 abstract class _UserList implements UserList {
   const factory _UserList(
-      {required String listName, required List<String> list}) = _$_UserList;
+      {required String listName,
+      required String emoji,
+      required List<String> list}) = _$_UserList;
 
   @override
   String get listName;
+  @override
+  String get emoji;
   @override
   List<String> get list;
   @override
