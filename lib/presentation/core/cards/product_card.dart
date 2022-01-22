@@ -91,7 +91,7 @@ class ProductCard extends StatelessWidget {
                                 backgroundColor: Colors.transparent,
                                 radius: 6,
                                 child: EverythngNetworkImage(
-                                    url: product.storeLink!.picture.toString()),
+                                    url: product.storeLink!.logo.toString()),
                               ),
                               const SizedBox(
                                 width: 4,
