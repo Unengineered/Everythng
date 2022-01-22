@@ -1,3 +1,4 @@
+import 'package:everythng/core/api/url.dart';
 import 'package:everythng/injection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fort_knox/fort_knox.dart';
@@ -12,7 +13,7 @@ abstract class CoreInjectionModule {
   http.Client get httpClient => http.Client();
   
   @lazySingleton
-  NetworkKit get networkKit => NetworkKit(getIt<FortKnox>());
+  NetworkKit get networkKit => NetworkKit(Uri.parse(url),getIt<FortKnox>());
 
   @preResolve
   Future<SharedPreferences> get sharedPreferences => SharedPreferences.getInstance();

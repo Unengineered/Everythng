@@ -25,14 +25,9 @@ class _$ListStateTearOff {
     return const _Loading();
   }
 
-  _Loaded loaded(
-      {required List<String> cart,
-      required List<String> wishList,
-      required List<UserList> lists}) {
+  _Loaded loaded(ItemLists itemLists) {
     return _Loaded(
-      cart: cart,
-      wishList: wishList,
-      lists: lists,
+      itemLists,
     );
   }
 
@@ -50,9 +45,7 @@ mixin _$ListState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)
-        loaded,
+    required TResult Function(ItemLists itemLists) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,9 +53,7 @@ mixin _$ListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)?
-        loaded,
+    TResult Function(ItemLists itemLists)? loaded,
     TResult Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -70,9 +61,7 @@ mixin _$ListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)?
-        loaded,
+    TResult Function(ItemLists itemLists)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -159,9 +148,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)
-        loaded,
+    required TResult Function(ItemLists itemLists) loaded,
     required TResult Function() error,
   }) {
     return initial();
@@ -172,9 +159,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)?
-        loaded,
+    TResult Function(ItemLists itemLists)? loaded,
     TResult Function()? error,
   }) {
     return initial?.call();
@@ -185,9 +170,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)?
-        loaded,
+    TResult Function(ItemLists itemLists)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -279,9 +262,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)
-        loaded,
+    required TResult Function(ItemLists itemLists) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -292,9 +273,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)?
-        loaded,
+    TResult Function(ItemLists itemLists)? loaded,
     TResult Function()? error,
   }) {
     return loading?.call();
@@ -305,9 +284,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)?
-        loaded,
+    TResult Function(ItemLists itemLists)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -363,7 +340,9 @@ abstract class _Loading implements ListState {
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
-  $Res call({List<String> cart, List<String> wishList, List<UserList> lists});
+  $Res call({ItemLists itemLists});
+
+  $ItemListsCopyWith<$Res> get itemLists;
 }
 
 /// @nodoc
@@ -377,43 +356,35 @@ class __$LoadedCopyWithImpl<$Res> extends _$ListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? cart = freezed,
-    Object? wishList = freezed,
-    Object? lists = freezed,
+    Object? itemLists = freezed,
   }) {
     return _then(_Loaded(
-      cart: cart == freezed
-          ? _value.cart
-          : cart // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      wishList: wishList == freezed
-          ? _value.wishList
-          : wishList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      lists: lists == freezed
-          ? _value.lists
-          : lists // ignore: cast_nullable_to_non_nullable
-              as List<UserList>,
+      itemLists == freezed
+          ? _value.itemLists
+          : itemLists // ignore: cast_nullable_to_non_nullable
+              as ItemLists,
     ));
+  }
+
+  @override
+  $ItemListsCopyWith<$Res> get itemLists {
+    return $ItemListsCopyWith<$Res>(_value.itemLists, (value) {
+      return _then(_value.copyWith(itemLists: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(
-      {required this.cart, required this.wishList, required this.lists});
+  const _$_Loaded(this.itemLists);
 
   @override
-  final List<String> cart;
-  @override
-  final List<String> wishList;
-  @override
-  final List<UserList> lists;
+  final ItemLists itemLists;
 
   @override
   String toString() {
-    return 'ListState.loaded(cart: $cart, wishList: $wishList, lists: $lists)';
+    return 'ListState.loaded(itemLists: $itemLists)';
   }
 
   @override
@@ -421,17 +392,12 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Loaded &&
-            const DeepCollectionEquality().equals(other.cart, cart) &&
-            const DeepCollectionEquality().equals(other.wishList, wishList) &&
-            const DeepCollectionEquality().equals(other.lists, lists));
+            (identical(other.itemLists, itemLists) ||
+                other.itemLists == itemLists));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(cart),
-      const DeepCollectionEquality().hash(wishList),
-      const DeepCollectionEquality().hash(lists));
+  int get hashCode => Object.hash(runtimeType, itemLists);
 
   @JsonKey(ignore: true)
   @override
@@ -443,12 +409,10 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)
-        loaded,
+    required TResult Function(ItemLists itemLists) loaded,
     required TResult Function() error,
   }) {
-    return loaded(cart, wishList, lists);
+    return loaded(itemLists);
   }
 
   @override
@@ -456,12 +420,10 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)?
-        loaded,
+    TResult Function(ItemLists itemLists)? loaded,
     TResult Function()? error,
   }) {
-    return loaded?.call(cart, wishList, lists);
+    return loaded?.call(itemLists);
   }
 
   @override
@@ -469,14 +431,12 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)?
-        loaded,
+    TResult Function(ItemLists itemLists)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(cart, wishList, lists);
+      return loaded(itemLists);
     }
     return orElse();
   }
@@ -520,14 +480,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements ListState {
-  const factory _Loaded(
-      {required List<String> cart,
-      required List<String> wishList,
-      required List<UserList> lists}) = _$_Loaded;
+  const factory _Loaded(ItemLists itemLists) = _$_Loaded;
 
-  List<String> get cart;
-  List<String> get wishList;
-  List<UserList> get lists;
+  ItemLists get itemLists;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }
@@ -572,9 +527,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)
-        loaded,
+    required TResult Function(ItemLists itemLists) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -585,9 +538,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)?
-        loaded,
+    TResult Function(ItemLists itemLists)? loaded,
     TResult Function()? error,
   }) {
     return error?.call();
@@ -598,9 +549,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(
-            List<String> cart, List<String> wishList, List<UserList> lists)?
-        loaded,
+    TResult Function(ItemLists itemLists)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
