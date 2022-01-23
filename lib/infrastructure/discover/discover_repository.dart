@@ -27,11 +27,11 @@ class DiscoverRepository implements IDiscoverRepository {
         await networkKit.get(Uri.http(url, '/recommendations/products'));
     if (response.statusCode != 200) {
       log(response.statusCode.toString());
-      log(response.body);
+      log('${response.body}');
       return left(const NetworkFailure());
     }
     return right<NetworkFailure, List<RecommendedProduct>>(
-        (json.decode(response.body) as List<dynamic>)
+        (response.body as List<dynamic>)
             .map((e) => RecommendedProduct.fromJson(e))
             .toList());
   }
@@ -47,11 +47,11 @@ class DiscoverRepository implements IDiscoverRepository {
         await networkKit.get(Uri.http(url, '/recommendations/stores'));
     if (response.statusCode != 200) {
       log(response.statusCode.toString());
-      log(response.body);
+       log('${response.body}');
       return left(const NetworkFailure());
     }
     return right<NetworkFailure, List<RecommendedStore>>(
-        (json.decode(response.body) as List<dynamic>)
+        (response.body as List<dynamic>)
             .map((json) => RecommendedStore.fromJson(json))
             .toList());
   }

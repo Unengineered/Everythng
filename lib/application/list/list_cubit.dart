@@ -4,15 +4,22 @@ import 'package:bloc/bloc.dart';
 import 'package:everythng/domain/list/entities/item_lists.dart';
 import 'package:everythng/domain/list/i_list_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'list_state.dart';
 part 'list_cubit.freezed.dart';
 
+@lazySingleton
 class ListCubit extends Cubit<ListState> {
   final IListRepository _repository;
   ListCubit(this._repository) : super(const ListState.initial());
 
-  void getLists() async {
+  void initialise(){
+    getLists();
+    getListStream();
+  }
+
+  void getLists() {
     emit(const ListState.loading());
     final result = _repository.getLists();
     result.fold((failure) => {

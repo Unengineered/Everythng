@@ -14,21 +14,24 @@ import 'package:shared_preferences/shared_preferences.dart' as _i9;
 
 import 'application/auth/auth_cubit/auth_cubit.dart' as _i10;
 import 'application/auth/auth_form_cubit/auth_form_cubit.dart' as _i11;
-import 'application/discover/discover_cubit.dart' as _i21;
-import 'application/marketplace/marketplace_cubit.dart' as _i18;
-import 'application/profile/profile_cubit/profile_cubit.dart' as _i19;
-import 'application/profile/profile_form_cubit/profile_form_cubit.dart' as _i20;
+import 'application/discover/discover_cubit.dart' as _i24;
+import 'application/list/list_cubit.dart' as _i20;
+import 'application/marketplace/marketplace_cubit.dart' as _i21;
+import 'application/profile/profile_cubit/profile_cubit.dart' as _i22;
+import 'application/profile/profile_form_cubit/profile_form_cubit.dart' as _i23;
 import 'domain/auth/i_auth_repository.dart' as _i6;
 import 'domain/discover/i_discover_repository.dart' as _i12;
-import 'domain/marketplace/i_marketplace_repository.dart' as _i14;
-import 'domain/profile/i_profile_repository.dart' as _i16;
-import 'infrastructure/auth/auth_injection_module.dart' as _i23;
+import 'domain/list/i_list_repository.dart' as _i14;
+import 'domain/marketplace/i_marketplace_repository.dart' as _i16;
+import 'domain/profile/i_profile_repository.dart' as _i18;
+import 'infrastructure/auth/auth_injection_module.dart' as _i26;
 import 'infrastructure/auth/auth_repository.dart' as _i7;
-import 'infrastructure/core/core_injection_module.dart' as _i22;
+import 'infrastructure/core/core_injection_module.dart' as _i25;
 import 'infrastructure/discover/discover_repository.dart' as _i13;
-import 'infrastructure/marketplace/marketplace_repository.dart' as _i15;
+import 'infrastructure/list/list_repository.dart' as _i15;
+import 'infrastructure/marketplace/marketplace_repository.dart' as _i17;
 import 'infrastructure/profile/profile_repository.dart'
-    as _i17; // ignore_for_file: unnecessary_lambdas
+    as _i19; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -52,21 +55,25 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       _i11.AuthFormCubit(get<_i6.IAuthRepository>(), get<_i10.AuthCubit>()));
   gh.factory<_i12.IDiscoverRepository>(
       () => _i13.DiscoverRepository(get<_i8.NetworkKit>()));
-  gh.factory<_i14.IMarketplaceRepository>(
-      () => _i15.MarketplaceRepository(get<_i9.SharedPreferences>()));
-  gh.factory<_i16.IProfileRepository>(
-      () => _i17.ProfileRepository(get<_i8.NetworkKit>()));
-  gh.lazySingleton<_i18.MarketplaceCubit>(
-      () => _i18.MarketplaceCubit(get<_i14.IMarketplaceRepository>()));
-  gh.singleton<_i19.ProfileCubit>(
-      _i19.ProfileCubit(get<_i10.AuthCubit>(), get<_i16.IProfileRepository>()));
-  gh.factory<_i20.ProfileFormCubit>(
-      () => _i20.ProfileFormCubit(get<_i19.ProfileCubit>()));
-  gh.lazySingleton<_i21.DiscoverCubit>(
-      () => _i21.DiscoverCubit(get<_i12.IDiscoverRepository>()));
+  gh.factory<_i14.IListRepository>(
+      () => _i15.ListRepository(get<_i8.NetworkKit>()));
+  gh.factory<_i16.IMarketplaceRepository>(
+      () => _i17.MarketplaceRepository(get<_i9.SharedPreferences>()));
+  gh.factory<_i18.IProfileRepository>(
+      () => _i19.ProfileRepository(get<_i8.NetworkKit>()));
+  gh.lazySingleton<_i20.ListCubit>(
+      () => _i20.ListCubit(get<_i14.IListRepository>()));
+  gh.lazySingleton<_i21.MarketplaceCubit>(
+      () => _i21.MarketplaceCubit(get<_i16.IMarketplaceRepository>()));
+  gh.singleton<_i22.ProfileCubit>(
+      _i22.ProfileCubit(get<_i10.AuthCubit>(), get<_i18.IProfileRepository>()));
+  gh.factory<_i23.ProfileFormCubit>(
+      () => _i23.ProfileFormCubit(get<_i22.ProfileCubit>()));
+  gh.lazySingleton<_i24.DiscoverCubit>(
+      () => _i24.DiscoverCubit(get<_i12.IDiscoverRepository>()));
   return get;
 }
 
-class _$CoreInjectionModule extends _i22.CoreInjectionModule {}
+class _$CoreInjectionModule extends _i25.CoreInjectionModule {}
 
-class _$AuthInjectionModule extends _i23.AuthInjectionModule {}
+class _$AuthInjectionModule extends _i26.AuthInjectionModule {}

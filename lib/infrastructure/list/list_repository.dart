@@ -4,7 +4,10 @@ import 'package:dartz/dartz.dart';
 import 'package:everythng/domain/list/entities/item_lists.dart';
 import 'package:everythng/domain/list/entities/list_failure.dart';
 import 'package:everythng/domain/list/i_list_repository.dart';
+import 'package:injectable/injectable.dart';
 import 'package:network_kit/network_kit.dart';
+
+@Injectable(as: IListRepository)
 
 class ListRepository implements IListRepository {
   final NetworkKit networkKit;

@@ -9,11 +9,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class ItemsPage extends HookWidget {
   final String emoji;
   final String listName;
+  final List<String> productList;
 
   const ItemsPage({
     Key? key,
     required this.emoji,
     required this.listName,
+    required this.productList
   }) : super(key: key);
 
   @override
@@ -31,7 +33,7 @@ class ItemsPage extends HookWidget {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-                child: ItemsGrid(isEditing: _isEditing),
+                child: ItemsGrid(isEditing: _isEditing,productList: productList,),
               ),
               const SizedBox(
                 height: 48,

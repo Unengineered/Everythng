@@ -6,12 +6,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class ItemsGrid extends HookWidget {
   const ItemsGrid({
     Key? key,
+    required this.productList,
     required ValueNotifier<bool> isEditing,
   })
       : _isEditing = isEditing,
         super(key: key);
 
   final ValueNotifier<bool> _isEditing;
+  final List<String> productList;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class ItemsGrid extends HookWidget {
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
       ),
-      itemCount: 8,
+      itemCount: productList.length,
       itemBuilder: (context, index) {
         return Badge(
           elevation: 0,

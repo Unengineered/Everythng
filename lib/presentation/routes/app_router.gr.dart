@@ -54,7 +54,10 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData,
           child: ItemsPage(
-              key: args.key, emoji: args.emoji, listName: args.listName));
+              key: args.key,
+              emoji: args.emoji,
+              listName: args.listName,
+              productList: args.productList));
     },
     LoginPageRoute.name: (routeData) {
       final args = routeData.argsAs<LoginPageRouteArgs>(
@@ -260,18 +263,28 @@ class SavedPageRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [ItemsPage]
 class ItemsPageRoute extends PageRouteInfo<ItemsPageRouteArgs> {
-  ItemsPageRoute({Key? key, required String emoji, required String listName})
+  ItemsPageRoute(
+      {Key? key,
+      required String emoji,
+      required String listName,
+      required List<String> productList})
       : super(ItemsPageRoute.name,
             path: 'items-page',
-            args:
-                ItemsPageRouteArgs(key: key, emoji: emoji, listName: listName));
+            args: ItemsPageRouteArgs(
+                key: key,
+                emoji: emoji,
+                listName: listName,
+                productList: productList));
 
   static const String name = 'ItemsPageRoute';
 }
 
 class ItemsPageRouteArgs {
   const ItemsPageRouteArgs(
-      {this.key, required this.emoji, required this.listName});
+      {this.key,
+      required this.emoji,
+      required this.listName,
+      required this.productList});
 
   final Key? key;
 
@@ -279,9 +292,11 @@ class ItemsPageRouteArgs {
 
   final String listName;
 
+  final List<String> productList;
+
   @override
   String toString() {
-    return 'ItemsPageRouteArgs{key: $key, emoji: $emoji, listName: $listName}';
+    return 'ItemsPageRouteArgs{key: $key, emoji: $emoji, listName: $listName, productList: $productList}';
   }
 }
 

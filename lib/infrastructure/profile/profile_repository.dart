@@ -23,7 +23,7 @@ class ProfileRepository implements IProfileRepository {
       }
       return left(const NetworkFailure());
     }
-    return right(EverythngUser.fromJson(json.decode(response.body)));
+    return right(EverythngUser.fromJson(response.body));
   }
 
   @override
@@ -36,6 +36,6 @@ class ProfileRepository implements IProfileRepository {
       return left(const NetworkFailure());
     }
 
-    return right(EverythngUser.fromJson(json.decode(response.body)['profile']));
+    return right(EverythngUser.fromJson(response.body['profile']));
   }
 }

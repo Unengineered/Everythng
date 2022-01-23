@@ -7,15 +7,17 @@ class ListElement extends StatelessWidget {
   const ListElement({
     Key? key,
     required this.emoji,
-    required this.listName,
+    required this.listName, required this.productList,
   }) : super(key: key);
   final String emoji;
   final String listName;
+  final List<String> productList;
 
-  factory  ListElement.wishlist() {
-    return const ListElement(
+  factory  ListElement.wishlist(List<String> productList) {
+    return  ListElement(
       emoji: '❤',
       listName: 'Wishlist',
+      productList: productList,
     );
   }
 
@@ -26,6 +28,7 @@ class ListElement extends StatelessWidget {
         context.router.push(ItemsPageRoute(
           emoji: emoji,
           listName: listName,
+          productList: productList,
         ));
       },
       child: Container(

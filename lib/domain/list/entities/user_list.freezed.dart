@@ -145,7 +145,7 @@ class _$_UserList implements _UserList {
         (other.runtimeType == runtimeType &&
             other is _UserList &&
             const DeepCollectionEquality().equals(other.listName, listName) &&
-            (identical(other.emoji, emoji) || other.emoji == emoji) &&
+            const DeepCollectionEquality().equals(other.emoji, emoji) &&
             const DeepCollectionEquality().equals(other.list, list));
   }
 
@@ -153,7 +153,8 @@ class _$_UserList implements _UserList {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(listName),
-     emoji, const DeepCollectionEquality().hash(list));
+      const DeepCollectionEquality().hash(emoji),
+      const DeepCollectionEquality().hash(list));
 
   @JsonKey(ignore: true)
   @override

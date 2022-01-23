@@ -392,12 +392,12 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Loaded &&
-            (identical(other.itemLists, itemLists) ||
-                other.itemLists == itemLists));
+            const DeepCollectionEquality().equals(other.itemLists, itemLists));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, itemLists);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(itemLists));
 
   @JsonKey(ignore: true)
   @override

@@ -16,20 +16,7 @@ const String token = 'TOKEN';
 const String refreshedToken = 'REFRESHEDTOKEN';
 const user = BaseUser(email: email, uid: uid);
 
-//PROFILE
-const everythngUserConst = EverythngUser(
-    firstname: 'firstname',
-    lastname: 'lastname',
-    phone: '9920644868',
-    addresses: [
-      Address(
-          line1: 'line1',
-          line2: 'line2',
-          pincode: 400705,
-          city: 'city',
-          state: 'state')
-    ],
-    storeLink: null);
+
 
 //DISCOVER
 const recommendedProductsJson = '''
@@ -149,6 +136,30 @@ const recommendedStoresJson = '''
 	]
 }]
 ''';
+final List<RecommendedProduct> recommendedProductsEx =
+    (json.decode(recommendedProductsJson) as List<dynamic>)
+        .map((json) => RecommendedProduct.fromJson(json))
+        .toList();
+final List<RecommendedStore> recommendedStoresEx =
+    (json.decode(recommendedStoresJson) as List<dynamic>)
+        .map((json) => RecommendedStore.fromJson(json))
+        .toList();
+
+//PROFILE
+const everythngUserConst = EverythngUser(
+    firstname: 'firstname',
+    lastname: 'lastname',
+    phone: '9920644868',
+    addresses: [
+      Address(
+          line1: 'line1',
+          line2: 'line2',
+          pincode: 400705,
+          city: 'city',
+          state: 'state')
+    ],
+    storeLink: null);
+
 const profileData = '''
  {
 		"id": "312413209vfjk",
@@ -195,40 +206,34 @@ final profileBody = {
     "picture": "picture url"
   }
 };
-final List<RecommendedProduct> recommendedProductsEx =
-    (json.decode(recommendedProductsJson) as List<dynamic>)
-        .map((json) => RecommendedProduct.fromJson(json))
-        .toList();
-final List<RecommendedStore> recommendedStoresEx =
-    (json.decode(recommendedStoresJson) as List<dynamic>)
-        .map((json) => RecommendedStore.fromJson(json))
-        .toList();
+
 
 final everythngUser = EverythngUser.fromJson(json.decode(profileData));
 
-const listJson = '''
- {
-   "cart":[
-   "dbdecdj",
-   "dcdcdcd"
-   ],
-   "wish_list":[],
-   "lists":{
-    "list1":[],
-    "list2":[]
-    }
- }
-''';
+//LIST SYSTEM
 
-final itemLists = ItemLists.fromJson(json.decode(listJson));
+const testJson = ItemLists(
+    cart: ["dbdecdj"],
+    wishList: [],
+    lists: [UserList(listName: "list1", emoji: "d", list: [])]);
 
-const userListJson = '''
- {
-   "list1":[
-   "DDDDD",
-   "DFFFF"
-   ]
- }
-''';
+const listJson = {
+  "cart": [
+    "dbdecdj",
+  ],
+  "wish_list": [],
+  "lists": {
+    "list1": {"emoji": "d", "list": []}
+  }
+};
+final listMap = listOfUserListfromMap({
+  "list1": {"emoji": "d", "list": []}
+});
 
-final userList = UserList.fromJson(json.decode(userListJson));
+final itemLists = ItemLists.fromJson(listJson);
+
+const userListJson = {
+  "list1": {"emoji": "d", "list": []}
+};
+
+final userList = UserList.fromJson(userListJson);

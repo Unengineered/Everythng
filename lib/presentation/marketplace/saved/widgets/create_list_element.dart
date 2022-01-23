@@ -1,17 +1,16 @@
 import 'dart:math' hide log;
-
-import 'package:auto_route/auto_route.dart';
 import 'package:emojis/emoji.dart';
+import 'package:everythng/application/list/list_cubit.dart';
 import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:everythng/presentation/marketplace/saved/widgets/show_emoji_keyboard.dart';
-import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:provider/provider.dart';
 
 class CreateListElement extends HookWidget {
-   CreateListElement({Key? key}) : super(key: key);
+  CreateListElement({Key? key}) : super(key: key);
   final TextEditingController _listNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -70,7 +69,6 @@ class CreateListElement extends HookWidget {
                                 border: InputBorder.none,
                                 hintText: 'Create a List',
                               ),
-
                               validator: (value) {
                                 if (value == null) {
                                   // _errorText.value = '';
@@ -107,9 +105,11 @@ class CreateListElement extends HookWidget {
                               IconButton(
                                 padding: const EdgeInsets.all(0),
                                 onPressed: () {
+                                  context.read<ListCubit>().addList(
+                                      name: _listNameController.text,
+                                      emoji: _emoji.value);
                                   if (_formKey.currentState != null &&
                                       _formKey.currentState!.validate()) {
-                                    print('done');
                                     _errorText.value = '';
                                   }
                                 },
