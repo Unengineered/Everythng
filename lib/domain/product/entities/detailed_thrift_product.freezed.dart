@@ -28,7 +28,7 @@ class _$DetailedThriftProductTearOff {
       required double price,
       @JsonKey(name: "original_price") double? originalPrice,
       required List<Uri> pictures,
-      @JsonKey(name: "size_chart") required SizeChart sizeChart,
+      @JsonKey(name: "size_chart") required Map<String, String> sizeChart,
       required List<Issue> issues,
       Brand? brand,
       @JsonKey(name: "customer_review") Review? customerReview,
@@ -65,7 +65,7 @@ mixin _$DetailedThriftProduct {
   double? get originalPrice => throw _privateConstructorUsedError;
   List<Uri> get pictures => throw _privateConstructorUsedError;
   @JsonKey(name: "size_chart")
-  SizeChart get sizeChart => throw _privateConstructorUsedError;
+  Map<String, String> get sizeChart => throw _privateConstructorUsedError;
   List<Issue> get issues => throw _privateConstructorUsedError;
   Brand? get brand => throw _privateConstructorUsedError;
   @JsonKey(name: "customer_review")
@@ -90,13 +90,12 @@ abstract class $DetailedThriftProductCopyWith<$Res> {
       double price,
       @JsonKey(name: "original_price") double? originalPrice,
       List<Uri> pictures,
-      @JsonKey(name: "size_chart") SizeChart sizeChart,
+      @JsonKey(name: "size_chart") Map<String, String> sizeChart,
       List<Issue> issues,
       Brand? brand,
       @JsonKey(name: "customer_review") Review? customerReview,
       @JsonKey(name: "store_link") StoreLink storeLink});
 
-  $SizeChartCopyWith<$Res> get sizeChart;
   $BrandCopyWith<$Res>? get brand;
   $ReviewCopyWith<$Res>? get customerReview;
   $StoreLinkCopyWith<$Res> get storeLink;
@@ -148,7 +147,7 @@ class _$DetailedThriftProductCopyWithImpl<$Res>
       sizeChart: sizeChart == freezed
           ? _value.sizeChart
           : sizeChart // ignore: cast_nullable_to_non_nullable
-              as SizeChart,
+              as Map<String, String>,
       issues: issues == freezed
           ? _value.issues
           : issues // ignore: cast_nullable_to_non_nullable
@@ -166,13 +165,6 @@ class _$DetailedThriftProductCopyWithImpl<$Res>
           : storeLink // ignore: cast_nullable_to_non_nullable
               as StoreLink,
     ));
-  }
-
-  @override
-  $SizeChartCopyWith<$Res> get sizeChart {
-    return $SizeChartCopyWith<$Res>(_value.sizeChart, (value) {
-      return _then(_value.copyWith(sizeChart: value));
-    });
   }
 
   @override
@@ -218,14 +210,12 @@ abstract class _$DetailedThriftProductCopyWith<$Res>
       double price,
       @JsonKey(name: "original_price") double? originalPrice,
       List<Uri> pictures,
-      @JsonKey(name: "size_chart") SizeChart sizeChart,
+      @JsonKey(name: "size_chart") Map<String, String> sizeChart,
       List<Issue> issues,
       Brand? brand,
       @JsonKey(name: "customer_review") Review? customerReview,
       @JsonKey(name: "store_link") StoreLink storeLink});
 
-  @override
-  $SizeChartCopyWith<$Res> get sizeChart;
   @override
   $BrandCopyWith<$Res>? get brand;
   @override
@@ -282,7 +272,7 @@ class __$DetailedThriftProductCopyWithImpl<$Res>
       sizeChart: sizeChart == freezed
           ? _value.sizeChart
           : sizeChart // ignore: cast_nullable_to_non_nullable
-              as SizeChart,
+              as Map<String, String>,
       issues: issues == freezed
           ? _value.issues
           : issues // ignore: cast_nullable_to_non_nullable
@@ -335,7 +325,7 @@ class _$_DetailedThriftProduct implements _DetailedThriftProduct {
   final List<Uri> pictures;
   @override
   @JsonKey(name: "size_chart")
-  final SizeChart sizeChart;
+  final Map<String, String> sizeChart;
   @override
   final List<Issue> issues;
   @override
@@ -404,7 +394,7 @@ abstract class _DetailedThriftProduct implements DetailedThriftProduct {
           required double price,
           @JsonKey(name: "original_price") double? originalPrice,
           required List<Uri> pictures,
-          @JsonKey(name: "size_chart") required SizeChart sizeChart,
+          @JsonKey(name: "size_chart") required Map<String, String> sizeChart,
           required List<Issue> issues,
           Brand? brand,
           @JsonKey(name: "customer_review") Review? customerReview,
@@ -428,7 +418,7 @@ abstract class _DetailedThriftProduct implements DetailedThriftProduct {
   List<Uri> get pictures;
   @override
   @JsonKey(name: "size_chart")
-  SizeChart get sizeChart;
+  Map<String, String> get sizeChart;
   @override
   List<Issue> get issues;
   @override

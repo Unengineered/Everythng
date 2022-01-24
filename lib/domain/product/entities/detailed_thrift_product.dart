@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'brand.dart';
 import 'issue.dart';
 import 'review.dart';
-import 'size_chart.dart';
 
 part 'detailed_thrift_product.freezed.dart';
 part 'detailed_thrift_product.g.dart';
@@ -20,7 +19,7 @@ class DetailedThriftProduct with _$DetailedThriftProduct{
       double? originalPrice,
       required List<Uri> pictures,
       @JsonKey(name: "size_chart")
-      required SizeChart sizeChart,
+      required Map<String, String> sizeChart,
       required List<Issue> issues,
       Brand? brand,
       @JsonKey(name: "customer_review")

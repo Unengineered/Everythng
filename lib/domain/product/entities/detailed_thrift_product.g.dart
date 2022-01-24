@@ -16,7 +16,7 @@ _$_DetailedThriftProduct _$$_DetailedThriftProductFromJson(
       pictures: (json['pictures'] as List<dynamic>)
           .map((e) => Uri.parse(e as String))
           .toList(),
-      sizeChart: SizeChart.fromJson(json['size_chart'] as Map<String, dynamic>),
+      sizeChart: Map<String, String>.from(json['size_chart'] as Map),
       issues: (json['issues'] as List<dynamic>)
           .map((e) => Issue.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -37,7 +37,7 @@ Map<String, dynamic> _$$_DetailedThriftProductToJson(
       'price': instance.price,
       'original_price': instance.originalPrice,
       'pictures': instance.pictures.map((e) => e.toString()).toList(),
-      'size_chart': instance.sizeChart.toJson(),
+      'size_chart': instance.sizeChart,
       'issues': instance.issues.map((e) => e.toJson()).toList(),
       'brand': instance.brand?.toJson(),
       'customer_review': instance.customerReview?.toJson(),
