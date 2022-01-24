@@ -7,20 +7,28 @@ import 'review.dart';
 import 'size_chart.dart';
 
 part 'detailed_thrift_product.freezed.dart';
+part 'detailed_thrift_product.g.dart';
 
 @freezed
 class DetailedThriftProduct with _$DetailedThriftProduct{
     const factory DetailedThriftProduct({
+      @JsonKey(name: "_id")
       required String id,
       required String name,
       required double price,
+      @JsonKey(name: "original_price")
       double? originalPrice,
       required List<Uri> pictures,
+      @JsonKey(name: "size_chart")
       required SizeChart sizeChart,
       required List<Issue> issues,
       Brand? brand,
+      @JsonKey(name: "customer_review")
       Review? customerReview,
+      @JsonKey(name: "store_link")
       required StoreLink storeLink,
 
 }) = _DetailedThriftProduct;
+
+    factory DetailedThriftProduct.fromJson(Map<String, dynamic> json) => _$DetailedThriftProductFromJson(json);
 }

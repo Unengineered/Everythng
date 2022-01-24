@@ -13,6 +13,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Brand _$BrandFromJson(Map<String, dynamic> json) {
+  return _Brand.fromJson(json);
+}
+
 /// @nodoc
 class _$BrandTearOff {
   const _$BrandTearOff();
@@ -22,6 +26,10 @@ class _$BrandTearOff {
       name: name,
       logo: logo,
     );
+  }
+
+  Brand fromJson(Map<String, Object?> json) {
+    return Brand.fromJson(json);
   }
 }
 
@@ -33,6 +41,7 @@ mixin _$Brand {
   String get name => throw _privateConstructorUsedError;
   Uri get logo => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $BrandCopyWith<Brand> get copyWith => throw _privateConstructorUsedError;
 }
@@ -106,9 +115,12 @@ class __$BrandCopyWithImpl<$Res> extends _$BrandCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Brand implements _Brand {
   const _$_Brand({required this.name, required this.logo});
+
+  factory _$_Brand.fromJson(Map<String, dynamic> json) =>
+      _$$_BrandFromJson(json);
 
   @override
   final String name;
@@ -139,10 +151,17 @@ class _$_Brand implements _Brand {
   @override
   _$BrandCopyWith<_Brand> get copyWith =>
       __$BrandCopyWithImpl<_Brand>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_BrandToJson(this);
+  }
 }
 
 abstract class _Brand implements Brand {
   const factory _Brand({required String name, required Uri logo}) = _$_Brand;
+
+  factory _Brand.fromJson(Map<String, dynamic> json) = _$_Brand.fromJson;
 
   @override
   String get name;

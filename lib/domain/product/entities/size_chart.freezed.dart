@@ -13,6 +13,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SizeChart _$SizeChartFromJson(Map<String, dynamic> json) {
+  return _SizeChart.fromJson(json);
+}
+
 /// @nodoc
 class _$SizeChartTearOff {
   const _$SizeChartTearOff();
@@ -21,6 +25,10 @@ class _$SizeChartTearOff {
     return _SizeChart(
       attributes: attributes,
     );
+  }
+
+  SizeChart fromJson(Map<String, Object?> json) {
+    return SizeChart.fromJson(json);
   }
 }
 
@@ -31,6 +39,7 @@ const $SizeChart = _$SizeChartTearOff();
 mixin _$SizeChart {
   Map<String, String> get attributes => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SizeChartCopyWith<SizeChart> get copyWith =>
       throw _privateConstructorUsedError;
@@ -96,9 +105,12 @@ class __$SizeChartCopyWithImpl<$Res> extends _$SizeChartCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_SizeChart implements _SizeChart {
   const _$_SizeChart({required this.attributes});
+
+  factory _$_SizeChart.fromJson(Map<String, dynamic> json) =>
+      _$$_SizeChartFromJson(json);
 
   @override
   final Map<String, String> attributes;
@@ -125,11 +137,19 @@ class _$_SizeChart implements _SizeChart {
   @override
   _$SizeChartCopyWith<_SizeChart> get copyWith =>
       __$SizeChartCopyWithImpl<_SizeChart>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SizeChartToJson(this);
+  }
 }
 
 abstract class _SizeChart implements SizeChart {
   const factory _SizeChart({required Map<String, String> attributes}) =
       _$_SizeChart;
+
+  factory _SizeChart.fromJson(Map<String, dynamic> json) =
+      _$_SizeChart.fromJson;
 
   @override
   Map<String, String> get attributes;

@@ -13,6 +13,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Review _$ReviewFromJson(Map<String, dynamic> json) {
+  return _Review.fromJson(json);
+}
+
 /// @nodoc
 class _$ReviewTearOff {
   const _$ReviewTearOff();
@@ -22,6 +26,10 @@ class _$ReviewTearOff {
       emoji: emoji,
       message: message,
     );
+  }
+
+  Review fromJson(Map<String, Object?> json) {
+    return Review.fromJson(json);
   }
 }
 
@@ -33,6 +41,7 @@ mixin _$Review {
   String get emoji => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ReviewCopyWith<Review> get copyWith => throw _privateConstructorUsedError;
 }
@@ -106,9 +115,12 @@ class __$ReviewCopyWithImpl<$Res> extends _$ReviewCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Review implements _Review {
   const _$_Review({required this.emoji, required this.message});
+
+  factory _$_Review.fromJson(Map<String, dynamic> json) =>
+      _$$_ReviewFromJson(json);
 
   @override
   final String emoji;
@@ -139,11 +151,18 @@ class _$_Review implements _Review {
   @override
   _$ReviewCopyWith<_Review> get copyWith =>
       __$ReviewCopyWithImpl<_Review>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ReviewToJson(this);
+  }
 }
 
 abstract class _Review implements Review {
   const factory _Review({required String emoji, required String message}) =
       _$_Review;
+
+  factory _Review.fromJson(Map<String, dynamic> json) = _$_Review.fromJson;
 
   @override
   String get emoji;

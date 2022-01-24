@@ -13,21 +13,26 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+DetailedThriftProduct _$DetailedThriftProductFromJson(
+    Map<String, dynamic> json) {
+  return _DetailedThriftProduct.fromJson(json);
+}
+
 /// @nodoc
 class _$DetailedThriftProductTearOff {
   const _$DetailedThriftProductTearOff();
 
   _DetailedThriftProduct call(
-      {required String id,
+      {@JsonKey(name: "_id") required String id,
       required String name,
       required double price,
-      double? originalPrice,
+      @JsonKey(name: "original_price") double? originalPrice,
       required List<Uri> pictures,
-      required SizeChart sizeChart,
+      @JsonKey(name: "size_chart") required SizeChart sizeChart,
       required List<Issue> issues,
       Brand? brand,
-      Review? customerReview,
-      required StoreLink storeLink}) {
+      @JsonKey(name: "customer_review") Review? customerReview,
+      @JsonKey(name: "store_link") required StoreLink storeLink}) {
     return _DetailedThriftProduct(
       id: id,
       name: name,
@@ -41,6 +46,10 @@ class _$DetailedThriftProductTearOff {
       storeLink: storeLink,
     );
   }
+
+  DetailedThriftProduct fromJson(Map<String, Object?> json) {
+    return DetailedThriftProduct.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -48,17 +57,23 @@ const $DetailedThriftProduct = _$DetailedThriftProductTearOff();
 
 /// @nodoc
 mixin _$DetailedThriftProduct {
+  @JsonKey(name: "_id")
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
+  @JsonKey(name: "original_price")
   double? get originalPrice => throw _privateConstructorUsedError;
   List<Uri> get pictures => throw _privateConstructorUsedError;
+  @JsonKey(name: "size_chart")
   SizeChart get sizeChart => throw _privateConstructorUsedError;
   List<Issue> get issues => throw _privateConstructorUsedError;
   Brand? get brand => throw _privateConstructorUsedError;
+  @JsonKey(name: "customer_review")
   Review? get customerReview => throw _privateConstructorUsedError;
+  @JsonKey(name: "store_link")
   StoreLink get storeLink => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DetailedThriftProductCopyWith<DetailedThriftProduct> get copyWith =>
       throw _privateConstructorUsedError;
@@ -70,16 +85,16 @@ abstract class $DetailedThriftProductCopyWith<$Res> {
           $Res Function(DetailedThriftProduct) then) =
       _$DetailedThriftProductCopyWithImpl<$Res>;
   $Res call(
-      {String id,
+      {@JsonKey(name: "_id") String id,
       String name,
       double price,
-      double? originalPrice,
+      @JsonKey(name: "original_price") double? originalPrice,
       List<Uri> pictures,
-      SizeChart sizeChart,
+      @JsonKey(name: "size_chart") SizeChart sizeChart,
       List<Issue> issues,
       Brand? brand,
-      Review? customerReview,
-      StoreLink storeLink});
+      @JsonKey(name: "customer_review") Review? customerReview,
+      @JsonKey(name: "store_link") StoreLink storeLink});
 
   $SizeChartCopyWith<$Res> get sizeChart;
   $BrandCopyWith<$Res>? get brand;
@@ -198,16 +213,16 @@ abstract class _$DetailedThriftProductCopyWith<$Res>
       __$DetailedThriftProductCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
+      {@JsonKey(name: "_id") String id,
       String name,
       double price,
-      double? originalPrice,
+      @JsonKey(name: "original_price") double? originalPrice,
       List<Uri> pictures,
-      SizeChart sizeChart,
+      @JsonKey(name: "size_chart") SizeChart sizeChart,
       List<Issue> issues,
       Brand? brand,
-      Review? customerReview,
-      StoreLink storeLink});
+      @JsonKey(name: "customer_review") Review? customerReview,
+      @JsonKey(name: "store_link") StoreLink storeLink});
 
   @override
   $SizeChartCopyWith<$Res> get sizeChart;
@@ -289,39 +304,47 @@ class __$DetailedThriftProductCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_DetailedThriftProduct implements _DetailedThriftProduct {
   const _$_DetailedThriftProduct(
-      {required this.id,
+      {@JsonKey(name: "_id") required this.id,
       required this.name,
       required this.price,
-      this.originalPrice,
+      @JsonKey(name: "original_price") this.originalPrice,
       required this.pictures,
-      required this.sizeChart,
+      @JsonKey(name: "size_chart") required this.sizeChart,
       required this.issues,
       this.brand,
-      this.customerReview,
-      required this.storeLink});
+      @JsonKey(name: "customer_review") this.customerReview,
+      @JsonKey(name: "store_link") required this.storeLink});
+
+  factory _$_DetailedThriftProduct.fromJson(Map<String, dynamic> json) =>
+      _$$_DetailedThriftProductFromJson(json);
 
   @override
+  @JsonKey(name: "_id")
   final String id;
   @override
   final String name;
   @override
   final double price;
   @override
+  @JsonKey(name: "original_price")
   final double? originalPrice;
   @override
   final List<Uri> pictures;
   @override
+  @JsonKey(name: "size_chart")
   final SizeChart sizeChart;
   @override
   final List<Issue> issues;
   @override
   final Brand? brand;
   @override
+  @JsonKey(name: "customer_review")
   final Review? customerReview;
   @override
+  @JsonKey(name: "store_link")
   final StoreLink storeLink;
 
   @override
@@ -367,40 +390,54 @@ class _$_DetailedThriftProduct implements _DetailedThriftProduct {
   _$DetailedThriftProductCopyWith<_DetailedThriftProduct> get copyWith =>
       __$DetailedThriftProductCopyWithImpl<_DetailedThriftProduct>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DetailedThriftProductToJson(this);
+  }
 }
 
 abstract class _DetailedThriftProduct implements DetailedThriftProduct {
   const factory _DetailedThriftProduct(
-      {required String id,
-      required String name,
-      required double price,
-      double? originalPrice,
-      required List<Uri> pictures,
-      required SizeChart sizeChart,
-      required List<Issue> issues,
-      Brand? brand,
-      Review? customerReview,
-      required StoreLink storeLink}) = _$_DetailedThriftProduct;
+          {@JsonKey(name: "_id") required String id,
+          required String name,
+          required double price,
+          @JsonKey(name: "original_price") double? originalPrice,
+          required List<Uri> pictures,
+          @JsonKey(name: "size_chart") required SizeChart sizeChart,
+          required List<Issue> issues,
+          Brand? brand,
+          @JsonKey(name: "customer_review") Review? customerReview,
+          @JsonKey(name: "store_link") required StoreLink storeLink}) =
+      _$_DetailedThriftProduct;
+
+  factory _DetailedThriftProduct.fromJson(Map<String, dynamic> json) =
+      _$_DetailedThriftProduct.fromJson;
 
   @override
+  @JsonKey(name: "_id")
   String get id;
   @override
   String get name;
   @override
   double get price;
   @override
+  @JsonKey(name: "original_price")
   double? get originalPrice;
   @override
   List<Uri> get pictures;
   @override
+  @JsonKey(name: "size_chart")
   SizeChart get sizeChart;
   @override
   List<Issue> get issues;
   @override
   Brand? get brand;
   @override
+  @JsonKey(name: "customer_review")
   Review? get customerReview;
   @override
+  @JsonKey(name: "store_link")
   StoreLink get storeLink;
   @override
   @JsonKey(ignore: true)
