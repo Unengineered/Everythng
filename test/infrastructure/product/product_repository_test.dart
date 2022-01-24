@@ -4,6 +4,7 @@ import 'package:everythng/infrastructure/product/product_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../setup/product/constants.dart';
 import '../../setup/product/product_network_kit_helper.dart';
 
 void main(){
@@ -34,7 +35,7 @@ void main(){
       final result = await repo.getDetailedThriftProduct("product_id");
 
       //Assert
-      expect(result, right(detailedThriftProduct));
+      expect(result, right(DETAILED_THRIFT_PRODUCT));
     });
 
     test('should return ProductFailure.productUnavailable when a 404 response is received.', () async {
