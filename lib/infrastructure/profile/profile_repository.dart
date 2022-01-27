@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 import 'package:everythng/core/api/url.dart';
 import 'package:everythng/domain/profile/entities/everythng_user.dart';
@@ -17,12 +17,12 @@ class ProfileRepository implements IProfileRepository {
   Future<Either<NetworkFailure, EverythngUser>> getProfileData() async {
 
     //TODO: remove fake getProfileData API.
-    // return right(const EverythngUser(
-    //     firstname: "advait",
-    //     lastname: "bansode",
-    //     phone: "9082322163",
-    //     addresses: [],
-    //     storeLink: null));
+    return right(const EverythngUser(
+        firstname: "advait",
+        lastname: "bansode",
+        phone: "9082322163",
+        addresses: [],
+        storeLink: null));
 
     try {
       final response = await networkKit.get(Uri.http(url, '/profile'));
@@ -43,7 +43,7 @@ class ProfileRepository implements IProfileRepository {
   Future<Either<NetworkFailure, EverythngUser>> updateProfileData(
       {required EverythngUser everythngUser}) async {
     final response = await networkKit.put(Uri.http(url, '/profile'),
-        body: json.encode(everythngUser.toJson()),
+        body: everythngUser.toJson(),
         headers: {"Content-Type": "application/json"});
 
     if (response.statusCode != 200) {
