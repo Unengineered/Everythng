@@ -32,7 +32,6 @@ class ListElement extends StatelessWidget {
         ));
       },
       child: Container(
-        height: 53,
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
@@ -45,7 +44,7 @@ class ListElement extends StatelessWidget {
               child:  Text(
                 emoji,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 20,
                 ),
               ),
             ),

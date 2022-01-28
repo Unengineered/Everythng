@@ -24,9 +24,8 @@ class CreateListElement extends HookWidget {
     return Column(
       children: [
         Container(
-          height: 53,
           padding: _showKeyboard.value
-              ? const EdgeInsets.fromLTRB(12, 16, 0, 16)
+              ? const EdgeInsets.fromLTRB(12, 4, 0, 4)
               : const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
@@ -35,18 +34,22 @@ class CreateListElement extends HookWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () {
-                  FocusManager.instance.primaryFocus?.unfocus();
-                  showEmojiKeyboard(context, _emoji, _focusNode, _autofocus);
-                },
-                child: Text(
-                  _emoji.value,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      showEmojiKeyboard(context, _emoji, _focusNode, _autofocus);
+                    },
+                    child: Text(
+                      _emoji.value,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
               const SizedBox(
                 width: 16,
@@ -57,8 +60,8 @@ class CreateListElement extends HookWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.54,
-                          transform: Matrix4.translationValues(0, 10, 0),
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          // transform: Matrix4.translationValues(0, 10, 0),
                           child: Form(
                             key: _formKey,
                             child: TextFormField(
@@ -139,12 +142,7 @@ class CreateListElement extends HookWidget {
                                 .first;
                         _showKeyboard.value = true;
 
-                        // WidgetsBinding.instance!.addPostFrameCallback((_) {
-                        //   log(_focusNode.hasPrimaryFocus.toString());
-                        //   _focusNode.requestFocus();
-                        //   _focusNode.unfocus();
-                        //   _focusNode.requestFocus();
-                        // });
+
                       },
                       child: Text(
                         'Create a new list',
