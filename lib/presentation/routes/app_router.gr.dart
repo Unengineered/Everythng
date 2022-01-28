@@ -45,6 +45,10 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const ProfileFlowWrapper());
     },
+    ProductPageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const ProductPage());
+    },
     LoginPageRoute.name: (routeData) {
       final args = routeData.argsAs<LoginPageRouteArgs>(
           orElse: () => const LoginPageRouteArgs());
@@ -117,8 +121,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(SigningFlowWrapperRoute.name,
             path: '/signing-flow-wrapper',
             children: [
-              RouteConfig(LoginPageRoute.name,
+              RouteConfig(ProductPageRoute.name,
                   path: '', parent: SigningFlowWrapperRoute.name),
+              RouteConfig(LoginPageRoute.name,
+                  path: 'login-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(PasswordPageRoute.name,
                   path: 'password-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(CreatePasswordPageRoute.name,
@@ -235,11 +241,19 @@ class ProfileFlowWrapperRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProductPage]
+class ProductPageRoute extends PageRouteInfo<void> {
+  const ProductPageRoute() : super(ProductPageRoute.name, path: '');
+
+  static const String name = 'ProductPageRoute';
+}
+
+/// generated route for
 /// [LoginPage]
 class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
   LoginPageRoute({Key? key})
       : super(LoginPageRoute.name,
-            path: '', args: LoginPageRouteArgs(key: key));
+            path: 'login-page', args: LoginPageRouteArgs(key: key));
 
   static const String name = 'LoginPageRoute';
 }

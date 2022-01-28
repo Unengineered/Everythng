@@ -17,12 +17,12 @@ class ProfileRepository implements IProfileRepository {
   Future<Either<NetworkFailure, EverythngUser>> getProfileData() async {
 
     //TODO: remove fake getProfileData API.
-    // return right(const EverythngUser(
-    //     firstname: "advait",
-    //     lastname: "bansode",
-    //     phone: "9082322163",
-    //     addresses: [],
-    //     storeLink: null));
+    return right(const EverythngUser(
+        firstname: "advait",
+        lastname: "bansode",
+        phone: "9082322163",
+        addresses: [],
+        storeLink: null));
 
     try {
       final response = await networkKit.get(Uri.http(url, '/profile'));

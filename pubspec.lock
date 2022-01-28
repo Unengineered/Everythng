@@ -624,7 +624,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: ea8cf7dd99c06b219698ac378b3067e0e7d3d2ce
-      url: "https://github.com/Unengineered/NetworkKit"
+      url: "https://github.com/Unengineered/NetworkKit.git"
     source: git
     version: "0.0.1"
   node_preamble:
@@ -781,6 +781,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  readmore:
+    dependency: "direct main"
+    description:
+      name: readmore
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   responsive_framework:
     dependency: "direct main"
     description:

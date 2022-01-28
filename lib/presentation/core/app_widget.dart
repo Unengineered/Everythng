@@ -4,8 +4,8 @@ import 'package:everythng/application/marketplace/marketplace_cubit.dart';
 import 'package:everythng/application/profile/profile_cubit/profile_cubit.dart';
 import 'package:everythng/application/profile/profile_form_cubit/profile_form_cubit.dart';
 import 'package:everythng/injection.dart';
-import 'package:everythng/presentation/routes/tree_router.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
+import 'package:everythng/presentation/routes/tree_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,10 +30,12 @@ class AppWidget extends StatelessWidget {
             title: 'Everythng App',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-                scaffoldBackgroundColor: Colors.grey.shade50,
-                appBarTheme: AppBarTheme(
-                  backgroundColor: Colors.grey.shade50,
-                )),
+              
+              scaffoldBackgroundColor: Colors.grey.shade50,
+              appBarTheme: AppBarTheme(
+                backgroundColor: Colors.grey.shade50,
+              ),
+            ),
             routerDelegate: _appRouter.delegate(),
             routeInformationParser: _appRouter.defaultRouteParser(),
           ),

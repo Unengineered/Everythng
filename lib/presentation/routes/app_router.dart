@@ -7,6 +7,7 @@ import 'package:everythng/presentation/marketplace/buying/buying_page.dart';
 import 'package:everythng/presentation/marketplace/renting/renting_page.dart';
 import 'package:everythng/presentation/marketplace/store/store_page.dart';
 import 'package:everythng/presentation/marketplace/thrifting/discover_page.dart';
+import 'package:everythng/presentation/product/pages/product_page.dart';
 import 'package:everythng/presentation/profile/pages/address_page.dart';
 import 'package:everythng/presentation/profile/pages/first_name_page.dart';
 import 'package:everythng/presentation/profile/pages/last_name_page.dart';
@@ -26,7 +27,8 @@ part 'app_router.gr.dart';
   CupertinoRoute(page: SplashPage, initial: true),
 
   CupertinoRoute(page: SigningFlowWrapper, children: [
-    CupertinoRoute(page: LoginPage, initial: true),
+    CupertinoRoute(page: ProductPage, initial: true),
+    CupertinoRoute(page: LoginPage),
     CupertinoRoute(page: PasswordPage),
     CupertinoRoute(page: CreatePasswordPage),
     CupertinoRoute(page: ConfirmPasswordPage),
