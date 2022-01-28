@@ -45,20 +45,6 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const ProfileFlowWrapper());
     },
-    SavedPageRoute.name: (routeData) {
-      return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const SavedPage());
-    },
-    ItemsPageRoute.name: (routeData) {
-      final args = routeData.argsAs<ItemsPageRouteArgs>();
-      return CupertinoPageX<dynamic>(
-          routeData: routeData,
-          child: ItemsPage(
-              key: args.key,
-              emoji: args.emoji,
-              listName: args.listName,
-              productList: args.productList));
-    },
     LoginPageRoute.name: (routeData) {
       final args = routeData.argsAs<LoginPageRouteArgs>(
           orElse: () => const LoginPageRouteArgs());
@@ -83,9 +69,19 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: ConfirmPasswordPage(key: args.key));
     },
-    DiscoverPageRoute.name: (routeData) {
+    SavedPageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const DiscoverPage());
+          routeData: routeData, child: const SavedPage());
+    },
+    ItemsPageRoute.name: (routeData) {
+      final args = routeData.argsAs<ItemsPageRouteArgs>();
+      return CupertinoPageX<dynamic>(
+          routeData: routeData,
+          child: ItemsPage(
+              key: args.key,
+              emoji: args.emoji,
+              listName: args.listName,
+              productList: args.productList));
     },
     BuyingPageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
@@ -131,12 +127,8 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(SigningFlowWrapperRoute.name,
             path: '/signing-flow-wrapper',
             children: [
-              RouteConfig(SavedPageRoute.name,
-                  path: '', parent: SigningFlowWrapperRoute.name),
-              RouteConfig(ItemsPageRoute.name,
-                  path: 'items-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(LoginPageRoute.name,
-                  path: 'login-page', parent: SigningFlowWrapperRoute.name),
+                  path: '', parent: SigningFlowWrapperRoute.name),
               RouteConfig(PasswordPageRoute.name,
                   path: 'password-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(CreatePasswordPageRoute.name,
@@ -149,8 +141,11 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(ThriftingMarketplaceWrapperRoute.name,
             path: '/thrifting-marketplace-wrapper',
             children: [
-              RouteConfig(DiscoverPageRoute.name,
-                  path: '', parent: ThriftingMarketplaceWrapperRoute.name)
+              RouteConfig(SavedPageRoute.name,
+                  path: '', parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(ItemsPageRoute.name,
+                  path: 'items-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name)
             ]),
         RouteConfig(BuyingMarketplaceWrapperRoute.name,
             path: '/buying-marketplace-wrapper',
@@ -253,59 +248,11 @@ class ProfileFlowWrapperRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SavedPage]
-class SavedPageRoute extends PageRouteInfo<void> {
-  const SavedPageRoute() : super(SavedPageRoute.name, path: '');
-
-  static const String name = 'SavedPageRoute';
-}
-
-/// generated route for
-/// [ItemsPage]
-class ItemsPageRoute extends PageRouteInfo<ItemsPageRouteArgs> {
-  ItemsPageRoute(
-      {Key? key,
-      required String emoji,
-      required String listName,
-      required List<String> productList})
-      : super(ItemsPageRoute.name,
-            path: 'items-page',
-            args: ItemsPageRouteArgs(
-                key: key,
-                emoji: emoji,
-                listName: listName,
-                productList: productList));
-
-  static const String name = 'ItemsPageRoute';
-}
-
-class ItemsPageRouteArgs {
-  const ItemsPageRouteArgs(
-      {this.key,
-      required this.emoji,
-      required this.listName,
-      required this.productList});
-
-  final Key? key;
-
-  final String emoji;
-
-  final String listName;
-
-  final List<String> productList;
-
-  @override
-  String toString() {
-    return 'ItemsPageRouteArgs{key: $key, emoji: $emoji, listName: $listName, productList: $productList}';
-  }
-}
-
-/// generated route for
 /// [LoginPage]
 class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
   LoginPageRoute({Key? key})
       : super(LoginPageRoute.name,
-            path: 'login-page', args: LoginPageRouteArgs(key: key));
+            path: '', args: LoginPageRouteArgs(key: key));
 
   static const String name = 'LoginPageRoute';
 }
@@ -389,11 +336,51 @@ class ConfirmPasswordPageRouteArgs {
 }
 
 /// generated route for
-/// [DiscoverPage]
-class DiscoverPageRoute extends PageRouteInfo<void> {
-  const DiscoverPageRoute() : super(DiscoverPageRoute.name, path: '');
+/// [SavedPage]
+class SavedPageRoute extends PageRouteInfo<void> {
+  const SavedPageRoute() : super(SavedPageRoute.name, path: '');
 
-  static const String name = 'DiscoverPageRoute';
+  static const String name = 'SavedPageRoute';
+}
+
+/// generated route for
+/// [ItemsPage]
+class ItemsPageRoute extends PageRouteInfo<ItemsPageRouteArgs> {
+  ItemsPageRoute(
+      {Key? key,
+      required String emoji,
+      required String listName,
+      required List<String> productList})
+      : super(ItemsPageRoute.name,
+            path: 'items-page',
+            args: ItemsPageRouteArgs(
+                key: key,
+                emoji: emoji,
+                listName: listName,
+                productList: productList));
+
+  static const String name = 'ItemsPageRoute';
+}
+
+class ItemsPageRouteArgs {
+  const ItemsPageRouteArgs(
+      {this.key,
+      required this.emoji,
+      required this.listName,
+      required this.productList});
+
+  final Key? key;
+
+  final String emoji;
+
+  final String listName;
+
+  final List<String> productList;
+
+  @override
+  String toString() {
+    return 'ItemsPageRouteArgs{key: $key, emoji: $emoji, listName: $listName, productList: $productList}';
+  }
 }
 
 /// generated route for

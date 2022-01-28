@@ -48,7 +48,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     }, unauthenticated: (_) {
       emit(const ProfileState.initial());
     }, authenticated: (_) {
-      getProfileData();
+      //getProfileData();
     });
   }
 }

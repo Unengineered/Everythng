@@ -15,7 +15,7 @@ class ListCubit extends Cubit<ListState> {
   ListCubit(this._repository) : super(const ListState.initial());
 
   void initialise(){
-    getLists();
+   // getLists();
     getListStream();
   }
 

@@ -18,8 +18,8 @@ class ListRepository implements IListRepository {
   Either<ListFailure, Unit> getLists() {
     try {
       networkKit.send(
-          system: 'list_system',
-          function: 'get_lists',
+          system: 'list',
+          function: 'get_all_lists',
           headers: {},
           body: {},
           ack: (ack) {});
@@ -34,7 +34,7 @@ class ListRepository implements IListRepository {
       {required String name, required String emoji}) {
     try {
       networkKit.send(
-          system: 'list_system',
+          system: 'list',
           function: 'add_list',
           headers: {},
           body: {"list_name": name, "emoji": emoji},
@@ -49,7 +49,7 @@ class ListRepository implements IListRepository {
   Either<ListFailure, Unit> removeList(String name) {
     try {
       networkKit.send(
-          system: 'list_system',
+          system: 'list',
           function: 'remove_list',
           headers: {},
           body: {"list_name": name},
@@ -65,7 +65,7 @@ class ListRepository implements IListRepository {
       {required String name, required String productId}) {
     try {
       networkKit.send(
-          system: 'list_system',
+          system: 'list',
           function: 'add_item',
           headers: {},
           body: {"list_name": name, "product_id": productId},
@@ -81,7 +81,7 @@ class ListRepository implements IListRepository {
       {required String name, required String productId}) {
     try {
       networkKit.send(
-          system: 'list_system',
+          system: 'list',
           function: 'remove_item',
           headers: {},
           body: {"list_name": name, "product_id": productId},
@@ -96,15 +96,26 @@ class ListRepository implements IListRepository {
   Stream<ItemLists> listStream() {
     StreamController<ItemLists> streamController =
         StreamController<ItemLists>();
-    networkKit.subscribe('list_system').listen((message) {
-      switch (message.function) {
-        case 'all_lists':
-          streamController.add(ItemLists.fromJson(message.body));
-          break;
-        default:
-          print('unknown');
-      }
-    });
+     streamController.add(ItemLists.fromJson(listJson));
+    // networkKit.subscribe('list').listen((message) {
+    //   switch (message.function) {
+    //     case 'all_lists':
+    //       streamController.add(ItemLists.fromJson(message.body));
+    //       break;
+    //     default:
+    //       print('unknown');
+    //   }
+    // });
     return streamController.stream;
   }
 }
+const listJson = {
+  "cart": [
+    "dbdecdj",
+  ],
+  "wish_list": [],
+  "lists": {
+    "list1": {"emoji": "🤣", "list": ['dddddd']},
+    "list2": {"emoji": "🐣", "list": ['dddddd']}
+  }
+};

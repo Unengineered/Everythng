@@ -160,7 +160,7 @@ const everythngUserConst = EverythngUser(
     ],
     storeLink: null);
 
-const profileData = '''
+const profileData = 
  {
 		"id": "312413209vfjk",
 		"firstname": "someone",
@@ -182,33 +182,9 @@ const profileData = '''
 			"tagline" : "tagline",
 			"picture" : "picture url"
 		}
-}
-''';
-final profileBody = {
-  "id": "312413209vfjk",
-  "firstname": "someone",
-  "lastname": "someone",
-  "phone": "8413939090",
-  "picture": "picture url",
-  "addresses": [
-    {
-      "line1": "",
-      "line2": "",
-      "pincode": 400789,
-      "city": "Mumbai",
-      "state": "Maharashtra"
-    }
-  ],
-  "store": {
-    "name": "store name",
-    "id": "store id",
-    "tagline": "tagline",
-    "picture": "picture url"
-  }
 };
 
-
-final everythngUser = EverythngUser.fromJson(json.decode(profileData));
+final everythngUser = EverythngUser.fromJson(profileData);
 
 //LIST SYSTEM
 
@@ -223,7 +199,8 @@ const listJson = {
   ],
   "wish_list": [],
   "lists": {
-    "list1": {"emoji": "d", "list": []}
+    "list1": {"emoji": "🤣", "list": ['dddddd']},
+    "list2": {"emoji": "🐣", "list": ['dddddd']}
   }
 };
 final listMap = listOfUserListfromMap({

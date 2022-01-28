@@ -28,16 +28,16 @@ part 'app_router.gr.dart';
   CupertinoRoute(page: SplashPage, initial: true),
 
   CupertinoRoute(page: SigningFlowWrapper, children: [
-    CupertinoRoute(page: SavedPage, initial: true),
-    CupertinoRoute(page: ItemsPage),
-    CupertinoRoute(page: LoginPage),
+    CupertinoRoute(page: LoginPage,initial: true),
     CupertinoRoute(page: PasswordPage),
     CupertinoRoute(page: CreatePasswordPage),
     CupertinoRoute(page: ConfirmPasswordPage),
   ]),
 
   CupertinoRoute(page: ThriftingMarketplaceWrapper, children: [
-    CupertinoRoute(page: DiscoverPage, initial: true),
+    CupertinoRoute(page: SavedPage, initial: true),
+    CupertinoRoute(page: ItemsPage),
+    //CupertinoRoute(page: DiscoverPage, initial: true),
     // CupertinoRoute(page: DiscoverPage),
     // CupertinoRoute(page: StoreNamePage, initial: true),
     // CupertinoRoute(page: StoreDetailPage),

@@ -32,7 +32,7 @@ class SavedPage extends HookWidget {
             return state.map(initial: (_) {
               return const CircularProgressIndicator();
             }, loading: (_) {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             }, loaded: (state) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

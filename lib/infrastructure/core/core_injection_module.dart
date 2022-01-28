@@ -13,7 +13,7 @@ abstract class CoreInjectionModule {
   http.Client get httpClient => http.Client();
   
   @lazySingleton
-  NetworkKit get networkKit => NetworkKit(Uri.parse(url),getIt<FortKnox>());
+  NetworkKit get networkKit => NetworkKit(Uri.parse("http://localhost:8080"),getIt<FortKnox>());
 
   @preResolve
   Future<SharedPreferences> get sharedPreferences => SharedPreferences.getInstance();
