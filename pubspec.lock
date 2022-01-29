@@ -301,42 +301,42 @@ packages:
       name: firebase_auth
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.3.5"
+    version: "3.3.6"
   firebase_auth_platform_interface:
     dependency: transitive
     description:
       name: firebase_auth_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.10"
+    version: "6.1.11"
   firebase_auth_web:
     dependency: transitive
     description:
       name: firebase_auth_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.3.6"
+    version: "3.3.7"
   firebase_core:
     dependency: "direct main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.11.0"
+    version: "1.12.0"
   firebase_core_platform_interface:
     dependency: transitive
     description:
       name: firebase_core_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.2.3"
+    version: "4.2.4"
   firebase_core_web:
     dependency: transitive
     description:
       name: firebase_core_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.5.3"
+    version: "1.5.4"
   fixnum:
     dependency: transitive
     description:
@@ -623,7 +623,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: ea8cf7dd99c06b219698ac378b3067e0e7d3d2ce
+      resolved-ref: "108777ea0e09e8896fd43632fa1ec0890fa077af"
       url: "https://github.com/Unengineered/NetworkKit"
     source: git
     version: "0.0.1"

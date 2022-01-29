@@ -1,14 +1,12 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
 import 'package:everythng/domain/core/network_failure.dart';
 import 'package:everythng/domain/profile/entities/everythng_user.dart';
 import 'package:everythng/domain/profile/i_profile_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'profile_state.dart';
 part 'profile_cubit.freezed.dart';
@@ -22,6 +20,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       : super(const ProfileState.initial()) {
     _handleAuthState(_authCubit.state);
     _authCubit.stream.listen(_handleAuthState);
+    addProfileListener();
   }
 
   void getProfileData() async {
@@ -40,14 +39,9 @@ class ProfileCubit extends Cubit<ProfileState> {
     });
   }
 
-  Future<Either<NetworkFailure, Unit>> setProfileData(
+  void setProfileData(
       EverythngUser user) async {
-    final result =
-        await _profileRepository.updateProfileData(everythngUser: user);
-    return result.fold((failure) => left(failure), (user) {
-      emit(ProfileState.loaded(everythngUser: user));
-      return right(unit);
-    });
+   _profileRepository.updateProfileData(everythngUser: user);
   }
 
   void _handleAuthState(AuthState state) {
@@ -58,5 +52,11 @@ class ProfileCubit extends Cubit<ProfileState> {
     }, authenticated: (_) {
       getProfileData();
     });
+  }
+
+  void addProfileListener(){
+      _profileRepository.getProfileStream().listen((EverythngUser user) {
+        emit(ProfileState.loaded(everythngUser: user));
+      });
   }
 }

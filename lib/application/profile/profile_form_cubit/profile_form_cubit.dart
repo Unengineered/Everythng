@@ -25,7 +25,7 @@ class ProfileFormCubit extends Cubit<ProfileFormState> {
   void setAddress(Address address) => emit(state.copyWith(address: address));
 
   void setProfileData() async {
-    final result = await _profileCubit.setProfileData(EverythngUser(
+    _profileCubit.setProfileData(EverythngUser(
         firstname: state.firstName,
         lastname: state.lastName,
         phone: state.phoneNumber,

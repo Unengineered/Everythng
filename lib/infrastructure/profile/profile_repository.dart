@@ -1,5 +1,3 @@
-
-
 import 'package:everythng/core/api/url.dart';
 import 'package:everythng/domain/profile/entities/everythng_user.dart';
 import 'package:everythng/domain/core/network_failure.dart';
@@ -15,14 +13,13 @@ class ProfileRepository implements IProfileRepository {
 
   @override
   Future<Either<NetworkFailure, EverythngUser>> getProfileData() async {
-
     //TODO: remove fake getProfileData API.
-    return right(const EverythngUser(
-        firstname: "advait",
-        lastname: "bansode",
-        phone: "9082322163",
-        addresses: [],
-        storeLink: null));
+    // return right(const EverythngUser(
+    //     firstname: "advait",
+    //     lastname: "bansode",
+    //     phone: "9082322163",
+    //     addresses: [],
+    //     storeLink: null));
 
     try {
       final response = await networkKit.get(Uri.http(url, '/profile'));
@@ -33,23 +30,28 @@ class ProfileRepository implements IProfileRepository {
         return left(const NetworkFailure());
       }
       return right(EverythngUser.fromJson(response.body));
-    } on NetworkKitException catch(_){
+    } on NetworkKitException catch (_) {
       return left(const NetworkFailure());
     }
-
   }
 
   @override
-  Future<Either<NetworkFailure, EverythngUser>> updateProfileData(
+  void updateProfileData(
       {required EverythngUser everythngUser}) async {
-    final response = await networkKit.put(Uri.http(url, '/profile'),
+    networkKit.send(
+        system: "profile",
+        function: "put_profile",
+        headers: {},
         body: everythngUser.toJson(),
-        headers: {"Content-Type": "application/json"});
+        ack: (data) {});
+  }
 
-    if (response.statusCode != 200) {
-      return left(const NetworkFailure());
-    }
-
-    return right(EverythngUser.fromJson(response.body['profile']));
+  @override
+  Stream<EverythngUser> getProfileStream() async* {
+      await for (final message in networkKit.subscribe('profile')){
+        if(message.function == 'updated_profile'){
+          yield EverythngUser.fromJson(message.body);
+        }
+      }
   }
 }

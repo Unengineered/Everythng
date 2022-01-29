@@ -26,8 +26,8 @@ class DiscoverRepository implements IDiscoverRepository {
       final response = await networkKit.get(Uri.http(url, '/recommendations/product'));
 
       if (response.statusCode != 200) {
-        log(response.statusCode.toString());
-        log(response.body.toString());
+        // log(response.statusCode.toString());
+        // log(response.body.toString());
         return left(const NetworkFailure());
       }
       return right<NetworkFailure, List<RecommendedProduct>>(
@@ -52,8 +52,8 @@ class DiscoverRepository implements IDiscoverRepository {
       final response =
       await networkKit.get(Uri.http(url, '/recommendations/store'));
       if (response.statusCode != 200) {
-        log(response.statusCode.toString());
-        log(response.body.toString());
+        // log(response.statusCode.toString());
+        // log(response.body.toString());
         return left(const NetworkFailure());
       }
       return right<NetworkFailure, List<RecommendedStore>>(

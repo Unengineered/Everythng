@@ -10,7 +10,7 @@ class RecommendedStore with _$RecommendedStore {
       {
       required String id,
       required String name,
-      required Uri picture,
+      required Uri logo,
       String? tagline,
       required List<RecommendedProduct> products,
       }) = _RecommendedStore;
