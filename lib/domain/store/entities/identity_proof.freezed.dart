@@ -145,14 +145,16 @@ class _$_IdentityProof implements _IdentityProof {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _IdentityProof &&
-            (identical(other.panCardNo, panCardNo) ||
-                other.panCardNo == panCardNo) &&
-            (identical(other.panCardImage, panCardImage) ||
-                other.panCardImage == panCardImage));
+            const DeepCollectionEquality().equals(other.panCardNo, panCardNo) &&
+            const DeepCollectionEquality()
+                .equals(other.panCardImage, panCardImage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, panCardNo, panCardImage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(panCardNo),
+      const DeepCollectionEquality().hash(panCardImage));
 
   @JsonKey(ignore: true)
   @override

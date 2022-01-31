@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:everythng/constants/url.dart';
 import 'package:everythng/domain/store/entities/store_failure.dart';
 import 'package:everythng/domain/store/entities/everythng_store.dart';
 import 'package:dartz/dartz.dart';
@@ -11,6 +10,7 @@ import 'package:network_kit/network_kit.dart';
 @Injectable(as: IStoreRepository)
 class StoreRepository implements IStoreRepository {
   final NetworkKit networkKit;
+  final String url = "https://www.everythng.in";
 
   StoreRepository(this.networkKit);
 
@@ -25,7 +25,7 @@ class StoreRepository implements IStoreRepository {
       }
       return left(const StoreFailure.serverError());
     }
-    return right(Store.fromJson(json.decode(response.body)));
+    return right(Store.fromJson((response.body)));
   }
 
   @override
@@ -40,7 +40,7 @@ class StoreRepository implements IStoreRepository {
     if (response.statusCode != 200) {
       return left(const StoreFailure.serverError());
     }
-    return right(Store.fromJson(json.decode(response.body)));
+    return right(Store.fromJson((response.body)));
   }
 
   @override

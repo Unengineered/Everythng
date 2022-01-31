@@ -12,6 +12,12 @@ import 'package:everythng/presentation/profile/pages/first_name_page.dart';
 import 'package:everythng/presentation/profile/pages/last_name_page.dart';
 import 'package:everythng/presentation/profile/pages/phone_number_page.dart';
 import 'package:everythng/presentation/splash/splash_page.dart';
+import 'package:everythng/presentation/store/store_flow/pages/bank_details_page.dart';
+import 'package:everythng/presentation/store/store_flow/pages/business_email_page.dart';
+import 'package:everythng/presentation/store/store_flow/pages/identity_proof_page.dart';
+import 'package:everythng/presentation/store/store_flow/pages/store_address_page.dart';
+import 'package:everythng/presentation/store/store_flow/pages/store_detail_page.dart';
+import 'package:everythng/presentation/store/store_flow/pages/store_name_page.dart';
 import 'package:everythng/presentation/tree_wrappers/buying_marketplace_wrapper.dart';
 import 'package:everythng/presentation/tree_wrappers/profile_flow_wrapper.dart';
 import 'package:everythng/presentation/tree_wrappers/renting_marketplace_wrapper.dart';
@@ -34,13 +40,13 @@ part 'app_router.gr.dart';
 
   CupertinoRoute(page: ThriftingMarketplaceWrapper, children: [
     CupertinoRoute(page: DiscoverPage, initial: true),
-    // CupertinoRoute(page: DiscoverPage),
-    // CupertinoRoute(page: StoreNamePage, initial: true),
-    // CupertinoRoute(page: StoreDetailPage),
-    // CupertinoRoute(page: IdentityProofPage),
-    // CupertinoRoute(page: BankDetailsPage),
-    // CupertinoRoute(page: BusinessEmailPage),
-    // CupertinoRoute(page: StoreAddressPage),
+    //CupertinoRoute(page: DiscoverPage),
+    CupertinoRoute(page: StoreNamePage, initial: true),
+    CupertinoRoute(page: StoreDetailPage),
+    CupertinoRoute(page: IdentityProofPage),
+    CupertinoRoute(page: BankDetailsPage),
+    CupertinoRoute(page: BusinessEmailPage),
+    CupertinoRoute(page: StoreAddressPage),
   ]),
   CupertinoRoute(page: BuyingMarketplaceWrapper, children: [
     CupertinoRoute(page: BuyingPage, initial: true),

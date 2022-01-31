@@ -162,17 +162,19 @@ class _$_BankDetails implements _BankDetails {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _BankDetails &&
-            (identical(other.accountNumber, accountNumber) ||
-                other.accountNumber == accountNumber) &&
-            (identical(other.accountHolderName, accountHolderName) ||
-                other.accountHolderName == accountHolderName) &&
-            (identical(other.ifscCode, ifscCode) ||
-                other.ifscCode == ifscCode));
+            const DeepCollectionEquality()
+                .equals(other.accountNumber, accountNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.accountHolderName, accountHolderName) &&
+            const DeepCollectionEquality().equals(other.ifscCode, ifscCode));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, accountNumber, accountHolderName, ifscCode);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(accountNumber),
+      const DeepCollectionEquality().hash(accountHolderName),
+      const DeepCollectionEquality().hash(ifscCode));
 
   @JsonKey(ignore: true)
   @override

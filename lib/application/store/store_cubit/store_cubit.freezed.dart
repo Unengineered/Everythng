@@ -281,11 +281,12 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Loaded &&
-            (identical(other.store, store) || other.store == store));
+            const DeepCollectionEquality().equals(other.store, store));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, store);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(store));
 
   @JsonKey(ignore: true)
   @override
@@ -431,12 +432,13 @@ class _$_Error implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Error &&
-            (identical(other.storeFailure, storeFailure) ||
-                other.storeFailure == storeFailure));
+            const DeepCollectionEquality()
+                .equals(other.storeFailure, storeFailure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, storeFailure);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(storeFailure));
 
   @JsonKey(ignore: true)
   @override

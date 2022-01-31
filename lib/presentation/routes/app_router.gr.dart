@@ -73,6 +73,42 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const DiscoverPage());
     },
+    StoreNamePageRoute.name: (routeData) {
+      final args = routeData.argsAs<StoreNamePageRouteArgs>(
+          orElse: () => const StoreNamePageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: StoreNamePage(key: args.key));
+    },
+    StoreDetailPageRoute.name: (routeData) {
+      final args = routeData.argsAs<StoreDetailPageRouteArgs>(
+          orElse: () => const StoreDetailPageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: StoreDetailPage(key: args.key));
+    },
+    IdentityProofPageRoute.name: (routeData) {
+      final args = routeData.argsAs<IdentityProofPageRouteArgs>(
+          orElse: () => const IdentityProofPageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: IdentityProofPage(key: args.key));
+    },
+    BankDetailsPageRoute.name: (routeData) {
+      final args = routeData.argsAs<BankDetailsPageRouteArgs>(
+          orElse: () => const BankDetailsPageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: BankDetailsPage(key: args.key));
+    },
+    BusinessEmailPageRoute.name: (routeData) {
+      final args = routeData.argsAs<BusinessEmailPageRouteArgs>(
+          orElse: () => const BusinessEmailPageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: BusinessEmailPage(key: args.key));
+    },
+    StoreAddressPageRoute.name: (routeData) {
+      final args = routeData.argsAs<StoreAddressPageRouteArgs>(
+          orElse: () => const StoreAddressPageRouteArgs());
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: StoreAddressPage(key: args.key));
+    },
     BuyingPageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const BuyingPage());
@@ -132,7 +168,24 @@ class _$AppRouter extends RootStackRouter {
             path: '/thrifting-marketplace-wrapper',
             children: [
               RouteConfig(DiscoverPageRoute.name,
-                  path: '', parent: ThriftingMarketplaceWrapperRoute.name)
+                  path: '', parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(StoreNamePageRoute.name,
+                  path: '', parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(StoreDetailPageRoute.name,
+                  path: 'store-detail-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(IdentityProofPageRoute.name,
+                  path: 'identity-proof-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(BankDetailsPageRoute.name,
+                  path: 'bank-details-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(BusinessEmailPageRoute.name,
+                  path: 'business-email-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(StoreAddressPageRoute.name,
+                  path: 'store-address-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name)
             ]),
         RouteConfig(BuyingMarketplaceWrapperRoute.name,
             path: '/buying-marketplace-wrapper',
@@ -328,6 +381,137 @@ class DiscoverPageRoute extends PageRouteInfo<void> {
   const DiscoverPageRoute() : super(DiscoverPageRoute.name, path: '');
 
   static const String name = 'DiscoverPageRoute';
+}
+
+/// generated route for
+/// [StoreNamePage]
+class StoreNamePageRoute extends PageRouteInfo<StoreNamePageRouteArgs> {
+  StoreNamePageRoute({Key? key})
+      : super(StoreNamePageRoute.name,
+            path: '', args: StoreNamePageRouteArgs(key: key));
+
+  static const String name = 'StoreNamePageRoute';
+}
+
+class StoreNamePageRouteArgs {
+  const StoreNamePageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'StoreNamePageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [StoreDetailPage]
+class StoreDetailPageRoute extends PageRouteInfo<StoreDetailPageRouteArgs> {
+  StoreDetailPageRoute({Key? key})
+      : super(StoreDetailPageRoute.name,
+            path: 'store-detail-page',
+            args: StoreDetailPageRouteArgs(key: key));
+
+  static const String name = 'StoreDetailPageRoute';
+}
+
+class StoreDetailPageRouteArgs {
+  const StoreDetailPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'StoreDetailPageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [IdentityProofPage]
+class IdentityProofPageRoute extends PageRouteInfo<IdentityProofPageRouteArgs> {
+  IdentityProofPageRoute({Key? key})
+      : super(IdentityProofPageRoute.name,
+            path: 'identity-proof-page',
+            args: IdentityProofPageRouteArgs(key: key));
+
+  static const String name = 'IdentityProofPageRoute';
+}
+
+class IdentityProofPageRouteArgs {
+  const IdentityProofPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'IdentityProofPageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [BankDetailsPage]
+class BankDetailsPageRoute extends PageRouteInfo<BankDetailsPageRouteArgs> {
+  BankDetailsPageRoute({Key? key})
+      : super(BankDetailsPageRoute.name,
+            path: 'bank-details-page',
+            args: BankDetailsPageRouteArgs(key: key));
+
+  static const String name = 'BankDetailsPageRoute';
+}
+
+class BankDetailsPageRouteArgs {
+  const BankDetailsPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'BankDetailsPageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [BusinessEmailPage]
+class BusinessEmailPageRoute extends PageRouteInfo<BusinessEmailPageRouteArgs> {
+  BusinessEmailPageRoute({Key? key})
+      : super(BusinessEmailPageRoute.name,
+            path: 'business-email-page',
+            args: BusinessEmailPageRouteArgs(key: key));
+
+  static const String name = 'BusinessEmailPageRoute';
+}
+
+class BusinessEmailPageRouteArgs {
+  const BusinessEmailPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'BusinessEmailPageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [StoreAddressPage]
+class StoreAddressPageRoute extends PageRouteInfo<StoreAddressPageRouteArgs> {
+  StoreAddressPageRoute({Key? key})
+      : super(StoreAddressPageRoute.name,
+            path: 'store-address-page',
+            args: StoreAddressPageRouteArgs(key: key));
+
+  static const String name = 'StoreAddressPageRoute';
+}
+
+class StoreAddressPageRouteArgs {
+  const StoreAddressPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'StoreAddressPageRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

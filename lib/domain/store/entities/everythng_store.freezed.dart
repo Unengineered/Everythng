@@ -267,24 +267,29 @@ class _$_Store implements _Store {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Store &&
-            (identical(other.storeName, storeName) ||
-                other.storeName == storeName) &&
-            (identical(other.storeLogo, storeLogo) ||
-                other.storeLogo == storeLogo) &&
-            (identical(other.storeTagline, storeTagline) ||
-                other.storeTagline == storeTagline) &&
-            (identical(other.identityProof, identityProof) ||
-                other.identityProof == identityProof) &&
-            (identical(other.bankDetails, bankDetails) ||
-                other.bankDetails == bankDetails) &&
-            (identical(other.businessEmail, businessEmail) ||
-                other.businessEmail == businessEmail) &&
-            (identical(other.address, address) || other.address == address));
+            const DeepCollectionEquality().equals(other.storeName, storeName) &&
+            const DeepCollectionEquality().equals(other.storeLogo, storeLogo) &&
+            const DeepCollectionEquality()
+                .equals(other.storeTagline, storeTagline) &&
+            const DeepCollectionEquality()
+                .equals(other.identityProof, identityProof) &&
+            const DeepCollectionEquality()
+                .equals(other.bankDetails, bankDetails) &&
+            const DeepCollectionEquality()
+                .equals(other.businessEmail, businessEmail) &&
+            const DeepCollectionEquality().equals(other.address, address));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, storeName, storeLogo,
-      storeTagline, identityProof, bankDetails, businessEmail, address);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(storeName),
+      const DeepCollectionEquality().hash(storeLogo),
+      const DeepCollectionEquality().hash(storeTagline),
+      const DeepCollectionEquality().hash(identityProof),
+      const DeepCollectionEquality().hash(bankDetails),
+      const DeepCollectionEquality().hash(businessEmail),
+      const DeepCollectionEquality().hash(address));
 
   @JsonKey(ignore: true)
   @override
