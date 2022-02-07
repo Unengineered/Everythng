@@ -1,13 +1,11 @@
 import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:flutter/material.dart';
-
 class PriceInformation extends StatelessWidget {
   const PriceInformation({
     Key? key,
     this.thriftPrice = '300',
     this.originalPrice = '3000',
   }) : super(key: key);
-
   final String thriftPrice;
   final String originalPrice;
 

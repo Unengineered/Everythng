@@ -1,39 +1,41 @@
-
-
-import 'dart:developer';
-
+import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:everythng/core/constants/constant_lists.dart';
+import 'package:everythng/core/extensions/extension_global_key.dart';
 import 'package:everythng/presentation/product/widgets/advertisement_card.dart';
-import 'package:everythng/presentation/product/widgets/issues_list.dart';
-import 'package:everythng/presentation/product/widgets/product_description_element.dart';
-import 'package:everythng/presentation/product/widgets/size_description_card.dart';
 import 'package:everythng/presentation/product/widgets/glowing_image.dart';
 import 'package:everythng/presentation/product/widgets/image_preview_carousel.dart';
 import 'package:everythng/presentation/product/widgets/information_row.dart';
+import 'package:everythng/presentation/product/widgets/issues_list.dart';
 import 'package:everythng/presentation/product/widgets/price_information.dart';
+import 'package:everythng/presentation/product/widgets/product_description_element.dart';
 import 'package:everythng/presentation/product/widgets/product_page_appbar.dart';
+import 'package:everythng/presentation/product/widgets/size_description_card.dart';
+import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 final GlobalKey _buttonKey = GlobalKey();
+
 class ProductPage extends HookWidget {
   const ProductPage({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-
     final _selectedIndex = useState(0);
     final _scrollController = useScrollController();
     var _physics = useState(const ScrollPhysics());
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      RenderBox box = _buttonKey.currentContext!.findRenderObject() as RenderBox;
-      Offset position = box.localToGlobal(Offset.zero);
-      log('Button Position : ' + position.toString());
-      log('Controller Position : ' +_scrollController.offset.toString() );
-    });
+    final _offStage = useState(false);
 
     _scrollController.addListener(() {
-
+      if (_buttonKey.getGlobalYOffset <=
+              MediaQuery.of(context).padding.top + 80 &&
+          _buttonKey.getGlobalYOffset >= 0 &&
+          !_offStage.value) {
+        _offStage.value = true;
+      }
+      if (_buttonKey.getGlobalYOffset >= 133) {
+        _offStage.value = false;
+      }
       if (_scrollController.position.pixels < 0) {
         _scrollController.animateTo(0,
             duration: const Duration(milliseconds: 50),
@@ -62,11 +64,24 @@ class ProductPage extends HookWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const GlowingImage(),
+                      GlowingImage(
+                        onTap: () {
+                          context.router.push(
+                            ExpandedPicturePageRoute(
+                              selectedIndex: _selectedIndex,
+                              carouselList: imageCarouselList,
+                              productName: 'Blue overcoat with grey scarf',
+                            ),
+                          );
+                        },
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
-                      ImagePreviewCarousel(selectedIndex: _selectedIndex),
+                      ImagePreviewCarousel(
+                        carouselList: imageCarouselList,
+                        selectedIndex: _selectedIndex,
+                      ),
                       const SizedBox(
                         height: 24,
                       ),
@@ -77,7 +92,15 @@ class ProductPage extends HookWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                       PriceInformation(key: _buttonKey,),
+                      Offstage(
+                        offstage: _offStage.value,
+                        child: PriceInformation(
+                          key: _buttonKey,
+                        ),
+                      ),
+                      SizedBox(
+                        height: _offStage.value ? 80 : 0,
+                      ),
                       const SizedBox(
                         height: 24,
                       ),
@@ -116,7 +139,9 @@ class ProductPage extends HookWidget {
                 ),
               ),
             ),
-            const ProductPageAppbar(),
+            ProductPageAppbar(
+              shouldAnimate: _offStage.value,
+            ),
           ],
         ),
       ),

@@ -1,4 +1,4 @@
-import 'package:everythng/core/constants/placeholders.dart';
+import 'package:everythng/core/constants/constant_strings.dart';
 import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';

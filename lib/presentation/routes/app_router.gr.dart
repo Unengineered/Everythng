@@ -49,6 +49,16 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const ProductPage());
     },
+    ExpandedPicturePageRoute.name: (routeData) {
+      final args = routeData.argsAs<ExpandedPicturePageRouteArgs>();
+      return CupertinoPageX<dynamic>(
+          routeData: routeData,
+          child: ExpandedPicturePage(
+              key: args.key,
+              productName: args.productName,
+              selectedIndex: args.selectedIndex,
+              carouselList: args.carouselList));
+    },
     LoginPageRoute.name: (routeData) {
       final args = routeData.argsAs<LoginPageRouteArgs>(
           orElse: () => const LoginPageRouteArgs());
@@ -123,6 +133,9 @@ class _$AppRouter extends RootStackRouter {
             children: [
               RouteConfig(ProductPageRoute.name,
                   path: '', parent: SigningFlowWrapperRoute.name),
+              RouteConfig(ExpandedPicturePageRoute.name,
+                  path: 'expanded-picture-page',
+                  parent: SigningFlowWrapperRoute.name),
               RouteConfig(LoginPageRoute.name,
                   path: 'login-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(PasswordPageRoute.name,
@@ -246,6 +259,47 @@ class ProductPageRoute extends PageRouteInfo<void> {
   const ProductPageRoute() : super(ProductPageRoute.name, path: '');
 
   static const String name = 'ProductPageRoute';
+}
+
+/// generated route for
+/// [ExpandedPicturePage]
+class ExpandedPicturePageRoute
+    extends PageRouteInfo<ExpandedPicturePageRouteArgs> {
+  ExpandedPicturePageRoute(
+      {Key? key,
+      required String productName,
+      required ValueNotifier<int> selectedIndex,
+      required List<dynamic> carouselList})
+      : super(ExpandedPicturePageRoute.name,
+            path: 'expanded-picture-page',
+            args: ExpandedPicturePageRouteArgs(
+                key: key,
+                productName: productName,
+                selectedIndex: selectedIndex,
+                carouselList: carouselList));
+
+  static const String name = 'ExpandedPicturePageRoute';
+}
+
+class ExpandedPicturePageRouteArgs {
+  const ExpandedPicturePageRouteArgs(
+      {this.key,
+      required this.productName,
+      required this.selectedIndex,
+      required this.carouselList});
+
+  final Key? key;
+
+  final String productName;
+
+  final ValueNotifier<int> selectedIndex;
+
+  final List<dynamic> carouselList;
+
+  @override
+  String toString() {
+    return 'ExpandedPicturePageRouteArgs{key: $key, productName: $productName, selectedIndex: $selectedIndex, carouselList: $carouselList}';
+  }
 }
 
 /// generated route for

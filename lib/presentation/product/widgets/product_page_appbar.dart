@@ -1,11 +1,13 @@
-import 'package:everythng/presentation/product/widgets/price_information.dart';
+import 'package:everythng/presentation/product/widgets/animated_price_information.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductPageAppbar extends StatelessWidget {
   const ProductPageAppbar({
     Key? key,
+    required this.shouldAnimate,
   }) : super(key: key);
+  final bool shouldAnimate;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class ProductPageAppbar extends StatelessWidget {
             child: Row(
               children: const [
                 Icon(
-                  Icons.arrow_back,
+                  CupertinoIcons.chevron_back,
                   color: Colors.white,
                   size: 32,
                 ),
@@ -37,7 +39,9 @@ class ProductPageAppbar extends StatelessWidget {
             ),
           ),
         ),
-        const PriceInformation()
+        AnimatedPriceInformation(
+          shouldAnimate: shouldAnimate,
+        ),
       ],
     );
   }

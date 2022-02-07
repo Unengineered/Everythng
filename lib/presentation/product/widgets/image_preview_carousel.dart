@@ -4,20 +4,23 @@ class ImagePreviewCarousel extends StatelessWidget {
   const ImagePreviewCarousel({
     Key? key,
     required ValueNotifier<int> selectedIndex,
+    required this.carouselList, this.horizontalPadding = 18,
   })  : _selectedIndex = selectedIndex,
         super(key: key);
 
   final ValueNotifier<int> _selectedIndex;
+  final List carouselList;
+  final double horizontalPadding;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60,
       child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 18),
+        padding:  EdgeInsets.symmetric(horizontal: horizontalPadding),
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: carouselList.length,
         itemBuilder: (context, index) {
           var isSelected = _selectedIndex.value == index;
           return GestureDetector(
@@ -41,7 +44,7 @@ class ImagePreviewCarousel extends StatelessWidget {
                 borderRadius: BorderRadius.circular(isSelected ? 7 : 10),
                 //TODO: Implement network cached image
                 child: Image.asset(
-                  'assets/images/placeholder_2.png',
+                  carouselList[index],
                 ),
               ),
             ),
