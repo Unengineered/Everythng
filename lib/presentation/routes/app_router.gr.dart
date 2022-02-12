@@ -17,9 +17,9 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    SplashPageRoute.name: (routeData) {
+    StorePageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const SplashPage());
+          routeData: routeData, child: const StorePage());
     },
     SigningFlowWrapperRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
@@ -113,9 +113,9 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const BuyingPage());
     },
-    StorePageRoute.name: (routeData) {
+    StoreMarketplacePageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const StorePage());
+          routeData: routeData, child: const StoreMarketplacePage());
     },
     RentingPageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
@@ -149,12 +149,12 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   List<RouteConfig> get routes => [
-        RouteConfig(SplashPageRoute.name, path: '/'),
+        RouteConfig(StorePageRoute.name, path: '/'),
         RouteConfig(SigningFlowWrapperRoute.name,
             path: '/signing-flow-wrapper',
             children: [
               RouteConfig(LoginPageRoute.name,
-                  path: '', parent: SigningFlowWrapperRoute.name),
+                  path: 'login-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(PasswordPageRoute.name,
                   path: 'password-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(CreatePasswordPageRoute.name,
@@ -194,7 +194,7 @@ class _$AppRouter extends RootStackRouter {
                   path: '', parent: BuyingMarketplaceWrapperRoute.name)
             ]),
         RouteConfig(StoreWrapperRoute.name, path: '/store-wrapper', children: [
-          RouteConfig(StorePageRoute.name,
+          RouteConfig(StoreMarketplacePageRoute.name,
               path: '', parent: StoreWrapperRoute.name)
         ]),
         RouteConfig(RentingMarketplaceWrapperRoute.name,
@@ -220,11 +220,11 @@ class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
-/// [SplashPage]
-class SplashPageRoute extends PageRouteInfo<void> {
-  const SplashPageRoute() : super(SplashPageRoute.name, path: '/');
+/// [StorePage]
+class StorePageRoute extends PageRouteInfo<void> {
+  const StorePageRoute() : super(StorePageRoute.name, path: '/');
 
-  static const String name = 'SplashPageRoute';
+  static const String name = 'StorePageRoute';
 }
 
 /// generated route for
@@ -292,7 +292,7 @@ class ProfileFlowWrapperRoute extends PageRouteInfo<void> {
 class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
   LoginPageRoute({Key? key})
       : super(LoginPageRoute.name,
-            path: '', args: LoginPageRouteArgs(key: key));
+            path: 'login-page', args: LoginPageRouteArgs(key: key));
 
   static const String name = 'LoginPageRoute';
 }
@@ -523,11 +523,12 @@ class BuyingPageRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [StorePage]
-class StorePageRoute extends PageRouteInfo<void> {
-  const StorePageRoute() : super(StorePageRoute.name, path: '');
+/// [StoreMarketplacePage]
+class StoreMarketplacePageRoute extends PageRouteInfo<void> {
+  const StoreMarketplacePageRoute()
+      : super(StoreMarketplacePageRoute.name, path: '');
 
-  static const String name = 'StorePageRoute';
+  static const String name = 'StoreMarketplacePageRoute';
 }
 
 /// generated route for

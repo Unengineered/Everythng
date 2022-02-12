@@ -1,7 +1,7 @@
-import 'package:everythng/core/api/url.dart';
-import 'package:everythng/domain/profile/entities/everythng_user.dart';
-import 'package:everythng/domain/core/network_failure.dart';
 import 'package:dartz/dartz.dart';
+import 'package:everythng/core/api/url.dart';
+import 'package:everythng/domain/core/network_failure.dart';
+import 'package:everythng/domain/profile/entities/everythng_user.dart';
 import 'package:everythng/domain/profile/i_profile_repository.dart';
 import 'package:injectable/injectable.dart';
 import 'package:network_kit/network_kit.dart';
@@ -36,8 +36,7 @@ class ProfileRepository implements IProfileRepository {
   }
 
   @override
-  void updateProfileData(
-      {required EverythngUser everythngUser}) async {
+  void updateProfileData({required EverythngUser everythngUser}) async {
     networkKit.send(
         system: "profile",
         function: "put_profile",
@@ -48,10 +47,10 @@ class ProfileRepository implements IProfileRepository {
 
   @override
   Stream<EverythngUser> getProfileStream() async* {
-      await for (final message in networkKit.subscribe('profile')){
-        if(message.function == 'updated_profile'){
-          yield EverythngUser.fromJson(message.body);
-        }
+    await for (final message in networkKit.subscribe('profile')) {
+      if (message.function == 'updated_profile') {
+        yield EverythngUser.fromJson(message.body);
       }
+    }
   }
 }

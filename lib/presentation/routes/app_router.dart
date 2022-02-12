@@ -5,19 +5,19 @@ import 'package:everythng/presentation/auth/pages/login_page.dart';
 import 'package:everythng/presentation/auth/pages/password_page.dart';
 import 'package:everythng/presentation/marketplace/buying/buying_page.dart';
 import 'package:everythng/presentation/marketplace/renting/renting_page.dart';
-import 'package:everythng/presentation/marketplace/store/store_page.dart';
+import 'package:everythng/presentation/marketplace/store/store_marketplace_page.dart';
 import 'package:everythng/presentation/marketplace/thrifting/discover_page.dart';
 import 'package:everythng/presentation/profile/pages/address_page.dart';
 import 'package:everythng/presentation/profile/pages/first_name_page.dart';
 import 'package:everythng/presentation/profile/pages/last_name_page.dart';
 import 'package:everythng/presentation/profile/pages/phone_number_page.dart';
-import 'package:everythng/presentation/splash/splash_page.dart';
 import 'package:everythng/presentation/store/store_flow/pages/bank_details_page.dart';
 import 'package:everythng/presentation/store/store_flow/pages/business_email_page.dart';
 import 'package:everythng/presentation/store/store_flow/pages/identity_proof_page.dart';
 import 'package:everythng/presentation/store/store_flow/pages/store_address_page.dart';
 import 'package:everythng/presentation/store/store_flow/pages/store_detail_page.dart';
 import 'package:everythng/presentation/store/store_flow/pages/store_name_page.dart';
+import 'package:everythng/presentation/store/store_page/pages/store_page.dart';
 import 'package:everythng/presentation/tree_wrappers/buying_marketplace_wrapper.dart';
 import 'package:everythng/presentation/tree_wrappers/profile_flow_wrapper.dart';
 import 'package:everythng/presentation/tree_wrappers/renting_marketplace_wrapper.dart';
@@ -29,10 +29,11 @@ import 'package:flutter/cupertino.dart';
 part 'app_router.gr.dart';
 
 @MaterialAutoRouter(routes: [
-  CupertinoRoute(page: SplashPage, initial: true),
+  // CupertinoRoute(page: SplashPage, initial: true),
+  CupertinoRoute(page: StorePage, initial: true),
 
   CupertinoRoute(page: SigningFlowWrapper, children: [
-    CupertinoRoute(page: LoginPage, initial: true),
+    CupertinoRoute(page: LoginPage),
     CupertinoRoute(page: PasswordPage),
     CupertinoRoute(page: CreatePasswordPage),
     CupertinoRoute(page: ConfirmPasswordPage),
@@ -52,7 +53,7 @@ part 'app_router.gr.dart';
     CupertinoRoute(page: BuyingPage, initial: true),
   ]),
   CupertinoRoute(page: StoreWrapper, children: [
-    CupertinoRoute(page: StorePage, initial: true),
+    CupertinoRoute(page: StoreMarketplacePage, initial: true),
   ]),
   CupertinoRoute(page: RentingMarketplaceWrapper, children: [
     CupertinoRoute(page: RentingPage, initial: true),

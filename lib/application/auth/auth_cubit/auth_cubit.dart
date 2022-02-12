@@ -8,7 +8,6 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 part 'auth_cubit.freezed.dart';
-
 part 'auth_state.dart';
 
 @LazySingleton()
@@ -23,7 +22,7 @@ class AuthCubit extends Cubit<AuthState> {
     //print("Change state from ${change.currentState} to ${change.nextState}");
   }
 
-  void splashAuthCheck(){
+  void splashAuthCheck() {
     checkAuthStatus();
     //_authRepository.getAuthStatusStream().listen((event) => checkAuthStatus());
   }
@@ -34,11 +33,11 @@ class AuthCubit extends Cubit<AuthState> {
     _authRepository.getCurrentUser().fold(
         (failure) => failure.maybeMap(
             unauthenticated: (_) {
-              //print("Get current user returned unauthenticated");
+              print("Get current user returned unauthenticated");
               emit(const AuthState.unauthenticated());
             },
             orElse: () {}), (everythngUser) {
-      //print("Get current user returned authenticated");
+      print("Get current user returned authenticated");
       emit(AuthState.authenticated(everythngUser: everythngUser));
     });
   }
