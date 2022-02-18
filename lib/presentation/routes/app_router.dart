@@ -28,7 +28,8 @@ part 'app_router.gr.dart';
   CupertinoRoute(page: SplashPage, initial: true),
 
   CupertinoRoute(page: SigningFlowWrapper, children: [
-    CupertinoRoute(page: ProductPage, initial: true),
+     CupertinoRoute(page: DiscoverPage, initial: true),
+    CupertinoRoute(page: ProductPage),
     CupertinoRoute(page: ExpandedPicturePage),
     CupertinoRoute(page: LoginPage),
     CupertinoRoute(page: PasswordPage),

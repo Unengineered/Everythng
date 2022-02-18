@@ -45,6 +45,10 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const ProfileFlowWrapper());
     },
+    DiscoverPageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const DiscoverPage());
+    },
     ProductPageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const ProductPage());
@@ -82,10 +86,6 @@ class _$AppRouter extends RootStackRouter {
           orElse: () => const ConfirmPasswordPageRouteArgs());
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: ConfirmPasswordPage(key: args.key));
-    },
-    DiscoverPageRoute.name: (routeData) {
-      return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const DiscoverPage());
     },
     BuyingPageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
@@ -131,8 +131,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(SigningFlowWrapperRoute.name,
             path: '/signing-flow-wrapper',
             children: [
-              RouteConfig(ProductPageRoute.name,
+              RouteConfig(DiscoverPageRoute.name,
                   path: '', parent: SigningFlowWrapperRoute.name),
+              RouteConfig(ProductPageRoute.name,
+                  path: 'product-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(ExpandedPicturePageRoute.name,
                   path: 'expanded-picture-page',
                   parent: SigningFlowWrapperRoute.name),
@@ -254,9 +256,17 @@ class ProfileFlowWrapperRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [DiscoverPage]
+class DiscoverPageRoute extends PageRouteInfo<void> {
+  const DiscoverPageRoute() : super(DiscoverPageRoute.name, path: '');
+
+  static const String name = 'DiscoverPageRoute';
+}
+
+/// generated route for
 /// [ProductPage]
 class ProductPageRoute extends PageRouteInfo<void> {
-  const ProductPageRoute() : super(ProductPageRoute.name, path: '');
+  const ProductPageRoute() : super(ProductPageRoute.name, path: 'product-page');
 
   static const String name = 'ProductPageRoute';
 }
@@ -388,14 +398,6 @@ class ConfirmPasswordPageRouteArgs {
   String toString() {
     return 'ConfirmPasswordPageRouteArgs{key: $key}';
   }
-}
-
-/// generated route for
-/// [DiscoverPage]
-class DiscoverPageRoute extends PageRouteInfo<void> {
-  const DiscoverPageRoute() : super(DiscoverPageRoute.name, path: '');
-
-  static const String name = 'DiscoverPageRoute';
 }
 
 /// generated route for

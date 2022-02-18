@@ -20,11 +20,11 @@ class DiscoverPage extends StatelessWidget {
     return BlocProvider.value(
       value: getIt<DiscoverCubit>()..getRecommendations(),
       child: Scaffold(
-          body: ListView(
-            scrollDirection: Axis.vertical,
-            physics: const BouncingScrollPhysics(),
-            children: [
-             MarketPlaceAppBar(),
+        body: ListView(
+          scrollDirection: Axis.vertical,
+          physics: const BouncingScrollPhysics(),
+          children: [
+            MarketPlaceAppBar(),
             Padding(
               padding: const EdgeInsets.only(left: 16.0),
               child: Text(
@@ -47,7 +47,8 @@ class DiscoverPage extends StatelessWidget {
                   },
                   loaded: (loadedState) {
                     return SizedBox(
-                      height: 366,
+                      height: 360,
+                      width: 360,
                       child: ListView.separated(
                         padding: const EdgeInsets.only(left: 16, right: 16),
                         physics: const BouncingScrollPhysics(),
@@ -59,51 +60,57 @@ class DiscoverPage extends StatelessWidget {
                               loadedState.recommendedProducts[index]);
                         },
                         separatorBuilder: (context, index) {
-                            return const SizedBox(
-                              width: 16,
-                            );
-                          },
-                          itemCount: loadedState.recommendedProducts.length,
-                        ),
-                      );
-                    },
-                    initialised: (_) {
-                      return const SizedBox(
-                        height: 10,
-                        width: 10,
-                        child: CircularProgressIndicator(),
-                      );
-                    },
-                    error: (_) {
-                      return const Text("Error");
-                    },
-                  );
-                },
+                          return const SizedBox(
+                            width: 16,
+                          );
+                        },
+                        itemCount: loadedState.recommendedProducts.length,
+                      ),
+                    );
+                  },
+                  initialised: (_) {
+                    return const SizedBox(
+                      height: 10,
+                      width: 10,
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                  error: (_) {
+                    return const Text("Error");
+                  },
+                );
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16),
+              child: Text(
+                'Stores',
+                style: context.everythngTextTheme.headline3Bold,
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16),
-                child: Text(
-                  'Stores',
-                  style: context.everythngTextTheme.headline3Bold,
-                ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              BlocBuilder<DiscoverCubit, DiscoverState>(
-                builder: (context, state) {
-                  return state.map(loading: (_) {
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            BlocBuilder<DiscoverCubit, DiscoverState>(
+              builder: (context, state) {
+                return state.map(loading: (_) {
                   return const SizedBox(
                     height: 10,
                     width: 10,
                     child: CircularProgressIndicator(),
                   );
-
                 }, loaded: (state) {
-                  return ListView.separated(
+                  return GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+            childAspectRatio: 1,
+            crossAxisSpacing: 15.0,
+            mainAxisSpacing: 20.0,
+                    ),
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     clipBehavior: Clip.none,
                     scrollDirection: Axis.vertical,
@@ -111,11 +118,6 @@ class DiscoverPage extends StatelessWidget {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return StoreCard(state.recommendedStores[index]);
-                    },
-                    separatorBuilder: (context, index) {
-                      return const SizedBox(
-                        height: 16,
-                      );
                     },
                     itemCount: state.recommendedStores.length,
                   );
@@ -125,7 +127,6 @@ class DiscoverPage extends StatelessWidget {
                     width: 10,
                     child: CircularProgressIndicator(),
                   );
-                  
                 }, error: (_) {
                   return const Text("Error");
                 });

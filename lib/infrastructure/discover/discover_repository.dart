@@ -1,6 +1,7 @@
 
 import 'dart:developer';
 
+import 'package:everythng/core/api/fake_discover_api.dart';
 import 'package:everythng/core/api/url.dart';
 import 'package:everythng/domain/discover/entities/recommended_store.dart';
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
@@ -21,24 +22,24 @@ class DiscoverRepository implements IDiscoverRepository {
       getRecommendedProducts() async {
 
     //TODO: Switch fake API off
-    //return right(recommendedProductsEx);
+    return right(recommendedProductsEx);
 
-    try{
-      final response = await networkKit.get(Uri.http(url, '/recommendations/product'));
+    // try{
+    //   final response = await networkKit.get(Uri.http(url, '/recommendations/product'));
 
-      if (response.statusCode != 200) {
-        log(response.statusCode.toString());
-        log(response.body.toString());
-        return left(const NetworkFailure());
-      }
-      return right<NetworkFailure, List<RecommendedProduct>>(
-          (response.body["recommended_products"] as List<dynamic>)
-              .map((e) => RecommendedProduct.fromJson(e))
-              .toList());
-    } on NetworkKitException catch (_){
-      log('caught networkKit exception');
-      return left(const NetworkFailure());
-    }
+    //   if (response.statusCode != 200) {
+    //     log(response.statusCode.toString());
+    //     log(response.body.toString());
+    //     return left(const NetworkFailure());
+    //   }
+    //   return right<NetworkFailure, List<RecommendedProduct>>(
+    //       (response.body["recommended_products"] as List<dynamic>)
+    //           .map((e) => RecommendedProduct.fromJson(e))
+    //           .toList());
+    // } on NetworkKitException catch (_){
+    //   log('caught networkKit exception');
+    //   return left(const NetworkFailure());
+    // }
 
 
   }
@@ -47,24 +48,24 @@ class DiscoverRepository implements IDiscoverRepository {
   Future<Either<NetworkFailure, List<RecommendedStore>>>
       getRecommendedStores() async {
     //Fake API
-    //return right(recommendedStoresEx);
+  return right(recommendedStoresEx);
 
-    try{
-      final response =
-      await networkKit.get(Uri.http(url, '/recommendations/store'));
-      if (response.statusCode != 200) {
-        log(response.statusCode.toString());
-        log(response.body.toString());
-        return left(const NetworkFailure());
-      }
-      return right<NetworkFailure, List<RecommendedStore>>(
-          (response.body['recommended_stores'] as List<dynamic>)
-              .map((json) => RecommendedStore.fromJson(json))
-              .toList());
-    } on NetworkKitException catch (_){
-      log('caught networkKit exception');
-      return left(const NetworkFailure());
-    }
+  //   try{
+  //     final response =
+  //     await networkKit.get(Uri.http(url, '/recommendations/store'));
+  //     if (response.statusCode != 200) {
+  //       log(response.statusCode.toString());
+  //       log(response.body.toString());
+  //       return left(const NetworkFailure());
+  //     }
+  //     return right<NetworkFailure, List<RecommendedStore>>(
+  //         (response.body['recommended_stores'] as List<dynamic>)
+  //             .map((json) => RecommendedStore.fromJson(json))
+  //             .toList());
+  //   } on NetworkKitException catch (_){
+  //     log('caught networkKit exception');
+  //     return left(const NetworkFailure());
+  //   }
 
-  }
+   }
 }
