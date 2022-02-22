@@ -5,11 +5,8 @@ import 'package:everythng/presentation/core/cards/product_card.dart';
 import 'package:everythng/presentation/core/cards/store_card.dart';
 import 'package:everythng/presentation/core/everythng_widgets/bottom_navigation_bar/everythng_bottom_navigation_bar.dart';
 import 'package:everythng/presentation/marketplace/app_bar/marketplace_app_bar.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:everythng/presentation/product/pages/product_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DiscoverPage extends StatelessWidget {
@@ -26,7 +23,7 @@ class DiscoverPage extends StatelessWidget {
           children: [
             MarketPlaceAppBar(),
             Padding(
-              padding: const EdgeInsets.only(left: 16.0),
+              padding: const EdgeInsets.only(left: 18.0),
               child: Text(
                 'Clothes',
                 style: context.everythngTextTheme.headline3Bold,
@@ -50,14 +47,26 @@ class DiscoverPage extends StatelessWidget {
                       height: 360,
                       width: 360,
                       child: ListView.separated(
-                        padding: const EdgeInsets.only(left: 16, right: 16),
+                        padding: const EdgeInsets.only(left: 18, right: 18),
                         physics: const BouncingScrollPhysics(),
                         clipBehavior: Clip.none,
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-                          return ProductCard(
-                              loadedState.recommendedProducts[index]);
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ProductPage()));
+                            },
+                            child: Hero(
+                              tag: 'product',
+                              child: ProductCard(
+                                  loadedState.recommendedProducts[index]),
+                            ),
+                          );
                         },
                         separatorBuilder: (context, index) {
                           return const SizedBox(
@@ -85,7 +94,7 @@ class DiscoverPage extends StatelessWidget {
               height: 30,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16),
+              padding: const EdgeInsets.only(left: 18),
               child: Text(
                 'Stores',
                 style: context.everythngTextTheme.headline3Bold,
@@ -107,11 +116,11 @@ class DiscoverPage extends StatelessWidget {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
-            childAspectRatio: 1,
-            crossAxisSpacing: 15.0,
-            mainAxisSpacing: 20.0,
+                      childAspectRatio: 1,
+                      crossAxisSpacing: 15.0,
+                      mainAxisSpacing: 20.0,
                     ),
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 18),
                     clipBehavior: Clip.none,
                     scrollDirection: Axis.vertical,
                     physics: const NeverScrollableScrollPhysics(),

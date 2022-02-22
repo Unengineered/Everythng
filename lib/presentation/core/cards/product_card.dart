@@ -1,7 +1,6 @@
-import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:everythng/core/constants/shadows.dart';
+import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:everythng/domain/discover/entities/recommended_product.dart';
-import 'package:everythng/presentation/core/cards/single_detail_card.dart';
 import 'package:everythng/presentation/core/network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -24,11 +23,15 @@ class ProductCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             width: 259,
-            child: EverythngNetworkImage(
-              url: product.picture.toString(),
+            child: Image.asset(
+              'assets/images/thumbnail.png',
+              fit: BoxFit.cover,
             ),
+            // child: EverythngNetworkImage(
+            //   url: product.picture.toString(),
+            // ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

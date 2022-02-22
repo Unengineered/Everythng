@@ -1,7 +1,5 @@
 import 'dart:ui';
 
-import 'package:auto_route/src/router/auto_router_x.dart';
-import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -24,7 +22,8 @@ class GlowingImage extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        height: type == GlowingImageType.small ? 424 : 548,
+        height: MediaQuery.of(context).size.height *
+            (type == GlowingImageType.small ? 0.5 : 0.65),
         width: MediaQuery.of(context).size.width,
         child: Stack(
           clipBehavior: Clip.none,
@@ -33,9 +32,10 @@ class GlowingImage extends StatelessWidget {
               top: type == GlowingImageType.small ? null : 34,
               bottom: type == GlowingImageType.small ? 0 : null,
               child: SizedBox(
-
-                height: type == GlowingImageType.small ? 52 : 513,
-                width: MediaQuery.of(context).size.width - 68,
+                height: MediaQuery.of(context).size.height *
+                    (type == GlowingImageType.small ? 0.1 : 0.62),
+                width: MediaQuery.of(context).size.width -
+                    (type == GlowingImageType.small ? 96 : 68),
                 child: ImageFiltered(
                   imageFilter: ImageFilter.blur(
                     sigmaX: 20.0,
@@ -45,26 +45,21 @@ class GlowingImage extends StatelessWidget {
                   child: Image.asset(
                     image,
                     fit: BoxFit.fitWidth,
-                    alignment: const Alignment(0.0, 0.5),
+                    alignment: Alignment.bottomCenter,
                   ),
                 ),
               ),
             ),
             ClipRRect(
-
-              borderRadius: type == GlowingImageType.small ? const BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
-              ) : BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10),
               child: SizedBox(
-                height:type == GlowingImageType.small ? 414 : 537,
+                height: MediaQuery.of(context).size.height *
+                    (type == GlowingImageType.small ? 0.48 : 0.64),
                 width: MediaQuery.of(context).size.width,
                 child: Image.asset(
                   image,
                   scale: 1.5,
-                  alignment: type == GlowingImageType.small
-                      ? const Alignment(0.0, -0.9)
-                      : Alignment.center,
+                  alignment: Alignment.center,
                   fit: BoxFit.cover,
                 ),
               ),
