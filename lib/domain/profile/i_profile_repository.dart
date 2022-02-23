@@ -4,5 +4,6 @@ import 'package:everythng/domain/profile/entities/everythng_user.dart';
 
 abstract class IProfileRepository{
   Future<Either<NetworkFailure,EverythngUser>> getProfileData();
-  Future<Either<NetworkFailure,EverythngUser>> updateProfileData({required EverythngUser everythngUser});
+  void updateProfileData({required EverythngUser everythngUser});
+  Stream<EverythngUser> getProfileStream();
 }
