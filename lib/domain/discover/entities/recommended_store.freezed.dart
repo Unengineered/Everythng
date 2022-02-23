@@ -24,13 +24,13 @@ class _$RecommendedStoreTearOff {
   _RecommendedStore call(
       {required String id,
       required String name,
-      required Uri logo,
+      required Uri picture,
       String? tagline,
       required List<RecommendedProduct> products}) {
     return _RecommendedStore(
       id: id,
       name: name,
-      logo: logo,
+      picture: picture,
       tagline: tagline,
       products: products,
     );
@@ -48,7 +48,7 @@ const $RecommendedStore = _$RecommendedStoreTearOff();
 mixin _$RecommendedStore {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  Uri get logo => throw _privateConstructorUsedError;
+  Uri get picture => throw _privateConstructorUsedError;
   String? get tagline => throw _privateConstructorUsedError;
   List<RecommendedProduct> get products => throw _privateConstructorUsedError;
 
@@ -66,7 +66,7 @@ abstract class $RecommendedStoreCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      Uri logo,
+      Uri picture,
       String? tagline,
       List<RecommendedProduct> products});
 }
@@ -84,7 +84,7 @@ class _$RecommendedStoreCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? logo = freezed,
+    Object? picture = freezed,
     Object? tagline = freezed,
     Object? products = freezed,
   }) {
@@ -97,9 +97,9 @@ class _$RecommendedStoreCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      logo: logo == freezed
-          ? _value.logo
-          : logo // ignore: cast_nullable_to_non_nullable
+      picture: picture == freezed
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
               as Uri,
       tagline: tagline == freezed
           ? _value.tagline
@@ -123,7 +123,7 @@ abstract class _$RecommendedStoreCopyWith<$Res>
   $Res call(
       {String id,
       String name,
-      Uri logo,
+      Uri picture,
       String? tagline,
       List<RecommendedProduct> products});
 }
@@ -143,7 +143,7 @@ class __$RecommendedStoreCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? logo = freezed,
+    Object? picture = freezed,
     Object? tagline = freezed,
     Object? products = freezed,
   }) {
@@ -156,9 +156,9 @@ class __$RecommendedStoreCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      logo: logo == freezed
-          ? _value.logo
-          : logo // ignore: cast_nullable_to_non_nullable
+      picture: picture == freezed
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
               as Uri,
       tagline: tagline == freezed
           ? _value.tagline
@@ -178,7 +178,7 @@ class _$_RecommendedStore implements _RecommendedStore {
   const _$_RecommendedStore(
       {required this.id,
       required this.name,
-      required this.logo,
+      required this.picture,
       this.tagline,
       required this.products});
 
@@ -190,7 +190,7 @@ class _$_RecommendedStore implements _RecommendedStore {
   @override
   final String name;
   @override
-  final Uri logo;
+  final Uri picture;
   @override
   final String? tagline;
   @override
@@ -198,7 +198,7 @@ class _$_RecommendedStore implements _RecommendedStore {
 
   @override
   String toString() {
-    return 'RecommendedStore(id: $id, name: $name, logo: $logo, tagline: $tagline, products: $products)';
+    return 'RecommendedStore(id: $id, name: $name, picture: $picture, tagline: $tagline, products: $products)';
   }
 
   @override
@@ -208,7 +208,7 @@ class _$_RecommendedStore implements _RecommendedStore {
             other is _RecommendedStore &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.logo, logo) &&
+            const DeepCollectionEquality().equals(other.picture, picture) &&
             const DeepCollectionEquality().equals(other.tagline, tagline) &&
             const DeepCollectionEquality().equals(other.products, products));
   }
@@ -218,7 +218,7 @@ class _$_RecommendedStore implements _RecommendedStore {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(logo),
+      const DeepCollectionEquality().hash(picture),
       const DeepCollectionEquality().hash(tagline),
       const DeepCollectionEquality().hash(products));
 
@@ -237,7 +237,7 @@ abstract class _RecommendedStore implements RecommendedStore {
   const factory _RecommendedStore(
       {required String id,
       required String name,
-      required Uri logo,
+      required Uri picture,
       String? tagline,
       required List<RecommendedProduct> products}) = _$_RecommendedStore;
 
@@ -249,7 +249,7 @@ abstract class _RecommendedStore implements RecommendedStore {
   @override
   String get name;
   @override
-  Uri get logo;
+  Uri get picture;
   @override
   String? get tagline;
   @override

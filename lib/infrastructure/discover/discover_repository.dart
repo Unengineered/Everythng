@@ -26,7 +26,6 @@ class DiscoverRepository implements IDiscoverRepository {
 
     // try{
     //   final response = await networkKit.get(Uri.http(url, '/recommendations/product'));
-
     //   if (response.statusCode != 200) {
     //     log(response.statusCode.toString());
     //     log(response.body.toString());

@@ -44,12 +44,7 @@ class TreeRouter extends StatelessWidget {
           }
         },
         authenticated: (_) {
-          profileState.map(initial: (_) {
-            return;
-          }, loading: (_) {
-            return;
-          }, loaded: (_) {
-            marketplaceSwitcherState.map(
+          marketplaceSwitcherState.map(
                 initial: (_) {
                   return;
                 },
@@ -85,13 +80,55 @@ class TreeRouter extends StatelessWidget {
                       },
                   );
                 });
-          }, noData: (_) {
-            if (currentPage.name != FirstNamePageRoute.name) {
-              router.pushAndPopUntil(const ProfileFlowWrapperRoute(),
-                  predicate: (_) => false);
-              return;
-            }
-          });
+          // profileState.map(initial: (_) {
+          //   return;
+          // }, loading: (_) {
+          //   return;
+          // }, loaded: (_) {
+          //   marketplaceSwitcherState.map(
+          //       initial: (_) {
+          //         return;
+          //       },
+          //       page: (page) {
+          //         page.marketplace.map(
+          //             thrifting: (_){
+          //               if (currentPage.name != ThriftingMarketplaceWrapperRoute.name) {
+          //                 router.pushAndPopUntil(const ThriftingMarketplaceWrapperRoute(),
+          //                     predicate: (_) => false);
+          //                 return;
+          //               }
+          //             },
+          //             renting: (_){
+          //               if (currentPage.name != RentingMarketplaceWrapperRoute.name) {
+          //                 router.pushAndPopUntil(const RentingMarketplaceWrapperRoute(),
+          //                     predicate: (_) => false);
+          //                 return;
+          //               }
+          //             },
+          //             buying: (_){
+          //               if (currentPage.name != BuyingMarketplaceWrapperRoute.name) {
+          //                 router.pushAndPopUntil(const BuyingMarketplaceWrapperRoute(),
+          //                     predicate: (_) => false);
+          //                 return;
+          //               }
+          //             },
+          //             store: (_){
+          //               if (currentPage.name != StoreWrapperRoute.name) {
+          //                 router.pushAndPopUntil(const StoreWrapperRoute(),
+          //                     predicate: (_) => false);
+          //                 return;
+          //               }
+          //             },
+          //         );
+          //       });
+          // },
+          //  noData: (_) {
+          //   if (currentPage.name != FirstNamePageRoute.name) {
+          //     router.pushAndPopUntil(const ProfileFlowWrapperRoute(),
+          //         predicate: (_) => false);
+          //     return;
+          //   }
+          // });
         });
   }
 }

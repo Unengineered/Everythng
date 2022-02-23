@@ -24,12 +24,12 @@ class _$StoreLinkTearOff {
   _StoreLink call(
       {required String id,
       required String name,
-      required Uri logo,
+      required Uri picture,
       String? tagline}) {
     return _StoreLink(
       id: id,
       name: name,
-      logo: logo,
+      picture: picture,
       tagline: tagline,
     );
   }
@@ -46,7 +46,7 @@ const $StoreLink = _$StoreLinkTearOff();
 mixin _$StoreLink {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  Uri get logo => throw _privateConstructorUsedError;
+  Uri get picture => throw _privateConstructorUsedError;
   String? get tagline => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -59,7 +59,7 @@ mixin _$StoreLink {
 abstract class $StoreLinkCopyWith<$Res> {
   factory $StoreLinkCopyWith(StoreLink value, $Res Function(StoreLink) then) =
       _$StoreLinkCopyWithImpl<$Res>;
-  $Res call({String id, String name, Uri logo, String? tagline});
+  $Res call({String id, String name, Uri picture, String? tagline});
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ class _$StoreLinkCopyWithImpl<$Res> implements $StoreLinkCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? logo = freezed,
+    Object? picture = freezed,
     Object? tagline = freezed,
   }) {
     return _then(_value.copyWith(
@@ -86,9 +86,9 @@ class _$StoreLinkCopyWithImpl<$Res> implements $StoreLinkCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      logo: logo == freezed
-          ? _value.logo
-          : logo // ignore: cast_nullable_to_non_nullable
+      picture: picture == freezed
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
               as Uri,
       tagline: tagline == freezed
           ? _value.tagline
@@ -104,7 +104,7 @@ abstract class _$StoreLinkCopyWith<$Res> implements $StoreLinkCopyWith<$Res> {
           _StoreLink value, $Res Function(_StoreLink) then) =
       __$StoreLinkCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, Uri logo, String? tagline});
+  $Res call({String id, String name, Uri picture, String? tagline});
 }
 
 /// @nodoc
@@ -120,7 +120,7 @@ class __$StoreLinkCopyWithImpl<$Res> extends _$StoreLinkCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? logo = freezed,
+    Object? picture = freezed,
     Object? tagline = freezed,
   }) {
     return _then(_StoreLink(
@@ -132,9 +132,9 @@ class __$StoreLinkCopyWithImpl<$Res> extends _$StoreLinkCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      logo: logo == freezed
-          ? _value.logo
-          : logo // ignore: cast_nullable_to_non_nullable
+      picture: picture == freezed
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
               as Uri,
       tagline: tagline == freezed
           ? _value.tagline
@@ -148,7 +148,10 @@ class __$StoreLinkCopyWithImpl<$Res> extends _$StoreLinkCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_StoreLink implements _StoreLink {
   const _$_StoreLink(
-      {required this.id, required this.name, required this.logo, this.tagline});
+      {required this.id,
+      required this.name,
+      required this.picture,
+      this.tagline});
 
   factory _$_StoreLink.fromJson(Map<String, dynamic> json) =>
       _$$_StoreLinkFromJson(json);
@@ -158,13 +161,13 @@ class _$_StoreLink implements _StoreLink {
   @override
   final String name;
   @override
-  final Uri logo;
+  final Uri picture;
   @override
   final String? tagline;
 
   @override
   String toString() {
-    return 'StoreLink(id: $id, name: $name, logo: $logo, tagline: $tagline)';
+    return 'StoreLink(id: $id, name: $name, picture: $picture, tagline: $tagline)';
   }
 
   @override
@@ -174,7 +177,7 @@ class _$_StoreLink implements _StoreLink {
             other is _StoreLink &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.logo, logo) &&
+            const DeepCollectionEquality().equals(other.picture, picture) &&
             const DeepCollectionEquality().equals(other.tagline, tagline));
   }
 
@@ -183,7 +186,7 @@ class _$_StoreLink implements _StoreLink {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(logo),
+      const DeepCollectionEquality().hash(picture),
       const DeepCollectionEquality().hash(tagline));
 
   @JsonKey(ignore: true)
@@ -201,7 +204,7 @@ abstract class _StoreLink implements StoreLink {
   const factory _StoreLink(
       {required String id,
       required String name,
-      required Uri logo,
+      required Uri picture,
       String? tagline}) = _$_StoreLink;
 
   factory _StoreLink.fromJson(Map<String, dynamic> json) =
@@ -212,7 +215,7 @@ abstract class _StoreLink implements StoreLink {
   @override
   String get name;
   @override
-  Uri get logo;
+  Uri get picture;
   @override
   String? get tagline;
   @override

@@ -1,5 +1,6 @@
 import 'package:everythng/application/auth/auth_cubit/auth_cubit.dart';
 import 'package:everythng/application/auth/auth_form_cubit/auth_form_cubit.dart';
+import 'package:everythng/application/list/list_cubit.dart';
 import 'package:everythng/application/marketplace/marketplace_cubit.dart';
 import 'package:everythng/application/profile/profile_cubit/profile_cubit.dart';
 import 'package:everythng/application/profile/profile_form_cubit/profile_form_cubit.dart';
@@ -22,7 +23,9 @@ class AppWidget extends StatelessWidget {
           BlocProvider(create: (_) => getIt<AuthFormCubit>()),
           BlocProvider(create: (_) => getIt<ProfileCubit>()),
           BlocProvider(create: (_) => getIt<ProfileFormCubit>()),
-          BlocProvider(create: (_) => getIt<MarketplaceCubit>()..initialise())
+          BlocProvider(create: (_) => getIt<MarketplaceCubit>()..initialise()),
+          BlocProvider(create: (_) => getIt<ListCubit>()),
+
         ],
         child: TreeRouter(
           router: _appRouter,

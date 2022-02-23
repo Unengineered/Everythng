@@ -1,3 +1,4 @@
+import 'package:everythng/core/api/url.dart';
 import 'package:everythng/injection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fort_knox/fort_knox.dart';

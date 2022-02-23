@@ -36,6 +36,7 @@ class ProfileRepository implements IProfileRepository {
     } on NetworkKitException catch(_){
       return left(const NetworkFailure());
     }
+    return right(EverythngUser.fromJson(response.body));
 
   }
 
