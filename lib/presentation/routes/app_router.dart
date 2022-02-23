@@ -15,6 +15,7 @@ import 'package:everythng/presentation/profile/pages/address_page.dart';
 import 'package:everythng/presentation/profile/pages/first_name_page.dart';
 import 'package:everythng/presentation/profile/pages/last_name_page.dart';
 import 'package:everythng/presentation/profile/pages/phone_number_page.dart';
+import 'package:everythng/presentation/splash/splash_page.dart';
 import 'package:everythng/presentation/store/store_flow/pages/bank_details_page.dart';
 import 'package:everythng/presentation/store/store_flow/pages/business_email_page.dart';
 import 'package:everythng/presentation/store/store_flow/pages/identity_proof_page.dart';
@@ -48,6 +49,10 @@ part 'app_router.gr.dart';
     CupertinoRoute(page: DiscoverPage, initial: true),
     CupertinoRoute(page: ProductPage),
     CupertinoRoute(page: ExpandedPicturePage),
+    CupertinoRoute(page: StorePage),
+
+
+    //Develop store flow
     CupertinoRoute(page: StoreNamePage),
     CupertinoRoute(page: StoreDetailPage),
     CupertinoRoute(page: IdentityProofPage),

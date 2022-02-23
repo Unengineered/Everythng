@@ -17,9 +17,9 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    StorePageRoute.name: (routeData) {
+    SplashPageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const StorePage());
+          routeData: routeData, child: const SplashPage());
     },
     SigningFlowWrapperRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
@@ -101,6 +101,10 @@ class _$AppRouter extends RootStackRouter {
               selectedIndex: args.selectedIndex,
               carouselList: args.carouselList));
     },
+    StorePageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const StorePage());
+    },
     StoreNamePageRoute.name: (routeData) {
       final args = routeData.argsAs<StoreNamePageRouteArgs>(
           orElse: () => const StoreNamePageRouteArgs());
@@ -177,12 +181,12 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   List<RouteConfig> get routes => [
-        RouteConfig(StorePageRoute.name, path: '/'),
+        RouteConfig(SplashPageRoute.name, path: '/'),
         RouteConfig(SigningFlowWrapperRoute.name,
             path: '/signing-flow-wrapper',
             children: [
               RouteConfig(LoginPageRoute.name,
-                  path: 'login-page', parent: SigningFlowWrapperRoute.name),
+                  path: '', parent: SigningFlowWrapperRoute.name),
               RouteConfig(PasswordPageRoute.name,
                   path: 'password-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(CreatePasswordPageRoute.name,
@@ -208,6 +212,9 @@ class _$AppRouter extends RootStackRouter {
                   parent: ThriftingMarketplaceWrapperRoute.name),
               RouteConfig(ExpandedPicturePageRoute.name,
                   path: 'expanded-picture-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(StorePageRoute.name,
+                  path: 'store-page',
                   parent: ThriftingMarketplaceWrapperRoute.name),
               RouteConfig(StoreNamePageRoute.name,
                   path: 'store-name-page',
@@ -261,11 +268,11 @@ class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
-/// [StorePage]
-class StorePageRoute extends PageRouteInfo<void> {
-  const StorePageRoute() : super(StorePageRoute.name, path: '/');
+/// [SplashPage]
+class SplashPageRoute extends PageRouteInfo<void> {
+  const SplashPageRoute() : super(SplashPageRoute.name, path: '/');
 
-  static const String name = 'StorePageRoute';
+  static const String name = 'SplashPageRoute';
 }
 
 /// generated route for
@@ -333,7 +340,7 @@ class ProfileFlowWrapperRoute extends PageRouteInfo<void> {
 class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
   LoginPageRoute({Key? key})
       : super(LoginPageRoute.name,
-            path: 'login-page', args: LoginPageRouteArgs(key: key));
+            path: '', args: LoginPageRouteArgs(key: key));
 
   static const String name = 'LoginPageRoute';
 }
@@ -519,6 +526,14 @@ class ExpandedPicturePageRouteArgs {
   String toString() {
     return 'ExpandedPicturePageRouteArgs{key: $key, productName: $productName, selectedIndex: $selectedIndex, carouselList: $carouselList}';
   }
+}
+
+/// generated route for
+/// [StorePage]
+class StorePageRoute extends PageRouteInfo<void> {
+  const StorePageRoute() : super(StorePageRoute.name, path: 'store-page');
+
+  static const String name = 'StorePageRoute';
 }
 
 /// generated route for

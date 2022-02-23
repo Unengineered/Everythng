@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:everythng/core/constants/shadows.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,9 @@ class StorePage extends StatelessWidget {
             color: Colors.black,
             size: 32,
           ),
-          onPressed: () {},
+          onPressed: () {
+            context.router.pop();
+          },
         ),
       ),
       body: SingleChildScrollView(

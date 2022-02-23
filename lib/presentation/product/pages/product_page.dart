@@ -12,7 +12,6 @@ import 'package:everythng/presentation/product/widgets/product_page_appbar.dart'
 import 'package:everythng/presentation/product/widgets/size_description_card.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 final GlobalKey _buttonKey = GlobalKey();
@@ -23,7 +22,6 @@ class ProductPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    timeDilation = 7;
     final _selectedIndex = useState(0);
     final _scrollController = useScrollController();
     var _physics = useState(const ScrollPhysics());
@@ -142,7 +140,9 @@ class ProductPage extends HookWidget {
                           ),
                         ),
                         const IssuesList(),
-                        const AdvertisementCard(),
+                        GestureDetector(onTap: () {
+                          context.router.push(const StorePageRoute());
+                        },child: const AdvertisementCard()),
                         const SizedBox(
                           height: 20,
                         ),
