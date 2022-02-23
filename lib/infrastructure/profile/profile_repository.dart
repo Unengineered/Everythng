@@ -24,19 +24,19 @@ class ProfileRepository implements IProfileRepository {
         addresses: [],
         storeLink: null));
 
-    try {
-      final response = await networkKit.get(Uri.http(url, '/profile'));
-      if (response.statusCode != 200) {
-        if (response.statusCode == 404) {
-          return left(const NetworkFailure.noProfileData());
-        }
-        return left(const NetworkFailure());
-      }
-      return right(EverythngUser.fromJson(response.body));
-    } on NetworkKitException catch(_){
-      return left(const NetworkFailure());
-    }
-    return right(EverythngUser.fromJson(response.body));
+    // try {
+    //   final response = await networkKit.get(Uri.http(url, '/profile'));
+    //   if (response.statusCode != 200) {
+    //     if (response.statusCode == 404) {
+    //       return left(const NetworkFailure.noProfileData());
+    //     }
+    //     return left(const NetworkFailure());
+    //   }
+    //   return right(EverythngUser.fromJson(response.body));
+    // } on NetworkKitException catch(_){
+    //   return left(const NetworkFailure());
+    // }
+    // return right(EverythngUser.fromJson(response.body));
 
   }
 

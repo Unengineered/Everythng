@@ -6,6 +6,7 @@ import 'package:everythng/presentation/core/network_image.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
+  //TODO: change this to detailed thrift product
   final RecommendedProduct product;
 
   const ProductCard(

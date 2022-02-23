@@ -60,6 +60,8 @@ dependencies:
   badges: ^2.0.2
   emojis: ^0.9.9
   emoji_picker_flutter: ^1.0.8
+  readmore: ^2.1.0
+  pinch_zoom_image_last: ^0.4.1
 
 
 

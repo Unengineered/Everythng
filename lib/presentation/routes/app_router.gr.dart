@@ -45,24 +45,6 @@ class _$AppRouter extends RootStackRouter {
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: const ProfileFlowWrapper());
     },
-    DiscoverPageRoute.name: (routeData) {
-      return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const DiscoverPage());
-    },
-    ProductPageRoute.name: (routeData) {
-      return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const ProductPage());
-    },
-    ExpandedPicturePageRoute.name: (routeData) {
-      final args = routeData.argsAs<ExpandedPicturePageRouteArgs>();
-      return CupertinoPageX<dynamic>(
-          routeData: routeData,
-          child: ExpandedPicturePage(
-              key: args.key,
-              productName: args.productName,
-              selectedIndex: args.selectedIndex,
-              carouselList: args.carouselList));
-    },
     LoginPageRoute.name: (routeData) {
       final args = routeData.argsAs<LoginPageRouteArgs>(
           orElse: () => const LoginPageRouteArgs());
@@ -86,6 +68,38 @@ class _$AppRouter extends RootStackRouter {
           orElse: () => const ConfirmPasswordPageRouteArgs());
       return CupertinoPageX<dynamic>(
           routeData: routeData, child: ConfirmPasswordPage(key: args.key));
+    },
+    SavedPageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const SavedPage());
+    },
+    ItemsPageRoute.name: (routeData) {
+      final args = routeData.argsAs<ItemsPageRouteArgs>();
+      return CupertinoPageX<dynamic>(
+          routeData: routeData,
+          child: ItemsPage(
+              key: args.key,
+              emoji: args.emoji,
+              listName: args.listName,
+              productList: args.productList));
+    },
+    DiscoverPageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const DiscoverPage());
+    },
+    ProductPageRoute.name: (routeData) {
+      return CupertinoPageX<dynamic>(
+          routeData: routeData, child: const ProductPage());
+    },
+    ExpandedPicturePageRoute.name: (routeData) {
+      final args = routeData.argsAs<ExpandedPicturePageRouteArgs>();
+      return CupertinoPageX<dynamic>(
+          routeData: routeData,
+          child: ExpandedPicturePage(
+              key: args.key,
+              productName: args.productName,
+              selectedIndex: args.selectedIndex,
+              carouselList: args.carouselList));
     },
     BuyingPageRoute.name: (routeData) {
       return CupertinoPageX<dynamic>(
@@ -131,15 +145,8 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(SigningFlowWrapperRoute.name,
             path: '/signing-flow-wrapper',
             children: [
-              RouteConfig(DiscoverPageRoute.name,
-                  path: '', parent: SigningFlowWrapperRoute.name),
-              RouteConfig(ProductPageRoute.name,
-                  path: 'product-page', parent: SigningFlowWrapperRoute.name),
-              RouteConfig(ExpandedPicturePageRoute.name,
-                  path: 'expanded-picture-page',
-                  parent: SigningFlowWrapperRoute.name),
               RouteConfig(LoginPageRoute.name,
-                  path: 'login-page', parent: SigningFlowWrapperRoute.name),
+                  path: '', parent: SigningFlowWrapperRoute.name),
               RouteConfig(PasswordPageRoute.name,
                   path: 'password-page', parent: SigningFlowWrapperRoute.name),
               RouteConfig(CreatePasswordPageRoute.name,
@@ -152,8 +159,20 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(ThriftingMarketplaceWrapperRoute.name,
             path: '/thrifting-marketplace-wrapper',
             children: [
+              RouteConfig(SavedPageRoute.name,
+                  path: 'saved-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(ItemsPageRoute.name,
+                  path: 'items-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name),
               RouteConfig(DiscoverPageRoute.name,
-                  path: '', parent: ThriftingMarketplaceWrapperRoute.name)
+                  path: '', parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(ProductPageRoute.name,
+                  path: 'product-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name),
+              RouteConfig(ExpandedPicturePageRoute.name,
+                  path: 'expanded-picture-page',
+                  parent: ThriftingMarketplaceWrapperRoute.name)
             ]),
         RouteConfig(BuyingMarketplaceWrapperRoute.name,
             path: '/buying-marketplace-wrapper',
@@ -256,68 +275,11 @@ class ProfileFlowWrapperRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [DiscoverPage]
-class DiscoverPageRoute extends PageRouteInfo<void> {
-  const DiscoverPageRoute() : super(DiscoverPageRoute.name, path: '');
-
-  static const String name = 'DiscoverPageRoute';
-}
-
-/// generated route for
-/// [ProductPage]
-class ProductPageRoute extends PageRouteInfo<void> {
-  const ProductPageRoute() : super(ProductPageRoute.name, path: 'product-page');
-
-  static const String name = 'ProductPageRoute';
-}
-
-/// generated route for
-/// [ExpandedPicturePage]
-class ExpandedPicturePageRoute
-    extends PageRouteInfo<ExpandedPicturePageRouteArgs> {
-  ExpandedPicturePageRoute(
-      {Key? key,
-      required String productName,
-      required ValueNotifier<int> selectedIndex,
-      required List<dynamic> carouselList})
-      : super(ExpandedPicturePageRoute.name,
-            path: 'expanded-picture-page',
-            args: ExpandedPicturePageRouteArgs(
-                key: key,
-                productName: productName,
-                selectedIndex: selectedIndex,
-                carouselList: carouselList));
-
-  static const String name = 'ExpandedPicturePageRoute';
-}
-
-class ExpandedPicturePageRouteArgs {
-  const ExpandedPicturePageRouteArgs(
-      {this.key,
-      required this.productName,
-      required this.selectedIndex,
-      required this.carouselList});
-
-  final Key? key;
-
-  final String productName;
-
-  final ValueNotifier<int> selectedIndex;
-
-  final List<dynamic> carouselList;
-
-  @override
-  String toString() {
-    return 'ExpandedPicturePageRouteArgs{key: $key, productName: $productName, selectedIndex: $selectedIndex, carouselList: $carouselList}';
-  }
-}
-
-/// generated route for
 /// [LoginPage]
 class LoginPageRoute extends PageRouteInfo<LoginPageRouteArgs> {
   LoginPageRoute({Key? key})
       : super(LoginPageRoute.name,
-            path: 'login-page', args: LoginPageRouteArgs(key: key));
+            path: '', args: LoginPageRouteArgs(key: key));
 
   static const String name = 'LoginPageRoute';
 }
@@ -397,6 +359,111 @@ class ConfirmPasswordPageRouteArgs {
   @override
   String toString() {
     return 'ConfirmPasswordPageRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [SavedPage]
+class SavedPageRoute extends PageRouteInfo<void> {
+  const SavedPageRoute() : super(SavedPageRoute.name, path: 'saved-page');
+
+  static const String name = 'SavedPageRoute';
+}
+
+/// generated route for
+/// [ItemsPage]
+class ItemsPageRoute extends PageRouteInfo<ItemsPageRouteArgs> {
+  ItemsPageRoute(
+      {Key? key,
+      required String emoji,
+      required String listName,
+      required List<String> productList})
+      : super(ItemsPageRoute.name,
+            path: 'items-page',
+            args: ItemsPageRouteArgs(
+                key: key,
+                emoji: emoji,
+                listName: listName,
+                productList: productList));
+
+  static const String name = 'ItemsPageRoute';
+}
+
+class ItemsPageRouteArgs {
+  const ItemsPageRouteArgs(
+      {this.key,
+      required this.emoji,
+      required this.listName,
+      required this.productList});
+
+  final Key? key;
+
+  final String emoji;
+
+  final String listName;
+
+  final List<String> productList;
+
+  @override
+  String toString() {
+    return 'ItemsPageRouteArgs{key: $key, emoji: $emoji, listName: $listName, productList: $productList}';
+  }
+}
+
+/// generated route for
+/// [DiscoverPage]
+class DiscoverPageRoute extends PageRouteInfo<void> {
+  const DiscoverPageRoute() : super(DiscoverPageRoute.name, path: '');
+
+  static const String name = 'DiscoverPageRoute';
+}
+
+/// generated route for
+/// [ProductPage]
+class ProductPageRoute extends PageRouteInfo<void> {
+  const ProductPageRoute() : super(ProductPageRoute.name, path: 'product-page');
+
+  static const String name = 'ProductPageRoute';
+}
+
+/// generated route for
+/// [ExpandedPicturePage]
+class ExpandedPicturePageRoute
+    extends PageRouteInfo<ExpandedPicturePageRouteArgs> {
+  ExpandedPicturePageRoute(
+      {Key? key,
+      required String productName,
+      required ValueNotifier<int> selectedIndex,
+      required List<dynamic> carouselList})
+      : super(ExpandedPicturePageRoute.name,
+            path: 'expanded-picture-page',
+            args: ExpandedPicturePageRouteArgs(
+                key: key,
+                productName: productName,
+                selectedIndex: selectedIndex,
+                carouselList: carouselList));
+
+  static const String name = 'ExpandedPicturePageRoute';
+}
+
+class ExpandedPicturePageRouteArgs {
+  const ExpandedPicturePageRouteArgs(
+      {this.key,
+      required this.productName,
+      required this.selectedIndex,
+      required this.carouselList});
+
+  final Key? key;
+
+  final String productName;
+
+  final ValueNotifier<int> selectedIndex;
+
+  final List<dynamic> carouselList;
+
+  @override
+  String toString() {
+    return 'ExpandedPicturePageRouteArgs{key: $key, productName: $productName, selectedIndex: $selectedIndex, carouselList: $carouselList}';
   }
 }
 

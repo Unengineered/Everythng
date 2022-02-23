@@ -1,4 +1,4 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:everythng/presentation/product/widgets/glowing_image.dart';
 import 'package:everythng/presentation/product/widgets/image_preview_carousel.dart';
 import 'package:flutter/cupertino.dart';
