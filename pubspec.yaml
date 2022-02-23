@@ -48,7 +48,7 @@ dependencies:
   freezed_annotation: ^1.0.0
   flutter:
     sdk: flutter
-  google_fonts: ^2.1.0
+  google_fonts: ^2.3.1
   flutter_keyboard_visibility: ^5.1.0
   http: ^0.13.4
   vector_math: ^2.1.0
@@ -63,6 +63,8 @@ dependencies:
   readmore: ^2.1.0
   pinch_zoom_image_last: ^0.4.1
   image_picker: ^0.8.4+5
+  font_awesome_flutter: ^9.2.0
+
 
 
 
