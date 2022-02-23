@@ -8,6 +8,7 @@ import 'animations/shimmer_widget.dart';
 class EverythngNetworkImage extends StatelessWidget {
   final String url;
   final BoxFit fit;
+  final Alignment alignment;
 
   final Widget Function(BuildContext, ImageProvider<Object>)? imageBuilder;
 
@@ -16,6 +17,7 @@ class EverythngNetworkImage extends StatelessWidget {
     required this.url,
     this.imageBuilder,
     this.fit = BoxFit.cover,
+    this.alignment = Alignment.topCenter,
   }) : super(key: key);
 
   @override
@@ -32,7 +34,7 @@ class EverythngNetworkImage extends StatelessWidget {
       },
       imageUrl: url,
       fit: fit,
-      alignment: Alignment.topCenter,
+      alignment: alignment,
     );
   }
 }

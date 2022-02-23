@@ -61,11 +61,8 @@ class DiscoverPage extends StatelessWidget {
                                       builder: (context) =>
                                           const ProductPage()));
                             },
-                            child: Hero(
-                              tag: 'product',
-                              child: ProductCard(
-                                  loadedState.recommendedProducts[index]),
-                            ),
+                            child: ProductCard(
+                                loadedState.recommendedProducts[index]),
                           );
                         },
                         separatorBuilder: (context, index) {
