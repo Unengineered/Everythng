@@ -24,85 +24,83 @@ class ExpandedPicturePage extends HookWidget {
 
     final Animation<double> _animation =
         Tween<double>(begin: 1, end: 0).animate(_controller);
-    return Hero(
-      tag: 'product',
-      child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 50,
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          leading: Navigator.canPop(context)
-              ? IconButton(
-                  padding: const EdgeInsets.only(top: 20),
-                  icon: const Icon(
-                    CupertinoIcons.chevron_back,
-                    color: Colors.black,
-                    size: 32,
-                  ),
-                  onPressed: () => context.router.pop(),
-                )
-              : null,
-        ),
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(34, 20, 125, 0),
-                child: FadeTransition(
-                  opacity: _animation,
-                  child: Text(
-                    productName,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 26,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: -1.6,
-                    ),
-                  ),
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 50,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        leading: Navigator.canPop(context)
+            ? IconButton(
+                padding: const EdgeInsets.only(top: 20),
+                icon: const Icon(
+                  CupertinoIcons.chevron_back,
+                  color: Colors.black,
+                  size: 32,
                 ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 34.0),
-                child: PinchZoomImage(
-                  hideStatusBarWhileZooming: true,
-                  onZoomStart: () {
-                    if (_controller.isCompleted) {
-                      _controller.reset();
-                    }
-                    _controller.forward();
-                  },
-                  onZoomEnd: () {
-                    if (_controller.isAnimating) {
-                      _controller.stop();
-                    }
-                    _controller.reverse();
-                  },
-                  image: const GlowingImage(
-                    type: GlowingImageType.large,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 36,
-              ),
-              FadeTransition(
-                opacity: _animation,
-                child: ImagePreviewCarousel(
-                  horizontalPadding: 34,
-                  selectedIndex: selectedIndex,
-                  carouselList: carouselList,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
+                onPressed: () => context.router.pop(),
               )
-            ],
+            : null,
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(34, 20, 125, 0),
+            child: FadeTransition(
+              opacity: _animation,
+              child: Text(
+                productName,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -1.6,
+                ),
+              ),
+            ),
           ),
-        ),
+          const SizedBox(
+            height: 24,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 34.0),
+            child: PinchZoomImage(
+              hideStatusBarWhileZooming: true,
+              onZoomStart: () {
+                if (_controller.isCompleted) {
+                  _controller.reset();
+                }
+                _controller.forward();
+              },
+              onZoomEnd: () {
+                if (_controller.isAnimating) {
+                  _controller.stop();
+                }
+                _controller.reverse();
+              },
+              image: const GlowingImage(
+                type: GlowingImageType.large,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 36,
+          ),
+          FadeTransition(
+            opacity: _animation,
+            child: ValueListenableBuilder<int>(
+                valueListenable: selectedIndex,
+                builder: (context, index, child) {
+                  return ImagePreviewCarousel(
+                    horizontalPadding: 34,
+                    selectedIndex: selectedIndex,
+                    carouselList: carouselList,
+                  );
+                }),
+          ),
+          const SizedBox(
+            height: 20,
+          )
+        ],
       ),
     );
   }

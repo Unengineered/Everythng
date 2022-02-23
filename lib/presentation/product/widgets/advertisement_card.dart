@@ -5,7 +5,6 @@ class AdvertisementCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,8 +21,8 @@ class AdvertisementCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            height: 100,
-            width: 120,
+            height: MediaQuery.of(context).size.height * 0.12,
+            width: MediaQuery.of(context).size.width * 0.29,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.asset(
@@ -34,8 +33,8 @@ class AdvertisementCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
-            children: const [
-              Text(
+            children: [
+              const Text(
                 'nefsfinds',
                 style: TextStyle(
                     fontSize: 28,
@@ -43,18 +42,19 @@ class AdvertisementCard extends StatelessWidget {
                     letterSpacing: -1.7,
                     color: Colors.white),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               SizedBox(
-                width: 200,
-                child: Text(
-                  'Find new and fashionable clothes for women. Party wear and vacation clothing...',
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: const Text(
+                  'Find new and fashionable clothes for women. Party wear and vacation clothing.',
                   style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: -0.9,
-                      color: Colors.white),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: -0.9,
+                    color: Colors.white,
+                  ),
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
                 ),
