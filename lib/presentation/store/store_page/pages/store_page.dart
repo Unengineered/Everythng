@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:everythng/presentation/core/cards/store_detail_card.dart';
+import 'package:everythng/presentation/core/cards/store_link_card.dart';
 import 'package:everythng/presentation/core/everythng_widgets/appbar/gardient_appbar.dart';
 import 'package:everythng/presentation/core/safe_gesture_detector.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
@@ -26,7 +26,7 @@ class StorePage extends StatelessWidget {
                     const SizedBox(
                       height: 70,
                     ),
-                    const StoreDetailCard(),
+                    const StoreLinkCard(),
                     const SizedBox(
                       height: 24,
                     ),

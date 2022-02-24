@@ -1,7 +1,7 @@
 import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:everythng/core/constants/constant_lists.dart';
 import 'package:everythng/core/extensions/extension_global_key.dart';
-import 'package:everythng/presentation/core/cards/store_detail_card.dart';
+import 'package:everythng/presentation/core/cards/store_link_card.dart';
 import 'package:everythng/presentation/product/widgets/glowing_image.dart';
 import 'package:everythng/presentation/product/widgets/image_preview_carousel.dart';
 import 'package:everythng/presentation/product/widgets/information_row.dart';
@@ -150,7 +150,7 @@ class ProductPage extends HookWidget {
                           onTap: () {
                             context.router.push(const StorePageRoute());
                           },
-                          child: const StoreDetailCard(),
+                          child: const StoreLinkCard(),
                         ),
                       ),
                       const SizedBox(
