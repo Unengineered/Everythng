@@ -1,11 +1,12 @@
 import 'dart:convert';
-import 'package:everythng/domain/auth/entities/auth_failure.dart';
+
 import 'package:dartz/dartz.dart';
+import 'package:everythng/core/api/url.dart';
+import 'package:everythng/domain/auth/entities/auth_failure.dart';
 import 'package:everythng/domain/auth/i_auth_repository.dart';
 import 'package:fort_knox/fort_knox.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-import 'package:everythng/core/api/url.dart';
 
 @Injectable(as: IAuthRepository)
 class AuthRepository implements IAuthRepository {
@@ -17,9 +18,10 @@ class AuthRepository implements IAuthRepository {
   @override
   Future<Either<AuthFailure, bool>> doesEmailExist(
       {required String email}) async {
-    //return right(true);
+    return right(true);
 
-    final response = await client.get(Uri.http(url,"/account",{"email":email.toString()}));
+    final response = await client
+        .get(Uri.http(url, "/account", {"email": email.toString()}));
     if (response.statusCode == 200 || response.statusCode == 404) {
       return right(json.decode(response.body)['accountFound']);
     }
@@ -27,8 +29,7 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Stream<BaseUser?> getAuthStatusStream() =>
-      _fortKnox.getAuthStatusStream();
+  Stream<BaseUser?> getAuthStatusStream() => _fortKnox.getAuthStatusStream();
 
   @override
   Either<AuthFailure, BaseUser> getCurrentUser() {
@@ -61,8 +62,8 @@ class AuthRepository implements IAuthRepository {
   Future<Either<AuthFailure, BaseUser>> registerWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      return right(await _fortKnox
-          .registerWithEmailAndPassword(email: email, password: password));
+      return right(await _fortKnox.registerWithEmailAndPassword(
+          email: email, password: password));
     } on AuthenticationException catch (exception) {
       if (exception == AuthenticationException.userDisabled()) {
         return left(const AuthFailure.userDisabled());
@@ -76,8 +77,8 @@ class AuthRepository implements IAuthRepository {
   Future<Either<AuthFailure, BaseUser>> signInWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      return right(await _fortKnox
-          .signInWithEmailAndPassword(email: email, password: password));
+      return right(await _fortKnox.signInWithEmailAndPassword(
+          email: email, password: password));
     } on AuthenticationException catch (exception) {
       if (exception == AuthenticationException.userDisabled()) {
         return left(const AuthFailure.userDisabled());

@@ -1,10 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class ImagePreviewCarousel extends StatelessWidget {
   const ImagePreviewCarousel({
     Key? key,
     required ValueNotifier<int> selectedIndex,
-    required this.carouselList, this.horizontalPadding = 18,
+    required this.carouselList,
+    this.horizontalPadding = 18,
   })  : _selectedIndex = selectedIndex,
         super(key: key);
 
@@ -17,7 +20,7 @@ class ImagePreviewCarousel extends StatelessWidget {
     return SizedBox(
       height: 60,
       child: ListView.separated(
-        padding:  EdgeInsets.symmetric(horizontal: horizontalPadding),
+        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: carouselList.length,
@@ -25,6 +28,7 @@ class ImagePreviewCarousel extends StatelessWidget {
           var isSelected = _selectedIndex.value == index;
           return GestureDetector(
             onTap: () {
+              log('Tapped $index');
               _selectedIndex.value = index;
             },
             child: AnimatedContainer(

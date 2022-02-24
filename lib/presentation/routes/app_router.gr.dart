@@ -88,8 +88,10 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: const DiscoverPage());
     },
     ProductPageRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductPageRouteArgs>(
+          orElse: () => const ProductPageRouteArgs());
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const ProductPage());
+          routeData: routeData, child: ProductPage(key: args.key));
     },
     ExpandedPicturePageRoute.name: (routeData) {
       final args = routeData.argsAs<ExpandedPicturePageRouteArgs>();
@@ -481,10 +483,23 @@ class DiscoverPageRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ProductPage]
-class ProductPageRoute extends PageRouteInfo<void> {
-  const ProductPageRoute() : super(ProductPageRoute.name, path: 'product-page');
+class ProductPageRoute extends PageRouteInfo<ProductPageRouteArgs> {
+  ProductPageRoute({Key? key})
+      : super(ProductPageRoute.name,
+            path: 'product-page', args: ProductPageRouteArgs(key: key));
 
   static const String name = 'ProductPageRoute';
+}
+
+class ProductPageRouteArgs {
+  const ProductPageRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ProductPageRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

@@ -18,7 +18,7 @@ class SizeChart extends StatelessWidget {
         crossAxisSpacing: 32,
         mainAxisSpacing: 8,
         //
-        childAspectRatio: 3.2,
+        childAspectRatio: 2.9,
       ),
       itemBuilder: (context, index) {
         return Column(
@@ -30,8 +30,7 @@ class SizeChart extends StatelessWidget {
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
                 letterSpacing: -0.5,
-                color:
-                context.everythngThemeData.textAndIconography.medium,
+                color: context.everythngThemeData.textAndIconography.medium,
               ),
             ),
             Text(

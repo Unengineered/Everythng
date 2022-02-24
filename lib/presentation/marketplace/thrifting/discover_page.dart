@@ -1,16 +1,19 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:everythng/application/discover/discover_cubit.dart';
 import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:everythng/injection.dart';
 import 'package:everythng/presentation/core/cards/product_card.dart';
-import 'package:everythng/presentation/core/cards/store_card.dart';
 import 'package:everythng/presentation/core/everythng_widgets/bottom_navigation_bar/everythng_bottom_navigation_bar.dart';
+import 'package:everythng/presentation/core/safe_gesture_detector.dart';
 import 'package:everythng/presentation/marketplace/app_bar/marketplace_app_bar.dart';
-import 'package:everythng/presentation/product/pages/product_page.dart';
+import 'package:everythng/presentation/marketplace/thrifting/widgets/store_card.dart';
+import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DiscoverPage extends StatelessWidget {
   const DiscoverPage({Key? key}) : super(key: key);
+  static int lastTimeClicked = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +56,9 @@ class DiscoverPage extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-                          return GestureDetector(
+                          return SafeGestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ProductPage()));
+                              context.router.push(ProductPageRoute());
                             },
                             child: ProductCard(
                                 loadedState.recommendedProducts[index]),
@@ -123,7 +122,12 @@ class DiscoverPage extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return StoreCard(state.recommendedStores[index]);
+                      return SafeGestureDetector(
+                        onTap: () {
+                          context.router.push(const StorePageRoute());
+                        },
+                        child: StoreCard(state.recommendedStores[index]),
+                      );
                     },
                     itemCount: state.recommendedStores.length,
                   );
