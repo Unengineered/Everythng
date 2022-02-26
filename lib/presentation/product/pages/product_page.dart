@@ -119,9 +119,9 @@ class ProductPage extends HookWidget {
                       const SizedBox(
                         height: 24,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: SizeDescriptionCard(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: SizeDescriptionCard(sizeChart: product.sizeChart),
                       ),
                       const SizedBox(
                         height: 24,

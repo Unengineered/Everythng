@@ -40,7 +40,14 @@ class ProductRepository implements IProductRepository {
           Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
         ],
         sizeChart: [
-          {"key": "key", "value": "value"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
           {"key": "key", "value": "value"}
         ],
         storeLink: StoreLink(
