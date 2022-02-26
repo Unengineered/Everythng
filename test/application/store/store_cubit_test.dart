@@ -6,8 +6,6 @@ import 'package:everythng/domain/store/i_store_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../setup/constants.dart';
-
 class MockStoreRepository extends Mock implements IStoreRepository {}
 
 void main() {

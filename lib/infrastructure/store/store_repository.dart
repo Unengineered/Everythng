@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:everythng/domain/core/store_link.dart';
 import 'package:everythng/domain/store/entities/store_failure.dart';
 import 'package:everythng/domain/store/entities/everythng_store.dart';
 import 'package:dartz/dartz.dart';
@@ -55,9 +56,9 @@ class StoreRepository implements IStoreRepository {
     );
     request.fields['imageInfo'] = imageInfo;
     request.files.add(await networkKit.fromPath(
-        'imageFile',
-        file.path,
-      ));
+      'imageFile',
+      file.path,
+    ));
     final response = await networkKit.fromStream(await request.send());
     if (response.statusCode != 200) {
       if (response.statusCode == 404) {
@@ -66,5 +67,43 @@ class StoreRepository implements IStoreRepository {
       return left(const StoreFailure.serverError());
     }
     return right(json.decode(response.body)['imageUrl']);
+  }
+
+  @override
+  Future<Either<StoreFailure, List<StoreLink>>> getStoreLinkList() async {
+    return right([
+      StoreLink(
+          name: "STORE 1",
+          id: "1",
+          thumbnail: Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+          instagram: Uri.parse("https://www.instagram.com/store1")),
+      StoreLink(
+          name: "STORE 1",
+          id: "1",
+          thumbnail: Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+          instagram: Uri.parse("https://www.instagram.com/store1")),
+      StoreLink(
+          name: "STORE 1",
+          id: "1",
+          thumbnail: Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+          instagram: Uri.parse("https://www.instagram.com/store1")),
+      StoreLink(
+          name: "STORE 1",
+          id: "1",
+          thumbnail: Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+          instagram: Uri.parse("https://www.instagram.com/store1")),
+      StoreLink(
+          name: "STORE 1",
+          id: "1",
+          thumbnail: Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+          instagram: Uri.parse("https://www.instagram.com/store1")),
+    ]);
+
+    throw UnimplementedError();
   }
 }

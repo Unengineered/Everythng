@@ -51,7 +51,8 @@ class ProductPage extends HookWidget {
       }
     });
     return Scaffold(
-      body: SafeArea(
+      body: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Stack(
           children: [
             ScrollConfiguration(

@@ -24,26 +24,26 @@ class _$DetailedThriftProductTearOff {
 
   _DetailedThriftProduct call(
       {@JsonKey(name: "_id") required String id,
-      required String name,
       required double price,
-      @JsonKey(name: "original_price") double? originalPrice,
       required List<Uri> pictures,
-      @JsonKey(name: "size_chart") required Map<String, String> sizeChart,
-      required List<Issue> issues,
+      @JsonKey(name: "size_chart") required List<Map<String, String>> sizeChart,
+      @JsonKey(name: "store_link") required StoreLink storeLink,
+      String? name,
+      @JsonKey(name: "original_price") double? originalPrice,
+      List<Issue>? issues,
       Brand? brand,
-      @JsonKey(name: "customer_review") Review? customerReview,
-      @JsonKey(name: "store_link") required StoreLink storeLink}) {
+      @JsonKey(name: "customer_review") Review? customerReview}) {
     return _DetailedThriftProduct(
       id: id,
-      name: name,
       price: price,
-      originalPrice: originalPrice,
       pictures: pictures,
       sizeChart: sizeChart,
+      storeLink: storeLink,
+      name: name,
+      originalPrice: originalPrice,
       issues: issues,
       brand: brand,
       customerReview: customerReview,
-      storeLink: storeLink,
     );
   }
 
@@ -57,21 +57,22 @@ const $DetailedThriftProduct = _$DetailedThriftProductTearOff();
 
 /// @nodoc
 mixin _$DetailedThriftProduct {
+//required
   @JsonKey(name: "_id")
   String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
-  @JsonKey(name: "original_price")
-  double? get originalPrice => throw _privateConstructorUsedError;
   List<Uri> get pictures => throw _privateConstructorUsedError;
   @JsonKey(name: "size_chart")
-  Map<String, String> get sizeChart => throw _privateConstructorUsedError;
-  List<Issue> get issues => throw _privateConstructorUsedError;
+  List<Map<String, String>> get sizeChart => throw _privateConstructorUsedError;
+  @JsonKey(name: "store_link")
+  StoreLink get storeLink => throw _privateConstructorUsedError; //optional
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "original_price")
+  double? get originalPrice => throw _privateConstructorUsedError;
+  List<Issue>? get issues => throw _privateConstructorUsedError;
   Brand? get brand => throw _privateConstructorUsedError;
   @JsonKey(name: "customer_review")
   Review? get customerReview => throw _privateConstructorUsedError;
-  @JsonKey(name: "store_link")
-  StoreLink get storeLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -86,19 +87,19 @@ abstract class $DetailedThriftProductCopyWith<$Res> {
       _$DetailedThriftProductCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: "_id") String id,
-      String name,
       double price,
-      @JsonKey(name: "original_price") double? originalPrice,
       List<Uri> pictures,
-      @JsonKey(name: "size_chart") Map<String, String> sizeChart,
-      List<Issue> issues,
+      @JsonKey(name: "size_chart") List<Map<String, String>> sizeChart,
+      @JsonKey(name: "store_link") StoreLink storeLink,
+      String? name,
+      @JsonKey(name: "original_price") double? originalPrice,
+      List<Issue>? issues,
       Brand? brand,
-      @JsonKey(name: "customer_review") Review? customerReview,
-      @JsonKey(name: "store_link") StoreLink storeLink});
+      @JsonKey(name: "customer_review") Review? customerReview});
 
+  $StoreLinkCopyWith<$Res> get storeLink;
   $BrandCopyWith<$Res>? get brand;
   $ReviewCopyWith<$Res>? get customerReview;
-  $StoreLinkCopyWith<$Res> get storeLink;
 }
 
 /// @nodoc
@@ -113,33 +114,25 @@ class _$DetailedThriftProductCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = freezed,
     Object? price = freezed,
-    Object? originalPrice = freezed,
     Object? pictures = freezed,
     Object? sizeChart = freezed,
+    Object? storeLink = freezed,
+    Object? name = freezed,
+    Object? originalPrice = freezed,
     Object? issues = freezed,
     Object? brand = freezed,
     Object? customerReview = freezed,
-    Object? storeLink = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
-      originalPrice: originalPrice == freezed
-          ? _value.originalPrice
-          : originalPrice // ignore: cast_nullable_to_non_nullable
-              as double?,
       pictures: pictures == freezed
           ? _value.pictures
           : pictures // ignore: cast_nullable_to_non_nullable
@@ -147,11 +140,23 @@ class _$DetailedThriftProductCopyWithImpl<$Res>
       sizeChart: sizeChart == freezed
           ? _value.sizeChart
           : sizeChart // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+              as List<Map<String, String>>,
+      storeLink: storeLink == freezed
+          ? _value.storeLink
+          : storeLink // ignore: cast_nullable_to_non_nullable
+              as StoreLink,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      originalPrice: originalPrice == freezed
+          ? _value.originalPrice
+          : originalPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
       issues: issues == freezed
           ? _value.issues
           : issues // ignore: cast_nullable_to_non_nullable
-              as List<Issue>,
+              as List<Issue>?,
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
@@ -160,11 +165,14 @@ class _$DetailedThriftProductCopyWithImpl<$Res>
           ? _value.customerReview
           : customerReview // ignore: cast_nullable_to_non_nullable
               as Review?,
-      storeLink: storeLink == freezed
-          ? _value.storeLink
-          : storeLink // ignore: cast_nullable_to_non_nullable
-              as StoreLink,
     ));
+  }
+
+  @override
+  $StoreLinkCopyWith<$Res> get storeLink {
+    return $StoreLinkCopyWith<$Res>(_value.storeLink, (value) {
+      return _then(_value.copyWith(storeLink: value));
+    });
   }
 
   @override
@@ -188,13 +196,6 @@ class _$DetailedThriftProductCopyWithImpl<$Res>
       return _then(_value.copyWith(customerReview: value));
     });
   }
-
-  @override
-  $StoreLinkCopyWith<$Res> get storeLink {
-    return $StoreLinkCopyWith<$Res>(_value.storeLink, (value) {
-      return _then(_value.copyWith(storeLink: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -206,22 +207,22 @@ abstract class _$DetailedThriftProductCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: "_id") String id,
-      String name,
       double price,
-      @JsonKey(name: "original_price") double? originalPrice,
       List<Uri> pictures,
-      @JsonKey(name: "size_chart") Map<String, String> sizeChart,
-      List<Issue> issues,
+      @JsonKey(name: "size_chart") List<Map<String, String>> sizeChart,
+      @JsonKey(name: "store_link") StoreLink storeLink,
+      String? name,
+      @JsonKey(name: "original_price") double? originalPrice,
+      List<Issue>? issues,
       Brand? brand,
-      @JsonKey(name: "customer_review") Review? customerReview,
-      @JsonKey(name: "store_link") StoreLink storeLink});
+      @JsonKey(name: "customer_review") Review? customerReview});
 
+  @override
+  $StoreLinkCopyWith<$Res> get storeLink;
   @override
   $BrandCopyWith<$Res>? get brand;
   @override
   $ReviewCopyWith<$Res>? get customerReview;
-  @override
-  $StoreLinkCopyWith<$Res> get storeLink;
 }
 
 /// @nodoc
@@ -238,33 +239,25 @@ class __$DetailedThriftProductCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = freezed,
     Object? price = freezed,
-    Object? originalPrice = freezed,
     Object? pictures = freezed,
     Object? sizeChart = freezed,
+    Object? storeLink = freezed,
+    Object? name = freezed,
+    Object? originalPrice = freezed,
     Object? issues = freezed,
     Object? brand = freezed,
     Object? customerReview = freezed,
-    Object? storeLink = freezed,
   }) {
     return _then(_DetailedThriftProduct(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
-      originalPrice: originalPrice == freezed
-          ? _value.originalPrice
-          : originalPrice // ignore: cast_nullable_to_non_nullable
-              as double?,
       pictures: pictures == freezed
           ? _value.pictures
           : pictures // ignore: cast_nullable_to_non_nullable
@@ -272,11 +265,23 @@ class __$DetailedThriftProductCopyWithImpl<$Res>
       sizeChart: sizeChart == freezed
           ? _value.sizeChart
           : sizeChart // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+              as List<Map<String, String>>,
+      storeLink: storeLink == freezed
+          ? _value.storeLink
+          : storeLink // ignore: cast_nullable_to_non_nullable
+              as StoreLink,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      originalPrice: originalPrice == freezed
+          ? _value.originalPrice
+          : originalPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
       issues: issues == freezed
           ? _value.issues
           : issues // ignore: cast_nullable_to_non_nullable
-              as List<Issue>,
+              as List<Issue>?,
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
@@ -285,10 +290,6 @@ class __$DetailedThriftProductCopyWithImpl<$Res>
           ? _value.customerReview
           : customerReview // ignore: cast_nullable_to_non_nullable
               as Review?,
-      storeLink: storeLink == freezed
-          ? _value.storeLink
-          : storeLink // ignore: cast_nullable_to_non_nullable
-              as StoreLink,
     ));
   }
 }
@@ -298,48 +299,48 @@ class __$DetailedThriftProductCopyWithImpl<$Res>
 class _$_DetailedThriftProduct implements _DetailedThriftProduct {
   const _$_DetailedThriftProduct(
       {@JsonKey(name: "_id") required this.id,
-      required this.name,
       required this.price,
-      @JsonKey(name: "original_price") this.originalPrice,
       required this.pictures,
       @JsonKey(name: "size_chart") required this.sizeChart,
-      required this.issues,
+      @JsonKey(name: "store_link") required this.storeLink,
+      this.name,
+      @JsonKey(name: "original_price") this.originalPrice,
+      this.issues,
       this.brand,
-      @JsonKey(name: "customer_review") this.customerReview,
-      @JsonKey(name: "store_link") required this.storeLink});
+      @JsonKey(name: "customer_review") this.customerReview});
 
   factory _$_DetailedThriftProduct.fromJson(Map<String, dynamic> json) =>
       _$$_DetailedThriftProductFromJson(json);
 
-  @override
+  @override //required
   @JsonKey(name: "_id")
   final String id;
   @override
-  final String name;
-  @override
   final double price;
-  @override
-  @JsonKey(name: "original_price")
-  final double? originalPrice;
   @override
   final List<Uri> pictures;
   @override
   @JsonKey(name: "size_chart")
-  final Map<String, String> sizeChart;
+  final List<Map<String, String>> sizeChart;
   @override
-  final List<Issue> issues;
+  @JsonKey(name: "store_link")
+  final StoreLink storeLink;
+  @override //optional
+  final String? name;
+  @override
+  @JsonKey(name: "original_price")
+  final double? originalPrice;
+  @override
+  final List<Issue>? issues;
   @override
   final Brand? brand;
   @override
   @JsonKey(name: "customer_review")
   final Review? customerReview;
-  @override
-  @JsonKey(name: "store_link")
-  final StoreLink storeLink;
 
   @override
   String toString() {
-    return 'DetailedThriftProduct(id: $id, name: $name, price: $price, originalPrice: $originalPrice, pictures: $pictures, sizeChart: $sizeChart, issues: $issues, brand: $brand, customerReview: $customerReview, storeLink: $storeLink)';
+    return 'DetailedThriftProduct(id: $id, price: $price, pictures: $pictures, sizeChart: $sizeChart, storeLink: $storeLink, name: $name, originalPrice: $originalPrice, issues: $issues, brand: $brand, customerReview: $customerReview)';
   }
 
   @override
@@ -348,32 +349,32 @@ class _$_DetailedThriftProduct implements _DetailedThriftProduct {
         (other.runtimeType == runtimeType &&
             other is _DetailedThriftProduct &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality()
-                .equals(other.originalPrice, originalPrice) &&
             const DeepCollectionEquality().equals(other.pictures, pictures) &&
             const DeepCollectionEquality().equals(other.sizeChart, sizeChart) &&
+            const DeepCollectionEquality().equals(other.storeLink, storeLink) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.originalPrice, originalPrice) &&
             const DeepCollectionEquality().equals(other.issues, issues) &&
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality()
-                .equals(other.customerReview, customerReview) &&
-            const DeepCollectionEquality().equals(other.storeLink, storeLink));
+                .equals(other.customerReview, customerReview));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(originalPrice),
       const DeepCollectionEquality().hash(pictures),
       const DeepCollectionEquality().hash(sizeChart),
+      const DeepCollectionEquality().hash(storeLink),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(originalPrice),
       const DeepCollectionEquality().hash(issues),
       const DeepCollectionEquality().hash(brand),
-      const DeepCollectionEquality().hash(customerReview),
-      const DeepCollectionEquality().hash(storeLink));
+      const DeepCollectionEquality().hash(customerReview));
 
   @JsonKey(ignore: true)
   @override
@@ -389,46 +390,50 @@ class _$_DetailedThriftProduct implements _DetailedThriftProduct {
 
 abstract class _DetailedThriftProduct implements DetailedThriftProduct {
   const factory _DetailedThriftProduct(
-          {@JsonKey(name: "_id") required String id,
-          required String name,
-          required double price,
-          @JsonKey(name: "original_price") double? originalPrice,
-          required List<Uri> pictures,
-          @JsonKey(name: "size_chart") required Map<String, String> sizeChart,
-          required List<Issue> issues,
-          Brand? brand,
-          @JsonKey(name: "customer_review") Review? customerReview,
-          @JsonKey(name: "store_link") required StoreLink storeLink}) =
-      _$_DetailedThriftProduct;
+      {@JsonKey(name: "_id")
+          required String id,
+      required double price,
+      required List<Uri> pictures,
+      @JsonKey(name: "size_chart")
+          required List<Map<String, String>> sizeChart,
+      @JsonKey(name: "store_link")
+          required StoreLink storeLink,
+      String? name,
+      @JsonKey(name: "original_price")
+          double? originalPrice,
+      List<Issue>? issues,
+      Brand? brand,
+      @JsonKey(name: "customer_review")
+          Review? customerReview}) = _$_DetailedThriftProduct;
 
   factory _DetailedThriftProduct.fromJson(Map<String, dynamic> json) =
       _$_DetailedThriftProduct.fromJson;
 
-  @override
+  @override //required
   @JsonKey(name: "_id")
   String get id;
   @override
-  String get name;
-  @override
   double get price;
-  @override
-  @JsonKey(name: "original_price")
-  double? get originalPrice;
   @override
   List<Uri> get pictures;
   @override
   @JsonKey(name: "size_chart")
-  Map<String, String> get sizeChart;
+  List<Map<String, String>> get sizeChart;
   @override
-  List<Issue> get issues;
+  @JsonKey(name: "store_link")
+  StoreLink get storeLink;
+  @override //optional
+  String? get name;
+  @override
+  @JsonKey(name: "original_price")
+  double? get originalPrice;
+  @override
+  List<Issue>? get issues;
   @override
   Brand? get brand;
   @override
   @JsonKey(name: "customer_review")
   Review? get customerReview;
-  @override
-  @JsonKey(name: "store_link")
-  StoreLink get storeLink;
   @override
   @JsonKey(ignore: true)
   _$DetailedThriftProductCopyWith<_DetailedThriftProduct> get copyWith =>

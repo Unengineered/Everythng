@@ -11,6 +11,7 @@ class SizeChart extends StatelessWidget {
     //TODO: Integrate with api using list as an input
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.zero,
       shrinkWrap: true,
       itemCount: 6,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

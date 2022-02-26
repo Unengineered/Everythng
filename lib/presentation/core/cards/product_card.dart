@@ -1,13 +1,13 @@
 import 'dart:ui';
 
 import 'package:everythng/core/extensions/extension_context.dart';
-import 'package:everythng/domain/discover/entities/recommended_product.dart';
+import 'package:everythng/domain/product/entities/detailed_thrift_product.dart';
 import 'package:everythng/presentation/core/network_image.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
   //TODO: change this to detailed thrift product
-  final RecommendedProduct product;
+  final DetailedThriftProduct product;
 
   const ProductCard(
     this.product, {
@@ -34,7 +34,7 @@ class ProductCard extends StatelessWidget {
                   tileMode: TileMode.decal,
                 ),
                 child: EverythngNetworkImage(
-                  url: product.picture.toString(),
+                  url: product.pictures[0].toString(),
                   alignment: Alignment.bottomCenter,
                 ),
               ),
@@ -55,7 +55,7 @@ class ProductCard extends StatelessWidget {
                   //   fit: BoxFit.cover,
                   // ),
                   child: EverythngNetworkImage(
-                    url: product.picture.toString(),
+                    url: product.pictures[0].toString(),
                   ),
                 ),
                 Padding(
@@ -66,7 +66,7 @@ class ProductCard extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(6.0),
                       child: EverythngNetworkImage(
-                        url: product.storeLink!.logo.toString(),
+                        url: product.storeLink.thumbnail.toString(),
                       ),
                     ),
                   ),
