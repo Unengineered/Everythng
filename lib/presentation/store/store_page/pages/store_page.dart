@@ -1,13 +1,14 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:everythng/domain/core/store_link.dart';
 import 'package:everythng/presentation/core/cards/store_link_card.dart';
-import 'package:everythng/presentation/core/everythng_widgets/appbar/gardient_appbar.dart';
+import 'package:everythng/presentation/core/everythng_widgets/appbar/gradient_appbar.dart';
 import 'package:everythng/presentation/core/safe_gesture_detector.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StorePage extends StatelessWidget {
-  const StorePage({Key? key}) : super(key: key);
+  final StoreLink storeLink;
+  const StorePage({Key? key, required this.storeLink}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class StorePage extends StatelessWidget {
                     const SizedBox(
                       height: 70,
                     ),
-                    const StoreLinkCard(),
+                    StoreLinkCard(storeLink: storeLink),
                     const SizedBox(
                       height: 24,
                     ),
@@ -38,33 +39,36 @@ class StorePage extends StatelessWidget {
                         letterSpacing: -1.2,
                       ),
                     ),
-                    GridView.builder(
-                      padding: const EdgeInsets.only(top: 12, bottom: 24),
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 12,
-                        crossAxisSpacing: 12,
-                        childAspectRatio: 0.8,
-                      ),
-                      itemCount: 8,
-                      itemBuilder: (context, index) {
-                        return SafeGestureDetector(
-                          onTap: () {
-                            context.router.push(ProductPageRoute());
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.asset(
-                              'assets/images/akshi.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                    // GridView.builder(
+                    //   padding: const EdgeInsets.only(top: 12, bottom: 24),
+                    //   physics: const NeverScrollableScrollPhysics(),
+                    //   shrinkWrap: true,
+                    //   gridDelegate:
+                    //       const SliverGridDelegateWithFixedCrossAxisCount(
+                    //     crossAxisCount: 2,
+                    //     mainAxisSpacing: 12,
+                    //     crossAxisSpacing: 12,
+                    //     childAspectRatio: 0.8,
+                    //   ),
+                    //   itemCount: 8,
+                    //   itemBuilder: (context, index) {
+                    //     return SafeGestureDetector(
+                    //       onTap: () {
+                    //         context.router.push(ProductPageRoute());
+                    //       },
+                    //       child: ClipRRect(
+                    //         borderRadius: BorderRadius.circular(12),
+                    //         child: Image.asset(
+                    //           'assets/images/akshi.png',
+                    //           fit: BoxFit.cover,
+                    //         ),
+                    //       ),
+                    //     );
+                    //   },
+                    // ),
+
+                    // -- divider
+
                     // const Text(
                     //   'Sold Products',
                     //   style: TextStyle(
@@ -123,7 +127,7 @@ class StorePage extends StatelessWidget {
                 ),
               ),
             ),
-            GradientAppbar()
+            const GradientAppbar()
           ],
         ),
       ),

@@ -5,13 +5,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class AnimatedPriceInformation extends HookWidget {
   const AnimatedPriceInformation({
     Key? key,
-    this.thriftPrice = '300',
-    this.originalPrice = '3000',
+    required this.thriftPrice,
+    this.originalPrice,
     required this.shouldAnimate,
   }) : super(key: key);
 
-  final String thriftPrice;
-  final String originalPrice;
+  final double thriftPrice;
+  final double? originalPrice;
   final bool shouldAnimate;
 
   @override
@@ -39,7 +39,10 @@ class AnimatedPriceInformation extends HookWidget {
             scale: _animation.value * 0.95 == 0 ? 1 :( 1 - _animation.value * 0.05),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(_animation.value * 10),
-              child: const PriceInformation(),
+              child: PriceInformation(
+                thriftPrice: thriftPrice,
+                originalPrice: originalPrice,
+              ),
             ),
           );
         },

@@ -61,7 +61,7 @@ class DiscoverPage extends StatelessWidget {
                                   itemBuilder: (context, index) {
                                     return SafeGestureDetector(
                                       onTap: () {
-                                        context.router.push(ProductPageRoute());
+                                        context.router.push(ProductPageRoute(product: products[index]));
                                       },
                                       child: ProductCard(
                                           products[index]),
@@ -133,7 +133,7 @@ class DiscoverPage extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return SafeGestureDetector(
                           onTap: () {
-                            context.router.push(const StorePageRoute());
+                            context.router.push(StorePageRoute(storeLink: stores[index]));
                           },
                           child: StoreCard(stores[index]),
                         );

@@ -53,6 +53,7 @@ class ProductRepository implements IProductRepository {
         id: "2",
         name: "PRODUCT2",
         price: 200,
+        originalPrice: 3000,
         pictures: [
           Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
           Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),

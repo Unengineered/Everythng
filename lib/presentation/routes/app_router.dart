@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:everythng/domain/core/store_link.dart';
+import 'package:everythng/domain/product/entities/detailed_thrift_product.dart';
 import 'package:everythng/presentation/auth/pages/confirm_password_page.dart';
 import 'package:everythng/presentation/auth/pages/create_password_page.dart';
 import 'package:everythng/presentation/auth/pages/login_page.dart';

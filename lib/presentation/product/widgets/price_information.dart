@@ -1,13 +1,16 @@
 import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:flutter/material.dart';
 class PriceInformation extends StatelessWidget {
+
+  final double thriftPrice;
+  final double? originalPrice;
+
   const PriceInformation({
     Key? key,
-    this.thriftPrice = '300',
-    this.originalPrice = '3000',
+    required this.thriftPrice,
+    this.originalPrice,
   }) : super(key: key);
-  final String thriftPrice;
-  final String originalPrice;
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,7 @@ class PriceInformation extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              Text(
+              if(originalPrice != null) Text(
                 'Rs $originalPrice',
                 style: TextStyle(
                   fontSize: 16,

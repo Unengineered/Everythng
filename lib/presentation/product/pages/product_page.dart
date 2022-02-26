@@ -1,6 +1,7 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:everythng/core/constants/constant_lists.dart';
 import 'package:everythng/core/extensions/extension_global_key.dart';
+import 'package:everythng/domain/product/entities/detailed_thrift_product.dart';
 import 'package:everythng/presentation/core/cards/store_link_card.dart';
 import 'package:everythng/presentation/product/widgets/glowing_image.dart';
 import 'package:everythng/presentation/product/widgets/image_preview_carousel.dart';
@@ -17,7 +18,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../core/safe_gesture_detector.dart';
 
 class ProductPage extends HookWidget {
-  ProductPage({Key? key}) : super(key: key);
+  final DetailedThriftProduct product;
+  ProductPage({Key? key, required this.product}) : super(key: key);
   final GlobalKey _buttonKey = GlobalKey();
 
   // final String heroTag;
@@ -106,6 +108,8 @@ class ProductPage extends HookWidget {
                       Offstage(
                         offstage: _offStage.value,
                         child: PriceInformation(
+                          thriftPrice: product.price,
+                          originalPrice: product.originalPrice,
                           key: _buttonKey,
                         ),
                       ),
@@ -149,9 +153,9 @@ class ProductPage extends HookWidget {
                             vertical: 0, horizontal: 18),
                         child: SafeGestureDetector(
                           onTap: () {
-                            context.router.push(const StorePageRoute());
+                            context.router.push(StorePageRoute(storeLink: product.storeLink));
                           },
-                          child: const StoreLinkCard(),
+                          child: StoreLinkCard(storeLink: product.storeLink,),
                         ),
                       ),
                       const SizedBox(
@@ -163,6 +167,7 @@ class ProductPage extends HookWidget {
               ),
             ),
             ProductPageAppbar(
+              product: product,
               shouldAnimate: _offStage.value,
             ),
           ],

@@ -88,10 +88,10 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: const DiscoverPage());
     },
     ProductPageRoute.name: (routeData) {
-      final args = routeData.argsAs<ProductPageRouteArgs>(
-          orElse: () => const ProductPageRouteArgs());
+      final args = routeData.argsAs<ProductPageRouteArgs>();
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: ProductPage(key: args.key));
+          routeData: routeData,
+          child: ProductPage(key: args.key, product: args.product));
     },
     ExpandedPicturePageRoute.name: (routeData) {
       final args = routeData.argsAs<ExpandedPicturePageRouteArgs>();
@@ -104,8 +104,10 @@ class _$AppRouter extends RootStackRouter {
               carouselList: args.carouselList));
     },
     StorePageRoute.name: (routeData) {
+      final args = routeData.argsAs<StorePageRouteArgs>();
       return CupertinoPageX<dynamic>(
-          routeData: routeData, child: const StorePage());
+          routeData: routeData,
+          child: StorePage(key: args.key, storeLink: args.storeLink));
     },
     StoreNamePageRoute.name: (routeData) {
       final args = routeData.argsAs<StoreNamePageRouteArgs>(
@@ -484,21 +486,24 @@ class DiscoverPageRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [ProductPage]
 class ProductPageRoute extends PageRouteInfo<ProductPageRouteArgs> {
-  ProductPageRoute({Key? key})
+  ProductPageRoute({Key? key, required DetailedThriftProduct product})
       : super(ProductPageRoute.name,
-            path: 'product-page', args: ProductPageRouteArgs(key: key));
+            path: 'product-page',
+            args: ProductPageRouteArgs(key: key, product: product));
 
   static const String name = 'ProductPageRoute';
 }
 
 class ProductPageRouteArgs {
-  const ProductPageRouteArgs({this.key});
+  const ProductPageRouteArgs({this.key, required this.product});
 
   final Key? key;
 
+  final DetailedThriftProduct product;
+
   @override
   String toString() {
-    return 'ProductPageRouteArgs{key: $key}';
+    return 'ProductPageRouteArgs{key: $key, product: $product}';
   }
 }
 
@@ -545,10 +550,26 @@ class ExpandedPicturePageRouteArgs {
 
 /// generated route for
 /// [StorePage]
-class StorePageRoute extends PageRouteInfo<void> {
-  const StorePageRoute() : super(StorePageRoute.name, path: 'store-page');
+class StorePageRoute extends PageRouteInfo<StorePageRouteArgs> {
+  StorePageRoute({Key? key, required StoreLink storeLink})
+      : super(StorePageRoute.name,
+            path: 'store-page',
+            args: StorePageRouteArgs(key: key, storeLink: storeLink));
 
   static const String name = 'StorePageRoute';
+}
+
+class StorePageRouteArgs {
+  const StorePageRouteArgs({this.key, required this.storeLink});
+
+  final Key? key;
+
+  final StoreLink storeLink;
+
+  @override
+  String toString() {
+    return 'StorePageRouteArgs{key: $key, storeLink: $storeLink}';
+  }
 }
 
 /// generated route for
