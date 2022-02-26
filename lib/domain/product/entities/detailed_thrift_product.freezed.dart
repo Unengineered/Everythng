@@ -29,6 +29,7 @@ class _$DetailedThriftProductTearOff {
       @JsonKey(name: "size_chart") required List<Map<String, String>> sizeChart,
       @JsonKey(name: "store_link") required StoreLink storeLink,
       String? name,
+      String? description,
       @JsonKey(name: "original_price") double? originalPrice,
       List<Issue>? issues,
       Brand? brand,
@@ -40,6 +41,7 @@ class _$DetailedThriftProductTearOff {
       sizeChart: sizeChart,
       storeLink: storeLink,
       name: name,
+      description: description,
       originalPrice: originalPrice,
       issues: issues,
       brand: brand,
@@ -67,6 +69,7 @@ mixin _$DetailedThriftProduct {
   @JsonKey(name: "store_link")
   StoreLink get storeLink => throw _privateConstructorUsedError; //optional
   String? get name => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: "original_price")
   double? get originalPrice => throw _privateConstructorUsedError;
   List<Issue>? get issues => throw _privateConstructorUsedError;
@@ -92,6 +95,7 @@ abstract class $DetailedThriftProductCopyWith<$Res> {
       @JsonKey(name: "size_chart") List<Map<String, String>> sizeChart,
       @JsonKey(name: "store_link") StoreLink storeLink,
       String? name,
+      String? description,
       @JsonKey(name: "original_price") double? originalPrice,
       List<Issue>? issues,
       Brand? brand,
@@ -119,6 +123,7 @@ class _$DetailedThriftProductCopyWithImpl<$Res>
     Object? sizeChart = freezed,
     Object? storeLink = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? originalPrice = freezed,
     Object? issues = freezed,
     Object? brand = freezed,
@@ -148,6 +153,10 @@ class _$DetailedThriftProductCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       originalPrice: originalPrice == freezed
           ? _value.originalPrice
@@ -212,6 +221,7 @@ abstract class _$DetailedThriftProductCopyWith<$Res>
       @JsonKey(name: "size_chart") List<Map<String, String>> sizeChart,
       @JsonKey(name: "store_link") StoreLink storeLink,
       String? name,
+      String? description,
       @JsonKey(name: "original_price") double? originalPrice,
       List<Issue>? issues,
       Brand? brand,
@@ -244,6 +254,7 @@ class __$DetailedThriftProductCopyWithImpl<$Res>
     Object? sizeChart = freezed,
     Object? storeLink = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? originalPrice = freezed,
     Object? issues = freezed,
     Object? brand = freezed,
@@ -273,6 +284,10 @@ class __$DetailedThriftProductCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       originalPrice: originalPrice == freezed
           ? _value.originalPrice
@@ -304,6 +319,7 @@ class _$_DetailedThriftProduct implements _DetailedThriftProduct {
       @JsonKey(name: "size_chart") required this.sizeChart,
       @JsonKey(name: "store_link") required this.storeLink,
       this.name,
+      this.description,
       @JsonKey(name: "original_price") this.originalPrice,
       this.issues,
       this.brand,
@@ -328,6 +344,8 @@ class _$_DetailedThriftProduct implements _DetailedThriftProduct {
   @override //optional
   final String? name;
   @override
+  final String? description;
+  @override
   @JsonKey(name: "original_price")
   final double? originalPrice;
   @override
@@ -340,7 +358,7 @@ class _$_DetailedThriftProduct implements _DetailedThriftProduct {
 
   @override
   String toString() {
-    return 'DetailedThriftProduct(id: $id, price: $price, pictures: $pictures, sizeChart: $sizeChart, storeLink: $storeLink, name: $name, originalPrice: $originalPrice, issues: $issues, brand: $brand, customerReview: $customerReview)';
+    return 'DetailedThriftProduct(id: $id, price: $price, pictures: $pictures, sizeChart: $sizeChart, storeLink: $storeLink, name: $name, description: $description, originalPrice: $originalPrice, issues: $issues, brand: $brand, customerReview: $customerReview)';
   }
 
   @override
@@ -354,6 +372,8 @@ class _$_DetailedThriftProduct implements _DetailedThriftProduct {
             const DeepCollectionEquality().equals(other.sizeChart, sizeChart) &&
             const DeepCollectionEquality().equals(other.storeLink, storeLink) &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
             const DeepCollectionEquality()
                 .equals(other.originalPrice, originalPrice) &&
             const DeepCollectionEquality().equals(other.issues, issues) &&
@@ -371,6 +391,7 @@ class _$_DetailedThriftProduct implements _DetailedThriftProduct {
       const DeepCollectionEquality().hash(sizeChart),
       const DeepCollectionEquality().hash(storeLink),
       const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(originalPrice),
       const DeepCollectionEquality().hash(issues),
       const DeepCollectionEquality().hash(brand),
@@ -399,6 +420,7 @@ abstract class _DetailedThriftProduct implements DetailedThriftProduct {
       @JsonKey(name: "store_link")
           required StoreLink storeLink,
       String? name,
+      String? description,
       @JsonKey(name: "original_price")
           double? originalPrice,
       List<Issue>? issues,
@@ -424,6 +446,8 @@ abstract class _DetailedThriftProduct implements DetailedThriftProduct {
   StoreLink get storeLink;
   @override //optional
   String? get name;
+  @override
+  String? get description;
   @override
   @JsonKey(name: "original_price")
   double? get originalPrice;

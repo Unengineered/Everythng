@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDescriptionElement extends StatelessWidget {
-  const ProductDescriptionElement({
-    Key? key, this.description = li,
-  }) : super(key: key);
+
   final String description;
+
+  const ProductDescriptionElement({
+    Key? key,required this.description,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(

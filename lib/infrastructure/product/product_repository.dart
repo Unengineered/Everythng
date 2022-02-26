@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:everythng/core/constants/constant_strings.dart';
 import 'package:everythng/domain/core/store_link.dart';
 import 'package:everythng/domain/product/entities/detailed_thrift_product.dart';
 import 'package:everythng/domain/product/entities/product_failure.dart';
@@ -58,9 +59,9 @@ class ProductRepository implements IProductRepository {
       ),
       DetailedThriftProduct(
         id: "2",
-        name: "PRODUCT2",
         price: 200,
         originalPrice: 3000,
+        description: li,
         pictures: [
           Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
           Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),

@@ -98,9 +98,12 @@ class ProductPage extends HookWidget {
                       const SizedBox(
                         height: 24,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: InformationRow(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: InformationRow(
+                          productName: product.name,
+                          brandLogo: product.brand?.logo,
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -121,30 +124,36 @@ class ProductPage extends HookWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                        child: SizeDescriptionCard(sizeChart: product.sizeChart),
+                        child:
+                            SizeDescriptionCard(sizeChart: product.sizeChart),
                       ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18),
-                        child: ProductDescriptionElement(),
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 18, bottom: 12),
-                        child: Text(
-                          'Issues',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: -1.3,
+                      if (product.description != null) ...[
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 18),
+                          child: ProductDescriptionElement(
+                              description: product.description!),
+                        ),
+                      ],
+                      if (product.issues != null) ...[
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 18, bottom: 12),
+                          child: Text(
+                            'Issues',
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: -1.3,
+                            ),
                           ),
                         ),
-                      ),
-                      const IssuesList(),
+                        const IssuesList(),
+                      ],
                       const SizedBox(
                         height: 24,
                       ),
@@ -153,9 +162,12 @@ class ProductPage extends HookWidget {
                             vertical: 0, horizontal: 18),
                         child: SafeGestureDetector(
                           onTap: () {
-                            context.router.push(StorePageRoute(storeLink: product.storeLink));
+                            context.router.push(
+                                StorePageRoute(storeLink: product.storeLink));
                           },
-                          child: StoreLinkCard(storeLink: product.storeLink,),
+                          child: StoreLinkCard(
+                            storeLink: product.storeLink,
+                          ),
                         ),
                       ),
                       const SizedBox(

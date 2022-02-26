@@ -24,6 +24,7 @@ class DetailedThriftProduct with _$DetailedThriftProduct{
 
       //optional
       String? name,
+      String? description,
       @JsonKey(name: "original_price")
       double? originalPrice,
       List<Issue>? issues,
