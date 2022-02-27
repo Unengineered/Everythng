@@ -14,14 +14,13 @@ import 'package:shared_preferences/shared_preferences.dart' as _i9;
 
 import 'application/auth/auth_cubit/auth_cubit.dart' as _i10;
 import 'application/auth/auth_form_cubit/auth_form_cubit.dart' as _i11;
-import 'application/discover/discover_cubit.dart' as _i31;
+import 'application/discover/discover_cubit.dart' as _i30;
 import 'application/list/list_cubit.dart' as _i24;
 import 'application/marketplace/marketplace_cubit.dart' as _i25;
 import 'application/profile/profile_cubit/profile_cubit.dart' as _i26;
 import 'application/profile/profile_form_cubit/profile_form_cubit.dart' as _i27;
-import 'application/store/store_cubit/store_cubit.dart' as _i28;
-import 'application/store/store_form_cubit/store_form_cubit.dart' as _i29;
-import 'application/today/today_cubit.dart' as _i30;
+import 'application/store/store_cubit/store_page_cubit.dart' as _i28;
+import 'application/today/today_cubit.dart' as _i29;
 import 'domain/auth/i_auth_repository.dart' as _i6;
 import 'domain/discover/i_discover_repository.dart' as _i12;
 import 'domain/list/i_list_repository.dart' as _i14;
@@ -29,9 +28,9 @@ import 'domain/marketplace/i_marketplace_repository.dart' as _i16;
 import 'domain/product/i_product_repository.dart' as _i18;
 import 'domain/profile/i_profile_repository.dart' as _i20;
 import 'domain/store/i_store_repository.dart' as _i22;
-import 'infrastructure/auth/auth_injection_module.dart' as _i33;
+import 'infrastructure/auth/auth_injection_module.dart' as _i32;
 import 'infrastructure/auth/auth_repository.dart' as _i7;
-import 'infrastructure/core/core_injection_module.dart' as _i32;
+import 'infrastructure/core/core_injection_module.dart' as _i31;
 import 'infrastructure/discover/discover_repository.dart' as _i13;
 import 'infrastructure/list/list_repository.dart' as _i15;
 import 'infrastructure/marketplace/marketplace_repository.dart' as _i17;
@@ -80,16 +79,15 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       _i26.ProfileCubit(get<_i10.AuthCubit>(), get<_i20.IProfileRepository>()));
   gh.factory<_i27.ProfileFormCubit>(
       () => _i27.ProfileFormCubit(get<_i26.ProfileCubit>()));
-  gh.singleton<_i28.StoreCubit>(_i28.StoreCubit(get<_i22.IStoreRepository>()));
-  gh.factory<_i29.StoreFormCubit>(
-      () => _i29.StoreFormCubit(get<_i28.StoreCubit>()));
-  gh.singleton<_i30.TodayCubit>(_i30.TodayCubit(
+  gh.factory<_i28.StorePageCubit>(() => _i28.StorePageCubit(
       get<_i22.IStoreRepository>(), get<_i18.IProductRepository>()));
-  gh.lazySingleton<_i31.DiscoverCubit>(
-      () => _i31.DiscoverCubit(get<_i12.IDiscoverRepository>()));
+  gh.singleton<_i29.TodayCubit>(_i29.TodayCubit(
+      get<_i22.IStoreRepository>(), get<_i18.IProductRepository>()));
+  gh.lazySingleton<_i30.DiscoverCubit>(
+      () => _i30.DiscoverCubit(get<_i12.IDiscoverRepository>()));
   return get;
 }
 
-class _$CoreInjectionModule extends _i32.CoreInjectionModule {}
+class _$CoreInjectionModule extends _i31.CoreInjectionModule {}
 
-class _$AuthInjectionModule extends _i33.AuthInjectionModule {}
+class _$AuthInjectionModule extends _i32.AuthInjectionModule {}

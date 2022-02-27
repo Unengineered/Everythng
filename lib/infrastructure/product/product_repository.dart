@@ -31,14 +31,19 @@ class ProductRepository implements IProductRepository {
   @override
   Future<Either<ProductFailure, List<DetailedThriftProduct>>>
       getDetailedThriftProducts() async {
+    //await Future.delayed(const Duration(seconds: 2));
+    //return left(const ProductFailure.productUnavailable());
+
     return right([
       DetailedThriftProduct(
         id: "1",
         name: "PRODUCT1",
         price: 200,
         pictures: [
-          Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
-          Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
         ],
         sizeChart: [
           {"key": "shoulder", "value": "16 inches"},
@@ -54,7 +59,8 @@ class ProductRepository implements IProductRepository {
         storeLink: StoreLink(
             name: "STORE 1",
             id: "5",
-            thumbnail: Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+            thumbnail: Uri.parse(
+                "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
             instagram: Uri.parse("https://www.instagram.com/store1")),
       ),
       DetailedThriftProduct(
@@ -63,8 +69,10 @@ class ProductRepository implements IProductRepository {
         originalPrice: 3000,
         description: li,
         pictures: [
-          Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
-          Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
         ],
         sizeChart: [
           {"key": "key", "value": "value"},
@@ -73,7 +81,8 @@ class ProductRepository implements IProductRepository {
         storeLink: StoreLink(
             name: "STORE 1",
             id: "5",
-            thumbnail: Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+            thumbnail: Uri.parse(
+                "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
             instagram: Uri.parse("https://www.instagram.com/store1")),
       ),
       DetailedThriftProduct(
@@ -81,8 +90,10 @@ class ProductRepository implements IProductRepository {
         name: "PRODUCT3",
         price: 200,
         pictures: [
-          Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
-          Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
         ],
         sizeChart: [
           {"key": "key", "value": "value"},
@@ -91,11 +102,97 @@ class ProductRepository implements IProductRepository {
         storeLink: StoreLink(
             name: "STORE 1",
             id: "5",
-            thumbnail: Uri.parse("https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+            thumbnail: Uri.parse(
+                "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
             instagram: Uri.parse("https://www.instagram.com/store1")),
       )
     ]);
     // TODO: implement getDetailedThriftProducts
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<ProductFailure, List<DetailedThriftProduct>>>
+      getDetailedThriftProductsByStore(String storeId) async {
+
+    //await Future.delayed(const Duration(seconds: 2));
+    // return left(const ProductFailure.productUnavailable());
+
+    return right([
+      DetailedThriftProduct(
+        id: "1",
+        name: "PRODUCT1",
+        price: 200,
+        pictures: [
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+        ],
+        sizeChart: [
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "shoulder", "value": "16 inches"},
+          {"key": "key", "value": "value"}
+        ],
+        storeLink: StoreLink(
+            name: "STORE 1",
+            id: "5",
+            thumbnail: Uri.parse(
+                "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+            instagram: Uri.parse("https://www.instagram.com/store1")),
+      ),
+      DetailedThriftProduct(
+        id: "2",
+        price: 200,
+        originalPrice: 3000,
+        description: li,
+        pictures: [
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+        ],
+        sizeChart: [
+          {"key": "key", "value": "value"},
+          {"key": "key", "value": "value"}
+        ],
+        storeLink: StoreLink(
+            name: "STORE 1",
+            id: "5",
+            thumbnail: Uri.parse(
+                "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+            instagram: Uri.parse("https://www.instagram.com/store1")),
+      ),
+      DetailedThriftProduct(
+        id: "3",
+        name: "PRODUCT3",
+        price: 200,
+        pictures: [
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+          Uri.parse(
+              "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/products%2Funengineered%2F_VED1382.jpg?alt=media&token=c08ecbb7-b1cf-42a0-a866-72362168218a"),
+        ],
+        sizeChart: [
+          {"key": "key", "value": "value"},
+          {"key": "key", "value": "value"}
+        ],
+        storeLink: StoreLink(
+            name: "STORE 1",
+            id: "5",
+            thumbnail: Uri.parse(
+                "https://firebasestorage.googleapis.com/v0/b/everything-25.appspot.com/o/logos%2Fshirtegg-logo.png?alt=media&token=5b6fa5b1-cf5a-4597-9907-ae53101934e2"),
+            instagram: Uri.parse("https://www.instagram.com/store1")),
+      )
+    ]);
+
+    // TODO: implement getDetailedThriftProductsByStore
     throw UnimplementedError();
   }
 }
