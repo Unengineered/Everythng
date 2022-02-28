@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 class ProductPageAppbar extends StatelessWidget {
   const ProductPageAppbar({
     Key? key,
-    required this.shouldAnimate,
+    required this.animationValue,
   }) : super(key: key);
-  final bool shouldAnimate;
+  final ValueNotifier<double> animationValue;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ProductPageAppbar extends StatelessWidget {
       children: [
         const GradientAppbar(),
         AnimatedPriceInformation(
-          shouldAnimate: shouldAnimate,
+          animationValue: animationValue,
         ),
       ],
     );
