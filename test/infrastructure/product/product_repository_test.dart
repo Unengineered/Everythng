@@ -8,7 +8,6 @@ import '../../setup/product/constants.dart';
 import '../../setup/product/product_network_kit_helper.dart';
 
 void main(){
-
   setUpAll(() {
     registerFallbackValue(Uri.parse("https://www.everythng.in/"));
   });
@@ -61,6 +60,6 @@ void main(){
       //Assert
       expect(result, left(const ProductFailure.networkFailure()));
     });
-  });
+  }, skip: true);
 
 }

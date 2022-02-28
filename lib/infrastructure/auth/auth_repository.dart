@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:everythng/core/api/url.dart';
+import 'package:everythng/core/constants/url.dart';
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
 import 'package:everythng/domain/auth/i_auth_repository.dart';
 import 'package:fort_knox/fort_knox.dart';
@@ -18,7 +18,7 @@ class AuthRepository implements IAuthRepository {
   @override
   Future<Either<AuthFailure, bool>> doesEmailExist(
       {required String email}) async {
-    return right(true);
+    //return right(true);
 
     final response = await client
         .get(Uri.http(url, "/account", {"email": email.toString()}));
