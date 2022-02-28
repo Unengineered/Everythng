@@ -27,17 +27,15 @@ class ProductPage extends HookWidget {
     final _selectedIndex = useState(0);
     final _scrollController = useScrollController();
     var _physics = useState(const ScrollPhysics());
-    final _offStage = useState(false);
+    var _animationValue = useState(0.0);
 
     _scrollController.addListener(() {
-      if (_buttonKey.getGlobalYOffset <=
-              MediaQuery.of(context).padding.top + 80 &&
-          _buttonKey.getGlobalYOffset >= 0 &&
-          !_offStage.value) {
-        _offStage.value = true;
+      if (_buttonKey.getGlobalYOffset >= 0 &&
+          _buttonKey.getGlobalYOffset < 120) {
+        _animationValue.value = 1 - (_buttonKey.getGlobalYOffset / 133);
       }
-      if (_buttonKey.getGlobalYOffset >= 133) {
-        _offStage.value = false;
+      if (_buttonKey.getGlobalYOffset >= 120) {
+        _animationValue.value = 0;
       }
       if (_scrollController.position.pixels < 0) {
         _scrollController.animateTo(0,
@@ -103,13 +101,13 @@ class ProductPage extends HookWidget {
                         height: 20,
                       ),
                       Offstage(
-                        offstage: _offStage.value,
+                        offstage: _animationValue.value != 0,
                         child: PriceInformation(
                           key: _buttonKey,
                         ),
                       ),
                       SizedBox(
-                        height: _offStage.value ? 80 : 0,
+                        height: _animationValue.value != 0 ? 80 : 0,
                       ),
                       const SizedBox(
                         height: 24,
@@ -162,7 +160,7 @@ class ProductPage extends HookWidget {
               ),
             ),
             ProductPageAppbar(
-              shouldAnimate: _offStage.value,
+              animationValue: _animationValue,
             ),
           ],
         ),
