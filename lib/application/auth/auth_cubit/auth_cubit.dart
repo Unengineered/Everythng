@@ -5,7 +5,6 @@ import 'package:everythng/domain/auth/i_auth_repository.dart';
 import 'package:fort_knox/fort_knox.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';

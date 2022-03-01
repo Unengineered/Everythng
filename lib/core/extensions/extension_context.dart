@@ -8,8 +8,8 @@ extension ThemeContext on BuildContext {
   ExtendedThemeData get everythngThemeData => ExtendedThemeData(
     primaryColor: everythngPrimaryColor,
     textAndIconography: TextAndIconography.instance,
-    successColor: everthngSuccessColor,
-    errorColor: everthngFailureColor,
+    successColor: everythngSuccessColor,
+    errorColor: everythngFailureColor,
   );
   ExtendedTextTheme get everythngTextTheme => ExtendedTextTheme.instance;
 

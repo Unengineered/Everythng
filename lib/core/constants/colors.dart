@@ -1,10 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 // State Colors
-Color everthngSuccessColor = const Color(0xFF34C759);
-Color everthngFailureColor = const Color(0xFFFF453A);
+Color everythngSuccessColor = const Color(0xFF34C759);
+Color everythngFailureColor = const Color(0xFFFF453A);
 MaterialColor everythngPrimaryColor = const MaterialColor(
   0xFF007AE1,
   <int, Color>{
