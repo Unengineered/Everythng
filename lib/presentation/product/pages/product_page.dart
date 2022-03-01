@@ -52,111 +52,102 @@ class ProductPage extends HookWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            ScrollConfiguration(
-              behavior: const ScrollBehavior(),
-              child: GlowingOverscrollIndicator(
-                showLeading: false,
-                showTrailing: false,
-                axisDirection: AxisDirection.down,
-                color: Colors.transparent,
-                child: SingleChildScrollView(
-                  controller: _scrollController,
-                  physics: _physics.value,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 90,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 0, horizontal: 48),
-                        child: GlowingImage(
-                          onTap: () {
-                            context.router.push(
-                              ExpandedPicturePageRoute(
-                                selectedIndex: _selectedIndex,
-                                carouselList: imageCarouselList,
-                                productName: 'Blue overcoat with grey scarf',
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 36,
-                      ),
-                      ImagePreviewCarousel(
-                        carouselList: imageCarouselList,
-                        selectedIndex: _selectedIndex,
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: InformationRow(),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Offstage(
-                        offstage: _animationValue.value != 0,
-                        child: PriceInformation(
-                          key: _buttonKey,
-                        ),
-                      ),
-                      SizedBox(
-                        height: _animationValue.value != 0 ? 80 : 0,
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: SizeDescriptionCard(),
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18),
-                        child: ProductDescriptionElement(),
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 18, bottom: 12),
-                        child: Text(
-                          'Issues',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: -1.3,
-                          ),
-                        ),
-                      ),
-                      const IssuesList(),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 0, horizontal: 18),
-                        child: SafeGestureDetector(
-                          onTap: () {
-                            context.router.push(const StorePageRoute());
-                          },
-                          child: const StoreLinkCard(),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                    ],
+            SingleChildScrollView(
+              controller: _scrollController,
+              physics: _physics.value,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 90,
                   ),
-                ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 0, horizontal: 48),
+                    child: GlowingImage(
+                      onTap: () {
+                        context.router.push(
+                          ExpandedPicturePageRoute(
+                            selectedIndex: _selectedIndex,
+                            carouselList: imageCarouselList,
+                            productName: 'Blue overcoat with grey scarf',
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 36,
+                  ),
+                  ImagePreviewCarousel(
+                    carouselList: imageCarouselList,
+                    selectedIndex: _selectedIndex,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 18.0),
+                    child: InformationRow(),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Offstage(
+                    offstage: _animationValue.value != 0,
+                    child: PriceInformation(
+                      key: _buttonKey,
+                    ),
+                  ),
+                  SizedBox(
+                    height: _animationValue.value != 0 ? 80 : 0,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 18.0),
+                    child: SizeDescriptionCard(),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 18),
+                    child: ProductDescriptionElement(),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 18, bottom: 12),
+                    child: Text(
+                      'Issues',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: -1.3,
+                      ),
+                    ),
+                  ),
+                  const IssuesList(),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 0, horizontal: 18),
+                    child: SafeGestureDetector(
+                      onTap: () {
+                        context.router.push(const StorePageRoute());
+                      },
+                      child: const StoreLinkCard(),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                ],
               ),
             ),
             ProductPageAppbar(
