@@ -1,11 +1,11 @@
-import 'package:everythng/core/extensions/extension_context.dart';
+
 import 'package:everythng/core/constants/shadows.dart';
-import 'package:everythng/domain/discover/entities/recommended_store.dart';
+import 'package:everythng/domain/core/store_link.dart';
 import 'package:everythng/presentation/core/network_image.dart';
 import 'package:flutter/material.dart';
 
 class StoreCard extends StatelessWidget {
-  final RecommendedStore store;
+  final StoreLink store;
   const StoreCard(
     this.store, {
     Key? key,
@@ -22,7 +22,7 @@ class StoreCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: EverythngNetworkImage(
-          url: store.logo.toString(),
+          url: store.thumbnail.toString(),
           fit: BoxFit.contain,
         ),
       ),

@@ -50,5 +50,5 @@ void main(){
         DetailedThriftProductState.loaded(detailedThriftProduct: DETAILED_THRIFT_PRODUCT)
       ],
     );
-  });
+  }, skip: true);
 }

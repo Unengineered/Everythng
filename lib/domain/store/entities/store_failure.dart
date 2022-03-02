@@ -4,8 +4,9 @@ part 'store_failure.freezed.dart';
 
 @freezed
 class StoreFailure with _$StoreFailure {
-  const factory StoreFailure.serverError() = ServerError;
-  const factory StoreFailure.noStoreData() = NoStoreData;
-  const factory StoreFailure.uploadFailed() = UploadFailed;
+  const factory StoreFailure.serverError() = _ServerError;
+  const factory StoreFailure.noStoreData() = _NoStoreData;
+  const factory StoreFailure.uploadFailed() = _UploadFailed;
+  const factory StoreFailure.networkFailure() = _NetworkFailure;
 }
 

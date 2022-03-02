@@ -28,5 +28,5 @@ void main() {
               const DiscoverState.loading(),
               const DiscoverState.error('network-failure')
             ]);
-  });
+  }, skip: true);
 }

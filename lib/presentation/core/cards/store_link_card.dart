@@ -1,10 +1,12 @@
 import 'package:everythng/core/constants/shadows.dart';
+import 'package:everythng/domain/core/store_link.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class StoreLinkCard extends StatelessWidget {
+  final StoreLink storeLink;
   const StoreLinkCard({
-    Key? key,
+    Key? key, required this.storeLink,
   }) : super(key: key);
 
   @override
@@ -34,9 +36,9 @@ class StoreLinkCard extends StatelessWidget {
               const SizedBox(
                 width: 12,
               ),
-              const Text(
-                'nefsfinds',
-                style: TextStyle(
+              Text(
+                storeLink.name,
+                style: const TextStyle(
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
                   fontSize: 25,

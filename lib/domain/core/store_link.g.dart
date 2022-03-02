@@ -7,16 +7,16 @@ part of 'store_link.dart';
 // **************************************************************************
 
 _$_StoreLink _$$_StoreLinkFromJson(Map<String, dynamic> json) => _$_StoreLink(
-      id: json['id'] as String,
       name: json['name'] as String,
-      logo: Uri.parse(json['logo'] as String),
-      tagline: json['tagline'] as String?,
+      id: json['id'] as String,
+      thumbnail: Uri.parse(json['thumbnail'] as String),
+      instagram: Uri.parse(json['instagram'] as String),
     );
 
 Map<String, dynamic> _$$_StoreLinkToJson(_$_StoreLink instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
-      'logo': instance.logo.toString(),
-      'tagline': instance.tagline,
+      'id': instance.id,
+      'thumbnail': instance.thumbnail.toString(),
+      'instagram': instance.instagram.toString(),
     };

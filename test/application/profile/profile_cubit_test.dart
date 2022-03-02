@@ -49,5 +49,5 @@ void main() {
         act: (ProfileCubit cubit) => cubit.setProfileData(everythngUserConst),
         expect: () =>
         [ProfileState.loaded(everythngUser: everythngUserConst)]);
-  });
+  }, skip: true);
 }

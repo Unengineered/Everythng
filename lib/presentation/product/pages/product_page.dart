@@ -1,6 +1,7 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:everythng/core/constants/constant_lists.dart';
 import 'package:everythng/core/extensions/extension_global_key.dart';
+import 'package:everythng/domain/product/entities/detailed_thrift_product.dart';
 import 'package:everythng/presentation/core/cards/store_link_card.dart';
 import 'package:everythng/presentation/product/widgets/glowing_image.dart';
 import 'package:everythng/presentation/product/widgets/image_preview_carousel.dart';
@@ -17,7 +18,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../core/safe_gesture_detector.dart';
 
 class ProductPage extends HookWidget {
-  ProductPage({Key? key}) : super(key: key);
+  final DetailedThriftProduct product;
+  ProductPage({Key? key, required this.product}) : super(key: key);
   final GlobalKey _buttonKey = GlobalKey();
 
   // final String heroTag;
@@ -49,7 +51,8 @@ class ProductPage extends HookWidget {
       }
     });
     return Scaffold(
-      body: SafeArea(
+      body: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Stack(
           children: [
             SingleChildScrollView(
@@ -86,9 +89,10 @@ class ProductPage extends HookWidget {
                   const SizedBox(
                     height: 24,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.0),
-                    child: InformationRow(),
+                   Padding(
+                    padding: constEdgeInsets.symmetric(horizontal: 18.0),
+                    child: InformationRow(productName: product.name,
+                          brandLogo: product.brand?.logo,),
                   ),
                   const SizedBox(
                     height: 20,
@@ -96,7 +100,8 @@ class ProductPage extends HookWidget {
                   Offstage(
                     offstage: _animationValue.value != 0,
                     child: PriceInformation(
-                      key: _buttonKey,
+                      thriftPrice: product.price,
+                          originalPrice: product.originalPrice,key: _buttonKey,
                     ),
                   ),
                   SizedBox(
@@ -105,18 +110,18 @@ class ProductPage extends HookWidget {
                   const SizedBox(
                     height: 24,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.0),
-                    child: SizeDescriptionCard(),
-                  ),
+                   Padding(
+                    padding: constEdgeInsets.symmetric(horizontal: 18.0),
+                    child: SizeDescriptionCard(sizeChart: product.sizeChart),),
+                  if (product.description != null) ...[
                   const SizedBox(
                     height: 24,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18),
-                    child: ProductDescriptionElement(),
-                  ),
-                  const SizedBox(
+                   Padding(
+                    padding: constEdgeInsets.symmetric(horizontal: 18),
+                    child: ProductDescriptionElement(description: product.description!),),
+                  ],
+                  if (product.issues != null) ...[const SizedBox(
                     height: 24,
                   ),
                   const Padding(
@@ -131,7 +136,7 @@ class ProductPage extends HookWidget {
                     ),
                   ),
                   const IssuesList(),
-                  const SizedBox(
+                  ],const SizedBox(
                     height: 24,
                   ),
                   Padding(
@@ -139,9 +144,10 @@ class ProductPage extends HookWidget {
                         const EdgeInsets.symmetric(vertical: 0, horizontal: 18),
                     child: SafeGestureDetector(
                       onTap: () {
-                        context.router.push(const StorePageRoute());
+                        context.router.push( StorePageRoute(storeLink: product.storeLink));
                       },
-                      child: const StoreLinkCard(),
+                      child: StoreLinkCard(
+                            storeLink: product.storeLink,),
                     ),
                   ),
                   const SizedBox(
@@ -151,6 +157,7 @@ class ProductPage extends HookWidget {
               ),
             ),
             ProductPageAppbar(
+              product: product,
               animationValue: _animationValue,
             ),
           ],
