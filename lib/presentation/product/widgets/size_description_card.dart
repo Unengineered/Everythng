@@ -4,8 +4,12 @@ import 'package:everythng/presentation/product/widgets/size_information_element.
 import 'package:flutter/material.dart';
 
 class SizeDescriptionCard extends StatelessWidget {
+
+  final List<Map<String, String>> sizeChart;
+
   const SizeDescriptionCard({
     Key? key,
+    required this.sizeChart
   }) : super(key: key);
 
   @override
@@ -19,23 +23,23 @@ class SizeDescriptionCard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          SizeInformationElement(),
-          SizedBox(
+        children: [
+          //SizeInformationElement(),
+          const SizedBox(
             height: 12,
           ),
-          Text(
-            'Size Chart',
+          const Text(
+            'Size chart',
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w600,
               letterSpacing: -1.3,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
-          SizeChart(),
+          SizeChart(sizeChart: sizeChart),
         ],
       ),
     );

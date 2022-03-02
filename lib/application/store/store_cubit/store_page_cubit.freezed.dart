@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'store_cubit.dart';
+part of 'store_page_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,16 +14,19 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$StoreStateTearOff {
-  const _$StoreStateTearOff();
+class _$StorePageStateTearOff {
+  const _$StorePageStateTearOff();
 
   _Initial initial() {
     return const _Initial();
   }
 
-  _Loaded loaded({required Store store}) {
+  _Loaded loaded(
+      {Either<StoreFailure, StoreLink>? storeLink,
+      Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts}) {
     return _Loaded(
-      store: store,
+      storeLink: storeLink,
+      storeProducts: storeProducts,
     );
   }
 
@@ -39,14 +42,16 @@ class _$StoreStateTearOff {
 }
 
 /// @nodoc
-const $StoreState = _$StoreStateTearOff();
+const $StorePageState = _$StorePageStateTearOff();
 
 /// @nodoc
-mixin _$StoreState {
+mixin _$StorePageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Store store) loaded,
+    required TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)
+        loaded,
     required TResult Function(StoreFailure storeFailure) error,
     required TResult Function() loading,
   }) =>
@@ -54,7 +59,9 @@ mixin _$StoreState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Store store)? loaded,
+    TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)?
+        loaded,
     TResult Function(StoreFailure storeFailure)? error,
     TResult Function()? loading,
   }) =>
@@ -62,7 +69,9 @@ mixin _$StoreState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Store store)? loaded,
+    TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)?
+        loaded,
     TResult Function(StoreFailure storeFailure)? error,
     TResult Function()? loading,
     required TResult orElse(),
@@ -96,19 +105,20 @@ mixin _$StoreState {
 }
 
 /// @nodoc
-abstract class $StoreStateCopyWith<$Res> {
-  factory $StoreStateCopyWith(
-          StoreState value, $Res Function(StoreState) then) =
-      _$StoreStateCopyWithImpl<$Res>;
+abstract class $StorePageStateCopyWith<$Res> {
+  factory $StorePageStateCopyWith(
+          StorePageState value, $Res Function(StorePageState) then) =
+      _$StorePageStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$StoreStateCopyWithImpl<$Res> implements $StoreStateCopyWith<$Res> {
-  _$StoreStateCopyWithImpl(this._value, this._then);
+class _$StorePageStateCopyWithImpl<$Res>
+    implements $StorePageStateCopyWith<$Res> {
+  _$StorePageStateCopyWithImpl(this._value, this._then);
 
-  final StoreState _value;
+  final StorePageState _value;
   // ignore: unused_field
-  final $Res Function(StoreState) _then;
+  final $Res Function(StorePageState) _then;
 }
 
 /// @nodoc
@@ -118,7 +128,7 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$StoreStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$StorePageStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -134,7 +144,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'StoreState.initial()';
+    return 'StorePageState.initial()';
   }
 
   @override
@@ -150,7 +160,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Store store) loaded,
+    required TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)
+        loaded,
     required TResult Function(StoreFailure storeFailure) error,
     required TResult Function() loading,
   }) {
@@ -161,7 +173,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Store store)? loaded,
+    TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)?
+        loaded,
     TResult Function(StoreFailure storeFailure)? error,
     TResult Function()? loading,
   }) {
@@ -172,7 +186,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Store store)? loaded,
+    TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)?
+        loaded,
     TResult Function(StoreFailure storeFailure)? error,
     TResult Function()? loading,
     required TResult orElse(),
@@ -221,7 +237,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements StoreState {
+abstract class _Initial implements StorePageState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -229,13 +245,13 @@ abstract class _Initial implements StoreState {
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
-  $Res call({Store store});
-
-  $StoreCopyWith<$Res> get store;
+  $Res call(
+      {Either<StoreFailure, StoreLink>? storeLink,
+      Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts});
 }
 
 /// @nodoc
-class __$LoadedCopyWithImpl<$Res> extends _$StoreStateCopyWithImpl<$Res>
+class __$LoadedCopyWithImpl<$Res> extends _$StorePageStateCopyWithImpl<$Res>
     implements _$LoadedCopyWith<$Res> {
   __$LoadedCopyWithImpl(_Loaded _value, $Res Function(_Loaded) _then)
       : super(_value, (v) => _then(v as _Loaded));
@@ -245,35 +261,35 @@ class __$LoadedCopyWithImpl<$Res> extends _$StoreStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? store = freezed,
+    Object? storeLink = freezed,
+    Object? storeProducts = freezed,
   }) {
     return _then(_Loaded(
-      store: store == freezed
-          ? _value.store
-          : store // ignore: cast_nullable_to_non_nullable
-              as Store,
+      storeLink: storeLink == freezed
+          ? _value.storeLink
+          : storeLink // ignore: cast_nullable_to_non_nullable
+              as Either<StoreFailure, StoreLink>?,
+      storeProducts: storeProducts == freezed
+          ? _value.storeProducts
+          : storeProducts // ignore: cast_nullable_to_non_nullable
+              as Either<ProductFailure, List<DetailedThriftProduct>>?,
     ));
-  }
-
-  @override
-  $StoreCopyWith<$Res> get store {
-    return $StoreCopyWith<$Res>(_value.store, (value) {
-      return _then(_value.copyWith(store: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded({required this.store});
+  const _$_Loaded({this.storeLink, this.storeProducts});
 
   @override
-  final Store store;
+  final Either<StoreFailure, StoreLink>? storeLink;
+  @override
+  final Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts;
 
   @override
   String toString() {
-    return 'StoreState.loaded(store: $store)';
+    return 'StorePageState.loaded(storeLink: $storeLink, storeProducts: $storeProducts)';
   }
 
   @override
@@ -281,12 +297,16 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Loaded &&
-            const DeepCollectionEquality().equals(other.store, store));
+            const DeepCollectionEquality().equals(other.storeLink, storeLink) &&
+            const DeepCollectionEquality()
+                .equals(other.storeProducts, storeProducts));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(store));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(storeLink),
+      const DeepCollectionEquality().hash(storeProducts));
 
   @JsonKey(ignore: true)
   @override
@@ -297,35 +317,41 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Store store) loaded,
+    required TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)
+        loaded,
     required TResult Function(StoreFailure storeFailure) error,
     required TResult Function() loading,
   }) {
-    return loaded(store);
+    return loaded(storeLink, storeProducts);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Store store)? loaded,
+    TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)?
+        loaded,
     TResult Function(StoreFailure storeFailure)? error,
     TResult Function()? loading,
   }) {
-    return loaded?.call(store);
+    return loaded?.call(storeLink, storeProducts);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Store store)? loaded,
+    TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)?
+        loaded,
     TResult Function(StoreFailure storeFailure)? error,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(store);
+      return loaded(storeLink, storeProducts);
     }
     return orElse();
   }
@@ -368,10 +394,14 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements StoreState {
-  const factory _Loaded({required Store store}) = _$_Loaded;
+abstract class _Loaded implements StorePageState {
+  const factory _Loaded(
+          {Either<StoreFailure, StoreLink>? storeLink,
+          Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts}) =
+      _$_Loaded;
 
-  Store get store;
+  Either<StoreFailure, StoreLink>? get storeLink;
+  Either<ProductFailure, List<DetailedThriftProduct>>? get storeProducts;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }
@@ -386,7 +416,7 @@ abstract class _$ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$StoreStateCopyWithImpl<$Res>
+class __$ErrorCopyWithImpl<$Res> extends _$StorePageStateCopyWithImpl<$Res>
     implements _$ErrorCopyWith<$Res> {
   __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
       : super(_value, (v) => _then(v as _Error));
@@ -424,7 +454,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'StoreState.error(storeFailure: $storeFailure)';
+    return 'StorePageState.error(storeFailure: $storeFailure)';
   }
 
   @override
@@ -449,7 +479,9 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Store store) loaded,
+    required TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)
+        loaded,
     required TResult Function(StoreFailure storeFailure) error,
     required TResult Function() loading,
   }) {
@@ -460,7 +492,9 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Store store)? loaded,
+    TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)?
+        loaded,
     TResult Function(StoreFailure storeFailure)? error,
     TResult Function()? loading,
   }) {
@@ -471,7 +505,9 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Store store)? loaded,
+    TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)?
+        loaded,
     TResult Function(StoreFailure storeFailure)? error,
     TResult Function()? loading,
     required TResult orElse(),
@@ -520,7 +556,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements StoreState {
+abstract class _Error implements StorePageState {
   const factory _Error(StoreFailure storeFailure) = _$_Error;
 
   StoreFailure get storeFailure;
@@ -535,7 +571,7 @@ abstract class _$LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$StoreStateCopyWithImpl<$Res>
+class __$LoadingCopyWithImpl<$Res> extends _$StorePageStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
   __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
       : super(_value, (v) => _then(v as _Loading));
@@ -551,7 +587,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'StoreState.loading()';
+    return 'StorePageState.loading()';
   }
 
   @override
@@ -567,7 +603,9 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Store store) loaded,
+    required TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)
+        loaded,
     required TResult Function(StoreFailure storeFailure) error,
     required TResult Function() loading,
   }) {
@@ -578,7 +616,9 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Store store)? loaded,
+    TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)?
+        loaded,
     TResult Function(StoreFailure storeFailure)? error,
     TResult Function()? loading,
   }) {
@@ -589,7 +629,9 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Store store)? loaded,
+    TResult Function(Either<StoreFailure, StoreLink>? storeLink,
+            Either<ProductFailure, List<DetailedThriftProduct>>? storeProducts)?
+        loaded,
     TResult Function(StoreFailure storeFailure)? error,
     TResult Function()? loading,
     required TResult orElse(),
@@ -638,6 +680,6 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements StoreState {
+abstract class _Loading implements StorePageState {
   const factory _Loading() = _$_Loading;
 }

@@ -1,4 +1,4 @@
-import 'package:everythng/domain/discover/entities/store_link.dart';
+import 'package:everythng/domain/core/store_link.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'recommended_product.freezed.dart';

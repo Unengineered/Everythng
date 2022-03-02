@@ -4,6 +4,7 @@ import 'package:everythng/application/list/list_cubit.dart';
 import 'package:everythng/application/marketplace/marketplace_cubit.dart';
 import 'package:everythng/application/profile/profile_cubit/profile_cubit.dart';
 import 'package:everythng/application/profile/profile_form_cubit/profile_form_cubit.dart';
+import 'package:everythng/application/today/today_cubit.dart';
 import 'package:everythng/injection.dart';
 import 'package:everythng/presentation/routes/app_router.dart';
 import 'package:everythng/presentation/routes/tree_router.dart';
@@ -25,7 +26,7 @@ class AppWidget extends StatelessWidget {
           BlocProvider(create: (_) => getIt<ProfileFormCubit>()),
           BlocProvider(create: (_) => getIt<MarketplaceCubit>()..initialise()),
           BlocProvider(create: (_) => getIt<ListCubit>()),
-
+          BlocProvider(create: (_) => getIt<TodayCubit>())
         ],
         child: TreeRouter(
           router: _appRouter,

@@ -1,6 +1,7 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:everythng/core/constants/constant_lists.dart';
 import 'package:everythng/core/extensions/extension_global_key.dart';
+import 'package:everythng/domain/product/entities/detailed_thrift_product.dart';
 import 'package:everythng/presentation/core/cards/store_link_card.dart';
 import 'package:everythng/presentation/product/widgets/glowing_image.dart';
 import 'package:everythng/presentation/product/widgets/image_preview_carousel.dart';
@@ -17,7 +18,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../core/safe_gesture_detector.dart';
 
 class ProductPage extends HookWidget {
-  ProductPage({Key? key}) : super(key: key);
+  final DetailedThriftProduct product;
+  ProductPage({Key? key, required this.product}) : super(key: key);
   final GlobalKey _buttonKey = GlobalKey();
 
   // final String heroTag;
@@ -49,7 +51,8 @@ class ProductPage extends HookWidget {
       }
     });
     return Scaffold(
-      body: SafeArea(
+      body: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Stack(
           children: [
             ScrollConfiguration(
@@ -93,9 +96,12 @@ class ProductPage extends HookWidget {
                       const SizedBox(
                         height: 24,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: InformationRow(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: InformationRow(
+                          productName: product.name,
+                          brandLogo: product.brand?.logo,
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -103,6 +109,8 @@ class ProductPage extends HookWidget {
                       Offstage(
                         offstage: _animationValue.value != 0,
                         child: PriceInformation(
+                          thriftPrice: product.price,
+                          originalPrice: product.originalPrice,
                           key: _buttonKey,
                         ),
                       ),
@@ -112,32 +120,38 @@ class ProductPage extends HookWidget {
                       const SizedBox(
                         height: 24,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18.0),
-                        child: SizeDescriptionCard(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child:
+                            SizeDescriptionCard(sizeChart: product.sizeChart),
                       ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18),
-                        child: ProductDescriptionElement(),
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 18, bottom: 12),
-                        child: Text(
-                          'Issues',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: -1.3,
+                      if (product.description != null) ...[
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 18),
+                          child: ProductDescriptionElement(
+                              description: product.description!),
+                        ),
+                      ],
+                      if (product.issues != null) ...[
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 18, bottom: 12),
+                          child: Text(
+                            'Issues',
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: -1.3,
+                            ),
                           ),
                         ),
-                      ),
-                      const IssuesList(),
+                        const IssuesList(),
+                      ],
                       const SizedBox(
                         height: 24,
                       ),
@@ -146,9 +160,12 @@ class ProductPage extends HookWidget {
                             vertical: 0, horizontal: 18),
                         child: SafeGestureDetector(
                           onTap: () {
-                            context.router.push(const StorePageRoute());
+                            context.router.push(
+                                StorePageRoute(storeLink: product.storeLink));
                           },
-                          child: const StoreLinkCard(),
+                          child: StoreLinkCard(
+                            storeLink: product.storeLink,
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -160,6 +177,7 @@ class ProductPage extends HookWidget {
               ),
             ),
             ProductPageAppbar(
+              product: product,
               animationValue: _animationValue,
             ),
           ],

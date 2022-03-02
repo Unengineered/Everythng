@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:everythng/core/api/url.dart';
+import 'package:everythng/core/constants/url.dart';
 import 'package:everythng/domain/auth/entities/auth_failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fort_knox/fort_knox.dart';

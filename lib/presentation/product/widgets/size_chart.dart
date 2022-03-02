@@ -2,7 +2,9 @@ import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:flutter/material.dart';
 
 class SizeChart extends StatelessWidget {
+  final List<Map<String, String>> sizeChart;
   const SizeChart({
+    required this.sizeChart,
     Key? key,
   }) : super(key: key);
 
@@ -11,8 +13,9 @@ class SizeChart extends StatelessWidget {
     //TODO: Integrate with api using list as an input
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.zero,
       shrinkWrap: true,
-      itemCount: 6,
+      itemCount: sizeChart.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 32,
@@ -25,7 +28,7 @@ class SizeChart extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Shoulder',
+              sizeChart[index]["key"]!,
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
@@ -34,7 +37,7 @@ class SizeChart extends StatelessWidget {
               ),
             ),
             Text(
-              '16 inches',
+              sizeChart[index]["value"]!,
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w600,

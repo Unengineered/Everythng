@@ -17,16 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$StoreFailureTearOff {
   const _$StoreFailureTearOff();
 
-  ServerError serverError() {
-    return const ServerError();
+  _ServerError serverError() {
+    return const _ServerError();
   }
 
-  NoStoreData noStoreData() {
-    return const NoStoreData();
+  _NoStoreData noStoreData() {
+    return const _NoStoreData();
   }
 
-  UploadFailed uploadFailed() {
-    return const UploadFailed();
+  _UploadFailed uploadFailed() {
+    return const _UploadFailed();
+  }
+
+  _NetworkFailure networkFailure() {
+    return const _NetworkFailure();
   }
 }
 
@@ -40,6 +44,7 @@ mixin _$StoreFailure {
     required TResult Function() serverError,
     required TResult Function() noStoreData,
     required TResult Function() uploadFailed,
+    required TResult Function() networkFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +52,7 @@ mixin _$StoreFailure {
     TResult Function()? serverError,
     TResult Function()? noStoreData,
     TResult Function()? uploadFailed,
+    TResult Function()? networkFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,28 +60,32 @@ mixin _$StoreFailure {
     TResult Function()? serverError,
     TResult Function()? noStoreData,
     TResult Function()? uploadFailed,
+    TResult Function()? networkFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
-    required TResult Function(NoStoreData value) noStoreData,
-    required TResult Function(UploadFailed value) uploadFailed,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_NoStoreData value) noStoreData,
+    required TResult Function(_UploadFailed value) uploadFailed,
+    required TResult Function(_NetworkFailure value) networkFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(NoStoreData value)? noStoreData,
-    TResult Function(UploadFailed value)? uploadFailed,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_NoStoreData value)? noStoreData,
+    TResult Function(_UploadFailed value)? uploadFailed,
+    TResult Function(_NetworkFailure value)? networkFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(NoStoreData value)? noStoreData,
-    TResult Function(UploadFailed value)? uploadFailed,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_NoStoreData value)? noStoreData,
+    TResult Function(_UploadFailed value)? uploadFailed,
+    TResult Function(_NetworkFailure value)? networkFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -98,27 +108,27 @@ class _$StoreFailureCopyWithImpl<$Res> implements $StoreFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $ServerErrorCopyWith<$Res> {
-  factory $ServerErrorCopyWith(
-          ServerError value, $Res Function(ServerError) then) =
-      _$ServerErrorCopyWithImpl<$Res>;
+abstract class _$ServerErrorCopyWith<$Res> {
+  factory _$ServerErrorCopyWith(
+          _ServerError value, $Res Function(_ServerError) then) =
+      __$ServerErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ServerErrorCopyWithImpl<$Res> extends _$StoreFailureCopyWithImpl<$Res>
-    implements $ServerErrorCopyWith<$Res> {
-  _$ServerErrorCopyWithImpl(
-      ServerError _value, $Res Function(ServerError) _then)
-      : super(_value, (v) => _then(v as ServerError));
+class __$ServerErrorCopyWithImpl<$Res> extends _$StoreFailureCopyWithImpl<$Res>
+    implements _$ServerErrorCopyWith<$Res> {
+  __$ServerErrorCopyWithImpl(
+      _ServerError _value, $Res Function(_ServerError) _then)
+      : super(_value, (v) => _then(v as _ServerError));
 
   @override
-  ServerError get _value => super._value as ServerError;
+  _ServerError get _value => super._value as _ServerError;
 }
 
 /// @nodoc
 
-class _$ServerError implements ServerError {
-  const _$ServerError();
+class _$_ServerError implements _ServerError {
+  const _$_ServerError();
 
   @override
   String toString() {
@@ -128,7 +138,7 @@ class _$ServerError implements ServerError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ServerError);
+        (other.runtimeType == runtimeType && other is _ServerError);
   }
 
   @override
@@ -140,6 +150,7 @@ class _$ServerError implements ServerError {
     required TResult Function() serverError,
     required TResult Function() noStoreData,
     required TResult Function() uploadFailed,
+    required TResult Function() networkFailure,
   }) {
     return serverError();
   }
@@ -150,6 +161,7 @@ class _$ServerError implements ServerError {
     TResult Function()? serverError,
     TResult Function()? noStoreData,
     TResult Function()? uploadFailed,
+    TResult Function()? networkFailure,
   }) {
     return serverError?.call();
   }
@@ -160,6 +172,7 @@ class _$ServerError implements ServerError {
     TResult Function()? serverError,
     TResult Function()? noStoreData,
     TResult Function()? uploadFailed,
+    TResult Function()? networkFailure,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -171,9 +184,10 @@ class _$ServerError implements ServerError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
-    required TResult Function(NoStoreData value) noStoreData,
-    required TResult Function(UploadFailed value) uploadFailed,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_NoStoreData value) noStoreData,
+    required TResult Function(_UploadFailed value) uploadFailed,
+    required TResult Function(_NetworkFailure value) networkFailure,
   }) {
     return serverError(this);
   }
@@ -181,9 +195,10 @@ class _$ServerError implements ServerError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(NoStoreData value)? noStoreData,
-    TResult Function(UploadFailed value)? uploadFailed,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_NoStoreData value)? noStoreData,
+    TResult Function(_UploadFailed value)? uploadFailed,
+    TResult Function(_NetworkFailure value)? networkFailure,
   }) {
     return serverError?.call(this);
   }
@@ -191,9 +206,10 @@ class _$ServerError implements ServerError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(NoStoreData value)? noStoreData,
-    TResult Function(UploadFailed value)? uploadFailed,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_NoStoreData value)? noStoreData,
+    TResult Function(_UploadFailed value)? uploadFailed,
+    TResult Function(_NetworkFailure value)? networkFailure,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -203,32 +219,32 @@ class _$ServerError implements ServerError {
   }
 }
 
-abstract class ServerError implements StoreFailure {
-  const factory ServerError() = _$ServerError;
+abstract class _ServerError implements StoreFailure {
+  const factory _ServerError() = _$_ServerError;
 }
 
 /// @nodoc
-abstract class $NoStoreDataCopyWith<$Res> {
-  factory $NoStoreDataCopyWith(
-          NoStoreData value, $Res Function(NoStoreData) then) =
-      _$NoStoreDataCopyWithImpl<$Res>;
+abstract class _$NoStoreDataCopyWith<$Res> {
+  factory _$NoStoreDataCopyWith(
+          _NoStoreData value, $Res Function(_NoStoreData) then) =
+      __$NoStoreDataCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NoStoreDataCopyWithImpl<$Res> extends _$StoreFailureCopyWithImpl<$Res>
-    implements $NoStoreDataCopyWith<$Res> {
-  _$NoStoreDataCopyWithImpl(
-      NoStoreData _value, $Res Function(NoStoreData) _then)
-      : super(_value, (v) => _then(v as NoStoreData));
+class __$NoStoreDataCopyWithImpl<$Res> extends _$StoreFailureCopyWithImpl<$Res>
+    implements _$NoStoreDataCopyWith<$Res> {
+  __$NoStoreDataCopyWithImpl(
+      _NoStoreData _value, $Res Function(_NoStoreData) _then)
+      : super(_value, (v) => _then(v as _NoStoreData));
 
   @override
-  NoStoreData get _value => super._value as NoStoreData;
+  _NoStoreData get _value => super._value as _NoStoreData;
 }
 
 /// @nodoc
 
-class _$NoStoreData implements NoStoreData {
-  const _$NoStoreData();
+class _$_NoStoreData implements _NoStoreData {
+  const _$_NoStoreData();
 
   @override
   String toString() {
@@ -238,7 +254,7 @@ class _$NoStoreData implements NoStoreData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NoStoreData);
+        (other.runtimeType == runtimeType && other is _NoStoreData);
   }
 
   @override
@@ -250,6 +266,7 @@ class _$NoStoreData implements NoStoreData {
     required TResult Function() serverError,
     required TResult Function() noStoreData,
     required TResult Function() uploadFailed,
+    required TResult Function() networkFailure,
   }) {
     return noStoreData();
   }
@@ -260,6 +277,7 @@ class _$NoStoreData implements NoStoreData {
     TResult Function()? serverError,
     TResult Function()? noStoreData,
     TResult Function()? uploadFailed,
+    TResult Function()? networkFailure,
   }) {
     return noStoreData?.call();
   }
@@ -270,6 +288,7 @@ class _$NoStoreData implements NoStoreData {
     TResult Function()? serverError,
     TResult Function()? noStoreData,
     TResult Function()? uploadFailed,
+    TResult Function()? networkFailure,
     required TResult orElse(),
   }) {
     if (noStoreData != null) {
@@ -281,9 +300,10 @@ class _$NoStoreData implements NoStoreData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
-    required TResult Function(NoStoreData value) noStoreData,
-    required TResult Function(UploadFailed value) uploadFailed,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_NoStoreData value) noStoreData,
+    required TResult Function(_UploadFailed value) uploadFailed,
+    required TResult Function(_NetworkFailure value) networkFailure,
   }) {
     return noStoreData(this);
   }
@@ -291,9 +311,10 @@ class _$NoStoreData implements NoStoreData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(NoStoreData value)? noStoreData,
-    TResult Function(UploadFailed value)? uploadFailed,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_NoStoreData value)? noStoreData,
+    TResult Function(_UploadFailed value)? uploadFailed,
+    TResult Function(_NetworkFailure value)? networkFailure,
   }) {
     return noStoreData?.call(this);
   }
@@ -301,9 +322,10 @@ class _$NoStoreData implements NoStoreData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(NoStoreData value)? noStoreData,
-    TResult Function(UploadFailed value)? uploadFailed,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_NoStoreData value)? noStoreData,
+    TResult Function(_UploadFailed value)? uploadFailed,
+    TResult Function(_NetworkFailure value)? networkFailure,
     required TResult orElse(),
   }) {
     if (noStoreData != null) {
@@ -313,32 +335,32 @@ class _$NoStoreData implements NoStoreData {
   }
 }
 
-abstract class NoStoreData implements StoreFailure {
-  const factory NoStoreData() = _$NoStoreData;
+abstract class _NoStoreData implements StoreFailure {
+  const factory _NoStoreData() = _$_NoStoreData;
 }
 
 /// @nodoc
-abstract class $UploadFailedCopyWith<$Res> {
-  factory $UploadFailedCopyWith(
-          UploadFailed value, $Res Function(UploadFailed) then) =
-      _$UploadFailedCopyWithImpl<$Res>;
+abstract class _$UploadFailedCopyWith<$Res> {
+  factory _$UploadFailedCopyWith(
+          _UploadFailed value, $Res Function(_UploadFailed) then) =
+      __$UploadFailedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UploadFailedCopyWithImpl<$Res> extends _$StoreFailureCopyWithImpl<$Res>
-    implements $UploadFailedCopyWith<$Res> {
-  _$UploadFailedCopyWithImpl(
-      UploadFailed _value, $Res Function(UploadFailed) _then)
-      : super(_value, (v) => _then(v as UploadFailed));
+class __$UploadFailedCopyWithImpl<$Res> extends _$StoreFailureCopyWithImpl<$Res>
+    implements _$UploadFailedCopyWith<$Res> {
+  __$UploadFailedCopyWithImpl(
+      _UploadFailed _value, $Res Function(_UploadFailed) _then)
+      : super(_value, (v) => _then(v as _UploadFailed));
 
   @override
-  UploadFailed get _value => super._value as UploadFailed;
+  _UploadFailed get _value => super._value as _UploadFailed;
 }
 
 /// @nodoc
 
-class _$UploadFailed implements UploadFailed {
-  const _$UploadFailed();
+class _$_UploadFailed implements _UploadFailed {
+  const _$_UploadFailed();
 
   @override
   String toString() {
@@ -348,7 +370,7 @@ class _$UploadFailed implements UploadFailed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UploadFailed);
+        (other.runtimeType == runtimeType && other is _UploadFailed);
   }
 
   @override
@@ -360,6 +382,7 @@ class _$UploadFailed implements UploadFailed {
     required TResult Function() serverError,
     required TResult Function() noStoreData,
     required TResult Function() uploadFailed,
+    required TResult Function() networkFailure,
   }) {
     return uploadFailed();
   }
@@ -370,6 +393,7 @@ class _$UploadFailed implements UploadFailed {
     TResult Function()? serverError,
     TResult Function()? noStoreData,
     TResult Function()? uploadFailed,
+    TResult Function()? networkFailure,
   }) {
     return uploadFailed?.call();
   }
@@ -380,6 +404,7 @@ class _$UploadFailed implements UploadFailed {
     TResult Function()? serverError,
     TResult Function()? noStoreData,
     TResult Function()? uploadFailed,
+    TResult Function()? networkFailure,
     required TResult orElse(),
   }) {
     if (uploadFailed != null) {
@@ -391,9 +416,10 @@ class _$UploadFailed implements UploadFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
-    required TResult Function(NoStoreData value) noStoreData,
-    required TResult Function(UploadFailed value) uploadFailed,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_NoStoreData value) noStoreData,
+    required TResult Function(_UploadFailed value) uploadFailed,
+    required TResult Function(_NetworkFailure value) networkFailure,
   }) {
     return uploadFailed(this);
   }
@@ -401,9 +427,10 @@ class _$UploadFailed implements UploadFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(NoStoreData value)? noStoreData,
-    TResult Function(UploadFailed value)? uploadFailed,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_NoStoreData value)? noStoreData,
+    TResult Function(_UploadFailed value)? uploadFailed,
+    TResult Function(_NetworkFailure value)? networkFailure,
   }) {
     return uploadFailed?.call(this);
   }
@@ -411,9 +438,10 @@ class _$UploadFailed implements UploadFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(NoStoreData value)? noStoreData,
-    TResult Function(UploadFailed value)? uploadFailed,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_NoStoreData value)? noStoreData,
+    TResult Function(_UploadFailed value)? uploadFailed,
+    TResult Function(_NetworkFailure value)? networkFailure,
     required TResult orElse(),
   }) {
     if (uploadFailed != null) {
@@ -423,6 +451,123 @@ class _$UploadFailed implements UploadFailed {
   }
 }
 
-abstract class UploadFailed implements StoreFailure {
-  const factory UploadFailed() = _$UploadFailed;
+abstract class _UploadFailed implements StoreFailure {
+  const factory _UploadFailed() = _$_UploadFailed;
+}
+
+/// @nodoc
+abstract class _$NetworkFailureCopyWith<$Res> {
+  factory _$NetworkFailureCopyWith(
+          _NetworkFailure value, $Res Function(_NetworkFailure) then) =
+      __$NetworkFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NetworkFailureCopyWithImpl<$Res>
+    extends _$StoreFailureCopyWithImpl<$Res>
+    implements _$NetworkFailureCopyWith<$Res> {
+  __$NetworkFailureCopyWithImpl(
+      _NetworkFailure _value, $Res Function(_NetworkFailure) _then)
+      : super(_value, (v) => _then(v as _NetworkFailure));
+
+  @override
+  _NetworkFailure get _value => super._value as _NetworkFailure;
+}
+
+/// @nodoc
+
+class _$_NetworkFailure implements _NetworkFailure {
+  const _$_NetworkFailure();
+
+  @override
+  String toString() {
+    return 'StoreFailure.networkFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _NetworkFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() noStoreData,
+    required TResult Function() uploadFailed,
+    required TResult Function() networkFailure,
+  }) {
+    return networkFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? noStoreData,
+    TResult Function()? uploadFailed,
+    TResult Function()? networkFailure,
+  }) {
+    return networkFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? noStoreData,
+    TResult Function()? uploadFailed,
+    TResult Function()? networkFailure,
+    required TResult orElse(),
+  }) {
+    if (networkFailure != null) {
+      return networkFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_NoStoreData value) noStoreData,
+    required TResult Function(_UploadFailed value) uploadFailed,
+    required TResult Function(_NetworkFailure value) networkFailure,
+  }) {
+    return networkFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_NoStoreData value)? noStoreData,
+    TResult Function(_UploadFailed value)? uploadFailed,
+    TResult Function(_NetworkFailure value)? networkFailure,
+  }) {
+    return networkFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_NoStoreData value)? noStoreData,
+    TResult Function(_UploadFailed value)? uploadFailed,
+    TResult Function(_NetworkFailure value)? networkFailure,
+    required TResult orElse(),
+  }) {
+    if (networkFailure != null) {
+      return networkFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NetworkFailure implements StoreFailure {
+  const factory _NetworkFailure() = _$_NetworkFailure;
 }

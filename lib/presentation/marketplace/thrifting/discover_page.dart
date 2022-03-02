@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:everythng/application/discover/discover_cubit.dart';
+import 'package:everythng/application/today/today_cubit.dart';
 import 'package:everythng/core/extensions/extension_context.dart';
 import 'package:everythng/injection.dart';
 import 'package:everythng/presentation/core/cards/product_card.dart';
@@ -18,7 +18,7 @@ class DiscoverPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: getIt<DiscoverCubit>()..getRecommendations(),
+      value: getIt<TodayCubit>()..initialise(),
       child: Scaffold(
         body: ListView(
           scrollDirection: Axis.vertical,
@@ -35,7 +35,7 @@ class DiscoverPage extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            BlocBuilder<DiscoverCubit, DiscoverState>(
+            BlocBuilder<TodayCubit, TodayState>(
               builder: (context, state) {
                 return state.map(
                   loading: (_) {
@@ -49,31 +49,36 @@ class DiscoverPage extends StatelessWidget {
                     return SizedBox(
                       height: 360,
                       width: 360,
-                      child: ListView.separated(
-                        padding: const EdgeInsets.only(left: 18, right: 18),
-                        physics: const BouncingScrollPhysics(),
-                        clipBehavior: Clip.none,
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return SafeGestureDetector(
-                            onTap: () {
-                              context.router.push(ProductPageRoute());
-                            },
-                            child: ProductCard(
-                                loadedState.recommendedProducts[index]),
-                          );
-                        },
-                        separatorBuilder: (context, index) {
-                          return const SizedBox(
-                            width: 16,
-                          );
-                        },
-                        itemCount: loadedState.recommendedProducts.length,
-                      ),
+                      child: (loadedState.products != null) ? loadedState.products!.fold(
+                              (failure) => Text("Error: $failure"),
+                              (products){
+                                return ListView.separated(
+                                  padding: const EdgeInsets.only(left: 18, right: 18),
+                                  physics: const BouncingScrollPhysics(),
+                                  clipBehavior: Clip.none,
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    return SafeGestureDetector(
+                                      onTap: () {
+                                        context.router.push(ProductPageRoute(product: products[index]));
+                                      },
+                                      child: ProductCard(
+                                          products[index]),
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) {
+                                    return const SizedBox(
+                                      width: 16,
+                                    );
+                                  },
+                                  itemCount: products.length,
+                                );
+                              }
+                      ) : const Text("loading"),
                     );
                   },
-                  initialised: (_) {
+                  initial: (_) {
                     return const SizedBox(
                       height: 10,
                       width: 10,
@@ -99,7 +104,7 @@ class DiscoverPage extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            BlocBuilder<DiscoverCubit, DiscoverState>(
+            BlocBuilder<TodayCubit, TodayState>(
               builder: (context, state) {
                 return state.map(loading: (_) {
                   return const SizedBox(
@@ -107,31 +112,36 @@ class DiscoverPage extends StatelessWidget {
                     width: 10,
                     child: CircularProgressIndicator(),
                   );
-                }, loaded: (state) {
-                  return GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      childAspectRatio: 1,
-                      crossAxisSpacing: 15.0,
-                      mainAxisSpacing: 20.0,
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 18),
-                    clipBehavior: Clip.none,
-                    scrollDirection: Axis.vertical,
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return SafeGestureDetector(
-                        onTap: () {
-                          context.router.push(const StorePageRoute());
-                        },
-                        child: StoreCard(state.recommendedStores[index]),
-                      );
-                    },
-                    itemCount: state.recommendedStores.length,
-                  );
-                }, initialised: (_) {
+                }, loaded: (loadedState) {
+
+                  if(loadedState.stores == null) return const Text("loading stores");
+
+                  return loadedState.stores!.fold((failure) => Text("Error: $failure"), (stores){
+                    return GridView.builder(
+                      gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        childAspectRatio: 1,
+                        crossAxisSpacing: 15.0,
+                        mainAxisSpacing: 20.0,
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 18),
+                      clipBehavior: Clip.none,
+                      scrollDirection: Axis.vertical,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return SafeGestureDetector(
+                          onTap: () {
+                            context.router.push(StorePageRoute(storeLink: stores[index]));
+                          },
+                          child: StoreCard(stores[index]),
+                        );
+                      },
+                      itemCount: stores.length,
+                    );
+                  });
+                }, initial: (_) {
                   return const SizedBox(
                     height: 10,
                     width: 10,

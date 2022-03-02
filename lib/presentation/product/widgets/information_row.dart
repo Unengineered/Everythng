@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
 class InformationRow extends StatelessWidget {
+  final String? productName;
+  final Uri? brandLogo;
+
   const InformationRow({
     Key? key,
-    this.productName = 'Blue overcoat with grey scarf',
-    this.logoUrl = 'assets/images/709px-H&M-Logo 1.png',
+    this.productName,
+    this.brandLogo,
   }) : super(key: key);
-
-  final String productName;
-  final String logoUrl;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(
+        if(productName != null) SizedBox(
           width: 210,
           child: Text(
-            productName,
+            productName!,
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
@@ -27,10 +27,11 @@ class InformationRow extends StatelessWidget {
             maxLines: 2,
           ),
         ),
-        SizedBox(
+        if(brandLogo != null) SizedBox(
           width: 52,
+          //TODO: Convert to CachedNetworkImage
           child: Image.asset(
-            logoUrl,
+            brandLogo!.toString(),
           ),
         )
       ],
