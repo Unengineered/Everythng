@@ -36,12 +36,21 @@ class AppWidget extends StatelessWidget {
           builder: (context, widget) => ResponsiveWrapper.builder(
             ClampingScrollWrapper.builder(context, widget!),
             maxWidth: 1200,
-            minWidth: 450,
-            defaultScale: true,
+            minWidth: 360,
+            defaultScale: false,
             breakpoints: [
-              const ResponsiveBreakpoint.autoScaleDown(320),
-              const ResponsiveBreakpoint.resize(450, name: MOBILE),
-              const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+              const ResponsiveBreakpoint.autoScaleDown(
+                320,
+                name: MOBILE,
+                scaleFactor: 0.8,
+              ),
+              const ResponsiveBreakpoint.resize(360, name: MOBILE),
+              const ResponsiveBreakpoint.autoScale(
+                500,
+                name: MOBILE,
+                scaleFactor: 0.8,
+              ),
+              const ResponsiveBreakpoint.resize(600, name: TABLET),
             ],
           ),
           title: 'Everythng App',
